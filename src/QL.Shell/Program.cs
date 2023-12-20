@@ -39,7 +39,7 @@ internal static class Program
         {
             // Load file
             var input = await File.ReadAllTextAsync(inputFile);
-            Log.Debug("Loaded file: {0}", inputFile);
+            Log.Verbose("Loaded file: {0}", inputFile);
             
             // Generate AST
             var ast = Parser.ParseQuery(input);

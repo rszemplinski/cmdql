@@ -6,7 +6,7 @@ namespace QL.Parser.AST.Nodes;
 public class FieldNode : QLNode
 {
     public string Name { get; set; }
-    public ArgumentsNode? Arguments { get; set; }
-    public TransformationsNode? Transformations { get; set; }
-    public SelectionSetNode? SelectionSet { get; set; }
+    public List<ArgumentNode> Arguments { get; set; } = [];
+    public List<TransformationNode> Transformations { get; set; } = [];
+    public List<SelectionNode>? SelectionSet { get; set; } = [];
 }

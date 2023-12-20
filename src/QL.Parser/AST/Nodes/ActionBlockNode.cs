@@ -6,5 +6,5 @@ namespace QL.Parser.AST.Nodes;
 public class ActionBlockNode : QLNode
 {
     public ActionTypeNode ActionType { get; set; }
-    public ContextBlocksNode ContextBlocks { get; set; }
+    public List<ContextBlockNode> ContextBlocks { get; set; } = [];
 }

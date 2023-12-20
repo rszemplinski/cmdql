@@ -22,7 +22,7 @@ public class ASTBuilder : QLBaseVisitor<QLNode>
         return new ActionBlockNode
         {
             ActionType = actionTypeNode,
-            ContextBlocks = contextBlocksNode
+            ContextBlocks = contextBlocksNode.ContextBlocks
         };
     }
 
@@ -68,7 +68,7 @@ public class ASTBuilder : QLBaseVisitor<QLNode>
 
         return new LocalContextBlockNode
         {
-            SelectionSet = selectionSetNode
+            SelectionSet = selectionSetNode.Selections
         };
     }
 
@@ -84,8 +84,8 @@ public class ASTBuilder : QLBaseVisitor<QLNode>
 
         return new RemoteContextBlockNode
         {
-            Arguments = argumentsNode,
-            SelectionSet = selectionSetNode
+            Arguments = argumentsNode.Arguments,
+            SelectionSet = selectionSetNode.Selections
         };
     }
 
@@ -157,20 +157,20 @@ public class ASTBuilder : QLBaseVisitor<QLNode>
     {
         var name = context.NAME().GetText();
 
-        // var transformations = Visit(context.transformations());
-        // if (transformations is not TransformationsNode transformationsNode)
-        //     throw new Exception("TransformationsNode expected");
+        var arguments = context.args() is not null ? Visit(context.args()) as ArgumentsNode : null;
+        var transformations = context.transformations() is not null
+            ? Visit(context.transformations()) as TransformationsNode
+            : null;
+        var selectionSet = context.selection_set() is not null
+            ? Visit(context.selection_set()) as SelectionSetNode
+            : null;
 
         return new FieldNode
         {
             Name = name,
-            Arguments = context.args() is not null ? Visit(context.args()) as ArgumentsNode : null,
-            Transformations = context.transformations() is not null
-                ? Visit(context.transformations()) as TransformationsNode
-                : null,
-            SelectionSet = context.selection_set() is not null
-                ? Visit(context.selection_set()) as SelectionSetNode
-                : null
+            Arguments = arguments?.Arguments ?? [],
+            Transformations = transformations?.Transformations ?? [],
+            SelectionSet = selectionSet?.Selections ?? []
         };
     }
 
@@ -186,13 +186,13 @@ public class ASTBuilder : QLBaseVisitor<QLNode>
                     Value = decimal.Parse(number)
                 };
             }
-            
+
             return new IntValueNode
             {
                 Value = int.Parse(number)
             };
         }
-        
+
         if (context.STRING() is not null)
         {
             return new StringValueNode
@@ -200,7 +200,7 @@ public class ASTBuilder : QLBaseVisitor<QLNode>
                 Value = context.GetText()
             };
         }
-        
+
         if (context.BOOLEAN() is not null)
         {
             return new BooleanValueNode
@@ -208,33 +208,33 @@ public class ASTBuilder : QLBaseVisitor<QLNode>
                 Value = context.GetText() == "true"
             };
         }
-        
+
         if (context.NULL() is not null)
         {
             return new NullValueNode();
         }
-        
+
         if (context.list() is not null)
         {
             return Visit(context.list());
         }
-        
+
         if (context.@object() is not null)
         {
             return Visit(context.@object());
         }
-        
-        if(context.VARIABLE() is not null)
+
+        if (context.VARIABLE() is not null)
         {
             return new VariableValueNode
             {
                 Name = context.GetText()
             };
         }
-        
+
         throw new Exception("Invalid value was found");
     }
-    
+
     public override QLNode VisitList(QLParser.ListContext context)
     {
         var values = new List<ValueNode>();
@@ -253,7 +253,7 @@ public class ASTBuilder : QLBaseVisitor<QLNode>
             Values = values
         };
     }
-    
+
     public override QLNode VisitObject(QLParser.ObjectContext context)
     {
         var fields = new List<ObjectFieldNode>();
@@ -272,7 +272,7 @@ public class ASTBuilder : QLBaseVisitor<QLNode>
             Fields = fields
         };
     }
-    
+
     public override QLNode VisitObject_field(QLParser.Object_fieldContext context)
     {
         var name = context.NAME().GetText();

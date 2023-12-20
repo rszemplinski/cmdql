@@ -7,11 +7,11 @@ public abstract class ContextBlockNode : QLNode
 
 public class LocalContextBlockNode : ContextBlockNode
 {
-    public SelectionSetNode SelectionSet { get; set; }
+    public List<SelectionNode> SelectionSet { get; set; }
 }
 
 public class RemoteContextBlockNode : ContextBlockNode
 {
-    public ArgumentsNode Arguments { get; set; }
-    public SelectionSetNode SelectionSet { get; set; }
+    public List<ArgumentNode> Arguments { get; set; }
+    public List<SelectionNode> SelectionSet { get; set; }
 }
