@@ -8,7 +8,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Standard\" />
+      <ProjectReference Include="..\..\analyzers\QL.Analyzers\QL.Analyzers\QL.Analyzers.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="Serilog">
+        <HintPath>..\..\..\..\..\.nuget\packages\serilog\3.1.1\lib\net7.0\Serilog.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 </Project>

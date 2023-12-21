@@ -10,6 +10,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\QL.Actions\QL.Actions.csproj" />
       <ProjectReference Include="..\QL.Parser\QL.Parser.csproj" />
     </ItemGroup>
 

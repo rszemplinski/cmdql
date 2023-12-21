@@ -1,38 +1,22 @@
 ﻿using CommandLine;
 using Serilog;
+using File = System.IO.File;
 using Parser = QL.Parser.Parser;
 
 namespace QLShell;
 
 internal static class Program
 {
-    private class Options
-    {
-        [Option(
-            'i',
-            "input",
-            Required = true,
-            HelpText = "Input files to be processed.")]
-        public string InputFile { get; set; }
-
-        [Option(
-            'v',
-            "verbose",
-            Default = false,
-            HelpText = "Prints all messages to standard output.")]
-        public bool Verbose { get; set; }
-    }
-    
     private static async Task Main(string[] args)
     {
         await CommandLine.Parser.Default
-            .ParseArguments<Options>(args)
+            .ParseArguments<CLIOptions>(args)
             .WithParsedAsync(Run);
     }
 
-    private static async Task Run(Options options)
+    private static async Task Run(CLIOptions options)
     {
-        var inputFile = options.InputFile;
+        var inputFile = Path.GetFullPath(options.InputFile);
         ConfigureLogging(options.Verbose);
 
         try
@@ -43,7 +27,6 @@ internal static class Program
             
             // Generate AST
             var ast = Parser.ParseQuery(input);
-            Log.Verbose("Generated AST");
         }
         catch (Exception ex)
         {
