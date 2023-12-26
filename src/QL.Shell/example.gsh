@@ -1,6 +1,6 @@
 fetch {
     local {
-        listFiles(path: "/var/www") {
+        listFiles(path: "/Users/ryan.szemplinski/Downloads") {
             name
             size
         }

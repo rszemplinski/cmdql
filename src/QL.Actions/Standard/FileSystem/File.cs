@@ -9,4 +9,10 @@ public class File
     public ulong Size { get; set; }
     public DateTime Date { get; set; }
     public string Name { get; set; }
+
+    public override string ToString()
+    {
+        return
+            $"Permissions: {Permissions}, LinkCount: {LinkCount}, Owner: {Owner}, Group: {Group}, Size: {Size}, Date: {Date}, Name: {Name}";
+    }
 }

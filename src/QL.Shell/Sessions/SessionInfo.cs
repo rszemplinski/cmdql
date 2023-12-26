@@ -1,16 +1,18 @@
 namespace QLShell.Sessions;
 
-public struct SessionInfo
+public readonly struct SessionInfo
 {
-    public string Alias { get; init; }
-    public string Host { get; init; }
-    public string Username { get; init; }
-    public string Password { get; init; }
-    public string KeyFile { get; init; }
-    public int Port { get; init; }
+    public bool IsUsingKeyFile => !string.IsNullOrEmpty(KeyFile);
+    
+    public string Alias { get; private init; }
+    public string Host { get; private init; }
+    public string Username { get; private init; }
+    public string? Password { get; private init; }
+    public string KeyFile { get; private init; }
+    public int Port { get; private init; }
 
 
-    public static SessionInfo CreateWithPassword(string host, string username, string password, string? alias = null, int port = 22)
+    public static SessionInfo CreateWithPassword(string host, string username, string? password, string? alias = null, int port = 22)
     {
         return new SessionInfo
         {
@@ -44,6 +46,18 @@ public struct SessionInfo
             KeyFile = keyFile,
             Password = password,
             Port = port
+        };
+    }
+
+    public static SessionInfo CreateLocalSessionInfo()
+    {
+        return new SessionInfo
+        {
+            Alias = "localhost",
+            Host = "localhost",
+            Username = Environment.UserName,
+            Password = string.Empty,
+            Port = 22
         };
     }
 }

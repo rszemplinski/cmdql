@@ -14,7 +14,7 @@ remote_context_block : REMOTE args selection_set ;
 selection_set : LBRACE selection+ RBRACE ;
 selection : field ;
 
-field : NAME args? transformations? selection_set? ;
+field : NAME args? selection_set? transformations? ;
 
 args : LPAREN arg (COMMA arg)* RPAREN ;
 arg : (NAME COLON)? value ;
@@ -26,28 +26,18 @@ list : LBRACK value* RBRACK ;
 object_field : NAME COLON value ;
 object : LBRACE object_field* RBRACE ;
 
-value : VARIABLE | NUMBER | STRING | BOOLEAN | NULL | list | object ;
+value : VARIABLE | BOOLEAN | NUMBER | STRING | NULL | list | object ;
 
 // Lexer Rules
 
 LOCAL : 'local' ;
 REMOTE : 'remote' ;
 
-WS: [ \t\n\r\f]+ -> skip ;
-COMMENT : '#' ~ [^\n]* '\n' ;
-LINE_TERMINATOR : '\r\n' | '\r' | '\n' ;
-UNICODE_SCALAR_VALUE_HEX : [a-fA-F0-9]{4} ;
-LETTERS : [a-zA-Z] ;
-EXP : [eE][+-]?[1-9]+ ;
-HEX : [0-9a-fA-F] ;
-UNICODE : '\\u' HEX HEX HEX HEX ;
-ESC : '\\' ["\\/bfnrt] | UNICODE;
+BOOLEAN : 'true' | 'false' ;
+NULL : 'null' ;
 
 NAME_START : [a-zA-Z_] ;
 NAME : NAME_START [a-zA-Z0-9_]* ;
-
-BOOLEAN : 'true' | 'false' ;
-NULL : 'null' ;
 
 STRING : '"' (ESC | ~["\\])* '"';
 
@@ -58,6 +48,16 @@ EXPONENT : [eE][+-]?[0-9]+ ;
 INT : '-'? ('0' | [1-9][0-9]*) ;
 
 VARIABLE : '$' NAME ;
+
+WS: [ \t\n\r\f]+ -> skip ;
+COMMENT : '#' ~ [^\n]* '\n' ;
+LINE_TERMINATOR : '\r\n' | '\r' | '\n' ;
+UNICODE_SCALAR_VALUE_HEX : [a-fA-F0-9]{4} ;
+LETTERS : [a-zA-Z] ;
+EXP : [eE][+-]?[1-9]+ ;
+HEX : [0-9a-fA-F] ;
+UNICODE : '\\u' HEX HEX HEX HEX ;
+ESC : '\\' ["\\/bfnrt] | UNICODE;
 
 COLON : ':' ;
 LPAREN : '(' ;

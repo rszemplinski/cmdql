@@ -197,7 +197,7 @@ public class ASTBuilder : QLBaseVisitor<QLNode>
         {
             return new StringValueNode
             {
-                Value = context.GetText()
+                Value = context.GetText().Trim('"')
             };
         }
 

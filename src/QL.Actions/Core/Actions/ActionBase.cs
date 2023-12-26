@@ -2,16 +2,16 @@ using System.Globalization;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using QL.Actions.Core.Attributes;
+using QL.Parser.AST.Nodes;
 using Serilog;
 
-namespace QL.Actions.Core;
+namespace QL.Actions.Core.Actions;
 
-public abstract partial class ActionBase<TArg, TReturnType> : IAction where TArg : class where TReturnType : class
+public abstract partial class ActionBase<TArg, TReturnType> : IAction
+    where TArg : class
+    where TReturnType : class
 {
-    public Type ArgumentsType { get; } = typeof(TArg);
-    public Type ReturnType { get; } = typeof(TReturnType);
-
-    public string BuildCommand(IDictionary<string, object> arguments)
+    public string BuildCommand(Dictionary<string, object> arguments)
     {
         var convertedArguments = ConvertArguments<TArg>(arguments);
         if (convertedArguments is null)
@@ -47,7 +47,15 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction where TArg
         var instanceType = typeof(TReturnType);
 
         if (!instanceType.IsGenericType || instanceType.GetGenericTypeDefinition() != typeof(List<>))
-            return ProcessSingleReturnType(regex, commandResults, instanceType) as TReturnType;
+        {
+            var match = regex.Match(commandResults);
+            if (!match.Success)
+            {
+                throw new InvalidOperationException($"The command results did not match the regex {regex}.");
+            }
+
+            return ProcessSingleReturnType(match, instanceType) as TReturnType;
+        }
 
         var singleInstanceType = instanceType.GetGenericArguments()[0];
         return ProcessListReturnType(regex, commandResults, singleInstanceType);
@@ -66,47 +74,64 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction where TArg
             throw new InvalidOperationException($"The type {instanceType.FullName} does not have an Add method.");
         }
 
-        // Process each line
-        var lines = commandResults.Split(Environment.NewLine);
-        foreach (var line in lines)
+        if (!regex.Options.HasFlag(RegexOptions.Multiline))
         {
-            var singleInstance = ProcessSingleReturnType(regex, line, singleInstanceType);
-            if (singleInstance is null)
+            // Process each line
+            var lines = commandResults.Split(Environment.NewLine);
+            foreach (var line in lines)
             {
-                continue;
-            }
+                var match = regex.Match(line);
+                if (!match.Success)
+                {
+                    throw new InvalidOperationException($"The command results did not match the regex {regex}.");
+                }
 
-            instanceAddMethod.Invoke(instance, [singleInstance]);
+                var singleInstance = ProcessSingleReturnType(match, singleInstanceType);
+                if (singleInstance is null)
+                {
+                    continue;
+                }
+
+                instanceAddMethod.Invoke(instance, [singleInstance]);
+            }
+        }
+        else
+        {
+            var matches = regex.Matches(commandResults);
+            foreach (Match match in matches)
+            {
+                var singleInstance = ProcessSingleReturnType(match, singleInstanceType);
+                if (singleInstance is null)
+                {
+                    continue;
+                }
+
+                instanceAddMethod.Invoke(instance, [singleInstance]);
+            }
         }
 
         return instance as TReturnType;
     }
 
-    protected object? ProcessSingleReturnType(Regex regex, string commandResults, Type instanceType)
+    protected object? ProcessSingleReturnType(Match match, Type instanceType)
     {
-        var match = regex.Match(commandResults);
-        if (!match.Success)
-        {
-            throw new InvalidOperationException($"The command results did not match the regex {regex}.");
-        }
-
-        var groupNameDictionary = match.Groups.Keys.ToDictionary(x => x.ToLower(), x => x);
+        var groupNameDictionary = match.Groups.Keys.ToDictionary(x => x.ToLowerInvariant(), x => x);
         var instance = Activator.CreateInstance(instanceType);
         foreach (var property in instanceType.GetProperties())
         {
             // Attempt to match group name by property name (ignoring case)
             var groupName = groupNameDictionary
-                .FirstOrDefault(x => x.Key.Equals(property.Name.ToLower())).Value;
+                .FirstOrDefault(x => x.Key.Equals(property.Name.ToLowerInvariant())).Value;
             if (groupName is null)
             {
-                Log.Warning($"Could not find a group name for property {property.Name}.");
+                Log.Warning("Could not find a group name for property {0}.", property.Name);
                 continue;
             }
-            
+
             var group = match.Groups[groupName];
-            if(!group.Success)
+            if (!group.Success)
                 continue;
-            
+
             var propertyValue = group.Value;
 
             if (property.PropertyType == typeof(string))
@@ -143,7 +168,15 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction where TArg
             }
             else if (property.PropertyType == typeof(DateTime))
             {
-                property.SetValue(instance, DateTime.Parse(propertyValue, CultureInfo.InvariantCulture));
+                var success = DateTime.TryParseExact(propertyValue, Constants.DateFormats, CultureInfo.InvariantCulture,
+                    DateTimeStyles.None, out var result);
+                if (!success)
+                {
+                    Log.Warning("Could not parse {0} to a DateTime.", propertyValue);
+                    continue;
+                }
+
+                property.SetValue(instance, result);
             }
             else if (property.PropertyType == typeof(DateTimeOffset))
             {
@@ -177,7 +210,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction where TArg
             return defaultValue;
         }
 
-        return (T) Convert.ChangeType(value, typeof(T));
+        return (T)Convert.ChangeType(value, typeof(T));
     }
 
     protected string ReplaceTemplates(string cmdTemplate, TArg arguments)
@@ -185,19 +218,22 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction where TArg
         var cmd = cmdTemplate;
         foreach (var property in typeof(TArg).GetProperties())
         {
+            var propertyType = property.PropertyType;
             var propertyValue = GetPropertyValue(arguments, property.Name);
 
-            if (propertyValue is bool condition)
+            if (propertyType == typeof(bool))
             {
-                var templateKey = $"?[{property.Name.ToLower()}]";
+                var condition = (bool)propertyValue!;
+                var templateKey = $"?[{property.Name.ToLowerInvariant()}]";
                 cmd = condition
                     ? cmd.Replace(templateKey, "")
                     : Regex.Replace(cmd, $"{Regex.Escape(templateKey)}\\S*", "");
             }
-            else if (propertyValue != null)
+            else if (propertyType == typeof(string))
             {
-                var placeholder = $"{{{property.Name.ToLower()}}}";
-                cmd = cmd.Replace(placeholder, propertyValue.ToString());
+                var value = (string)propertyValue!;
+                var placeholder = $"{{{property.Name.ToLowerInvariant()}}}";
+                cmd = cmd.Replace(placeholder, value);
             }
         }
 
@@ -210,11 +246,6 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction where TArg
     {
         var property = typeof(TArg).GetProperty(propertyName);
         return property?.GetValue(obj, null);
-    }
-
-    private static object? GetPropertyValue(IDictionary<string, object> obj, string propertyName)
-    {
-        return obj.TryGetValue(propertyName, out var value) ? value : null;
     }
 
     protected string GetCommandTemplate()
@@ -241,81 +272,43 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction where TArg
         return regexAttribute.Regex;
     }
 
-    private static T? ConvertArguments<T>(IDictionary<string, object> arguments) where T : class
+    private static T? ConvertArguments<T>(IReadOnlyDictionary<string, object> arguments) where T : class
     {
         var type = typeof(T);
         var instance = Activator.CreateInstance(type);
         foreach (var property in type.GetProperties())
         {
-            var propertyValue = GetPropertyValue(arguments, property.Name);
+            var propertyValue = arguments.GetValueOrDefault(property.Name.ToLowerInvariant());
             if (propertyValue is null)
-            {
                 continue;
-            }
 
-            if (property.PropertyType == typeof(bool))
+            if (property.PropertyType == typeof(bool) && propertyValue is BooleanValueNode boolValue)
             {
-                property.SetValue(instance, propertyValue);
+                property.SetValue(instance, boolValue.Value);
             }
-            else if (property.PropertyType == typeof(string))
+            else if (property.PropertyType == typeof(string) && propertyValue is StringValueNode stringValue)
             {
-                property.SetValue(instance, propertyValue);
+                property.SetValue(instance, stringValue.Value);
             }
-            else if (property.PropertyType == typeof(int))
+            else if (property.PropertyType == typeof(int) && propertyValue is IntValueNode intValue)
             {
-                property.SetValue(instance, propertyValue);
+                property.SetValue(instance, intValue.Value);
             }
-            else if (property.PropertyType == typeof(long))
+            else if (property.PropertyType == typeof(long) && propertyValue is IntValueNode longValue)
             {
-                property.SetValue(instance, propertyValue);
+                property.SetValue(instance, longValue.Value);
             }
-            else if (property.PropertyType == typeof(float))
+            else if (property.PropertyType == typeof(float) && propertyValue is DecimalValueNode floatValue)
             {
-                property.SetValue(instance, propertyValue);
+                property.SetValue(instance, floatValue.Value);
             }
-            else if (property.PropertyType == typeof(double))
+            else if (property.PropertyType == typeof(double) && propertyValue is DecimalValueNode doubleValue)
             {
-                property.SetValue(instance, propertyValue);
+                property.SetValue(instance, doubleValue.Value);
             }
-            else if (property.PropertyType == typeof(decimal))
+            else if (property.PropertyType == typeof(decimal) && propertyValue is DecimalValueNode decimalValue)
             {
-                property.SetValue(instance, propertyValue);
-            }
-            else if (property.PropertyType == typeof(DateTime))
-            {
-                property.SetValue(instance, propertyValue);
-            }
-            else if (property.PropertyType == typeof(DateTimeOffset))
-            {
-                property.SetValue(instance, propertyValue);
-            }
-            else if (property.PropertyType == typeof(TimeSpan))
-            {
-                property.SetValue(instance, propertyValue);
-            }
-            else if (property.PropertyType == typeof(Guid))
-            {
-                property.SetValue(instance, propertyValue);
-            }
-            else if (property.PropertyType == typeof(Uri))
-            {
-                property.SetValue(instance, propertyValue);
-            }
-            else if (property.PropertyType == typeof(Version))
-            {
-                property.SetValue(instance, propertyValue);
-            }
-            else if (property.PropertyType == typeof(Regex))
-            {
-                property.SetValue(instance, propertyValue);
-            }
-            else if (property.PropertyType == typeof(Type))
-            {
-                property.SetValue(instance, propertyValue);
-            }
-            else if (property.PropertyType == typeof(object))
-            {
-                property.SetValue(instance, propertyValue);
+                property.SetValue(instance, decimalValue.Value);
             }
             else
             {

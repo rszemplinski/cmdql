@@ -1,10 +1,11 @@
 namespace QLShell.Sessions;
 
-public interface ISession : IAsyncDisposable
+public interface ISession
 {
+    bool IsConnected { get; }
     SessionInfo Info { get; }
     
-    Task ConnectAsync();
+    Task ConnectAsync(CancellationToken cancellationToken = default);
     Task<string> ExecuteCommandAsync(string command);
-    Task DisconnectAsync();
+    Task DisconnectAsync(CancellationToken cancellationToken = default);
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from /home/rszemplinski/projects/dotnet/QLShell/QL.Parser/QL.g4 by ANTLR 4.13.1
+// Generated from /Users/ryan.szemplinski/projects/dotnet/QLShell/src/QL.Parser/AntlrGenerated/QL.g4 by ANTLR 4.13.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -116,12 +116,6 @@ public interface IQLVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <return>The visitor result.</return>
 	Result VisitTransformation([NotNull] QLParser.TransformationContext context);
 	/// <summary>
-	/// Visit a parse tree produced by <see cref="QLParser.value"/>.
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	/// <return>The visitor result.</return>
-	Result VisitValue([NotNull] QLParser.ValueContext context);
-	/// <summary>
 	/// Visit a parse tree produced by <see cref="QLParser.list"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
@@ -139,4 +133,10 @@ public interface IQLVisitor<Result> : IParseTreeVisitor<Result> {
 	/// <param name="context">The parse tree.</param>
 	/// <return>The visitor result.</return>
 	Result VisitObject([NotNull] QLParser.ObjectContext context);
+	/// <summary>
+	/// Visit a parse tree produced by <see cref="QLParser.value"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	/// <return>The visitor result.</return>
+	Result VisitValue([NotNull] QLParser.ValueContext context);
 }

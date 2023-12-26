@@ -1,5 +1,7 @@
 ﻿using CommandLine;
+using QL.Actions.Core;
 using Serilog;
+using AppContext = QLShell.Contexts.AppContext;
 using File = System.IO.File;
 using Parser = QL.Parser.Parser;
 
@@ -27,10 +29,14 @@ internal static class Program
             
             // Generate AST
             var ast = Parser.ParseQuery(input);
+
+            Log.Information("Executing query...");
+            var context = new AppContext(ast);
+            await context.ExecuteAsync();
         }
         catch (Exception ex)
         {
-            Log.Error(ex, "Error while parsing file: {0}", inputFile);
+            Log.Fatal(ex, "An error occurred while executing the query");
         }
     }
 

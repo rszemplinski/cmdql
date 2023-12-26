@@ -1,8 +1,8 @@
-namespace QL.Actions.Core;
+namespace QL.Actions.Core.Actions;
 
 public interface IAction
 {
-    public string BuildCommand(IDictionary<string, object> arguments);
+    public string BuildCommand(Dictionary<string, object> arguments);
     
     public object ParseCommandResults(string commandResult);
 }
