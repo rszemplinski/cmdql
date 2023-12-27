@@ -1,4 +1,4 @@
-namespace QL.Actions.Core.Attributes;
+namespace QL.Core.Attributes;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class CmdAttribute(string cmdTemplate) : Attribute

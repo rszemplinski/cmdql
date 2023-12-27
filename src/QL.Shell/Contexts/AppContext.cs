@@ -46,9 +46,6 @@ public class AppContext
             },
             async (sessionData, cancelToken) =>
             {
-                if (cancellationToken.IsCancellationRequested)
-                    return;
-
                 var (_, data) = sessionData;
                 var (session, contextBlock) = data;
                 var context = new SessionContext(session, contextBlock.SelectionSet);

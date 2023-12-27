@@ -1,17 +1,18 @@
+using System.Collections;
 using System.Globalization;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using QL.Actions.Core.Attributes;
+using QL.Core.Attributes;
 using QL.Parser.AST.Nodes;
 using Serilog;
 
-namespace QL.Actions.Core.Actions;
+namespace QL.Core.Actions;
 
 public abstract partial class ActionBase<TArg, TReturnType> : IAction
     where TArg : class
     where TReturnType : class
 {
-    public string BuildCommand(Dictionary<string, object> arguments)
+    public async Task<string> BuildCommandAsync(Dictionary<string, object> arguments)
     {
         var convertedArguments = ConvertArguments<TArg>(arguments);
         if (convertedArguments is null)
@@ -19,29 +20,70 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
             throw new InvalidOperationException($"Could not convert arguments to {typeof(TArg).FullName}.");
         }
 
-        var cmd = _BuildCommand(convertedArguments);
+        var cmd = await _BuildCommandAsync(convertedArguments);
         return cmd;
     }
 
-    protected virtual string _BuildCommand(TArg arguments)
+    public virtual Task<string> PostExecutionAsync(string commandResults, ISshClient sshClient)
+    {
+        return Task.FromResult(commandResults);
+    }
+
+    protected virtual Task<string> _BuildCommandAsync(TArg arguments)
     {
         var cmdTemplate = GetCommandTemplate();
         var cmd = ReplaceTemplates(cmdTemplate, arguments);
-        return cmd;
+        return Task.FromResult(cmd);
     }
 
-    public object ParseCommandResults(string commandResults, string[] fields)
+    public async Task<object> ParseCommandResultsAsync(string commandResults, string[] fields)
     {
-        var parsedResults = _ParseCommandResults(commandResults, fields);
+        var parsedResults = await _ParseCommandResultsAsync(commandResults);
         if (parsedResults is null)
         {
             throw new InvalidOperationException($"Could not parse command results to {typeof(TReturnType).FullName}.");
         }
 
-        return parsedResults;
+        var instanceType = typeof(TReturnType);
+        if (!instanceType.IsGenericType || instanceType.GetGenericTypeDefinition() != typeof(List<>))
+        {
+            return ConvertInstanceToDictionary(parsedResults, fields);
+        }
+
+        if (parsedResults is not IEnumerable enumerable)
+        {
+            throw new InvalidOperationException($"Could not convert {typeof(TReturnType).FullName} to IEnumerable.");
+        }
+
+        var results = new List<IReadOnlyDictionary<string, object?>>();
+        foreach (var item in enumerable)
+        {
+            var instanceDictionary = ConvertInstanceToDictionary(item, fields);
+            results.Add(instanceDictionary);
+        }
+
+        return results;
     }
 
-    protected virtual TReturnType? _ParseCommandResults(string commandResults, string[] fields)
+    private static IReadOnlyDictionary<string, object?> ConvertInstanceToDictionary(object instance, string[] fields)
+    {
+        var instanceType = instance.GetType();
+        var instanceDictionary = new Dictionary<string, object?>();
+        foreach (var property in instanceType.GetProperties())
+        {
+            // Check equality by name (ignoring case)
+            var field = fields.FirstOrDefault(x => x.Equals(property.Name, StringComparison.OrdinalIgnoreCase));
+            if (field is null)
+                continue;
+            
+            var propertyValue = property.GetValue(instance);
+            instanceDictionary.Add(field, propertyValue);
+        }
+
+        return instanceDictionary;
+    }
+
+    protected virtual Task<TReturnType> _ParseCommandResultsAsync(string commandResults)
     {
         var regex = GetRegex();
         var instanceType = typeof(TReturnType);
@@ -54,15 +96,15 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
                 throw new InvalidOperationException($"The command results did not match the regex {regex}.");
             }
 
-            return ProcessSingleReturnType(match, instanceType, fields) as TReturnType;
+            var instance = ProcessSingleReturnType(match, instanceType);
+            return Task.FromResult((instance as TReturnType)!);
         }
 
         var singleInstanceType = instanceType.GetGenericArguments()[0];
-        return ProcessListReturnType(regex, commandResults, singleInstanceType, fields);
+        return Task.FromResult(ProcessListReturnType(regex, commandResults, singleInstanceType));
     }
 
-    protected TReturnType? ProcessListReturnType(Regex regex, string commandResults, Type singleInstanceType,
-        string[] fields)
+    protected TReturnType ProcessListReturnType(Regex regex, string commandResults, Type singleInstanceType)
     {
         var listType = typeof(List<>);
         var constructedListType = listType.MakeGenericType(singleInstanceType);
@@ -87,12 +129,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
                     throw new InvalidOperationException($"The command results did not match the regex {regex}.");
                 }
 
-                var singleInstance = ProcessSingleReturnType(match, singleInstanceType, fields);
-                if (singleInstance is null)
-                {
-                    continue;
-                }
-
+                var singleInstance = ProcessSingleReturnType(match, singleInstanceType);
                 instanceAddMethod.Invoke(instance, [singleInstance]);
             }
         }
@@ -101,29 +138,21 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
             var matches = regex.Matches(commandResults);
             foreach (Match match in matches)
             {
-                var singleInstance = ProcessSingleReturnType(match, singleInstanceType, fields);
-                if (singleInstance is null)
-                {
-                    continue;
-                }
-
+                var singleInstance = ProcessSingleReturnType(match, singleInstanceType);
                 instanceAddMethod.Invoke(instance, [singleInstance]);
             }
         }
 
-        return instance as TReturnType;
+        return (instance as TReturnType)!;
     }
 
-    protected object? ProcessSingleReturnType(Match match, Type instanceType, string[] fields)
+    protected object ProcessSingleReturnType(Match match, Type instanceType)
     {
         var groupNameDictionary = match.Groups.Keys.ToDictionary(x => x.ToLowerInvariant(), x => x);
         var instance = Activator.CreateInstance(instanceType);
         var instanceProperties = instanceType.GetProperties();
-        var propertiesToProcess = instanceProperties
-            .Where(x => fields.Contains(x.Name, StringComparer.InvariantCultureIgnoreCase))
-            .ToList();
 
-        foreach (var property in propertiesToProcess)
+        foreach (var property in instanceProperties)
         {
             // Attempt to match group name by property name (ignoring case)
             var groupName = groupNameDictionary
@@ -205,8 +234,8 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
                 throw new InvalidOperationException($"The type {property.PropertyType.FullName} is not supported.");
             }
         }
-
-        return instance;
+        
+        return instance!;
     }
 
     private static T? HandleEmptyValue<T>(string value, T? defaultValue = default)

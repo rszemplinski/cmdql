@@ -1,9 +1,10 @@
 using System.Collections.Concurrent;
 using System.Reflection;
-using QL.Actions.Core.Actions;
-using QL.Actions.Core.Attributes;
+using QL.Core;
+using QL.Core.Actions;
+using QL.Core.Attributes;
 
-namespace QL.Actions.Core;
+namespace QL.Actions;
 
 public static class ActionsLookupTable
 {

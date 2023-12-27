@@ -6,6 +6,11 @@ fetch {
             date
             permissions
         }
+        diskSpace {
+            total
+            used
+            free
+        }
     }
     remote(host: "ai-machine", user: "rszemplinski") {
         listFiles(path: "/var/www") {
@@ -18,13 +23,6 @@ fetch {
             name
             size
             permissions
-        }
-    }
-    remote(host: "adguard", user: "ubuntu") {
-        listFiles(path: "/var/www") {
-            name
-            size
-            owner
         }
     }
 }

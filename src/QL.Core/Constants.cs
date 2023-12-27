@@ -1,4 +1,4 @@
-namespace QL.Actions.Core;
+namespace QL.Core;
 
 public static class Constants
 {

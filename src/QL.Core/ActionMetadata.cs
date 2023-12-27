@@ -1,6 +1,6 @@
-using QL.Actions.Core.Actions;
+using QL.Core.Actions;
 
-namespace QL.Actions.Core;
+namespace QL.Core;
 
 public record ActionMetadata(string Name, string? Description, Type Type)
 {

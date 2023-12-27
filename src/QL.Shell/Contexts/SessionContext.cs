@@ -1,6 +1,7 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
-using QL.Actions.Core;
+using QL.Actions;
+using QL.Core;
 using QL.Parser.AST.Nodes;
 using QLShell.Extensions;
 using QLShell.Sessions;
@@ -22,13 +23,15 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
         {
             return TaskLimiter.Instance.ProcessAsync(async () =>
             {
+                var sessionSshClient = new SessionSshClient(Session);
+                
                 var selectedFields = GetFields(field)
                     .Select(x => x.Name)
                     .ToArray();
                 
                 var action = ActionsLookupTable.Get(field.Name).CreateAction();
                 var arguments = field.BuildArgumentsDictionary();
-                var command = action.BuildCommand(arguments);
+                var command = await action.BuildCommandAsync(arguments);
                 
                 var sw = Stopwatch.StartNew();
                 var response = await Session.ExecuteCommandAsync(command, cancellationToken);
@@ -36,7 +39,12 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
                 Log.Debug("[{0}] => Executed command: {1} in {2}ms", Session, command, sw.ElapsedMilliseconds);
                 
                 sw.Restart();
-                var commandResults = action.ParseCommandResults(response, selectedFields);
+                response = await action.PostExecutionAsync(response, sessionSshClient);
+                sw.Stop();
+                Log.Debug("[{0}] => Post execution in {1}ms", Session, sw.ElapsedMilliseconds);
+                
+                sw.Restart();
+                var commandResults = await action.ParseCommandResultsAsync(response, selectedFields);
                 sw.Stop();
                 Log.Debug("[{0}] => Parsed command results in {1}ms", Session, sw.ElapsedMilliseconds);
                 
@@ -62,5 +70,15 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
         
         return field.SelectionSet
             .Select(selection => selection.Field);
+    }
+    
+    private class SessionSshClient(ISession session) : ISshClient
+    {
+        private ISession Session { get; } = session;
+
+        public async Task<string> ExecuteCommandAsync(string command, CancellationToken cancellationToken)
+        {
+            return await Session.ExecuteCommandAsync(command, cancellationToken);
+        }
     }
 }

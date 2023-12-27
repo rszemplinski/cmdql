@@ -5,11 +5,12 @@ namespace QLShell;
 public enum OutputFormat
 {
     Json,
+    Yml,
     Table,
+    File
 }
 
-// ReSharper disable once InconsistentNaming
-public class CLIOptions
+public class Options
 {
     [Option(
         'i',
@@ -22,8 +23,7 @@ public class CLIOptions
     [Option(
         'v',
         "verbose",
-        Default = false,
-        HelpText = "Show verbose output."
+        HelpText = "Show verbose output?"
     )]
     public bool Verbose { get; set; }
     
@@ -31,7 +31,7 @@ public class CLIOptions
         'd',
         "debug",
         Default = false,
-        HelpText = "Debug mode."
+        HelpText = "Debug mode"
     )]
     public bool Debug { get; set; }
 
@@ -39,22 +39,21 @@ public class CLIOptions
         'o',
         "output",
         Default = OutputFormat.Json,
-        HelpText = "Which output format to use. (Json, Table)"
+        HelpText = "Which output format to use? (json, yml, table)"
     )]
     public OutputFormat OutputFormat { get; set; }
 
     [Option(
         'c',
         "concurrency",
-        Default = 8,
-        HelpText = "Concurrency limit."
+        HelpText = "Concurrency limit"
     )]
-    public int MaxDegreeOfParallelism { get; set; }
+    public int Concurrency { get; set; } = Environment.ProcessorCount;
     
     [Option(
         "sync",
         Default = false,
-        HelpText = "Run synchronously."
+        HelpText = "Run synchronously?"
     )]
     public bool Sync { get; set; }
 }

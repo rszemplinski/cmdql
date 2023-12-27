@@ -1,5 +1,5 @@
-using QL.Actions.Core.Actions;
-using QL.Actions.Core.Attributes;
+using QL.Core.Actions;
+using QL.Core.Attributes;
 
 namespace QL.Actions.Standard.FileSystem;
 
