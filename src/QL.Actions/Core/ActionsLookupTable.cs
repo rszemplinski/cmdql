@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Reflection;
 using QL.Actions.Core.Actions;
 using QL.Actions.Core.Attributes;
@@ -6,7 +7,7 @@ namespace QL.Actions.Core;
 
 public static class ActionsLookupTable
 {
-    private static Dictionary<string, ActionMetadata> LookupTable { get; } = Generate();
+    private static IReadOnlyDictionary<string, ActionMetadata> LookupTable { get; } = Generate();
     
     public static ActionMetadata Get(string name)
     {
@@ -19,14 +20,14 @@ public static class ActionsLookupTable
         return metadata;
     }
 
-    private static Dictionary<string, ActionMetadata> Generate()
+    private static ConcurrentDictionary<string, ActionMetadata> Generate()
     {
         var actions = Assembly.GetExecutingAssembly()
             .GetTypes()
             .Where(x => x.IsAssignableTo(typeof(IAction)) && !x.IsAbstract)
             .ToList();
 
-        var lookupTable = new Dictionary<string, ActionMetadata>();
+        var lookupTable = new ConcurrentDictionary<string, ActionMetadata>();
         foreach (var action in actions)
         {
             var attribute = action.GetCustomAttribute<ActionAttribute>();
@@ -35,7 +36,7 @@ public static class ActionsLookupTable
 
             var name = attribute.Name ?? action.Name;
             var metadata = new ActionMetadata(name, attribute.Description, action);
-            lookupTable.Add(name.ToLowerInvariant(), metadata);
+            lookupTable.TryAdd(name.ToLowerInvariant(), metadata);
         }
 
         return lookupTable;

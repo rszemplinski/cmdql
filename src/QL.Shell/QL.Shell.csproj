@@ -16,7 +16,7 @@
 
     <ItemGroup>
       <None Update="example.gsh">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>
 

@@ -1,4 +1,5 @@
 using System.Collections.Concurrent;
+using System.Diagnostics;
 using System.Text.Json;
 using QL.Parser.AST.Nodes;
 using QLShell.Sessions;
@@ -8,48 +9,62 @@ namespace QLShell.Contexts;
 
 public class AppContext
 {
-    public ActionBlockNode QueryRoot { get; }
-    public SessionManager SessionManager { get; }
+    private ActionBlockNode QueryRoot { get; }
+    private SessionManager SessionManager { get; }
+    private AppConfig AppConfig { get; }
 
-    public AppContext(ActionBlockNode root)
+    public AppContext(ActionBlockNode root, AppConfig config)
     {
         QueryRoot = root;
+        AppConfig = config;
         SessionManager = new SessionManager();
         BuildSessions();
     }
 
-    public async Task ExecuteAsync()
+    public async Task<IReadOnlyDictionary<string, object>> ExecuteAsync(CancellationToken cancellationToken)
     {
         var allSessions = SessionManager.Sessions.Values
             .Select(x => x.session).ToList();
         if (allSessions.Count == 0)
         {
-            Log.Information("No sessions to execute");
-            return;
+            Log.Warning("There were no sessions to execute");
+            return new Dictionary<string, object>();
         }
 
-        Log.Information("Connecting to sessions...");
-        var connectionTasks = allSessions.Select(session => session.ConnectAsync());
+        var sw = Stopwatch.StartNew();
+        var connectionTasks = allSessions.Select(session => session.ConnectAsync(cancellationToken));
         await Task.WhenAll(connectionTasks);
+        sw.Stop();
+        Log.Debug("Connected to {0} sessions in {1}ms", allSessions.Count, sw.ElapsedMilliseconds);
 
+        sw.Restart();
         var result = new ConcurrentDictionary<string, object>();
         await Parallel.ForEachAsync(SessionManager.Sessions,
-            async (sessionData, cancellationToken) =>
+            new ParallelOptions
+            {
+                CancellationToken = cancellationToken
+            },
+            async (sessionData, cancelToken) =>
             {
                 if (cancellationToken.IsCancellationRequested)
                     return;
 
                 var (_, data) = sessionData;
                 var (session, contextBlock) = data;
-                Log.Information("Executing session: {0}", session);
                 var context = new SessionContext(session, contextBlock.SelectionSet);
-                var contextResult = await context.ExecuteAsync();
+                var contextResult = await context.ExecuteAsync(cancelToken);
                 result.TryAdd(session.Info.Alias, contextResult);
             });
-        
-        Log.Information("Disconnecting from sessions...");
-        var disconnectionTasks = allSessions.Select(session => session.DisconnectAsync());
+        sw.Stop();
+        Log.Debug("Executed all sessions in {0}ms", sw.ElapsedMilliseconds);
+
+        sw.Restart();
+        var disconnectionTasks = allSessions.Select(session => session.DisconnectAsync(cancellationToken));
         await Task.WhenAll(disconnectionTasks);
+        sw.Stop();
+        Log.Debug("Disconnected from {0} sessions in {1}ms", allSessions.Count, sw.ElapsedMilliseconds);
+
+        return result;
     }
 
     private void BuildSessions()

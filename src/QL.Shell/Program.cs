@@ -1,5 +1,8 @@
-﻿using CommandLine;
-using QL.Actions.Core;
+﻿using System.Diagnostics;
+using System.Text.Encodings.Web;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using CommandLine;
 using Serilog;
 using AppContext = QLShell.Contexts.AppContext;
 using File = System.IO.File;
@@ -18,25 +21,71 @@ internal static class Program
 
     private static async Task Run(CLIOptions options)
     {
+        var cts = new CancellationTokenSource();
+        
+        Console.CancelKeyPress += (_, e) =>
+        {
+            cts.Cancel();
+            e.Cancel = true;
+        };
+        
+        var programSw = Stopwatch.StartNew();
+
         var inputFile = Path.GetFullPath(options.InputFile);
         ConfigureLogging(options.Verbose);
 
         try
         {
-            // Load file
-            var input = await File.ReadAllTextAsync(inputFile);
-            Log.Verbose("Loaded file: {0}", inputFile);
-            
-            // Generate AST
-            var ast = Parser.ParseQuery(input);
+            var sw = Stopwatch.StartNew();
+            var input = await File.ReadAllTextAsync(inputFile, cts.Token);
+            sw.Stop();
+            Log.Debug("Read input file {0} in {1}ms", inputFile, sw.ElapsedMilliseconds);
 
-            Log.Information("Executing query...");
-            var context = new AppContext(ast);
-            await context.ExecuteAsync();
+            sw.Restart();
+            var ast = Parser.ParseQuery(input);
+            sw.Stop();
+            Log.Debug("Generated AST in {0}ms", sw.ElapsedMilliseconds);
+
+            var concurrencyCount = options.Sync ? 1 : options.MaxDegreeOfParallelism;
+            TaskLimiter.Create(concurrencyCount);
+            Log.Debug("Concurrency limit set to {0}", concurrencyCount);
+            
+            var appConfig = new AppConfig
+            {
+                InputFile = inputFile,
+                Verbose = options.Verbose,
+                Debug = options.Debug,
+                OutputFormat = options.OutputFormat,
+                Sync = options.Sync,
+            };
+            var output = await 
+                new AppContext(ast, appConfig).ExecuteAsync(cts.Token);
+            
+            sw.Restart();
+            var json = JsonSerializer.Serialize(output, new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+            });
+            sw.Stop();
+            Log.Debug("Serialized output in {0}ms", sw.ElapsedMilliseconds);
+
+            Console.WriteLine(json);
+        }
+        catch (TaskCanceledException)
+        {
+            Log.Warning("The operation was cancelled");
         }
         catch (Exception ex)
         {
-            Log.Fatal(ex, "An error occurred while executing the query");
+            Log.Error(ex, "An error occurred while executing the query");
+        }
+        finally
+        {
+            programSw.Stop();
+            Log.Debug("Finished in {0}ms", programSw.ElapsedMilliseconds);
         }
     }
 

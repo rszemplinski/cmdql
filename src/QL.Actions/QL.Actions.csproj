@@ -8,7 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\analyzers\QL.Analyzers\QL.Analyzers\QL.Analyzers.csproj" />
       <ProjectReference Include="..\QL.Parser\QL.Parser.csproj" />
     </ItemGroup>
 

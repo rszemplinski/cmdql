@@ -30,9 +30,9 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
         return cmd;
     }
 
-    public object ParseCommandResults(string commandResults)
+    public object ParseCommandResults(string commandResults, string[] fields)
     {
-        var parsedResults = _ParseCommandResults(commandResults);
+        var parsedResults = _ParseCommandResults(commandResults, fields);
         if (parsedResults is null)
         {
             throw new InvalidOperationException($"Could not parse command results to {typeof(TReturnType).FullName}.");
@@ -41,7 +41,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
         return parsedResults;
     }
 
-    protected virtual TReturnType? _ParseCommandResults(string commandResults)
+    protected virtual TReturnType? _ParseCommandResults(string commandResults, string[] fields)
     {
         var regex = GetRegex();
         var instanceType = typeof(TReturnType);
@@ -54,14 +54,15 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
                 throw new InvalidOperationException($"The command results did not match the regex {regex}.");
             }
 
-            return ProcessSingleReturnType(match, instanceType) as TReturnType;
+            return ProcessSingleReturnType(match, instanceType, fields) as TReturnType;
         }
 
         var singleInstanceType = instanceType.GetGenericArguments()[0];
-        return ProcessListReturnType(regex, commandResults, singleInstanceType);
+        return ProcessListReturnType(regex, commandResults, singleInstanceType, fields);
     }
 
-    protected TReturnType? ProcessListReturnType(Regex regex, string commandResults, Type singleInstanceType)
+    protected TReturnType? ProcessListReturnType(Regex regex, string commandResults, Type singleInstanceType,
+        string[] fields)
     {
         var listType = typeof(List<>);
         var constructedListType = listType.MakeGenericType(singleInstanceType);
@@ -86,7 +87,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
                     throw new InvalidOperationException($"The command results did not match the regex {regex}.");
                 }
 
-                var singleInstance = ProcessSingleReturnType(match, singleInstanceType);
+                var singleInstance = ProcessSingleReturnType(match, singleInstanceType, fields);
                 if (singleInstance is null)
                 {
                     continue;
@@ -100,7 +101,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
             var matches = regex.Matches(commandResults);
             foreach (Match match in matches)
             {
-                var singleInstance = ProcessSingleReturnType(match, singleInstanceType);
+                var singleInstance = ProcessSingleReturnType(match, singleInstanceType, fields);
                 if (singleInstance is null)
                 {
                     continue;
@@ -113,11 +114,16 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
         return instance as TReturnType;
     }
 
-    protected object? ProcessSingleReturnType(Match match, Type instanceType)
+    protected object? ProcessSingleReturnType(Match match, Type instanceType, string[] fields)
     {
         var groupNameDictionary = match.Groups.Keys.ToDictionary(x => x.ToLowerInvariant(), x => x);
         var instance = Activator.CreateInstance(instanceType);
-        foreach (var property in instanceType.GetProperties())
+        var instanceProperties = instanceType.GetProperties();
+        var propertiesToProcess = instanceProperties
+            .Where(x => fields.Contains(x.Name, StringComparer.InvariantCultureIgnoreCase))
+            .ToList();
+
+        foreach (var property in propertiesToProcess)
         {
             // Attempt to match group name by property name (ignoring case)
             var groupName = groupNameDictionary

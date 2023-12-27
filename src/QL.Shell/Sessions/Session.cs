@@ -12,17 +12,17 @@ public abstract class Session(SessionInfo info) : ISession
 
     public abstract Task ConnectAsync(CancellationToken cancellationToken = default);
 
-    public abstract Task<string> ExecuteCommandAsync(string command);
+    public abstract Task<string> ExecuteCommandAsync(string command, CancellationToken cancellationToken);
 
     public abstract Task DisconnectAsync(CancellationToken cancellationToken = default);
 
     public override string ToString()
     {
         // Check if alias is not the same as host
-        var alias = Info.Alias == Info.Host ? string.Empty : $" ({Info.Alias})";
-        return alias == string.Empty
-            ? $"{alias} {Info.Username}@{Info.Host}:{Info.Port}"
-            : $"{Info.Username}@{Info.Host}:{Info.Port}";
+        var alias = Info.Alias == Info.Host ? string.Empty : $"({Info.Alias})";
+        return string.IsNullOrEmpty(alias)
+            ? $"{Info.Username}@{Info.Host}:{Info.Port}"
+            : $"{alias} {Info.Username}@{Info.Host}:{Info.Port}";
     }
 }
 
@@ -34,28 +34,40 @@ public class LocalSession(SessionInfo info) : Session(info)
         return Task.CompletedTask;
     }
 
-    public override async Task<string> ExecuteCommandAsync(string command)
+    public override async Task<string> ExecuteCommandAsync(string command, CancellationToken cancellationToken)
     {
-        var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-        var fileName = isWindows ? "cmd" : "bash";
-        var arguments = isWindows ? $"/C {command}" : $"-c \"{command}\"";
-      
-        var startInfo = new ProcessStartInfo
+        try
         {
-            FileName = fileName,
-            Arguments = arguments,
-            UseShellExecute = false,
-            RedirectStandardOutput = true,
-            CreateNoWindow = true
-        };
+            var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+            var fileName = isWindows ? "cmd" : "bash";
+            var arguments = isWindows ? $"/C {command}" : $"-c \"{command}\"";
 
-        using var process = new Process();
-        process.StartInfo = startInfo;
-        process.Start();
-        var output = await process.StandardOutput.ReadToEndAsync();
-        await process.WaitForExitAsync();
-        
-        return output;
+            var startInfo = new ProcessStartInfo
+            {
+                FileName = fileName,
+                Arguments = arguments,
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                CreateNoWindow = true
+            };
+
+            
+            using var process = new Process();
+            process.StartInfo = startInfo;
+            process.Start();
+            var output = await process.StandardOutput.ReadToEndAsync(cancellationToken);
+            await process.WaitForExitAsync(cancellationToken);
+            return output;
+        }
+        catch (TaskCanceledException)
+        {
+            throw;
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "Error while executing command: {0}", command);
+            return string.Empty;
+        }
     }
 
     public override Task DisconnectAsync(CancellationToken cancellationToken = default)
@@ -84,21 +96,29 @@ public class RemoteSession(SessionInfo info) : Session(info)
 
             await _client.ConnectAsync(cancellationToken);
         }
+        catch (TaskCanceledException)
+        {
+            throw;
+        }
         catch (Exception ex)
         {
             Log.Error(ex, "Error while connecting to session: {0}", this);
         }
     }
 
-    public override async Task<string> ExecuteCommandAsync(string command)
+    public override async Task<string> ExecuteCommandAsync(string command, CancellationToken cancellationToken)
     {
         if (!IsConnected)
             throw new InvalidOperationException("Session is not connected");
 
         try
         {
-            var result = await Task.Run(() => _client?.RunCommand(command));
+            var result = await Task.Run(() => _client?.RunCommand(command), cancellationToken);
             return result?.Result ?? string.Empty;
+        }
+        catch (TaskCanceledException)
+        {
+            throw;
         }
         catch (Exception ex)
         {
@@ -115,6 +135,10 @@ public class RemoteSession(SessionInfo info) : Session(info)
         try
         {
             await Task.Run(() => _client?.Disconnect(), cancellationToken);
+        }
+        catch (TaskCanceledException)
+        {
+            throw;
         }
         catch (Exception ex)
         {

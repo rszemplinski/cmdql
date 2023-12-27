@@ -1,8 +1,10 @@
 fetch {
     local {
-        listFiles(path: "/Users/ryan.szemplinski/Downloads") {
+        listFiles(path: "~/Downloads") {
             name
             size
+            date
+            permissions
         }
     }
     remote(host: "ai-machine", user: "rszemplinski") {
@@ -15,12 +17,14 @@ fetch {
         listFiles(path: "/var/www") {
             name
             size
+            permissions
         }
     }
     remote(host: "adguard", user: "ubuntu") {
         listFiles(path: "/var/www") {
             name
             size
+            owner
         }
     }
 }
