@@ -75,7 +75,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
             var field = fields.FirstOrDefault(x => x.Equals(property.Name, StringComparison.OrdinalIgnoreCase));
             if (field is null)
                 continue;
-            
+
             var propertyValue = property.GetValue(instance);
             instanceDictionary.Add(field, propertyValue);
         }
@@ -149,23 +149,25 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
     protected object ProcessSingleReturnType(Match match, Type instanceType)
     {
         var groupNameDictionary = match.Groups.Keys.ToDictionary(x => x.ToLowerInvariant(), x => x);
+        
         var instance = Activator.CreateInstance(instanceType);
         var instanceProperties = instanceType.GetProperties();
 
         foreach (var property in instanceProperties)
         {
             // Attempt to match group name by property name (ignoring case)
-            var groupName = groupNameDictionary
-                .FirstOrDefault(x => x.Key.Equals(property.Name.ToLowerInvariant())).Value;
-            if (groupName is null)
-            {
-                Log.Warning("Could not find a group name for property {0}.", property.Name);
+            var (key, groupName) = groupNameDictionary
+                .FirstOrDefault(x => x.Key.Equals(property.Name, StringComparison.OrdinalIgnoreCase));
+            
+            if (key is null)
                 continue;
-            }
 
             var group = match.Groups[groupName];
             if (!group.Success)
+            {
+                Log.Warning("Group {0} was not found in the match.", groupName);
                 continue;
+            }
 
             var propertyValue = group.Value;
 
@@ -234,7 +236,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
                 throw new InvalidOperationException($"The type {property.PropertyType.FullName} is not supported.");
             }
         }
-        
+
         return instance!;
     }
 
@@ -259,7 +261,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
             if (propertyType == typeof(bool))
             {
                 var condition = (bool)propertyValue!;
-                var templateKey = $"?[{property.Name.ToLowerInvariant()}]";
+                var templateKey = $"?[{property.Name.ToCamelCase()}]";
                 cmd = condition
                     ? cmd.Replace(templateKey, "")
                     : Regex.Replace(cmd, $"{Regex.Escape(templateKey)}\\S*", "");
@@ -267,7 +269,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
             else if (propertyType == typeof(string))
             {
                 var value = (string)propertyValue!;
-                var placeholder = $"{{{property.Name.ToLowerInvariant()}}}";
+                var placeholder = $"{{{property.Name.ToCamelCase()}}}";
                 cmd = cmd.Replace(placeholder, value);
             }
         }
@@ -313,9 +315,16 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
         var instance = Activator.CreateInstance(type);
         foreach (var property in type.GetProperties())
         {
-            var propertyValue = arguments.GetValueOrDefault(property.Name.ToLowerInvariant());
-            if (propertyValue is null)
+            var (key, propertyValue) = arguments
+                .FirstOrDefault(x => x.Key.Equals(property.Name, StringComparison.OrdinalIgnoreCase));
+            if (key is null)
                 continue;
+
+            if (propertyValue is null)
+            {
+                Log.Warning("Could not find a value for property {0}.", property.Name);
+                continue;
+            }
 
             if (property.PropertyType == typeof(bool) && propertyValue is BooleanValueNode boolValue)
             {

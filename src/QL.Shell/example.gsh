@@ -1,28 +1,42 @@
 fetch {
     local {
-        listFiles(path: "~/Downloads") {
+        listFiles(path: "~/Downloads", showHidden: true) {
+            isDirectory
+            extension
             name
             size
-            date
-            permissions
         }
         diskSpace {
+            fileSystem
             total
             used
             free
         }
+        processes(limit: 5) {
+          pid
+          command
+          elapsedTime
+        }
     }
     remote(host: "ai-machine", user: "rszemplinski") {
         listFiles(path: "/var/www") {
+            isDirectory
             name
             size
+            date
         }
     }
     remote(host: "home-nas", user: "rszemplinski") {
         listFiles(path: "/var/www") {
+            isDirectory
             name
             size
-            permissions
+        }
+        diskSpace {
+            fileSystem
+            total
+            used
+            free
         }
     }
 }

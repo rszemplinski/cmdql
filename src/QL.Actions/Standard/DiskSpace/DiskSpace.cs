@@ -21,19 +21,15 @@ public class DiskSpace : ActionBase<DiskSpaceArguments, List<Disk>>
         var lines = commandResults.Split("\n", StringSplitOptions.RemoveEmptyEntries);
         var blockSize = lines[0].Split(" ", StringSplitOptions.RemoveEmptyEntries)[1];
         
-        foreach (var line in lines)
+        foreach (var line in lines.Skip(1))
         {
-            // Skip the first line
-            if (line.StartsWith("Filesystem"))
-                continue;
-            
             var disk = new Disk();
             var values = line.Split(" ", StringSplitOptions.RemoveEmptyEntries);
             disk.BlockSize = blockSize;
             disk.MountPoint = values.Last();
             disk.FileSystem = values[0];
-            disk.Used = uint.Parse(values[2]);
-            disk.Available = uint.Parse(values[3]);
+            disk.Used = ulong.Parse(values[2]);
+            disk.Free = ulong.Parse(values[3]);
             disks.Add(disk);
         }
 

@@ -69,6 +69,10 @@ internal static class Program
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
                 Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+                Converters =
+                {
+                    new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
+                },
             });
             sw.Stop();
             Log.Debug("Serialized output in {0}ms", sw.ElapsedMilliseconds);
