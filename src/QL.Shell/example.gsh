@@ -1,42 +1,18 @@
 fetch {
     local {
-        listFiles(path: "~/Downloads", showHidden: true) {
-            isDirectory
-            extension
-            name
+        fileSpace(path: "~/go", depth: 0) {
             size
-        }
-        diskSpace {
-            fileSystem
-            total
-            used
-            free
+            path
         }
         processes(limit: 5) {
-          pid
-          command
-          elapsedTime
+            pid
+            flags
         }
     }
     remote(host: "ai-machine", user: "rszemplinski") {
         listFiles(path: "/var/www") {
-            isDirectory
             name
             size
-            date
-        }
-    }
-    remote(host: "home-nas", user: "rszemplinski") {
-        listFiles(path: "/var/www") {
-            isDirectory
-            name
-            size
-        }
-        diskSpace {
-            fileSystem
-            total
-            used
-            free
         }
     }
 }

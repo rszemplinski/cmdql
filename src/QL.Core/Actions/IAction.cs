@@ -6,5 +6,5 @@ public interface IAction
     
     public Task<string> PostExecutionAsync(string commandResult, ISshClient sshClient);
     
-    public Task<object> ParseCommandResultsAsync(string commandResult, string[] fields);
+    public Task<object> ParseCommandResultsAsync(string commandResult, IField[] fields);
 }

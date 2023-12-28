@@ -21,6 +21,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
         }
 
         var cmd = await _BuildCommandAsync(convertedArguments);
+        cmd = ExtraSpaceRemoverRegex().Replace(cmd, " ").Trim();
         return cmd;
     }
 
@@ -36,7 +37,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
         return Task.FromResult(cmd);
     }
 
-    public async Task<object> ParseCommandResultsAsync(string commandResults, string[] fields)
+    public async Task<object> ParseCommandResultsAsync(string commandResults, IField[] fields)
     {
         var parsedResults = await _ParseCommandResultsAsync(commandResults);
         if (parsedResults is null)
@@ -65,19 +66,49 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
         return results;
     }
 
-    private static IReadOnlyDictionary<string, object?> ConvertInstanceToDictionary(object instance, string[] fields)
+    private static IReadOnlyDictionary<string, object?> ConvertInstanceToDictionary(object instance,
+        IReadOnlyCollection<IField> fields)
     {
-        var instanceType = instance.GetType();
         var instanceDictionary = new Dictionary<string, object?>();
+
+        var instanceType = instance.GetType();
+        var selectedFields = fields.Any()
+            ? fields
+            : instanceType.GetProperties().Select(x => new Field(x) as IField).ToArray();
+        
         foreach (var property in instanceType.GetProperties())
         {
-            // Check equality by name (ignoring case)
-            var field = fields.FirstOrDefault(x => x.Equals(property.Name, StringComparison.OrdinalIgnoreCase));
+            var field = selectedFields
+                .FirstOrDefault(x => x.Name.Equals(property.Name, StringComparison.OrdinalIgnoreCase));
             if (field is null)
                 continue;
 
+            if (property.PropertyType.IsGenericType &&
+                property.PropertyType.GetGenericTypeDefinition() == typeof(List<>))
+            {
+                if (property.GetValue(instance) is not IEnumerable list)
+                    continue;
+
+                var listType = property.PropertyType.GetGenericArguments()[0];
+                if (listType.IsPrimitive || listType == typeof(string) || listType.IsValueType)
+                {
+                    instanceDictionary.Add(field.Name, list);
+                    continue;
+                }
+                
+                var listDictionary = new List<IReadOnlyDictionary<string, object?>>();
+                foreach (var item in list)
+                {
+                    var itemDictionary = ConvertInstanceToDictionary(item, field.Fields);
+                    listDictionary.Add(itemDictionary);
+                }
+
+                instanceDictionary.Add(field.Name, listDictionary);
+                continue;
+            }
+
             var propertyValue = property.GetValue(instance);
-            instanceDictionary.Add(field, propertyValue);
+            instanceDictionary.Add(field.Name, propertyValue);
         }
 
         return instanceDictionary;
@@ -149,7 +180,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
     protected object ProcessSingleReturnType(Match match, Type instanceType)
     {
         var groupNameDictionary = match.Groups.Keys.ToDictionary(x => x.ToLowerInvariant(), x => x);
-        
+
         var instance = Activator.CreateInstance(instanceType);
         var instanceProperties = instanceType.GetProperties();
 
@@ -158,14 +189,14 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
             // Attempt to match group name by property name (ignoring case)
             var (key, groupName) = groupNameDictionary
                 .FirstOrDefault(x => x.Key.Equals(property.Name, StringComparison.OrdinalIgnoreCase));
-            
+
             if (key is null)
                 continue;
 
             var group = match.Groups[groupName];
             if (!group.Success)
             {
-                Log.Warning("Group {0} was not found in the match.", groupName);
+                Log.Warning("Group {0} was not found in the match", groupName);
                 continue;
             }
 
@@ -209,7 +240,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
                     DateTimeStyles.None, out var result);
                 if (!success)
                 {
-                    Log.Warning("Could not parse {0} to a DateTime.", propertyValue);
+                    Log.Warning("Could not parse {0} to a DateTime", propertyValue);
                     continue;
                 }
 
@@ -266,9 +297,9 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
                     ? cmd.Replace(templateKey, "")
                     : Regex.Replace(cmd, $"{Regex.Escape(templateKey)}\\S*", "");
             }
-            else if (propertyType == typeof(string))
+            else
             {
-                var value = (string)propertyValue!;
+                var value = propertyValue!.ToString();
                 var placeholder = $"{{{property.Name.ToCamelCase()}}}";
                 cmd = cmd.Replace(placeholder, value);
             }
@@ -322,7 +353,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
 
             if (propertyValue is null)
             {
-                Log.Warning("Could not find a value for property {0}.", property.Name);
+                Log.Warning("Could not find a value for property {0}", property.Name);
                 continue;
             }
 
@@ -365,4 +396,18 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
 
     [GeneratedRegex("\\s+")]
     private static partial Regex ExtraSpaceRemoverRegex();
+
+    private class Field : IField
+    {
+        public string Name { get; }
+        public IField[] Fields { get; }
+
+        public Field(PropertyInfo info)
+        {
+            Name = info.Name.ToCamelCase();
+            Fields = info.PropertyType.GetProperties()
+                .Select(x => new Field(x) as IField)
+                .ToArray();
+        }
+    }
 }

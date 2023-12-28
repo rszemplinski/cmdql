@@ -12,8 +12,7 @@ public static class ActionsLookupTable
     
     public static ActionMetadata Get(string name)
     {
-        name = name.ToLowerInvariant();
-        if (!LookupTable.TryGetValue(name, out var metadata))
+        if (!LookupTable.TryGetValue(name.ToCamelCase(), out var metadata))
         {
             throw new InvalidOperationException($"Action {name} does not exist");
         }
@@ -37,7 +36,7 @@ public static class ActionsLookupTable
 
             var name = attribute.Name ?? action.Name;
             var metadata = new ActionMetadata(name, attribute.Description, action);
-            lookupTable.TryAdd(name.ToLowerInvariant(), metadata);
+            lookupTable.TryAdd(name.ToCamelCase(), metadata);
         }
 
         return lookupTable;

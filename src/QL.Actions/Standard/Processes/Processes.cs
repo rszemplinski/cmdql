@@ -20,7 +20,8 @@ public partial class Processes : ActionBase<ProcessArguments, List<Process>>
         var command = "ps -ww -reo pid,user,args,%cpu,%mem,etime,flags";
         if (arguments.Limit > 0)
         {
-            command += $" | head -n {arguments.Limit}";
+            // +1 because the first line is the header
+            command += $" | head -n {arguments.Limit + 1}";
         }
 
         return Task.FromResult(command);
