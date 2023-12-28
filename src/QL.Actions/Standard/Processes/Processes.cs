@@ -17,10 +17,9 @@ public partial class Processes : ActionBase<ProcessArguments, List<Process>>
 {
     protected override Task<string> _BuildCommandAsync(ProcessArguments arguments)
     {
-        var command = "ps -ww -reo pid,user,args,%cpu,%mem,etime,flags";
+        var command = "ps -reo pid,user,args,%cpu,%mem,etime,flags";
         if (arguments.Limit > 0)
         {
-            // +1 because the first line is the header
             command += $" | head -n {arguments.Limit + 1}";
         }
 
@@ -55,8 +54,9 @@ public partial class Processes : ActionBase<ProcessArguments, List<Process>>
     private static List<ProcessFlag> ParseFlags(string hexString)
     {
         var flagValue = Convert.ToInt32(hexString, 16);
-
-        return Enum.GetValues(typeof(ProcessFlag)).Cast<ProcessFlag>().Where(flag => (flagValue & (int)flag) != 0)
+        return Enum.GetValues(typeof(ProcessFlag))
+            .Cast<ProcessFlag>()
+            .Where(flag => (flagValue & (int)flag) != 0)
             .ToList();
     }
 

@@ -7,7 +7,6 @@ public enum OutputFormat
     Json,
     Yml,
     Table,
-    File
 }
 
 public class Options
@@ -36,12 +35,19 @@ public class Options
     public bool Debug { get; set; }
 
     [Option(
+        'f',
+        "format",
+        Default = OutputFormat.Json,
+        HelpText = "Which format to use? (json, yml, table)"
+    )]
+    public OutputFormat Format { get; set; }
+    
+    [Option(
         'o',
         "output",
-        Default = OutputFormat.Json,
-        HelpText = "Which output format to use? (json, yml, table)"
+        HelpText = "Output file"
     )]
-    public OutputFormat OutputFormat { get; set; }
+    public string OutputFile { get; set; }
 
     [Option(
         'c',

@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using QL.Core;
 using Renci.SshNet;
 using Serilog;
 
@@ -12,7 +13,7 @@ public abstract class Session(SessionInfo info) : ISession
 
     public abstract Task ConnectAsync(CancellationToken cancellationToken = default);
 
-    public abstract Task<string> ExecuteCommandAsync(string command, CancellationToken cancellationToken);
+    public abstract Task<ICommandOutput> ExecuteCommandAsync(string command, CancellationToken cancellationToken);
 
     public abstract Task DisconnectAsync(CancellationToken cancellationToken = default);
 
@@ -34,30 +35,36 @@ public class LocalSession(SessionInfo info) : Session(info)
         return Task.CompletedTask;
     }
 
-    public override async Task<string> ExecuteCommandAsync(string command, CancellationToken cancellationToken)
+    public override async Task<ICommandOutput> ExecuteCommandAsync(string command, CancellationToken cancellationToken)
     {
+        var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
+        var fileName = isWindows ? "cmd" : "bash";
+        var arguments = isWindows ? $"/C {command}" : $"-c \"{command}\"";
+
+        using var process = new Process();
+        process.StartInfo = new ProcessStartInfo
+        {
+            FileName = fileName,
+            Arguments = arguments,
+            UseShellExecute = false,
+            RedirectStandardOutput = true,
+            RedirectStandardError = true,
+            CreateNoWindow = true
+        };
+
         try
         {
-            var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-            var fileName = isWindows ? "cmd" : "bash";
-            var arguments = isWindows ? $"/C {command}" : $"-c \"{command}\"";
-
-            var startInfo = new ProcessStartInfo
-            {
-                FileName = fileName,
-                Arguments = arguments,
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                CreateNoWindow = true
-            };
-
-            
-            using var process = new Process();
-            process.StartInfo = startInfo;
             process.Start();
+
             var output = await process.StandardOutput.ReadToEndAsync(cancellationToken);
+            var error = await process.StandardError.ReadToEndAsync(cancellationToken);
             await process.WaitForExitAsync(cancellationToken);
-            return output;
+            return new CommandOutput
+            {
+                Result = output,
+                Error = error,
+                ExitCode = process.ExitCode
+            };
         }
         catch (TaskCanceledException)
         {
@@ -66,7 +73,12 @@ public class LocalSession(SessionInfo info) : Session(info)
         catch (Exception ex)
         {
             Log.Error(ex, "Error while executing command: {0}", command);
-            return string.Empty;
+            return new CommandOutput
+            {
+                Result = string.Empty,
+                Error = string.Empty,
+                ExitCode = -1
+            };
         }
     }
 
@@ -106,7 +118,7 @@ public class RemoteSession(SessionInfo info) : Session(info)
         }
     }
 
-    public override async Task<string> ExecuteCommandAsync(string command, CancellationToken cancellationToken)
+    public override async Task<ICommandOutput> ExecuteCommandAsync(string command, CancellationToken cancellationToken)
     {
         if (!IsConnected)
             throw new InvalidOperationException("Session is not connected");
@@ -114,7 +126,15 @@ public class RemoteSession(SessionInfo info) : Session(info)
         try
         {
             var result = await Task.Run(() => _client?.RunCommand(command), cancellationToken);
-            return result?.Result ?? string.Empty;
+            if (result == null)
+                throw new InvalidOperationException("Something went wrong while executing command");
+
+            return new CommandOutput
+            {
+                Result = result.Result,
+                Error = result.Error,
+                ExitCode = result.ExitStatus
+            };
         }
         catch (TaskCanceledException)
         {
@@ -123,7 +143,12 @@ public class RemoteSession(SessionInfo info) : Session(info)
         catch (Exception ex)
         {
             Log.Error(ex, "Error while executing command: {0}", command);
-            return string.Empty;
+            return new CommandOutput
+            {
+                Result = string.Empty,
+                Error = string.Empty,
+                ExitCode = -1
+            };
         }
     }
 

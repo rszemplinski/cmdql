@@ -56,7 +56,7 @@ internal static class Program
                 InputFile = inputFile,
                 Verbose = options.Verbose,
                 Debug = options.Debug,
-                OutputFormat = options.OutputFormat,
+                OutputFormat = options.Format,
                 Sync = options.Sync,
             };
             var output = await 
@@ -82,10 +82,12 @@ internal static class Program
         catch (TaskCanceledException)
         {
             Log.Warning("The operation was cancelled");
+            Environment.Exit(1);
         }
         catch (Exception ex)
         {
             Log.Error(ex, "An error occurred while executing the query");
+            Environment.Exit(1);
         }
         finally
         {

@@ -1,3 +1,5 @@
+using QL.Core;
+
 namespace QLShell.Sessions;
 
 public interface ISession
@@ -6,6 +8,6 @@ public interface ISession
     SessionInfo Info { get; }
     
     Task ConnectAsync(CancellationToken cancellationToken = default);
-    Task<string> ExecuteCommandAsync(string command, CancellationToken cancellationToken);
+    Task<ICommandOutput> ExecuteCommandAsync(string command, CancellationToken cancellationToken);
     Task DisconnectAsync(CancellationToken cancellationToken = default);
 }

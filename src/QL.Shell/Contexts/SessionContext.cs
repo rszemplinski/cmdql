@@ -34,13 +34,20 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
                 sw.Stop();
                 Log.Debug("[{0}] => Executed command: {1} in {2}ms", Session, command, sw.ElapsedMilliseconds);
 
+                if (response.ExitCode != 0)
+                    throw new InvalidOperationException(
+                        $"Command exited with code {response.ExitCode}:\n{response.Error}");
+
+                var commandOutput = response.Result;
+
                 sw.Restart();
-                response = await action.PostExecutionAsync(response, sessionSshClient);
+                commandOutput = await action.PostExecutionAsync(commandOutput, sessionSshClient);
                 sw.Stop();
                 Log.Debug("[{0}] => Post execution in {1}ms", Session, sw.ElapsedMilliseconds);
 
                 sw.Restart();
-                var commandResults = await action.ParseCommandResultsAsync(response, new Field(fieldNode).Fields);
+                var commandResults =
+                    await action.ParseCommandResultsAsync(commandOutput, new Field(fieldNode).Fields);
                 sw.Stop();
                 Log.Debug("[{0}] => Parsed command results in {1}ms", Session, sw.ElapsedMilliseconds);
 
@@ -74,7 +81,7 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
     {
         private ISession Session { get; } = session;
 
-        public async Task<string> ExecuteCommandAsync(string command, CancellationToken cancellationToken)
+        public async Task<ICommandOutput> ExecuteCommandAsync(string command, CancellationToken cancellationToken)
         {
             return await Session.ExecuteCommandAsync(command, cancellationToken);
         }
