@@ -1,0 +1,15 @@
+using QL.Core.Actions;
+using QL.Core.Attributes;
+
+namespace QL.Actions.Standard.MemoryUsage;
+
+public class MemoryUsageArguments;
+
+[Action]
+public class MemoryUsage : ActionBase<MemoryUsageArguments, MemoryInfo>
+{
+    protected override Task<string> _BuildCommandAsync(MemoryUsageArguments arguments)
+    {
+        return Task.FromResult("");
+    }
+}
