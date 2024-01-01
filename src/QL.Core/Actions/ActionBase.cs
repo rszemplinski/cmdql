@@ -22,9 +22,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
 
         // Execute
         var executeTask = await ExecuteAsync(convertedArguments, client, cmd, cancellationToken);
-        if (executeTask.ExitCode != 0)
-            throw new InvalidOperationException(
-                $"Command exited with code {executeTask.ExitCode}.\nError: {executeTask.Error}");
+        ValidateResults(executeTask);
 
         // Parse
         var parsedResults = _ParseCommandResults(executeTask, fields);
@@ -38,6 +36,15 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
         CancellationToken cancellationToken = default)
     {
         return client.ExecuteCommandAsync(command, cancellationToken);
+    }
+    
+    protected virtual void ValidateResults(ICommandOutput commandResults)
+    {
+        if (commandResults.ExitCode != 0)
+        {
+            throw new InvalidOperationException(
+                $"Command exited with code {commandResults.ExitCode}.\nError: {commandResults.Error}");
+        }
     }
 
     private static TArg _BuildCommand(IReadOnlyDictionary<string, object> arguments)
