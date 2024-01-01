@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using QL.Core.Attributes;
@@ -18,7 +19,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
         var convertedArguments = _BuildCommand(arguments);
         var cmd = BuildCommand(convertedArguments);
         cmd = ExtraSpaceRemoverRegex().Replace(cmd, " ").Trim();
-        Log.Debug("[{0}] => Executing command: {1}", client, cmd);
+        Log.Debug("[{0}] => Executing command: {1}", client.ToString(), cmd);
 
         // Execute
         var executeTask = await ExecuteAsync(convertedArguments, client, cmd, cancellationToken);
@@ -193,12 +194,20 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
             }
 
             var propertyValue = property.GetValue(instance);
+            if (property.PropertyType.IsClass && property.PropertyType != typeof(string))
+            {
+                if (propertyValue is not null)
+                {
+                    instanceDictionary.Add(field.Name, ConvertInstanceToDictionary(propertyValue, field.Fields));
+                }
+                continue;
+            }
+
             instanceDictionary.Add(field.Name, propertyValue);
         }
 
         return instanceDictionary;
     }
-
 
     [GeneratedRegex("\\s+")]
     private static partial Regex ExtraSpaceRemoverRegex();

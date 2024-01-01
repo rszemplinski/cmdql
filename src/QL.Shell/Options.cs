@@ -37,10 +37,12 @@ public class Options
     [Option(
         'f',
         "format",
-        Default = OutputFormat.Json,
+        Default = "json",
         HelpText = "Which format to use? (json, yml, table)"
     )]
-    public OutputFormat Format { get; set; }
+    public string Format { get; set; }
+    
+    public OutputFormat ParsedFormat => ParseOutputFormat(Format);
     
     [Option(
         'o',
@@ -62,4 +64,14 @@ public class Options
         HelpText = "Run synchronously?"
     )]
     public bool Sync { get; set; }
+    
+    private static OutputFormat ParseOutputFormat(string format)
+    {
+        if (Enum.TryParse<OutputFormat>(format, true, out var result))
+        {
+            return result;
+        }
+
+        throw new ArgumentException("Invalid format specified.");
+    }
 }

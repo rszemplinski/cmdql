@@ -77,7 +77,7 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
 
         public override string ToString()
         {
-            return Session.Info.ToString()!;
+            return Session.ToString()!;
         }
     }
 }
