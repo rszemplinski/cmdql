@@ -1,3 +1,4 @@
+using QL.Core;
 using QL.Core.Actions;
 using QL.Core.Attributes;
 
@@ -13,23 +14,22 @@ public class FileSpaceResult
 {
     public ulong Size { get; set; }
     public string Path { get; set; }
-
 }
 
 [Action]
 public class FileSpace : ActionBase<FileSpaceArguments, List<FileSpaceResult>>
 {
-    protected override Task<string> _BuildCommandAsync(FileSpaceArguments arguments)
+    protected override string BuildCommand(FileSpaceArguments arguments)
     {
         var depth = arguments.Depth >= 0 ? $"-d {arguments.Depth}" : "";
         var command = $"du {depth} {arguments.Path}";
-        return Task.FromResult(command);
+        return command;
     }
 
-    protected override Task<List<FileSpaceResult>> _ParseCommandResultsAsync(string commandResults)
+    protected override List<FileSpaceResult> ParseCommandResults(ICommandOutput commandResults)
     {
         var results = new List<FileSpaceResult>();
-        var lines = commandResults.Split("\n", StringSplitOptions.RemoveEmptyEntries);
+        var lines = commandResults.Result.Split("\n", StringSplitOptions.RemoveEmptyEntries);
 
         foreach (var line in lines)
         {
@@ -42,6 +42,6 @@ public class FileSpace : ActionBase<FileSpaceArguments, List<FileSpaceResult>>
             });
         }
 
-        return Task.FromResult(results);
+        return results;
     }
 }

@@ -8,8 +8,8 @@ public class MemoryUsageArguments;
 [Action]
 public class MemoryUsage : ActionBase<MemoryUsageArguments, MemoryInfo>
 {
-    protected override Task<string> _BuildCommandAsync(MemoryUsageArguments arguments)
+    protected override string BuildCommand(MemoryUsageArguments arguments)
     {
-        return Task.FromResult("");
+        return "free -m";
     }
 }

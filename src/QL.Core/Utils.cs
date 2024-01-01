@@ -2,7 +2,6 @@ namespace QL.Core;
 
 public static class Utils
 {
-    
     public static string ToCamelCase(this string str)
     {
         if (string.IsNullOrEmpty(str) || !char.IsUpper(str[0]))
@@ -19,5 +18,4 @@ public static class Utils
         
         return new string(chars);
     }
-    
 }

@@ -1,8 +1,8 @@
 namespace QL.Core;
 
-public static class Constants
+internal static class Constants
 {
-    public static readonly string[] DateFormats =
+    internal static readonly string[] DateFormats =
     [
         "M/d/yyyy", "MM/dd/yyyy", "d/M/yyyy", "dd/MM/yyyy", "yyyy/M/d", "yyyy/MM/dd", "M-d-yyyy", "MM-dd-yyyy",
         "d-M-yyyy", "dd-MM-yyyy", "yyyy-M-d", "yyyy-MM-dd", "M.d.yyyy", "MM.dd.yyyy", "d.M.yyyy", "dd.MM.yyyy",

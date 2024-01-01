@@ -19,7 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Standard\RunScript\" />
+      <Folder Include="ThirdParty\" />
     </ItemGroup>
 
 </Project>

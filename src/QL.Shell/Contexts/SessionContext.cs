@@ -1,12 +1,10 @@
 using System.Collections.Concurrent;
-using System.Diagnostics;
 using QL.Actions;
 using QL.Core;
 using QL.Core.Actions;
 using QL.Parser.AST.Nodes;
 using QLShell.Extensions;
 using QLShell.Sessions;
-using Serilog;
 
 namespace QLShell.Contexts;
 
@@ -24,34 +22,13 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
         {
             var action = ActionsLookupTable.Get(fieldNode.Name).CreateAction();
             var arguments = fieldNode.BuildArgumentsDictionary();
-            var sessionSshClient = new SessionSshClient(Session);
+            var sessionSshClient = new SessionClient(Session);
             return TaskLimiter.Instance.ProcessAsync(async () =>
             {
-                var command = await action.BuildCommandAsync(arguments);
-
-                var sw = Stopwatch.StartNew();
-                var response = await Session.ExecuteCommandAsync(command, cancellationToken);
-                sw.Stop();
-                Log.Debug("[{0}] => Executed command: {1} in {2}ms", Session, command, sw.ElapsedMilliseconds);
-
-                if (response.ExitCode != 0)
-                    throw new InvalidOperationException(
-                        $"Command exited with code {response.ExitCode}:\n{response.Error}");
-
-                var commandOutput = response.Result;
-
-                sw.Restart();
-                commandOutput = await action.PostExecutionAsync(commandOutput, sessionSshClient);
-                sw.Stop();
-                Log.Debug("[{0}] => Post execution in {1}ms", Session, sw.ElapsedMilliseconds);
-
-                sw.Restart();
-                var commandResults =
-                    await action.ParseCommandResultsAsync(commandOutput, new Field(fieldNode).Fields);
-                sw.Stop();
-                Log.Debug("[{0}] => Parsed command results in {1}ms", Session, sw.ElapsedMilliseconds);
-
-                result.TryAdd(fieldNode.Name, commandResults);
+                var response = await action
+                    .ExecuteCommandAsync(sessionSshClient, arguments,
+                        new Field(fieldNode).Fields, cancellationToken);
+                result.TryAdd(fieldNode.Name, response);
             }, cancellationToken);
         });
 
@@ -77,13 +54,30 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
         }
     }
 
-    private class SessionSshClient(ISession session) : ISshClient
+    private class SessionClient(ISession session) : IClient
     {
         private ISession Session { get; } = session;
 
-        public async Task<ICommandOutput> ExecuteCommandAsync(string command, CancellationToken cancellationToken)
+        public Task<ICommandOutput> ExecuteCommandAsync(string command, CancellationToken cancellationToken)
         {
-            return await Session.ExecuteCommandAsync(command, cancellationToken);
+            return Session.ExecuteCommandAsync(command, cancellationToken);
+        }
+
+        public Task<ICommandOutput> UploadFileAsync(string localPath, string remotePath,
+            CancellationToken cancellationToken = default)
+        {
+            return Session.UploadFileAsync(localPath, remotePath, cancellationToken);
+        }
+
+        public Task<ICommandOutput> DownloadFileAsync(string remotePath, string localPath,
+            CancellationToken cancellationToken = default)
+        {
+            return Session.DownloadFileAsync(remotePath, localPath, cancellationToken);
+        }
+
+        public override string ToString()
+        {
+            return Session.Info.ToString()!;
         }
     }
 }

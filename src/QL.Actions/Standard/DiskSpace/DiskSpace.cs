@@ -1,3 +1,4 @@
+using QL.Core;
 using QL.Core.Actions;
 using QL.Core.Attributes;
 
@@ -15,12 +16,13 @@ public class DiskSpace : ActionBase<DiskSpaceArguments, List<Disk>>
      * udev             16353532        0  16353532   0% /dev
      * tmpfs             3273896     1576   3272320   1% /run
      */
-    protected override Task<List<Disk>> _ParseCommandResultsAsync(string commandResults)
+    protected override List<Disk> ParseCommandResults(ICommandOutput commandResults)
     {
         var disks = new List<Disk>();
-        var lines = commandResults.Split("\n", StringSplitOptions.RemoveEmptyEntries);
+
+        var lines = commandResults.Result.Split("\n", StringSplitOptions.RemoveEmptyEntries);
         var blockSize = lines[0].Split(" ", StringSplitOptions.RemoveEmptyEntries)[1];
-        
+
         foreach (var line in lines.Skip(1))
         {
             var disk = new Disk();
@@ -33,6 +35,6 @@ public class DiskSpace : ActionBase<DiskSpaceArguments, List<Disk>>
             disks.Add(disk);
         }
 
-        return Task.FromResult(disks);
+        return disks;
     }
 }

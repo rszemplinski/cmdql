@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using QL.Core;
 using QL.Core.Actions;
 using QL.Core.Attributes;
 
@@ -15,7 +16,7 @@ public class ProcessArguments
 [Action]
 public partial class Processes : ActionBase<ProcessArguments, List<Process>>
 {
-    protected override Task<string> _BuildCommandAsync(ProcessArguments arguments)
+    protected override string BuildCommand(ProcessArguments arguments)
     {
         var command = "ps -reo pid,user,args,%cpu,%mem,etime,flags";
         if (arguments.Limit > 0)
@@ -23,14 +24,14 @@ public partial class Processes : ActionBase<ProcessArguments, List<Process>>
             command += $" | head -n {arguments.Limit + 1}";
         }
 
-        return Task.FromResult(command);
+        return command;
     }
 
-    protected override Task<List<Process>> _ParseCommandResultsAsync(string commandResults)
+    protected override List<Process> ParseCommandResults(ICommandOutput commandResults)
     {
         var processes = new List<Process>();
         var regex = ProcessRegex();
-        var matchCollection = regex.Matches(commandResults);
+        var matchCollection = regex.Matches(commandResults.Result);
 
         foreach (Match match in matchCollection)
         {
@@ -48,7 +49,7 @@ public partial class Processes : ActionBase<ProcessArguments, List<Process>>
             processes.Add(process);
         }
 
-        return Task.FromResult(processes);
+        return processes;
     }
 
     private static List<ProcessFlag> ParseFlags(string hexString)

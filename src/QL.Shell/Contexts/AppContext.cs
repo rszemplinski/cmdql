@@ -1,6 +1,5 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
-using System.Text.Json;
 using QL.Parser.AST.Nodes;
 using QLShell.Sessions;
 using Serilog;
