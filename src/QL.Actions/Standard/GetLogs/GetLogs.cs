@@ -2,7 +2,6 @@ using System.Runtime.InteropServices;
 using QL.Core;
 using QL.Core.Actions;
 using QL.Core.Attributes;
-using Serilog;
 
 namespace QL.Actions.Standard.GetLogs;
 
@@ -59,12 +58,12 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
 {
     protected override string BuildCommand(GetLogsArguments arguments)
     {
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+        if (Platform == OSPlatform.Linux)
         {
             return BuildLinuxCommand(arguments);
         }
 
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        if (Platform == OSPlatform.OSX)
         {
             return BuildMacCommand(arguments);
         }
@@ -82,6 +81,12 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
     {
         var logEntries = new List<LogEntry>();
         var lines = commandResults.Result.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+        
+        if(Platform == OSPlatform.OSX && GetArguments().Top > 0)
+        {
+            Array.Reverse(lines);
+        }
+        
         foreach (var line in lines)
         {
             var logEntry = new LogEntry();
@@ -133,24 +138,31 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
     private static string BuildMacCommand(GetLogsArguments arguments)
     {
         var command = "log show";
+
+        // Add start date parameter
         if (arguments.StartDate != default)
         {
             command += $" --start \"{arguments.StartDate:yyyy-MM-dd}\"";
         }
 
+        // Add end date parameter
         if (arguments.EndDate != default)
         {
             command += $" --end \"{arguments.EndDate:yyyy-MM-dd}\"";
         }
 
+        // Limit the number of lines (if specified)
         if (arguments.Limit > 0)
         {
             command += $" --last {arguments.Limit}";
         }
 
+        // If the 'Top' argument is provided, it will limit the output to the last N lines
+        // Note: The '--reverse' flag is not applicable in the 'log show' command, and
+        // reversing the output will need to be handled programmatically after executing the command
         if (arguments.Top > 0)
         {
-            command += $" --reverse --last {arguments.Top}";
+            command += $" --last {arguments.Top}";
         }
 
         return command;

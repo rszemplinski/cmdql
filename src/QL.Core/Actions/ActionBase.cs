@@ -8,17 +8,24 @@ using Serilog;
 
 namespace QL.Core.Actions;
 
-public abstract partial class ActionBase<TArg, TReturnType> : IAction
-    where TArg : class
+public abstract partial class ActionBase<TArgs, TReturnType> : IAction
+    where TArgs : class
     where TReturnType : class
 {
     protected OSPlatform Platform { get; private set; }
     protected string RawPlatform { get; private set; } = "";
     
+    private TArgs _arguments = default!;
+    
     public void Initialize(OSPlatform platform, string rawPlatform)
     {
         Platform = platform;
         RawPlatform = rawPlatform;
+    }
+    
+    protected TArgs GetArguments()
+    {
+        return _arguments;
     }
 
     public async Task<object> ExecuteCommandAsync(IClient client, IReadOnlyDictionary<string, object> arguments,
@@ -27,6 +34,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
     {
         // Build Command
         var convertedArguments = _BuildCommand(arguments);
+        _arguments = convertedArguments;
         var cmd = BuildCommand(convertedArguments);
         cmd = ExtraSpaceRemoverRegex().Replace(cmd, " ").Trim();
         Log.Debug("[{0}] => Executing command: {1}", client.ToString(), cmd);
@@ -41,7 +49,7 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
     }
 
     protected virtual Task<ICommandOutput> ExecuteAsync(
-        TArg arguments,
+        TArgs arguments,
         IClient client,
         string command,
         CancellationToken cancellationToken = default)
@@ -58,27 +66,27 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
         }
     }
 
-    private static TArg _BuildCommand(IReadOnlyDictionary<string, object> arguments)
+    private static TArgs _BuildCommand(IReadOnlyDictionary<string, object> arguments)
     {
-        var convertedArguments = Converter.ConvertArguments<TArg>(arguments);
+        var convertedArguments = Converter.ConvertArguments<TArgs>(arguments);
         if (convertedArguments is null)
         {
-            throw new InvalidOperationException($"Could not convert arguments to {typeof(TArg).FullName}.");
+            throw new InvalidOperationException($"Could not convert arguments to {typeof(TArgs).FullName}.");
         }
 
         return convertedArguments;
     }
 
-    protected virtual string BuildCommand(TArg arguments)
+    protected virtual string BuildCommand(TArgs arguments)
     {
         var cmdTemplate = GetCommandTemplate();
         return ReplaceTemplates(cmdTemplate, arguments);
     }
 
-    private static string ReplaceTemplates(string cmdTemplate, TArg arguments)
+    private static string ReplaceTemplates(string cmdTemplate, TArgs arguments)
     {
         var cmd = cmdTemplate;
-        foreach (var property in typeof(TArg).GetProperties())
+        foreach (var property in typeof(TArgs).GetProperties())
         {
             var propertyType = property.PropertyType;
             var propertyValue = property.GetValue(arguments);
