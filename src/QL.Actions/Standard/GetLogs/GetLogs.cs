@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using QL.Core;
 using QL.Core.Actions;
 using QL.Core.Attributes;
@@ -58,30 +59,17 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
 {
     protected override string BuildCommand(GetLogsArguments arguments)
     {
-        Log.Debug("Platform: {Platform}", Platform);
-        
-        var command = "journalctl";
-        if (arguments.StartDate != default)
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
         {
-            command += $" --since \"{arguments.StartDate:yyyy-MM-dd}\"";
+            return BuildLinuxCommand(arguments);
         }
 
-        if (arguments.EndDate != default)
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
         {
-            command += $" --until \"{arguments.EndDate:yyyy-MM-dd}\"";
+            return BuildMacCommand(arguments);
         }
 
-        if (arguments.Limit > 0)
-        {
-            command += $" --lines {arguments.Limit}";
-        }
-
-        if (arguments.Top > 0)
-        {
-            command += $" --reverse --lines {arguments.Top}";
-        }
-
-        return command;
+        throw new ArgumentOutOfRangeException();
     }
 
     /**
@@ -114,5 +102,57 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
         }
 
         return logEntries;
+    }
+
+    private static string BuildLinuxCommand(GetLogsArguments arguments)
+    {
+        var command = "journalctl";
+        if (arguments.StartDate != default)
+        {
+            command += $" --since \"{arguments.StartDate:yyyy-MM-dd}\"";
+        }
+
+        if (arguments.EndDate != default)
+        {
+            command += $" --until \"{arguments.EndDate:yyyy-MM-dd}\"";
+        }
+
+        if (arguments.Limit > 0)
+        {
+            command += $" --lines {arguments.Limit}";
+        }
+
+        if (arguments.Top > 0)
+        {
+            command += $" --reverse --lines {arguments.Top}";
+        }
+
+        return command;
+    }
+
+    private static string BuildMacCommand(GetLogsArguments arguments)
+    {
+        var command = "log show";
+        if (arguments.StartDate != default)
+        {
+            command += $" --start \"{arguments.StartDate:yyyy-MM-dd}\"";
+        }
+
+        if (arguments.EndDate != default)
+        {
+            command += $" --end \"{arguments.EndDate:yyyy-MM-dd}\"";
+        }
+
+        if (arguments.Limit > 0)
+        {
+            command += $" --last {arguments.Limit}";
+        }
+
+        if (arguments.Top > 0)
+        {
+            command += $" --reverse --last {arguments.Top}";
+        }
+
+        return command;
     }
 }
