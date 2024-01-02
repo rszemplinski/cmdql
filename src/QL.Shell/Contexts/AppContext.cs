@@ -2,6 +2,7 @@ using System.Collections.Concurrent;
 using System.Diagnostics;
 using QL.Parser.AST.Nodes;
 using QLShell.Sessions;
+using QLShell.Utils;
 using Serilog;
 
 namespace QLShell.Contexts;

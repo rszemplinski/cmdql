@@ -1,6 +1,7 @@
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Serilog;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -12,23 +13,30 @@ public static class OutputProcessor
         IReadOnlyDictionary<string, object> output, 
         AppConfig appConfig)
     {
-        switch (appConfig.OutputFormat)
+
+        var results = appConfig.OutputFormat switch
         {
-            case OutputFormat.Json:
-                ProcessJson(output);
-                break;
-            case OutputFormat.Table:
-                ProcessTable(output);
-                break;
-            case OutputFormat.Yml:
-                ProcessYml(output);
-                break;
-            default:
-                throw new InvalidOperationException("Invalid output format");
+            OutputFormat.Json => ProcessJson(output),
+            OutputFormat.Table => ProcessTable(output),
+            OutputFormat.Yml => ProcessYml(output),
+            _ => throw new InvalidOperationException($"Output format {appConfig.OutputFormat} is not supported.")
+        };
+        
+        if (appConfig.OutputFile is not null)
+        {
+            if (File.Exists(appConfig.OutputFile))
+                File.Delete(appConfig.OutputFile);
+            
+            Log.Debug("Writing output to {0}", Path.GetFullPath(appConfig.OutputFile));
+            File.WriteAllText(appConfig.OutputFile, results);
+        }
+        else
+        {
+            Console.WriteLine(results);
         }
     }
 
-    private static void ProcessJson(IReadOnlyDictionary<string, object> output)
+    private static string ProcessJson(IReadOnlyDictionary<string, object> output)
     {
         var json = JsonSerializer.Serialize(output, new JsonSerializerOptions
         {
@@ -41,22 +49,22 @@ public static class OutputProcessor
                 new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
             },
         });
-        Console.WriteLine(json);
+        return json;
     }
 
-    private static void ProcessTable(IReadOnlyDictionary<string, object> output)
+    private static string ProcessTable(IReadOnlyDictionary<string, object> output)
     {
         throw new NotImplementedException();
     }
 
-    private static void ProcessYml(IReadOnlyDictionary<string, object> output)
+    private static string ProcessYml(IReadOnlyDictionary<string, object> output)
     {
         var yaml = new SerializerBuilder()
             .WithNamingConvention(CamelCaseNamingConvention.Instance)
             .WithIndentedSequences()
             .Build()
             .Serialize(output);
-        Console.WriteLine(yaml);
+        return yaml;
     }
 
 }

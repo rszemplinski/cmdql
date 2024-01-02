@@ -52,6 +52,7 @@ internal static class Program
             Debug = options.Debug,
             OutputFormat = options.ParsedFormat,
             Sync = options.Sync,
+            OutputFile = options.OutputFile,
         };
         var output = await
             new AppContext(ast, appConfig).ExecuteAsync(cts.Token);

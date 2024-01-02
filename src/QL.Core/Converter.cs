@@ -53,6 +53,18 @@ internal static class Converter
             {
                 property.SetValue(instance, decimalValue.Value);
             }
+            else if (property.PropertyType == typeof(DateTime) && propertyValue is StringValueNode dateTimeValue)
+            {
+                var success = DateTime.TryParseExact(dateTimeValue.Value, Constants.DateFormats,
+                    CultureInfo.InvariantCulture, DateTimeStyles.None, out var result);
+                if (!success)
+                {
+                    Log.Warning("Could not parse {0} to a DateTime", dateTimeValue.Value);
+                    continue;
+                }
+
+                property.SetValue(instance, result);
+            }
             else
             {
                 throw new InvalidOperationException($"The type {property.PropertyType.FullName} is not supported.");

@@ -1,14 +1,14 @@
 using QL.Core.Attributes;
 using QL.Core.Transformers;
 
-namespace QL.Transformers.Standard;
+namespace QL.Transformers.Standard.Conversions;
 
-public record ToGigabytesArguments;
+public record ToKilobytesArguments;
 
 [Transformer(description: "Converts bytes to gigabytes")]
-public class ToGigabytes : TransformerBase<ToGigabytesArguments, string>
+public class ToKilobytes : TransformerBase<ToKilobytesArguments, string>
 {
-    protected override string Execute(object value, ToGigabytesArguments arguments)
+    protected override string Execute(object value, ToKilobytesArguments arguments)
     {
         if (value is not ulong bytes)
             throw new ArgumentException("Value must be a type of ulong");
