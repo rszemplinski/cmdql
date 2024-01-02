@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using QL.Core.Attributes;
 using QL.Core.Transformers;
@@ -11,6 +12,15 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
     where TArg : class
     where TReturnType : class
 {
+    protected OSPlatform Platform { get; private set; }
+    protected string RawPlatform { get; private set; } = "";
+    
+    public void Initialize(OSPlatform platform, string rawPlatform)
+    {
+        Platform = platform;
+        RawPlatform = rawPlatform;
+    }
+
     public async Task<object> ExecuteCommandAsync(IClient client, IReadOnlyDictionary<string, object> arguments,
         IReadOnlyCollection<IField> fields,
         CancellationToken cancellationToken = default)

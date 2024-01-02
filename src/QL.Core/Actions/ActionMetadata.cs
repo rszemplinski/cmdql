@@ -1,16 +1,18 @@
-using QL.Core.Actions;
+using System.Runtime.InteropServices;
 
 namespace QL.Core.Actions;
 
 public record ActionMetadata(string Name, string? Description, Type Type)
 {
-    public IAction CreateAction()
+    public IAction CreateAction(OSPlatform platform, string rawPlatform)
     {
         var action = Activator.CreateInstance(Type);
         if (action is not IAction actionInterface)
         {
             throw new InvalidOperationException($"Action {Name} does not implement IAction");
         }
+        
+        actionInterface.Initialize(platform, rawPlatform);
         
         return actionInterface;
     }

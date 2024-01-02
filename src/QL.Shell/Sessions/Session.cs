@@ -8,9 +8,18 @@ namespace QLShell.Sessions;
 
 public class LocalSession(SessionInfo info) : ISession
 {
-    public bool IsConnected { get; protected set; }
+    public bool IsConnected { get; private set; }
 
     public SessionInfo Info { get; } = info;
+    public OSPlatform Platform => RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+        ? OSPlatform.Windows
+        : RuntimeInformation.IsOSPlatform(OSPlatform.Linux)
+            ? OSPlatform.Linux
+            : RuntimeInformation.IsOSPlatform(OSPlatform.OSX)
+                ? OSPlatform.OSX
+                : throw new PlatformNotSupportedException();
+    
+    public string RawPlatform => RuntimeInformation.OSDescription;
 
     public Task ConnectAsync(CancellationToken cancellationToken = default)
     {
@@ -97,6 +106,8 @@ public class LocalSession(SessionInfo info) : ISession
 public class RemoteSession(SessionInfo info) : ISession
 {
     public SessionInfo Info { get; } = info;
+    public OSPlatform Platform { get; private set; }
+    public string RawPlatform { get; private set; }
 
     public bool IsConnected => _client?.IsConnected ?? false;
 
@@ -114,6 +125,18 @@ public class RemoteSession(SessionInfo info) : ISession
                 : new SshClient(Info.Host, Info.Port, Info.Username, Info.Password);
 
             await _client.ConnectAsync(cancellationToken);
+            
+            // Get platform
+            var result = await Task.Run(() => _client.RunCommand("uname -a"), cancellationToken);
+            RawPlatform = result.Result;
+            Platform = RawPlatform.StartsWith("Linux")
+                ? OSPlatform.Linux
+                : RawPlatform.StartsWith("Darwin")
+                    ? OSPlatform.OSX
+                    : RawPlatform.Contains("Windows")
+                        ? OSPlatform.Windows
+                        : throw new PlatformNotSupportedException();
+            
         }
         catch (TaskCanceledException)
         {

@@ -1,7 +1,11 @@
+using System.Runtime.InteropServices;
+
 namespace QL.Core.Actions;
 
 public interface IAction
 {
+    public void Initialize(OSPlatform platform, string rawPlatform);
+    
     public Task<object> ExecuteCommandAsync(
         IClient client,
         IReadOnlyDictionary<string, object> arguments,

@@ -1,6 +1,7 @@
 using QL.Core;
 using QL.Core.Actions;
 using QL.Core.Attributes;
+using Serilog;
 
 namespace QL.Actions.Standard.GetLogs;
 
@@ -57,6 +58,8 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
 {
     protected override string BuildCommand(GetLogsArguments arguments)
     {
+        Log.Debug("Platform: {Platform}", Platform);
+        
         var command = "journalctl";
         if (arguments.StartDate != default)
         {
