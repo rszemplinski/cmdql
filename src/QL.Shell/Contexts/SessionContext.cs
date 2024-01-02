@@ -25,9 +25,11 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
             var sessionSshClient = new SessionClient(Session);
             return TaskLimiter.Instance.ProcessAsync(async () =>
             {
+                var allFields = new Field(fieldNode).Fields;
                 var response = await action
                     .ExecuteCommandAsync(sessionSshClient, arguments,
-                        new Field(fieldNode).Fields, cancellationToken);
+                        allFields, cancellationToken);
+                
                 result.TryAdd(fieldNode.Name, response);
             }, cancellationToken);
         });

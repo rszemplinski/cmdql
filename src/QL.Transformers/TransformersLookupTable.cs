@@ -14,7 +14,7 @@ public static class TransformersLookupTable
     {
         if (!LookupTable.TryGetValue(name.ToCamelCase(), out var metadata))
         {
-            throw new InvalidOperationException($"Action {name} does not exist");
+            throw new InvalidOperationException($"Transformer {name} does not exist");
         }
 
         return metadata;
@@ -22,20 +22,20 @@ public static class TransformersLookupTable
 
     private static ConcurrentDictionary<string, TransformerMetadata> Generate()
     {
-        var actions = Assembly.GetExecutingAssembly()
+        var transformers = Assembly.GetExecutingAssembly()
             .GetTypes()
             .Where(x => x.IsAssignableTo(typeof(ITransformer)) && !x.IsAbstract)
             .ToList();
 
         var lookupTable = new ConcurrentDictionary<string, TransformerMetadata>();
-        foreach (var action in actions)
+        foreach (var transformer in transformers)
         {
-            var attribute = action.GetCustomAttribute<TransformerAttribute>();
+            var attribute = transformer.GetCustomAttribute<TransformerAttribute>();
             if (attribute == null)
                 continue;
 
-            var name = attribute.Name ?? action.Name;
-            var metadata = new TransformerMetadata(name, attribute.Description, action);
+            var name = attribute.Name ?? transformer.Name;
+            var metadata = new TransformerMetadata(name, attribute.Description, transformer);
             lookupTable.TryAdd(name.ToCamelCase(), metadata);
         }
 

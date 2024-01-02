@@ -1,7 +1,4 @@
 ﻿using System.Diagnostics;
-using System.Text.Encodings.Web;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using CommandLine;
 using Serilog;
 using Serilog.Events;

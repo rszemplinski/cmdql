@@ -12,7 +12,7 @@ fetch {
     remote(host: "ai-machine", user: "rszemplinski") {
         listFiles(path: "/var/www") {
             name
-            size
+            size | toGigabytes
         }
     }
 }

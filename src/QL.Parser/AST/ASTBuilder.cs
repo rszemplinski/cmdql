@@ -174,6 +174,26 @@ public class ASTBuilder : QLBaseVisitor<QLNode>
         };
     }
 
+    public override QLNode VisitTransformations(QLParser.TransformationsContext context)
+    {
+        return new TransformationsNode
+        {
+            Transformations = context.transformation().Select(Visit).Cast<TransformationNode>().ToList()
+        };
+    }
+    
+    public override QLNode VisitTransformation(QLParser.TransformationContext context)
+    {
+        var name = context.NAME().GetText();
+        var arguments = context.args() is not null ? Visit(context.args()) as ArgumentsNode : null;
+
+        return new TransformationNode
+        {
+            Name = name,
+            Arguments = arguments?.Arguments ?? []
+        };
+    }
+
     public override QLNode VisitValue(QLParser.ValueContext context)
     {
         if (context.NUMBER() is not null)

@@ -1,8 +1,8 @@
 using System.Collections;
-using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using QL.Core.Attributes;
+using QL.Core.Transformers;
 using Serilog;
 
 namespace QL.Core.Actions;
@@ -216,6 +216,8 @@ public abstract partial class ActionBase<TArg, TReturnType> : IAction
     {
         public string Name { get; }
         public IField[] Fields { get; }
+
+        public ITransformer[] Transformers { get; } = [];
 
         public Field(PropertyInfo info)
         {
