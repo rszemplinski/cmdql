@@ -20,16 +20,16 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
 
         var tasks = fields.Select(fieldNode =>
         {
-            var action = ActionsLookupTable.Get(fieldNode.Name).CreateAction();
-            var arguments = fieldNode.BuildArgumentsDictionary();
-            var sessionSshClient = new SessionClient(Session);
-            return TaskLimiter.Instance.ProcessAsync(async () =>
+            return Task.Run(async () =>
             {
+                var action = ActionsLookupTable.Get(fieldNode.Name).CreateAction();
+                var arguments = fieldNode.BuildArgumentsDictionary();
+                var sessionSshClient = new SessionClient(Session);
                 var allFields = new Field(fieldNode).Fields;
                 var response = await action
                     .ExecuteCommandAsync(sessionSshClient, arguments,
                         allFields, cancellationToken);
-                
+
                 result.TryAdd(fieldNode.Name, response);
             }, cancellationToken);
         });

@@ -43,7 +43,6 @@ internal static class Program
         Log.Debug("Generated AST in {0}ms", sw.ElapsedMilliseconds);
 
         var concurrencyCount = options.Sync ? 1 : options.Concurrency;
-        TaskLimiter.Create(concurrencyCount);
         Log.Debug("Concurrency limit set to {0}", concurrencyCount);
 
         var appConfig = new AppConfig
