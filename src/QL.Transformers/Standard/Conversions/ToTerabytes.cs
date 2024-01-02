@@ -5,7 +5,7 @@ namespace QL.Transformers.Standard.Conversions;
 
 public record ToTerabytesArguments;
 
-[Transformer(description: "Converts bytes to gigabytes")]
+[Transformer(Description = "Converts bytes to terabytes")]
 public class ToTerabytes : TransformerBase<ToTerabytesArguments, string>
 {
     protected override string Execute(object value, ToTerabytesArguments arguments)
