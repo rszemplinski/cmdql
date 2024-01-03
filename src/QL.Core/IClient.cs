@@ -30,10 +30,11 @@ public interface IClient
      */
     public Task<ICommandOutput> UploadFileAsync(string localPath, string remotePath,
         CancellationToken cancellationToken = default);
-    
+
     /**
      * Download a file from the client.
      */
     public Task<ICommandOutput> DownloadFileAsync(string remotePath, string localPath,
         CancellationToken cancellationToken = default);
+
 }

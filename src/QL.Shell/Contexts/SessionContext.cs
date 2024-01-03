@@ -5,6 +5,7 @@ using QL.Core.Actions;
 using QL.Parser.AST.Nodes;
 using QLShell.Extensions;
 using QLShell.Sessions;
+using Serilog;
 
 namespace QLShell.Contexts;
 
@@ -29,13 +30,11 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
                 var response = await action
                     .ExecuteCommandAsync(sessionSshClient, arguments,
                         allFields, cancellationToken);
-
                 result.TryAdd(fieldNode.Name, response);
             }, cancellationToken);
         });
 
         await Task.WhenAll(tasks);
-
         return result;
     }
 

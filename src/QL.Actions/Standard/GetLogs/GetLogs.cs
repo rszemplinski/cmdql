@@ -1,7 +1,10 @@
+using System.Globalization;
 using System.Runtime.InteropServices;
+using System.Text;
 using QL.Core;
 using QL.Core.Actions;
 using QL.Core.Attributes;
+using Serilog;
 
 namespace QL.Actions.Standard.GetLogs;
 
@@ -16,11 +19,6 @@ public record GetLogsArguments
      * The end date to get logs from (format: yyyy-MM-dd ie. 2021-01-01)
      */
     public DateTime EndDate { get; set; } = default;
-
-    /**
-     * The maximum number of logs to get (ie. 100)
-     */
-    public int Limit { get; set; } = -1;
 
     /**
      * Most recent logs to get (ie. 10)
@@ -79,14 +77,25 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
      */
     protected override List<LogEntry> ParseCommandResults(ICommandOutput commandResults)
     {
+        if (Platform == OSPlatform.Linux)
+        {
+            return ParseCommandResultForLinux(commandResults);
+        }
+
+        if (Platform == OSPlatform.OSX)
+        {
+            var arguments = GetArguments();
+            return ParseCommandResultForMac(commandResults, arguments);
+        }
+
+        throw new ArgumentOutOfRangeException();
+    }
+
+    private static List<LogEntry> ParseCommandResultForLinux(ICommandOutput commandResults)
+    {
         var logEntries = new List<LogEntry>();
         var lines = commandResults.Result.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
-        
-        if(Platform == OSPlatform.OSX && GetArguments().Top > 0)
-        {
-            Array.Reverse(lines);
-        }
-        
+
         foreach (var line in lines)
         {
             var logEntry = new LogEntry();
@@ -106,12 +115,65 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
             logEntries.Add(logEntry);
         }
 
+        Array.Clear(lines, 0, lines.Length);
+
+        return logEntries;
+    }
+
+    private static List<LogEntry> ParseCommandResultForMac(ICommandOutput commandResults, GetLogsArguments arguments)
+    {
+        var logEntries = new List<LogEntry>();
+        var lines = commandResults.Result.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+
+        var maxResults = arguments.Top > 0 ? arguments.Top : int.MaxValue;
+        var startDateTime = arguments.StartDate != default ? arguments.StartDate : DateTime.MinValue;
+        var endDateTime = arguments.EndDate != default ? arguments.EndDate : DateTime.MaxValue;
+
+        for (var i = 0; i < lines.Length; i++)
+        {
+            var parts = lines[i].Split(" ", StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length < 3)
+            {
+                continue;
+            }
+
+            var timestampString = $"{parts[0]} {parts[1]} {parts[2]}";
+            if (!DateTime.TryParseExact(timestampString, ["MMM dd HH:mm:ss", "MMM d HH:mm:ss"], CultureInfo.InvariantCulture, DateTimeStyles.None, out var timestamp))
+            {
+                continue;
+            }
+
+            if (timestamp > DateTime.UtcNow)
+            {
+                timestamp = timestamp.AddYears(-1);
+            }
+
+            if (timestamp < startDateTime || timestamp > endDateTime)
+            {
+                continue;
+            }
+
+            var message = string.Join(" ", parts[4..]);
+            logEntries.Add(new LogEntry
+            {
+                Timestamp = timestampString,
+                MachineName = parts[3],
+                Service = parts[4].TrimEnd(':'),
+                Message = message
+            });
+
+            if (logEntries.Count >= maxResults)
+                break;
+        }
+
+        Array.Clear(lines, 0, lines.Length);
+
         return logEntries;
     }
 
     private static string BuildLinuxCommand(GetLogsArguments arguments)
     {
-        var command = "journalctl";
+        var command = "journalctl --reverse";
         if (arguments.StartDate != default)
         {
             command += $" --since \"{arguments.StartDate:yyyy-MM-dd}\"";
@@ -122,14 +184,9 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
             command += $" --until \"{arguments.EndDate:yyyy-MM-dd}\"";
         }
 
-        if (arguments.Limit > 0)
-        {
-            command += $" --lines {arguments.Limit}";
-        }
-
         if (arguments.Top > 0)
         {
-            command += $" --reverse --lines {arguments.Top}";
+            command += $" --lines {arguments.Top}";
         }
 
         return command;
@@ -137,33 +194,15 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
 
     private static string BuildMacCommand(GetLogsArguments arguments)
     {
-        var command = "log show";
+        string logDir = "/var/log";
 
-        // Add start date parameter
-        if (arguments.StartDate != default)
-        {
-            command += $" --start \"{arguments.StartDate:yyyy-MM-dd}\"";
-        }
-
-        // Add end date parameter
-        if (arguments.EndDate != default)
-        {
-            command += $" --end \"{arguments.EndDate:yyyy-MM-dd}\"";
-        }
-
-        // Limit the number of lines (if specified)
-        if (arguments.Limit > 0)
-        {
-            command += $" --last {arguments.Limit}";
-        }
-
-        // If the 'Top' argument is provided, it will limit the output to the last N lines
-        // Note: The '--reverse' flag is not applicable in the 'log show' command, and
-        // reversing the output will need to be handled programmatically after executing the command
-        if (arguments.Top > 0)
-        {
-            command += $" --last {arguments.Top}";
-        }
+        var command = $"for file in {logDir}/system.log*; do " +
+                    $"if [[ $file =~ \\.gz$ ]]; then " +
+                    $"gunzip -c \"$file\"; " +
+                    $"elif [[ $file =~ system\\.log\\.[0-9]+$ ]]; then " +
+                    $"cat \"$file\"; " +
+                    $"fi; " +
+                    "done";
 
         return command;
     }

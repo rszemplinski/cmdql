@@ -14,15 +14,15 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
 {
     protected OSPlatform Platform { get; private set; }
     protected string RawPlatform { get; private set; } = "";
-    
+
     private TArgs _arguments = default!;
-    
+
     public void Initialize(OSPlatform platform, string rawPlatform)
     {
         Platform = platform;
         RawPlatform = rawPlatform;
     }
-    
+
     protected TArgs GetArguments()
     {
         return _arguments;
@@ -35,6 +35,9 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
         // Build Command
         var convertedArguments = _BuildCommand(arguments);
         _arguments = convertedArguments;
+
+        await SetupAsync(client, cancellationToken);
+
         var cmd = BuildCommand(convertedArguments);
         cmd = ExtraSpaceRemoverRegex().Replace(cmd, " ").Trim();
         Log.Debug("[{0}] => Executing command: {1}", client.ToString(), cmd);
@@ -42,6 +45,8 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
         // Execute
         var executeTask = await ExecuteAsync(convertedArguments, client, cmd, cancellationToken);
         ValidateResults(executeTask);
+
+        await CleanupAsync(client, cancellationToken);
 
         // Parse
         var parsedResults = _ParseCommandResults(executeTask, fields);
@@ -56,7 +61,7 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
     {
         return client.ExecuteCommandAsync(command, cancellationToken);
     }
-    
+
     protected virtual void ValidateResults(ICommandOutput commandResults)
     {
         if (commandResults.ExitCode != 0)
@@ -225,6 +230,16 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
         }
 
         return instanceDictionary;
+    }
+
+    protected virtual Task CleanupAsync(IClient client, CancellationToken cancellationToken = default)
+    {
+        return Task.CompletedTask;
+    }
+
+    protected virtual Task SetupAsync(IClient client, CancellationToken cancellationToken = default)
+    {
+        return Task.CompletedTask;
     }
 
     [GeneratedRegex("\\s+")]
