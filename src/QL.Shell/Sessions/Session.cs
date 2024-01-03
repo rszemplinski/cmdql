@@ -48,14 +48,16 @@ public class LocalSession(SessionInfo info) : ISession
         try
         {
             process.Start();
+            
+            var outputTask = process.StandardOutput.ReadToEndAsync(cancellationToken);
+            var errorTask = process.StandardError.ReadToEndAsync(cancellationToken);
+            var waitForExitTask = process.WaitForExitAsync(cancellationToken);
+            await Task.WhenAll(outputTask, errorTask, waitForExitTask);
 
-            var output = await process.StandardOutput.ReadToEndAsync(cancellationToken);
-            var error = await process.StandardError.ReadToEndAsync(cancellationToken);
-            await process.WaitForExitAsync(cancellationToken);
             return new CommandOutput
             {
-                Result = output,
-                Error = error,
+                Result = outputTask.Result,
+                Error = errorTask.Result,
                 ExitCode = process.ExitCode
             };
         }
@@ -107,7 +109,7 @@ public class RemoteSession(SessionInfo info) : ISession
 {
     public SessionInfo Info { get; } = info;
     public OSPlatform Platform { get; private set; }
-    public string RawPlatform { get; private set; }
+    public string RawPlatform { get; private set; } = null!;
 
     public bool IsConnected => _client?.IsConnected ?? false;
 
@@ -127,7 +129,7 @@ public class RemoteSession(SessionInfo info) : ISession
             await _client.ConnectAsync(cancellationToken);
             
             // Get platform
-            var result = await Task.Run(() => _client.RunCommand("uname -a"), cancellationToken);
+            var result = _client.RunCommand("uname -a");
             RawPlatform = result.Result;
             Platform = RawPlatform.StartsWith("Linux")
                 ? OSPlatform.Linux

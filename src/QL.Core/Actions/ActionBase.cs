@@ -4,7 +4,6 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using QL.Core.Attributes;
-using QL.Core.Transformers;
 using Serilog;
 
 namespace QL.Core.Actions;
@@ -14,7 +13,7 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
     where TReturnType : class
 {
     protected OSPlatform Platform { get; private set; }
-    protected string RawPlatform { get; private set; } = "";
+    protected string RawPlatform { get; private set; } = default!;
 
     private TArgs _arguments = default!;
 
@@ -255,8 +254,6 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
     {
         public string Name { get; }
         public IField[] Fields { get; }
-
-        public ITransformer[] Transformers { get; } = [];
 
         public Field(PropertyInfo info)
         {
