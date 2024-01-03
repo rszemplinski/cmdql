@@ -1,5 +1,4 @@
 using System.Globalization;
-using System.Runtime.InteropServices;
 using QL.Core;
 using QL.Core.Actions;
 using QL.Core.Attributes;
@@ -54,17 +53,12 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
 {
     protected override string BuildCommand(GetLogsArguments arguments)
     {
-        if (Platform == OSPlatform.Linux)
+        return Platform switch
         {
-            return BuildLinuxCommand(arguments);
-        }
-
-        if (Platform == OSPlatform.OSX)
-        {
-            return BuildMacCommand();
-        }
-
-        throw new ArgumentOutOfRangeException();
+            Platform.Linux => BuildLinuxCommand(arguments),
+            Platform.OSX => BuildMacCommand(),
+            _ => throw new PlatformNotSupportedException()
+        };
     }
 
     /**
@@ -75,18 +69,12 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
      */
     protected override List<LogEntry> ParseCommandResults(ICommandOutput commandResults)
     {
-        if (Platform == OSPlatform.Linux)
+        return Platform switch
         {
-            return ParseCommandResultForLinux(commandResults);
-        }
-
-        if (Platform == OSPlatform.OSX)
-        {
-            var arguments = GetArguments();
-            return ParseCommandResultForMac(commandResults, arguments);
-        }
-
-        throw new ArgumentOutOfRangeException();
+            Platform.Linux => ParseCommandResultForLinux(commandResults),
+            Platform.OSX => ParseCommandResultForMac(commandResults, GetArguments()),
+            _ => throw new PlatformNotSupportedException()
+        };
     }
 
     private static List<LogEntry> ParseCommandResultForLinux(ICommandOutput commandResults)

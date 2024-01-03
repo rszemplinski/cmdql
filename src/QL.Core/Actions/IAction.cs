@@ -1,10 +1,8 @@
-using System.Runtime.InteropServices;
-
 namespace QL.Core.Actions;
 
 public interface IAction
 {
-    public void Initialize(OSPlatform platform);
+    public void Initialize(Platform platform);
     
     public Task<object> ExecuteCommandAsync(
         IClient client,

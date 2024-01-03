@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Diagnostics;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using QL.Core.Attributes;
 using Serilog;
@@ -12,11 +11,11 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
     where TArgs : class
     where TReturnType : class
 {
-    protected OSPlatform Platform { get; private set; }
+    protected Platform Platform { get; private set; }
 
     private TArgs _arguments = default!;
 
-    public void Initialize(OSPlatform platform)
+    public void Initialize(Platform platform)
     {
         Platform = platform;
     }

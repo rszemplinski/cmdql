@@ -11,10 +11,10 @@ public class LocalSession(SessionInfo info) : ISession
     public bool IsConnected { get; private set; }
 
     public SessionInfo Info { get; } = info;
-    public OSPlatform Platform => RuntimeInformation.IsOSPlatform(OSPlatform.Linux)
-            ? OSPlatform.Linux
+    public Platform Platform => RuntimeInformation.IsOSPlatform(OSPlatform.Linux)
+            ? Platform.Linux
             : RuntimeInformation.IsOSPlatform(OSPlatform.OSX)
-                ? OSPlatform.OSX
+                ? Platform.OSX
                 : throw new PlatformNotSupportedException();
     
     public Task ConnectAsync(CancellationToken cancellationToken = default)
@@ -100,7 +100,7 @@ public class LocalSession(SessionInfo info) : ISession
 public class RemoteSession(SessionInfo info) : ISession
 {
     public SessionInfo Info { get; } = info;
-    public OSPlatform Platform { get; private set; }
+    public Platform Platform { get; private set; }
     public bool IsConnected => _client?.IsConnected ?? false;
 
     private SshClient? _client;
@@ -121,9 +121,9 @@ public class RemoteSession(SessionInfo info) : ISession
             // Get platform
             var result = _client.RunCommand("uname");
             Platform = result.Result.StartsWith("Linux")
-                ? OSPlatform.Linux
+                ? Platform.Linux
                 : result.Result.StartsWith("Darwin")
-                    ? OSPlatform.OSX
+                    ? Platform.OSX
                     : throw new PlatformNotSupportedException();
             
         }
