@@ -1,10 +1,8 @@
 using System.Globalization;
 using System.Runtime.InteropServices;
-using System.Text;
 using QL.Core;
 using QL.Core.Actions;
 using QL.Core.Attributes;
-using Serilog;
 
 namespace QL.Actions.Standard.GetLogs;
 
@@ -63,7 +61,7 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
 
         if (Platform == OSPlatform.OSX)
         {
-            return BuildMacCommand(arguments);
+            return BuildMacCommand();
         }
 
         throw new ArgumentOutOfRangeException();
@@ -192,17 +190,17 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
         return command;
     }
 
-    private static string BuildMacCommand(GetLogsArguments arguments)
+    private static string BuildMacCommand()
     {
-        string logDir = "/var/log";
+        const string logDir = "/var/log";
 
-        var command = $"for file in {logDir}/system.log*; do " +
-                    $"if [[ $file =~ \\.gz$ ]]; then " +
-                    $"gunzip -c \"$file\"; " +
-                    $"elif [[ $file =~ system\\.log\\.[0-9]+$ ]]; then " +
-                    $"cat \"$file\"; " +
-                    $"fi; " +
-                    "done";
+        const string command = $"for file in {logDir}/system.log*; do " +
+                               $"if [[ $file =~ \\.gz$ ]]; then " +
+                               $"gunzip -c \"$file\"; " +
+                               $@"elif [[ $file =~ system\.log\.[0-9]+$ ]]; then " +
+                               $"cat \"$file\"; " +
+                               $"fi; " +
+                               "done";
 
         return command;
     }

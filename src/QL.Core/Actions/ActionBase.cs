@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Diagnostics;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
@@ -32,6 +33,8 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
         IReadOnlyCollection<IField> fields,
         CancellationToken cancellationToken = default)
     {
+        var sw = Stopwatch.StartNew();
+        
         // Build Command
         var convertedArguments = _BuildCommand(arguments);
         _arguments = convertedArguments;
@@ -40,7 +43,6 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
 
         var cmd = BuildCommand(convertedArguments);
         cmd = ExtraSpaceRemoverRegex().Replace(cmd, " ").Trim();
-        Log.Debug("[{0}] => Executing command: {1}", client.ToString(), cmd);
 
         // Execute
         var executeTask = await ExecuteAsync(convertedArguments, client, cmd, cancellationToken);
@@ -50,6 +52,10 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
 
         // Parse
         var parsedResults = _ParseCommandResults(executeTask, fields);
+        
+        sw.Stop();
+        Log.Debug("[{0}] => Executed command: `{1}`. Completed in {2}ms", client.ToString(), cmd, sw.ElapsedMilliseconds);
+        
         return parsedResults;
     }
 
@@ -231,13 +237,13 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
 
         return instanceDictionary;
     }
-
-    protected virtual Task CleanupAsync(IClient client, CancellationToken cancellationToken = default)
+    
+    protected virtual Task SetupAsync(IClient client, CancellationToken cancellationToken = default)
     {
         return Task.CompletedTask;
     }
 
-    protected virtual Task SetupAsync(IClient client, CancellationToken cancellationToken = default)
+    protected virtual Task CleanupAsync(IClient client, CancellationToken cancellationToken = default)
     {
         return Task.CompletedTask;
     }

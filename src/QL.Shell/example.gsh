@@ -1,6 +1,6 @@
 fetch {
     local {
-        fileSpace(path: "~/projects", depth: 0) {
+        fileSpace(path: "~/projects/dotnet", depth: 0) {
             size
             path
         }
@@ -21,6 +21,12 @@ fetch {
         currentTime {
             timezone
             year
+        }
+    }
+    remote(host: "pie-mac", user: "ryan.szemplinski") {
+        getLogs(startDate: "2023-12-25", endDate: "2023-12-31", top: 50) {
+            message
+            timestamp
         }
     }
 }
