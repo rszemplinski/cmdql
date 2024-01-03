@@ -9,7 +9,6 @@ public interface ISession
     SessionInfo Info { get; }
     
     OSPlatform Platform { get; }
-    string RawPlatform { get; }
 
     Task ConnectAsync(CancellationToken cancellationToken = default);
     Task<ICommandOutput> ExecuteCommandAsync(string command, CancellationToken cancellationToken);

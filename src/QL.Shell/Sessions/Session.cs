@@ -11,16 +11,12 @@ public class LocalSession(SessionInfo info) : ISession
     public bool IsConnected { get; private set; }
 
     public SessionInfo Info { get; } = info;
-    public OSPlatform Platform => RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
-        ? OSPlatform.Windows
-        : RuntimeInformation.IsOSPlatform(OSPlatform.Linux)
+    public OSPlatform Platform => RuntimeInformation.IsOSPlatform(OSPlatform.Linux)
             ? OSPlatform.Linux
             : RuntimeInformation.IsOSPlatform(OSPlatform.OSX)
                 ? OSPlatform.OSX
                 : throw new PlatformNotSupportedException();
     
-    public string RawPlatform => RuntimeInformation.OSDescription;
-
     public Task ConnectAsync(CancellationToken cancellationToken = default)
     {
         IsConnected = true;
@@ -30,15 +26,11 @@ public class LocalSession(SessionInfo info) : ISession
     public async Task<ICommandOutput> ExecuteCommandAsync(string command,
         CancellationToken cancellationToken = default)
     {
-        var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-        var fileName = isWindows ? "cmd" : "bash";
-        var arguments = isWindows ? $"/C {command}" : $"-c \"{command}\"";
-
         using var process = new Process();
         process.StartInfo = new ProcessStartInfo
         {
-            FileName = fileName,
-            Arguments = arguments,
+            FileName = "sh",
+            Arguments = $"-c \"{command}\"",
             UseShellExecute = false,
             RedirectStandardOutput = true,
             RedirectStandardError = true,
@@ -109,8 +101,6 @@ public class RemoteSession(SessionInfo info) : ISession
 {
     public SessionInfo Info { get; } = info;
     public OSPlatform Platform { get; private set; }
-    public string RawPlatform { get; private set; } = null!;
-
     public bool IsConnected => _client?.IsConnected ?? false;
 
     private SshClient? _client;
@@ -129,15 +119,12 @@ public class RemoteSession(SessionInfo info) : ISession
             await _client.ConnectAsync(cancellationToken);
             
             // Get platform
-            var result = _client.RunCommand("uname -a");
-            RawPlatform = result.Result;
-            Platform = RawPlatform.StartsWith("Linux")
+            var result = _client.RunCommand("uname");
+            Platform = result.Result.StartsWith("Linux")
                 ? OSPlatform.Linux
-                : RawPlatform.StartsWith("Darwin")
+                : result.Result.StartsWith("Darwin")
                     ? OSPlatform.OSX
-                    : RawPlatform.Contains("Windows")
-                        ? OSPlatform.Windows
-                        : throw new PlatformNotSupportedException();
+                    : throw new PlatformNotSupportedException();
             
         }
         catch (TaskCanceledException)

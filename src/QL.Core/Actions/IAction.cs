@@ -4,7 +4,7 @@ namespace QL.Core.Actions;
 
 public interface IAction
 {
-    public void Initialize(OSPlatform platform, string rawPlatform);
+    public void Initialize(OSPlatform platform);
     
     public Task<object> ExecuteCommandAsync(
         IClient client,

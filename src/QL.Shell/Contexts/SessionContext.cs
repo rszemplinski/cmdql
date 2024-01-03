@@ -17,7 +17,6 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
     {
         var result = new ConcurrentDictionary<string, object>();
         var sessionPlatform = Session.Platform;
-        var sessionRawPlatform = Session.RawPlatform;
         var sessionSshClient = new SessionClient(Session);
         
         var fields = SelectionSet
@@ -26,7 +25,7 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
         
         await foreach (var fieldNode in fields.WithCancellation(cancellationToken))
         {
-            var action = ActionsLookupTable.Get(fieldNode.Name).CreateAction(sessionPlatform, sessionRawPlatform);
+            var action = ActionsLookupTable.Get(fieldNode.Name).CreateAction(sessionPlatform);
             var arguments = fieldNode.BuildArgumentsDictionary();
             var allFields = new Field(fieldNode).Fields;
             var response = await action

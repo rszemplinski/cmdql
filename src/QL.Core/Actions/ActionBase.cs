@@ -13,14 +13,12 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
     where TReturnType : class
 {
     protected OSPlatform Platform { get; private set; }
-    protected string RawPlatform { get; private set; } = default!;
 
     private TArgs _arguments = default!;
 
-    public void Initialize(OSPlatform platform, string rawPlatform)
+    public void Initialize(OSPlatform platform)
     {
         Platform = platform;
-        RawPlatform = rawPlatform;
     }
 
     protected TArgs GetArguments()

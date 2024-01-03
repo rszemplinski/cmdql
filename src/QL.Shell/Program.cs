@@ -51,6 +51,7 @@ internal static class Program
             Verbose = options.Verbose,
             Debug = options.Debug,
             OutputFormat = options.ParsedFormat,
+            MaxConcurrency = concurrencyCount,
             Sync = options.Sync,
             OutputFile = options.OutputFile,
         };
