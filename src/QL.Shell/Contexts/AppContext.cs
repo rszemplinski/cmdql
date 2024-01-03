@@ -37,21 +37,19 @@ public class AppContext
         sw.Stop();
         Log.Debug("Connected to {0} sessions in {1}ms", allSessions.Count, sw.ElapsedMilliseconds);
 
-        sw.Restart();
         var result = new ConcurrentDictionary<string, object>();
-        await Parallel.ForEachAsync(SessionManager.Sessions,
-            new ParallelOptions
-            {
-                CancellationToken = cancellationToken
-            },
-            async (sessionData, cancelToken) =>
-            {
-                var (_, data) = sessionData;
-                var (session, contextBlock) = data;
-                var context = new SessionContext(session, contextBlock.SelectionSet);
-                var contextResult = await context.ExecuteAsync(cancelToken);
-                result.TryAdd(session.Info.Alias, contextResult);
-            });
+        var sessions = SessionManager.Sessions
+            .Select(x => x.Value)
+            .ToAsyncEnumerable();
+        
+        sw.Restart();
+        await foreach (var data in sessions.WithCancellation(cancellationToken))
+        {
+            var (session, contextBlock) = data;
+            var context = new SessionContext(session, contextBlock.SelectionSet);
+            var contextResult = await context.ExecuteAsync(cancellationToken);
+            result.TryAdd(session.Info.Alias, contextResult);
+        }
         sw.Stop();
         Log.Debug("Executed all sessions in {0}ms", sw.ElapsedMilliseconds);
 

@@ -5,7 +5,6 @@ using QL.Core.Actions;
 using QL.Parser.AST.Nodes;
 using QLShell.Extensions;
 using QLShell.Sessions;
-using Serilog;
 
 namespace QLShell.Contexts;
 
@@ -17,29 +16,27 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
     public async Task<IReadOnlyDictionary<string, object>> ExecuteAsync(CancellationToken cancellationToken)
     {
         var result = new ConcurrentDictionary<string, object>();
-        var fields = GetTopLevelFields().ToList();
-
-        var tasks = fields.Select(fieldNode =>
+        var sessionPlatform = Session.Platform;
+        var sessionRawPlatform = Session.RawPlatform;
+        var sessionSshClient = new SessionClient(Session);
+        
+        var fields = SelectionSet
+            .Select(x => x.Field)
+            .ToAsyncEnumerable();
+        
+        await foreach (var fieldNode in fields.WithCancellation(cancellationToken))
         {
-            var sessionSshClient = new SessionClient(Session);
-            var action = ActionsLookupTable.Get(fieldNode.Name).CreateAction(Session.Platform, Session.RawPlatform);
+            var action = ActionsLookupTable.Get(fieldNode.Name).CreateAction(sessionPlatform, sessionRawPlatform);
             var arguments = fieldNode.BuildArgumentsDictionary();
-            return Task.Run(async () =>
-            {
-                var allFields = new Field(fieldNode).Fields;
-                var response = await action
-                    .ExecuteCommandAsync(sessionSshClient, arguments,
-                        allFields, cancellationToken);
-                result.TryAdd(fieldNode.Name, response);
-            }, cancellationToken);
-        });
+            var allFields = new Field(fieldNode).Fields;
+            var response = await action
+                .ExecuteCommandAsync(sessionSshClient, arguments,
+                    allFields, cancellationToken);
+            result.TryAdd(fieldNode.Name, response);
+        }
 
-        await Task.WhenAll(tasks);
         return result;
     }
-
-    private IEnumerable<FieldNode> GetTopLevelFields()
-        => SelectionSet.Select(selection => selection.Field);
 
     private class Field : IField
     {
