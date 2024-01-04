@@ -10,7 +10,7 @@
 
 ## ⚡️ Features
 
-* **GraphQL-like Querying**: Leverage a syntax reminiscent of GraphQL to fetch, mutate, and subscribe to data points across your infrastructure and services. This intuitive querying mechanism makes data retrieval and manipulation as simple as writing a query.
+* **GQL-like Querying**: Leverage a syntax reminiscent of GraphQL to fetch, mutate, and subscribe to data points across your infrastructure and services. This intuitive querying mechanism makes data retrieval and manipulation as simple as writing a query.
 
 * **Multi-Source Data Aggregation:** Aggregate data from multiple sources such as server metrics, application logs, network statistics, and more, all within a single query framework.
 
