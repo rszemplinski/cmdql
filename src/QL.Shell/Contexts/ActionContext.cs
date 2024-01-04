@@ -10,15 +10,11 @@ public class ActionContext(Platform platform, IClient client, FieldNode fieldNod
     private Platform Platform { get; } = platform;
     private IClient Client { get; } = client;
 
-    public async Task<object> ExecuteAsync(CancellationToken cancellationToken)
+    public Task<object> ExecuteAsync(CancellationToken cancellationToken)
     {
         var action = ActionsLookup.Get(fieldNode.Name).CreateAction(Platform);
         var arguments = fieldNode.BuildArgumentsDictionary();
         var allFields = fieldNode.GetSubFields();
-        var response = await action
-            .ExecuteCommandAsync(Client, arguments,
-                allFields, cancellationToken);
-        return response;
+        return action.ExecuteCommandAsync(Client, arguments, allFields, cancellationToken);
     }
-    
 }

@@ -1,33 +1,30 @@
-using System.Collections.Concurrent;
 using System.Reflection;
-using QL.Core;
 using QL.Core.Attributes;
 using QL.Core.Transformers;
 
 namespace QL.Transformers;
 
-public static class TransformersLookupTable
+public static class TransformersLookup
 {
-    private static IReadOnlyDictionary<string, TransformerMetadata> LookupTable { get; } = Generate();
-    
+    private static IEnumerable<TransformerMetadata> Transformers { get; } = Generate();
+
     public static TransformerMetadata Get(string name)
     {
-        if (!LookupTable.TryGetValue(name.ToCamelCase(), out var metadata))
-        {
-            throw new InvalidOperationException($"Transformer {name} does not exist");
-        }
-
-        return metadata;
+        var transformer = Transformers.FirstOrDefault(x =>
+            x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+        if (transformer == null)
+            throw new Exception($"Transformer {name} not found");
+        return transformer;
     }
 
-    private static ConcurrentDictionary<string, TransformerMetadata> Generate()
+    private static IEnumerable<TransformerMetadata> Generate()
     {
         var transformers = Assembly.GetExecutingAssembly()
             .GetTypes()
             .Where(x => x.IsAssignableTo(typeof(ITransformer)) && !x.IsAbstract)
             .ToList();
 
-        var lookupTable = new ConcurrentDictionary<string, TransformerMetadata>();
+        var allActions = new List<TransformerMetadata>();
         foreach (var transformer in transformers)
         {
             var attribute = transformer.GetCustomAttribute<TransformerAttribute>();
@@ -36,9 +33,9 @@ public static class TransformersLookupTable
 
             var name = attribute.Name ?? transformer.Name;
             var metadata = new TransformerMetadata(name, attribute.Description, transformer);
-            lookupTable.TryAdd(name.ToCamelCase(), metadata);
+            allActions.Add(metadata);
         }
 
-        return lookupTable;
+        return allActions;
     }
 }
