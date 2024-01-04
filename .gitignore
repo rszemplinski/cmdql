@@ -408,3 +408,5 @@ out
 
 # Ignore C# regression temporaries.
 **/Generated*/
+
+.DS_Store
