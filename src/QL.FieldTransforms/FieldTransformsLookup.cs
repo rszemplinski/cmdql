@@ -1,30 +1,30 @@
 using System.Reflection;
 using QL.Core.Attributes;
-using QL.Core.Transformers;
+using QL.Core.FieldTransforms;
 
-namespace QL.Transformers;
+namespace QL.FieldTransforms;
 
-public static class TransformersLookup
+public static class FieldTransformsLookup
 {
-    private static IEnumerable<TransformerMetadata> Transformers { get; } = Generate();
+    private static IEnumerable<FieldTransformMetadata> FieldTransforms { get; } = Generate();
 
-    public static TransformerMetadata Get(string name)
+    public static FieldTransformMetadata Get(string name)
     {
-        var transformer = Transformers.FirstOrDefault(x =>
+        var transformer = FieldTransforms.FirstOrDefault(x =>
             x.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
         if (transformer == null)
             throw new Exception($"Transformer {name} not found");
         return transformer;
     }
 
-    private static IEnumerable<TransformerMetadata> Generate()
+    private static IEnumerable<FieldTransformMetadata> Generate()
     {
         var transformers = Assembly.GetExecutingAssembly()
             .GetTypes()
-            .Where(x => x.IsAssignableTo(typeof(ITransformer)) && !x.IsAbstract)
+            .Where(x => x.IsAssignableTo(typeof(IFieldTransform)) && !x.IsAbstract)
             .ToList();
 
-        var allActions = new List<TransformerMetadata>();
+        var allActions = new List<FieldTransformMetadata>();
         foreach (var transformer in transformers)
         {
             var attribute = transformer.GetCustomAttribute<TransformerAttribute>();
@@ -32,7 +32,7 @@ public static class TransformersLookup
                 continue;
 
             var name = attribute.Name ?? transformer.Name;
-            var metadata = new TransformerMetadata(name, attribute.Description, transformer);
+            var metadata = new FieldTransformMetadata(name, attribute.Description, transformer);
             allActions.Add(metadata);
         }
 

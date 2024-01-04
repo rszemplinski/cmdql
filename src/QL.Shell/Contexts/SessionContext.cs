@@ -1,9 +1,7 @@
 using System.Collections.Concurrent;
 using QL.Actions;
 using QL.Core;
-using QL.Core.Actions;
 using QL.Parser.AST.Nodes;
-using QLShell.Extensions;
 using QLShell.Sessions;
 
 namespace QLShell.Contexts;
@@ -19,24 +17,26 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
 
         var fields = SelectionSet
             .Select(x => x.Field)
-            .ToAsyncEnumerable();
+            .ToList();
 
-        await foreach (var fieldNode in fields.WithCancellation(cancellationToken))
+        var sessionSshClient = new SessionClient(Session);
+        var executionTasks = fields.Select(async fieldNode =>
         {
-            var sessionSshClient = new SessionClient(Session);
             if (ActionsLookup.IsNamespace(fieldNode.Name))
             {
                 var namespaceContext = new NamespaceContext(fieldNode.Name, Session.Platform, sessionSshClient,
                     fieldNode.SelectionSet!);
                 var namespaceResult = await namespaceContext.ExecuteAsync(cancellationToken);
                 result.TryAdd(fieldNode.Name, namespaceResult);
-                continue;
+                return;
             }
 
             var actionContext = new ActionContext(Session.Platform, sessionSshClient, fieldNode);
             var actionResult = await actionContext.ExecuteAsync(cancellationToken);
             result.TryAdd(fieldNode.Name, actionResult);
-        }
+        });
+        
+        await Task.WhenAll(executionTasks);
 
         return result;
     }
@@ -60,6 +60,11 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
             CancellationToken cancellationToken = default)
         {
             return Session.DownloadFileAsync(remotePath, localPath, cancellationToken);
+        }
+        
+        public Task<bool> IsToolInstalledAsync(string toolName, CancellationToken cancellationToken = default)
+        {
+            return Session.IsToolInstalledAsync(toolName, cancellationToken);
         }
 
         public override string ToString()

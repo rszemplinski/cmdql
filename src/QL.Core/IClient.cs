@@ -36,5 +36,10 @@ public interface IClient
      */
     public Task<ICommandOutput> DownloadFileAsync(string remotePath, string localPath,
         CancellationToken cancellationToken = default);
+    
+    /**
+     * Check if tool is installed on the client.
+     */
+    public Task<bool> IsToolInstalledAsync(string toolName, CancellationToken cancellationToken = default);
 
 }

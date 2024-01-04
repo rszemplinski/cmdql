@@ -1,11 +1,11 @@
-namespace QL.Core.Transformers;
+namespace QL.Core.FieldTransforms;
 
-public record TransformerMetadata(string Name, string? Description, Type Type)
+public record FieldTransformMetadata(string Name, string? Description, Type Type)
 {
-    public ITransformer CreateTransformer()
+    public IFieldTransform CreateTransformer()
     {
         var transformer = Activator.CreateInstance(Type);
-        if (transformer is not ITransformer transformerInterface)
+        if (transformer is not IFieldTransform transformerInterface)
         {
             throw new InvalidOperationException($"Transformer {Name} does not implement ITransformer");
         }

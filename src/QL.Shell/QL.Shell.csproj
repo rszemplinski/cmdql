@@ -12,7 +12,7 @@
     <ItemGroup>
       <ProjectReference Include="..\QL.Actions\QL.Actions.csproj" />
       <ProjectReference Include="..\QL.Parser\QL.Parser.csproj" />
-      <ProjectReference Include="..\QL.Transformers\QL.Transformers.csproj" />
+      <ProjectReference Include="..\QL.FieldTransforms\QL.FieldTransforms.csproj" />
     </ItemGroup>
 
     <ItemGroup>

@@ -17,6 +17,8 @@ public interface ISession
 
     Task<ICommandOutput> DownloadFileAsync(string remotePath, string localPath,
         CancellationToken cancellationToken = default);
+    
+    Task<bool> IsToolInstalledAsync(string toolName, CancellationToken cancellationToken = default);
 
     Task DisconnectAsync(CancellationToken cancellationToken = default);
 }

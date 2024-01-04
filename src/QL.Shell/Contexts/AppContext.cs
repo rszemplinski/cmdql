@@ -25,7 +25,8 @@ public class AppContext
     {
         var result = new ConcurrentDictionary<string, object>();
         var sessions = SessionManager.Sessions
-            .Select(x => x.Value);
+            .Select(x => x.Value)
+            .ToList();
 
         var sw = Stopwatch.StartNew();
         await Parallel.ForEachAsync(
@@ -38,15 +39,20 @@ public class AppContext
             async (data, token) =>
             {
                 var (session, contextBlock) = data;
+                Log.Debug("Connecting to {0}...", session);
                 await session.ConnectAsync(token);
+                
                 var context = new SessionContext(session, contextBlock.SelectionSet);
                 var contextResult = await context.ExecuteAsync(token);
                 result.TryAdd(session.Info.Alias, contextResult);
                 
+                Log.Debug("Disconnecting from {0}...", session);
                 await session.DisconnectAsync(token);
             });
         sw.Stop();
         Log.Debug("Executed all sessions in {0}ms", sw.ElapsedMilliseconds);
+        
+        // TODO: Reorder the result dictionary to match the order of the fields in the query
 
         return result;
     }

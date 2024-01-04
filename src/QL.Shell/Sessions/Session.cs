@@ -80,6 +80,12 @@ public class LocalSession(SessionInfo info) : ISession
     {
         throw new InvalidOperationException("Cannot download file from local session");
     }
+    
+    public async Task<bool> IsToolInstalledAsync(string toolName, CancellationToken cancellationToken = default)
+    {
+        var result = await ExecuteCommandAsync($"which {toolName}", cancellationToken);
+        return result.ExitCode == 0;
+    }
 
     public Task DisconnectAsync(CancellationToken cancellationToken = default)
     {
@@ -254,6 +260,12 @@ public class RemoteSession(SessionInfo info) : ISession
         {
             sftpClient.Disconnect();
         }
+    }
+    
+    public async Task<bool> IsToolInstalledAsync(string toolName, CancellationToken cancellationToken = default)
+    {
+        var result = await ExecuteCommandAsync($"which {toolName}", cancellationToken);
+        return result.ExitCode == 0;
     }
 
     public async Task DisconnectAsync(CancellationToken cancellationToken = default)

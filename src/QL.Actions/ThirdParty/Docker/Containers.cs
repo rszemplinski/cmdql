@@ -22,29 +22,36 @@ public class ContainerResult
 
 [Action]
 [Cmd("docker ps")]
-[Regex(
-    """^(?<containerId>\S+)\s+(?<image>[\w\/\:\-\.]+)\s+\"(?<command>[^\"]+)\"\s+(?<created>[\w\s]+ago)\s+(?<status>(?:Up|Exited)\s[\w\s]+?)(?:\s{2,}(?<ports>[\w\-\/]+))?(\s+)(?<names>\S+)$""")]
-public class Containers : DockerActionBase<ContainerArgs, List<ContainerResult>>
+public partial class Containers : DockerActionBase<ContainerArgs, List<ContainerResult>>
 {
     protected override List<ContainerResult> ParseCommandResults(ICommandOutput commandResults)
     {
         var results = new List<ContainerResult>();
-        var regex = GetRegex();
-        var matches = regex.Matches(commandResults.Result);
-        foreach (var match in matches)
+        var lines = commandResults.Result.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+
+        for (var i = 1; i < lines.Length; i++)
         {
-            var containerResult = new ContainerResult();
-            var groups = ((Match)match).Groups;
-            containerResult.Id = groups["containerId"].Value;
-            containerResult.Image = groups["image"].Value;
-            containerResult.Command = groups["command"].Value;
-            containerResult.Created = groups["created"].Value;
-            containerResult.Status = groups["status"].Value;
-            containerResult.Ports = groups["ports"].Value;
-            containerResult.Names = groups["names"].Value;
-            results.Add(containerResult);
+            var line = lines[i];
+            var match = ContainerRegex().Match(line);
+
+            if (match.Success)
+            {
+                results.Add(new ContainerResult
+                {
+                    Id = match.Groups[1].Value,
+                    Image = match.Groups[2].Value,
+                    Command = match.Groups[3].Value.Trim('"'),
+                    Created = match.Groups[4].Value,
+                    Status = match.Groups[5].Value,
+                    Ports = match.Groups[6].Value,
+                    Names = match.Groups[7].Value
+                });
+            }
         }
 
         return results;
     }
+
+    [GeneratedRegex("""^(\S+)\s+(\S+)\s+(\".+?\"|\S+)\s+(\d+\s+\S+\s+ago)\s+(Up\s+\d+\s+\S+(?:\s+\([^)]+\))?)\s*(.*?)\s+(\S+)$""")]
+    private static partial Regex ContainerRegex();
 }

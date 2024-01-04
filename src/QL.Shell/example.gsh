@@ -1,26 +1,14 @@
 fetch {
     local {
-        docker {
-            containers {
-                names
-                command
-            }
-        }
-        listFiles(path: "~") {
+        listFiles(path: "~/Pictures") {
             name
-            size | toGigabytes(format: "#.##")
+            size | toMegabytes
         }
     }
     remote(host: "ai-machine", user: "rszemplinski") {
         currentTime {
             timezone
             year
-        }
-        docker {
-            containers {
-                names
-                command
-            }
         }
     }
 }

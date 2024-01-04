@@ -1,8 +1,6 @@
 using System.Collections.Concurrent;
-using QL.Actions;
 using QL.Core;
 using QL.Parser.AST.Nodes;
-using QLShell.Extensions;
 
 namespace QLShell.Contexts;
 
@@ -12,6 +10,7 @@ public class NamespaceContext(
     IClient client,
     IEnumerable<SelectionNode> selectionSet)
 {
+    private string Namespace { get; } = @namespace;
     private Platform Platform { get; } = platform;
     private IClient Client { get; } = client;
     private IEnumerable<SelectionNode> SelectionSet { get; } = selectionSet;
@@ -22,14 +21,16 @@ public class NamespaceContext(
 
         var fields = SelectionSet
             .Select(x => x.Field)
-            .ToAsyncEnumerable();
-
-        await foreach (var fieldNode in fields.WithCancellation(cancellationToken))
+            .ToList();
+        
+        var executionTasks = fields.Select(async fieldNode =>
         {
-            var actionContext = new ActionContext(Platform, Client, fieldNode, @namespace);
-            var response = await actionContext.ExecuteAsync(cancellationToken);
-            result.TryAdd(fieldNode.Name, response);
-        }
+            var actionContext = new ActionContext(Platform, Client, fieldNode, Namespace);
+            var actionResult = await actionContext.ExecuteAsync(cancellationToken);
+            result.TryAdd(fieldNode.Name, actionResult);
+        });
+
+        await Task.WhenAll(executionTasks);
 
         return result;
     }

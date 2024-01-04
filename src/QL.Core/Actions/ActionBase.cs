@@ -39,6 +39,7 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
 
         var cmd = BuildCommand(convertedArguments);
         cmd = ExtraSpaceRemoverRegex().Replace(cmd, " ").Trim();
+        Log.Debug("[{0}] => Starting command: `{1}`", client.ToString(), cmd);
 
         // Execute
         var executeTask = await ExecuteAsync(convertedArguments, client, cmd, cancellationToken);
@@ -140,6 +141,13 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
 
         return regexAttribute.Regex;
     }
+    
+    protected string[] GetDeps()
+    {
+        var type = GetType();
+        var depsAttribute = type.GetCustomAttribute<DepsAttribute>();
+        return depsAttribute is null ? Array.Empty<string>() : depsAttribute.Deps;
+    }
 
     private object _ParseCommandResults(ICommandOutput commandResults, IReadOnlyCollection<IField> fields)
     {
@@ -187,6 +195,7 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
             ? fields
             : instanceType.GetProperties().Select(x => new Field(x) as IField).ToArray();
 
+        // TODO: Only iterate over the fields passed in instead of all fields
         foreach (var property in instanceType.GetProperties())
         {
             var field = selectedFields
@@ -236,7 +245,23 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
     
     protected virtual Task SetupAsync(IClient client, CancellationToken cancellationToken = default)
     {
-        return Task.CompletedTask;
+        return CheckDepsAsync(client, cancellationToken);
+    }
+    
+    private async Task CheckDepsAsync(IClient client, CancellationToken cancellationToken = default)
+    {
+        var deps = GetDeps();
+        if (deps.Length == 0)
+            return;
+        
+        foreach (var dep in deps)
+        {
+            var depInstalled = await client.IsToolInstalledAsync(dep, cancellationToken);
+            if (!depInstalled)
+            {
+                throw new InvalidOperationException($"The tool {dep} is not installed on the client.");
+            }
+        }
     }
 
     protected virtual Task CleanupAsync(IClient client, CancellationToken cancellationToken = default)
