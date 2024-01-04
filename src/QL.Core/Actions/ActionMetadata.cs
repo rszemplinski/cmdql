@@ -1,7 +1,12 @@
 namespace QL.Core.Actions;
 
-public record ActionMetadata(string Name, string? Description, Type Type)
+public record ActionMetadata
 {
+    public string Name { get; init; }
+    public string? Description { get; init; }
+    public string Namespace { get; init; } = "";
+    public Type Type { get; init; }
+
     public IAction CreateAction(Platform platform)
     {
         var action = Activator.CreateInstance(Type);

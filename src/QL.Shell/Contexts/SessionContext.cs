@@ -16,39 +16,29 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
     public async Task<IReadOnlyDictionary<string, object>> ExecuteAsync(CancellationToken cancellationToken)
     {
         var result = new ConcurrentDictionary<string, object>();
-        var sessionPlatform = Session.Platform;
-        var sessionSshClient = new SessionClient(Session);
-        
+
         var fields = SelectionSet
             .Select(x => x.Field)
             .ToAsyncEnumerable();
-        
+
         await foreach (var fieldNode in fields.WithCancellation(cancellationToken))
         {
-            var action = ActionsLookupTable.Get(fieldNode.Name).CreateAction(sessionPlatform);
-            var arguments = fieldNode.BuildArgumentsDictionary();
-            var allFields = new Field(fieldNode).Fields;
-            var response = await action
-                .ExecuteCommandAsync(sessionSshClient, arguments,
-                    allFields, cancellationToken);
-            result.TryAdd(fieldNode.Name, response);
+            var sessionSshClient = new SessionClient(Session);
+            if (ActionsLookup.IsNamespace(fieldNode.Name))
+            {
+                var namespaceContext = new NamespaceContext(fieldNode.Name, Session.Platform, sessionSshClient,
+                    fieldNode.SelectionSet!);
+                var namespaceResult = await namespaceContext.ExecuteAsync(cancellationToken);
+                result.TryAdd(fieldNode.Name, namespaceResult);
+                continue;
+            }
+
+            var actionContext = new ActionContext(Session.Platform, sessionSshClient, fieldNode);
+            var actionResult = await actionContext.ExecuteAsync(cancellationToken);
+            result.TryAdd(fieldNode.Name, actionResult);
         }
 
         return result;
-    }
-
-    private class Field : IField
-    {
-        public string Name { get; }
-        public IField[] Fields { get; }
-
-        public Field(FieldNode field)
-        {
-            Name = field.Name;
-            Fields = field.SelectionSet?
-                .Select(x => new Field(x.Field) as IField)
-                .ToArray() ?? [];
-        }
     }
 
     private class SessionClient(ISession session) : IClient
