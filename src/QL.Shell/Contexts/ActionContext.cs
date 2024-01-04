@@ -2,19 +2,30 @@ using QL.Actions;
 using QL.Core;
 using QL.Parser.AST.Nodes;
 using QLShell.Extensions;
+using Serilog;
 
 namespace QLShell.Contexts;
 
-public class ActionContext(Platform platform, IClient client, FieldNode fieldNode)
+public class ActionContext(Platform platform, IClient client, FieldNode fieldNode, string @namespace = "")
 {
     private Platform Platform { get; } = platform;
     private IClient Client { get; } = client;
 
-    public Task<object> ExecuteAsync(CancellationToken cancellationToken)
+    public async Task<object> ExecuteAsync(CancellationToken cancellationToken)
     {
-        var action = ActionsLookup.Get(fieldNode.Name).CreateAction(Platform);
-        var arguments = fieldNode.BuildArgumentsDictionary();
-        var allFields = fieldNode.GetSubFields();
-        return action.ExecuteCommandAsync(Client, arguments, allFields, cancellationToken);
+        try
+        {
+            var action = ActionsLookup.Get(fieldNode.Name, @namespace).CreateAction(Platform);
+            var arguments = fieldNode.BuildArgumentsDictionary();
+            var allFields = fieldNode.GetSubFields();
+            return await action.ExecuteCommandAsync(Client, arguments, allFields, cancellationToken);
+        }
+        catch (Exception ex)
+        {
+            return new Dictionary<string, string>
+            {
+                { "error", ex.Message }
+            };
+        }
     }
 }

@@ -6,9 +6,9 @@ fetch {
                 command
             }
         }
-        currentTime {
-            timezone
-            year
+        listFiles(path: "~") {
+            name
+            size | toGigabytes(format: "#.##")
         }
     }
     remote(host: "ai-machine", user: "rszemplinski") {
