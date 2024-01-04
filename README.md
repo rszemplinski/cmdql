@@ -1,10 +1,10 @@
 <p align="center">
-  <img src='./assets/qlsh.png' height="200">
+  <img src='https://github.com/rszemplinski/qlsh/blob/main/assets/QLSH.png' height="200">
 </p>
 
 ## 📖 Overview
 
-`qlsh` is a revolutionary CLI tool designed for developers, DevOps engineers, and system administrators. This tool blends the power of query language with the flexibility and familiarity of a shell environment, providing an intuitive, efficient, and powerful way to manage and query data across various systems and services.
+`qlsh` is a CLI tool designed for developers, DevOps engineers, and system administrators. This tool blends the power of query language with the flexibility and familiarity of a shell environment, providing an intuitive, efficient, and powerful way to manage and query data across various systems and services.
 
 `qlsh` is built to streamline the process of monitoring, managing, and analyzing data from servers, databases, applications, and other sources, all from the comfort of your command line.
 
@@ -28,11 +28,11 @@
 ```
 fetch {
   local {
-    fileSpace(path: "/var/www") {
+    fileSpace(path: "~/example") {
       size
       path
     }
-    listFiles(path: "/var/www") {
+    listFiles(path: "~/example") {
       name
       size
       permissions
@@ -51,7 +51,7 @@ fetch {
   "localhost": {
     "fileSpace": {
         "size": 69420,
-        "path": "/var/www"
+        "path": "~/example"
     },
     "listFiles": [
       {
