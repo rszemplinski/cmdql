@@ -7,6 +7,9 @@
         <Nullable>enable</Nullable>
         <RootNamespace>QLShell</RootNamespace>
         <LangVersion>12</LangVersion>
+        <AssemblyName>qlsh</AssemblyName>
+        <Title>qlsh</Title>
+        <RepositoryUrl>https://github.com/rszemplinski/qlsh</RepositoryUrl>
     </PropertyGroup>
 
     <ItemGroup>
