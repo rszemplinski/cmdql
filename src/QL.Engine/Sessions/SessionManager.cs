@@ -1,6 +1,6 @@
 using QL.Parser.AST.Nodes;
 
-namespace QLShell.Sessions;
+namespace QL.Engine.Sessions;
 
 public class SessionManager
 {

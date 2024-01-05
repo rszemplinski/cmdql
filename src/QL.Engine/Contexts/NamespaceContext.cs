@@ -2,7 +2,7 @@ using System.Collections.Concurrent;
 using QL.Core;
 using QL.Parser.AST.Nodes;
 
-namespace QLShell.Contexts;
+namespace QL.Engine.Contexts;
 
 public class NamespaceContext(
     string @namespace,

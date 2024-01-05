@@ -1,10 +1,10 @@
 using QL.Actions;
 using QL.Core;
+using QL.Engine.Extensions;
+using QL.Engine.Utils;
 using QL.Parser.AST.Nodes;
-using QLShell.Extensions;
-using QLShell.Utils;
 
-namespace QLShell.Contexts;
+namespace QL.Engine.Contexts;
 
 public class ActionContext(Platform platform, IClient client, FieldNode fieldNode, string @namespace = "")
 {

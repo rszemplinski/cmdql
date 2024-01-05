@@ -4,7 +4,7 @@ using QL.Core.FieldTransforms;
 using QL.FieldTransforms;
 using QL.Parser.AST.Nodes;
 
-namespace QLShell.Extensions;
+namespace QL.Engine.Extensions;
 
 public static class NodeExtensions
 {

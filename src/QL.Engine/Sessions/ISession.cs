@@ -1,6 +1,6 @@
 using QL.Core;
 
-namespace QLShell.Sessions;
+namespace QL.Engine.Sessions;
 
 public interface ISession
 {

@@ -5,7 +5,7 @@ using Serilog;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
-namespace QLShell;
+namespace QL.Engine;
 
 public static class OutputProcessor
 {

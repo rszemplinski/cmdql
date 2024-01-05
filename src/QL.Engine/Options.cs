@@ -1,6 +1,6 @@
 using CommandLine;
 
-namespace QLShell;
+namespace QL.Engine;
 
 public enum OutputFormat
 {

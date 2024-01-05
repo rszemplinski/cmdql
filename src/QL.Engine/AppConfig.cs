@@ -1,4 +1,4 @@
-namespace QLShell;
+namespace QL.Engine;
 
 public class AppConfig
 {

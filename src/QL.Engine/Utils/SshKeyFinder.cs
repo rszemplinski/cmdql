@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace QLShell.Utils;
+namespace QL.Engine.Utils;
 
 public static class SshKeyFinder
 {

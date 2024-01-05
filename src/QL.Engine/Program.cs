@@ -2,11 +2,10 @@
 using CommandLine;
 using Serilog;
 using Serilog.Events;
-using AppContext = QLShell.Contexts.AppContext;
+using AppContext = QL.Engine.Contexts.AppContext;
 using File = System.IO.File;
-using Parser = QL.Parser.Parser;
 
-namespace QLShell;
+namespace QL.Engine;
 
 internal static class Program
 {
@@ -38,7 +37,7 @@ internal static class Program
         Log.Debug("Read input file {0} in {1}ms", inputFile, sw.ElapsedMilliseconds);
 
         sw.Restart();
-        var ast = Parser.ParseQuery(input);
+        var ast = Parser.Parser.ParseQuery(input);
         sw.Stop();
         Log.Debug("Generated AST in {0}ms", sw.ElapsedMilliseconds);
 

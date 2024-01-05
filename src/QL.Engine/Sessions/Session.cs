@@ -4,7 +4,7 @@ using QL.Core;
 using Renci.SshNet;
 using Serilog;
 
-namespace QLShell.Sessions;
+namespace QL.Engine.Sessions;
 
 public class LocalSession(SessionInfo info) : ISession
 {

@@ -1,10 +1,10 @@
 using System.Collections.Concurrent;
 using QL.Actions;
 using QL.Core;
+using QL.Engine.Sessions;
 using QL.Parser.AST.Nodes;
-using QLShell.Sessions;
 
-namespace QLShell.Contexts;
+namespace QL.Engine.Contexts;
 
 public class SessionContext(ISession session, IEnumerable<SelectionNode> selectionSet)
 {

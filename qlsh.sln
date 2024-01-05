@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QL.Shell", "src\QL.Shell\QL.Shell.csproj", "{2358CFC4-BF61-4B0D-B814-C7E974BD20C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QL.Engine", "src\QL.Engine\QL.Engine.csproj", "{2358CFC4-BF61-4B0D-B814-C7E974BD20C0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QL.Parser", "src\QL.Parser\QL.Parser.csproj", "{C519FDD4-FC5B-4512-B305-ED17D3461989}"
 EndProject

@@ -30,8 +30,9 @@ public class DiskSpace : ActionBase<DiskSpaceArguments, List<Disk>>
             disk.BlockSize = blockSize;
             disk.MountPoint = values.Last();
             disk.FileSystem = values[0];
-            disk.Used = ulong.Parse(values[2]);
-            disk.Free = ulong.Parse(values[3]);
+            // Needs to be in bytes
+            disk.Used = ulong.Parse(values[2]) * 1024;
+            disk.Free = ulong.Parse(values[3]) * 1024;
             disks.Add(disk);
         }
 

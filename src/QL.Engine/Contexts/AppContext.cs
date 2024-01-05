@@ -1,11 +1,11 @@
 using System.Collections.Concurrent;
 using System.Diagnostics;
+using QL.Engine.Sessions;
+using QL.Engine.Utils;
 using QL.Parser.AST.Nodes;
-using QLShell.Sessions;
-using QLShell.Utils;
 using Serilog;
 
-namespace QLShell.Contexts;
+namespace QL.Engine.Contexts;
 
 public class AppContext
 {

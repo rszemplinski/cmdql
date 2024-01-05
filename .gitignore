@@ -410,3 +410,5 @@ out
 **/Generated*/
 
 .DS_Store
+
+qodana.yaml

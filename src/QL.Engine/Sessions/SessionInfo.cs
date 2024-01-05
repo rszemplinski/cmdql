@@ -1,4 +1,4 @@
-namespace QLShell.Sessions;
+namespace QL.Engine.Sessions;
 
 public readonly struct SessionInfo
 {

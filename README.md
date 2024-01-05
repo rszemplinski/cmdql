@@ -22,26 +22,37 @@
 
 * **Customizable and Extensible**: Extend `qlsh` with custom plugins, scripts, and integrations, tailoring the tool to fit your specific needs and workflows.
 
+## Installation
+
+Currently, the only way to use `qlsh` is to clone the repository and run the tool from source.
+
+```bash
+git clone git@github.com:rszemplinski/qlsh.git
+```
+
 ## Examples
+
+To try one of the examples, run `dotnet run --project src/QL.Engine -i examples/example.qlsh`.
 
 ### Input:
 ```
 fetch {
-  local {
-    fileSpace(path: "~/example") {
-      size
-      path
+    local {
+        listFiles(path: "~/Pictures") {
+            name
+            size | toMegabytes
+        }
+        currentTime {
+            timezone
+            year
+        }
+        diskSpace {
+            used | toGigabytes
+            free | toGigabytes
+            total
+            fileSystem
+        }
     }
-    listFiles(path: "~/example") {
-      name
-      size
-      permissions
-    }
-    currentTime {
-      year
-      timezone
-    }
-  }
 }
 ```
 
@@ -49,28 +60,43 @@ fetch {
 ```json
 {
   "localhost": {
-    "fileSpace": {
-        "size": 69420,
-        "path": "~/example"
-    },
     "listFiles": [
       {
-        "name": "index.html",
-        "size": 420,
-        "permissions": "rw-r--r--"
+        "size": 0.00390625,
+        "name": "screenshots"
       },
       {
-        "name": "app.js",
-        "size": 69000,
-        "permissions": "rw-r--r--"
+        "size": 0.00390625,
+        "name": "Screenshots"
       }
     ],
     "currentTime": {
-      "year": 2024,
-      "timezone": "MST"
-    }
+      "timezone": "MST",
+      "year": 2024
+    },
+    "diskSpace": [
+      {
+        "fileSystem": "tmpfs",
+        "total": 3355750400,
+        "used": 0.002349853515625,
+        "free": 3.122936248779297
+      },
+      {
+        "fileSystem": "efivarfs",
+        "total": 126976,
+        "used": 5.14984130859375E-05,
+        "free": 6.67572021484375E-05
+      },
+      {
+        "fileSystem": "/dev/nvme1n1p3",
+        "total": 924293296128,
+        "used": 389.6685791015625,
+        "free": 471.14663314819336
+      }
+    ]
   }
 }
+
 ```
 
 ## 🚨 Disclaimer! 🚨
