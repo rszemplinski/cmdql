@@ -24,5 +24,5 @@ public class ListFileArguments
 [Action]
 [Cmd("ls -l ?[recursive]-R ?[showHidden]-A {path}")]
 [Regex(
-    @"^(?:^\.\/(.+):)?\s*(?:^total\s+(\d+))?\s*(?<permissions>[drwx-]+@?)\s+(?<linkCount>\d+)\s+(?<owner>[.\w]+)\s+(?<group>[.\w]+)\s+(?<size>\d+)\s+(?<date>\w+\s+\d{1,2}\s+(?:\d+:\d+|\d{4}))\s+(?<name>.+)$")]
+    @"^(?:^\.\/(.+):)?\s*(?:^total\s+(\d+))?\s*(?<Permissions>[drwx-]+@?)\s+(?<LinkCount>\d+)\s+(?<Owner>[.\w]+)\s+(?<Group>[.\w]+)\s+(?<Size>\d+)\s+(?<Date>\w+\s+\d{1,2}\s+(?:\d+:\d+|\d{4}))\s+(?<Name>.+)$")]
 public class ListFiles : ActionBase<ListFileArguments, List<FileSystemItem>>;

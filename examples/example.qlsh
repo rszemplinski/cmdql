@@ -14,5 +14,16 @@ fetch {
             total
             fileSystem
         }
+        docker {
+            containers {
+                id
+                image
+            }
+            images {
+                repository
+                tag
+                size
+            }
+        }
     }
 }

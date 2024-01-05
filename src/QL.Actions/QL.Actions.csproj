@@ -18,4 +18,9 @@
       </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Standard\Accounts\" />
+      <Folder Include="Standard\OSInfo\" />
+    </ItemGroup>
+
 </Project>

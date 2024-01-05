@@ -1,5 +1,6 @@
 using QL.Actions;
 using QL.Core;
+using QL.Core.Exceptions;
 using QL.Engine.Extensions;
 using QL.Engine.Utils;
 using QL.Parser.AST.Nodes;
@@ -20,7 +21,7 @@ public class ActionContext(Platform platform, IClient client, FieldNode fieldNod
             var arguments = fieldNode.BuildArgumentsDictionary();
             var allFields = fieldNode.GetFields();
             var result = await action.ExecuteCommandAsync(Client, arguments, allFields, cancellationToken);
-            
+
             // TODO: A way to optimize this would be by only iterating over the fields that have transformers instead of all fields
             var fieldsWithTransformers = fieldNode.GetFieldsWithTransformers();
             var transformedResult = ObjectModifier.ModifyObject(result, (propName, value) =>
@@ -33,16 +34,27 @@ public class ActionContext(Platform platform, IClient client, FieldNode fieldNod
                         propValue = transformer.CreateTransformer().Apply(value, args);
                     }
                 }
+
                 return propValue;
             });
-            
+
             return transformedResult;
+        }
+        catch (ActionException ex)
+        {
+            return new Dictionary<string, object>
+            {
+                { "error", ex.Message },
+                { "exitCode", ex.ExitCode }
+            };
         }
         catch (Exception ex)
         {
-            return new Dictionary<string, string>
+            return new Dictionary<string, object>
             {
-                { "error", ex.Message }
+                { "error", ex.Message },
+                { "stackTrace", ex.StackTrace ?? "" },
+                { "exitCode", 1 }
             };
         }
     }

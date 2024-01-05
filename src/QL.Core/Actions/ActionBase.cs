@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using QL.Core.Attributes;
+using QL.Core.Exceptions;
 using Serilog;
 
 namespace QL.Core.Actions;
@@ -69,8 +70,7 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
     {
         if (commandResults.ExitCode != 0)
         {
-            throw new InvalidOperationException(
-                $"Command exited with code {commandResults.ExitCode}.\nError: {commandResults.Error}");
+            throw new ActionException(commandResults.Error, commandResults.ExitCode);
         }
     }
 
