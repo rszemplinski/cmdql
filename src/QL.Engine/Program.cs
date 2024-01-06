@@ -11,8 +11,13 @@ internal static class Program
 {
     private static async Task Main(string[] args)
     {
-        await CommandLine.Parser.Default
-            .ParseArguments<Options>(args)
+        var parser = new CommandLine.Parser(config =>
+        {
+            config.AllowMultiInstance = true;
+            config.CaseInsensitiveEnumValues = true;
+        });
+        
+        await parser.ParseArguments<Options>(args)
             .WithParsedAsync(Run);
     }
 
@@ -46,13 +51,10 @@ internal static class Program
 
         var appConfig = new AppConfig
         {
-            InputFile = inputFile,
-            Verbose = options.Verbose,
             Debug = options.Debug,
-            OutputFormat = options.ParsedFormat,
+            OutputFormat = options.Format,
             MaxConcurrency = concurrencyCount,
             Sync = options.Sync,
-            OutputFile = options.OutputFile,
         };
         var output = await
             new AppContext(ast, appConfig).ExecuteAsync(cts.Token);
@@ -63,12 +65,19 @@ internal static class Program
         Log.Debug("Finished in {0}ms", programSw.ElapsedMilliseconds);
     }
 
-    private static void ConfigureLogging(bool verbose)
+    private static void ConfigureLogging(int verboseCount)
     {
+        var logLevel = verboseCount switch
+        {
+            1 => LogEventLevel.Warning,
+            2 => LogEventLevel.Information,
+            3 => LogEventLevel.Debug,
+            4 => LogEventLevel.Verbose,
+            _ => LogEventLevel.Error,
+        };
+
         Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Is(verbose
-                ? LogEventLevel.Verbose
-                : LogEventLevel.Information)
+            .MinimumLevel.Is(logLevel)
             .WriteTo.Console()
             .CreateLogger();
     }

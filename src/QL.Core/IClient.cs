@@ -23,7 +23,8 @@ public interface IClient
     /**
      * Execute a command on the client.
      */
-    public Task<ICommandOutput> ExecuteCommandAsync(string command, CancellationToken cancellationToken = default);
+    public Task<ICommandOutput> ExecuteCommandAsync(string command,
+        CancellationToken cancellationToken = default);
 
     /**
      * Upload a file to the client.
@@ -36,10 +37,10 @@ public interface IClient
      */
     public Task<ICommandOutput> DownloadFileAsync(string remotePath, string localPath,
         CancellationToken cancellationToken = default);
-    
+
     /**
      * Check if tool is installed on the client.
      */
-    public Task<bool> IsToolInstalledAsync(string toolName, CancellationToken cancellationToken = default);
-
+    public Task<bool> IsToolInstalledAsync(string toolName,
+        CancellationToken cancellationToken = default);
 }

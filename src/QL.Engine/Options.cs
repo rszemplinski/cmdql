@@ -22,9 +22,10 @@ public class Options
     [Option(
         'v',
         "verbose",
-        HelpText = "Show verbose output?"
+        HelpText = "Show verbose output?",
+        FlagCounter = true
     )]
-    public bool Verbose { get; set; }
+    public int Verbose { get; set; }
     
     [Option(
         'd',
@@ -37,12 +38,10 @@ public class Options
     [Option(
         'f',
         "format",
-        Default = "json",
+        Default = OutputFormat.Json,
         HelpText = "Which format to use? (json, yml, table)"
     )]
-    public string Format { get; set; }
-    
-    public OutputFormat ParsedFormat => ParseOutputFormat(Format);
+    public OutputFormat Format { get; set; }
     
     [Option(
         'o',
@@ -64,14 +63,4 @@ public class Options
         HelpText = "Run synchronously?"
     )]
     public bool Sync { get; set; }
-    
-    private static OutputFormat ParseOutputFormat(string format)
-    {
-        if (Enum.TryParse<OutputFormat>(format, true, out var result))
-        {
-            return result;
-        }
-
-        throw new ArgumentException("Invalid format specified.");
-    }
 }
