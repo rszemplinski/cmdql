@@ -1,5 +1,9 @@
 using System.Collections.Concurrent;
+using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Text.Json;
+using QL.Core.Actions;
+using QL.Engine.Fields;
 using QL.Engine.Sessions;
 using QL.Engine.Utils;
 using QL.Parser.AST.Nodes;
@@ -20,7 +24,7 @@ public class AppContext
         Sessions = BuildSessions();
     }
 
-    public async Task<IReadOnlyDictionary<string, object>> ExecuteAsync(CancellationToken cancellationToken)
+    public async Task<object> ExecuteAsync(CancellationToken cancellationToken)
     {
         var result = new ConcurrentDictionary<string, object>();
 
@@ -48,9 +52,23 @@ public class AppContext
         sw.Stop();
         Log.Debug("Executed all sessions in {0}ms", sw.ElapsedMilliseconds);
         
-        // TODO: Reorder the result dictionary to match the order of the fields in the query
+        sw.Restart();
+        var fields = GetOrderedFields();
+        var orderedResult = FieldProcessor.ProcessFields(fields, result);
+        sw.Stop();
+        Log.Debug("Processed fields in {0}ms", sw.ElapsedMilliseconds);
 
-        return result;
+        return orderedResult;
+    }
+
+    private IEnumerable<IField> GetOrderedFields()
+    {
+        var fields = new List<IField>();
+        foreach (var (session, contextBlock) in Sessions)
+        {
+            fields.Add(new Field(session.Info.Alias, contextBlock.SelectionSet));
+        }
+        return fields;
     }
 
     private List<(ISession, ContextBlockNode)> BuildSessions()

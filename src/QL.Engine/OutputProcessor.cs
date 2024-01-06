@@ -10,10 +10,9 @@ namespace QL.Engine;
 public static class OutputProcessor
 {
     public static void Process(
-        IReadOnlyDictionary<string, object> output, 
+        object output, 
         AppConfig appConfig)
     {
-
         var results = appConfig.OutputFormat switch
         {
             OutputFormat.Json => ProcessJson(output),
@@ -36,7 +35,7 @@ public static class OutputProcessor
         }
     }
 
-    private static string ProcessJson(IReadOnlyDictionary<string, object> output)
+    private static string ProcessJson(object output)
     {
         var json = JsonSerializer.Serialize(output, new JsonSerializerOptions
         {
@@ -52,12 +51,12 @@ public static class OutputProcessor
         return json;
     }
 
-    private static string ProcessTable(IReadOnlyDictionary<string, object> output)
+    private static string ProcessTable(object output)
     {
         throw new NotImplementedException();
     }
 
-    private static string ProcessYml(IReadOnlyDictionary<string, object> output)
+    private static string ProcessYml(object output)
     {
         var yaml = new SerializerBuilder()
             .WithNamingConvention(CamelCaseNamingConvention.Instance)

@@ -1,0 +1,61 @@
+using System.Collections;
+using System.Collections.Specialized;
+using QL.Core.Actions;
+
+namespace QL.Engine.Fields;
+
+public abstract class FieldProcessor
+{
+    public static OrderedDictionary ProcessFields(IEnumerable<IField> fields, IDictionary originalDict)
+    {
+        var newDict = new OrderedDictionary();
+
+        // Add 'error' and 'exitCode' fields if they exist in the original dictionary
+        if (originalDict.Contains("error"))
+            newDict.Add("error", originalDict["error"]);
+        if (originalDict.Contains("exitCode"))
+            newDict.Add("exitCode", originalDict["exitCode"]);
+
+        foreach (var field in fields)
+        {
+            if (!originalDict.Contains(field.Name)) continue;
+            var value = originalDict[field.Name];
+
+            switch (value)
+            {
+                // Check if value is a dictionary and process it recursively
+                case IDictionary subDict:
+                {
+                    var processedSubDict = ProcessFields(field.Fields, subDict);
+                    newDict.Add(field.Name, processedSubDict);
+                    break;
+                }
+                // Check if value is a list and process each item if it's a dictionary
+                case IList list:
+                {
+                    var processedList = new List<object>();
+                    foreach (var item in list)
+                    {
+                        if (item is IDictionary listItemDict)
+                        {
+                            var processedListItemDict = ProcessFields(field.Fields, listItemDict);
+                            processedList.Add(processedListItemDict);
+                        }
+                        else
+                        {
+                            processedList.Add(item);
+                        }
+                    }
+
+                    newDict.Add(field.Name, processedList);
+                    break;
+                }
+                default:
+                    newDict.Add(field.Name, value);
+                    break;
+            }
+        }
+
+        return newDict;
+    }
+}

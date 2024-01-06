@@ -1,7 +1,7 @@
-using QL.Core;
 using QL.Core.Actions;
 using QL.Core.Extensions;
 using QL.Core.FieldTransforms;
+using QL.Engine.Fields;
 using QL.FieldTransforms;
 using QL.Parser.AST.Nodes;
 
@@ -40,19 +40,5 @@ public static class NodeExtensions
                     .ToArray()
             ) ?? new Dictionary<string, (FieldTransformMetadata transformer, IReadOnlyDictionary<string, object> arguments)
             []>();
-    }
-
-    private class Field : IField
-    {
-        public string Name { get; }
-        public IField[] Fields { get; }
-
-        public Field(FieldNode field)
-        {
-            Name = field.Name;
-            Fields = field.SelectionSet?
-                .Select(x => new Field(x.Field) as IField)
-                .ToArray() ?? [];
-        }
     }
 }

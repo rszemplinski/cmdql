@@ -56,12 +56,11 @@ internal static class Program
             MaxConcurrency = concurrencyCount,
             Sync = options.Sync,
         };
+        
         var output = await
             new AppContext(ast, appConfig).ExecuteAsync(cts.Token);
 
-        sw.Restart();
         OutputProcessor.Process(output, appConfig);
-        sw.Stop();
         Log.Debug("Finished in {0}ms", programSw.ElapsedMilliseconds);
     }
 
