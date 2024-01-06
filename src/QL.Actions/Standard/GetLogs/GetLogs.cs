@@ -181,15 +181,20 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
     private static string BuildMacCommand()
     {
         const string logDir = "/var/log";
+        var commandBuilder = new CommandBuilder();
 
-        const string command = $"for file in {logDir}/system.log*; do " +
-                               $"if [[ $file =~ \\.gz$ ]]; then " +
-                               $"gunzip -c \"$file\"; " +
-                               $@"elif [[ $file =~ system\.log\.[0-9]+$ ]]; then " +
-                               $"cat \"$file\"; " +
-                               $"fi; " +
-                               "done";
+        commandBuilder.ForLoop("file", $"{logDir}/system.log*");
 
-        return command;
+        commandBuilder.If("[[ $file =~ \\.gz$ ]]")
+            .AddCommand("gunzip -c").AddArgument("$file").EndStatement()
+            .Else()
+            .If("[[ $file =~ system.log.[0-9]+$ ]]")
+            .AddCommand("cat").AddArgument("$file").EndStatement()
+            .EndIf()
+            .EndIf();
+
+        commandBuilder.EndFor();
+        
+        return commandBuilder.Build();
     }
 }

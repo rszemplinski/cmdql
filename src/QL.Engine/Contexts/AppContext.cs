@@ -10,27 +10,23 @@ namespace QL.Engine.Contexts;
 public class AppContext
 {
     private ActionBlockNode QueryRoot { get; }
-    private SessionManager SessionManager { get; }
     private AppConfig AppConfig { get; }
+    private List<(ISession, ContextBlockNode)> Sessions { get; }
 
     public AppContext(ActionBlockNode root, AppConfig config)
     {
         QueryRoot = root;
         AppConfig = config;
-        SessionManager = new SessionManager();
-        BuildSessions();
+        Sessions = BuildSessions();
     }
 
     public async Task<IReadOnlyDictionary<string, object>> ExecuteAsync(CancellationToken cancellationToken)
     {
         var result = new ConcurrentDictionary<string, object>();
-        var sessions = SessionManager.Sessions
-            .Select(x => x.Value)
-            .ToList();
 
         var sw = Stopwatch.StartNew();
         await Parallel.ForEachAsync(
-            sessions,
+            Sessions,
             new ParallelOptions
             {
                 CancellationToken = cancellationToken,
@@ -57,13 +53,15 @@ public class AppContext
         return result;
     }
 
-    private void BuildSessions()
+    private List<(ISession, ContextBlockNode)> BuildSessions()
     {
+        var sessions = new List<(ISession, ContextBlockNode)>();
         foreach (var contextBlock in QueryRoot.ContextBlocks)
         {
             var sessionInfo = ExtractSessionInfo(contextBlock);
-            SessionManager.AddSession(sessionInfo, contextBlock);
+            sessions.Add((sessionInfo, contextBlock));
         }
+        return sessions;
     }
 
     private static ISession ExtractSessionInfo(ContextBlockNode node)

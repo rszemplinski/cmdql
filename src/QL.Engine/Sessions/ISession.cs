@@ -15,10 +15,16 @@ public interface ISession
     Task<ICommandOutput> ExecuteCommandAsync(string command,
         CancellationToken cancellationToken = default);
 
-    Task<ICommandOutput> UploadFileAsync(string localPath, string remotePath,
+    Task<bool> UploadFileAsync(string localPath, string remotePath,
+        CancellationToken cancellationToken = default);
+    
+    Task<bool> UploadFileAsync(FileStream fileStream, string remotePath,
         CancellationToken cancellationToken = default);
 
-    Task<ICommandOutput> DownloadFileAsync(string remotePath, string localPath,
+    Task<FileStream?> DownloadFileAsync(string remotePath,
+        CancellationToken cancellationToken = default);
+    
+    Task<FileStream?> DownloadFileAsync(string remotePath, string localPath,
         CancellationToken cancellationToken = default);
 
     Task<bool> IsToolInstalledAsync(string toolName, CancellationToken cancellationToken = default);

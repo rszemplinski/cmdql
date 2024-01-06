@@ -1,5 +1,6 @@
 using QL.Core;
 using QL.Core.Actions;
+using QL.Core.Extensions;
 using QL.Core.FieldTransforms;
 using QL.FieldTransforms;
 using QL.Parser.AST.Nodes;

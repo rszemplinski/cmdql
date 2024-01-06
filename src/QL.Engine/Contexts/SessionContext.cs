@@ -19,7 +19,7 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
             .Select(x => x.Field)
             .ToList();
 
-        var sessionSshClient = new SessionClient(Session);
+        var sessionSshClient = new Client(Session);
         var executionTasks = fields.Select(async fieldNode =>
         {
             if (ActionsLookup.IsNamespace(fieldNode.Name))
@@ -39,37 +39,5 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
         await Task.WhenAll(executionTasks);
 
         return result;
-    }
-
-    private class SessionClient(ISession session) : IClient
-    {
-        private ISession Session { get; } = session;
-
-        public Task<ICommandOutput> ExecuteCommandAsync(string command, CancellationToken cancellationToken)
-        {
-            return Session.ExecuteCommandAsync(command, cancellationToken);
-        }
-
-        public Task<ICommandOutput> UploadFileAsync(string localPath, string remotePath,
-            CancellationToken cancellationToken = default)
-        {
-            return Session.UploadFileAsync(localPath, remotePath, cancellationToken);
-        }
-
-        public Task<ICommandOutput> DownloadFileAsync(string remotePath, string localPath,
-            CancellationToken cancellationToken = default)
-        {
-            return Session.DownloadFileAsync(remotePath, localPath, cancellationToken);
-        }
-        
-        public Task<bool> IsToolInstalledAsync(string toolName, CancellationToken cancellationToken = default)
-        {
-            return Session.IsToolInstalledAsync(toolName, cancellationToken);
-        }
-
-        public override string ToString()
-        {
-            return Session.ToString()!;
-        }
     }
 }

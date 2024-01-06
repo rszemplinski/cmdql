@@ -1,6 +1,6 @@
-namespace QL.Core;
+namespace QL.Core.Extensions;
 
-public static class Utils
+public static class StringExtensions
 {
     public static string ToCamelCase(this string str)
     {
