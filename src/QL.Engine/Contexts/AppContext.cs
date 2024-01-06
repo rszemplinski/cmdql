@@ -1,8 +1,5 @@
 using System.Collections.Concurrent;
-using System.Collections.Specialized;
 using System.Diagnostics;
-using System.Text.Json;
-using QL.Core.Actions;
 using QL.Engine.Fields;
 using QL.Engine.Sessions;
 using QL.Engine.Utils;
@@ -61,9 +58,9 @@ public class AppContext
         return orderedResult;
     }
 
-    private IEnumerable<IField> GetOrderedFields()
+    private IEnumerable<Field> GetOrderedFields()
     {
-        var fields = new List<IField>();
+        var fields = new List<Field>();
         foreach (var (session, contextBlock) in Sessions)
         {
             fields.Add(new Field(session.Info.Alias, contextBlock.SelectionSet));

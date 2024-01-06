@@ -1,12 +1,11 @@
 using System.Collections;
 using System.Collections.Specialized;
-using QL.Core.Actions;
 
 namespace QL.Engine.Fields;
 
 public abstract class FieldProcessor
 {
-    public static OrderedDictionary ProcessFields(IEnumerable<IField> fields, IDictionary originalDict)
+    public static OrderedDictionary ProcessFields(IEnumerable<Field> fields, IDictionary originalDict)
     {
         var newDict = new OrderedDictionary();
 
@@ -26,7 +25,7 @@ public abstract class FieldProcessor
                 // Check if value is a dictionary and process it recursively
                 case IDictionary subDict:
                 {
-                    var processedSubDict = ProcessFields(field.Fields, subDict);
+                    var processedSubDict = ProcessFields(field.Fields.Cast<Field>(), subDict);
                     newDict.Add(field.Name, processedSubDict);
                     break;
                 }
@@ -38,7 +37,7 @@ public abstract class FieldProcessor
                     {
                         if (item is IDictionary listItemDict)
                         {
-                            var processedListItemDict = ProcessFields(field.Fields, listItemDict);
+                            var processedListItemDict = ProcessFields(field.Fields.Cast<Field>(), listItemDict);
                             processedList.Add(processedListItemDict);
                         }
                         else
@@ -51,7 +50,10 @@ public abstract class FieldProcessor
                     break;
                 }
                 default:
-                    newDict.Add(field.Name, value);
+                    var transformedValue = field.Transformers
+                        .Aggregate(value,
+                            (current, transformer) => transformer.fieldTransform.Apply(current!, transformer.args));
+                    newDict.Add(field.Name, transformedValue);
                     break;
             }
         }
