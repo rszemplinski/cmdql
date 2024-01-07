@@ -15,6 +15,8 @@ internal static class Program
         {
             config.AllowMultiInstance = true;
             config.CaseInsensitiveEnumValues = true;
+            config.AutoHelp = true;
+            config.HelpWriter = Console.Out;
         });
         
         await parser.ParseArguments<Options>(args)
