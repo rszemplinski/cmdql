@@ -74,11 +74,10 @@ internal static class Converter
         return instance as T;
     }
     
-    internal static TReturnType ParseResults<TReturnType>(string commandResults, Regex regex)
-        where TReturnType : class
+    internal static TReturnType? ParseResults<TReturnType>(string commandResults, Regex regex)
     {
         var instanceType = typeof(TReturnType);
-
+        
         if (!instanceType.IsGenericType || instanceType.GetGenericTypeDefinition() != typeof(List<>))
         {
             var match = regex.Match(commandResults);
@@ -88,16 +87,15 @@ internal static class Converter
             }
 
             var instance = ProcessSingleReturnType(match, instanceType);
-            return (instance as TReturnType)!;
+            return (TReturnType)instance;
         }
 
         var singleInstanceType = instanceType.GetGenericArguments()[0];
         return ProcessListReturnType<TReturnType>(regex, commandResults, singleInstanceType);
     }
 
-    private static TReturnType ProcessListReturnType<TReturnType>(Regex regex, string commandResults,
+    private static TReturnType? ProcessListReturnType<TReturnType>(Regex regex, string commandResults,
         Type singleInstanceType)
-        where TReturnType : class
     {
         var listType = typeof(List<>);
         var constructedListType = listType.MakeGenericType(singleInstanceType);
@@ -136,13 +134,16 @@ internal static class Converter
             }
         }
 
-        return (instance as TReturnType)!;
+        return (TReturnType) instance!;
     }
 
     private static object ProcessSingleReturnType(Match match, Type instanceType)
     {
         var groupNameDictionary = match.Groups.Keys.ToDictionary(x => x.ToLowerInvariant(), x => x);
-
+        
+        if (instanceType == typeof(string))
+            return match.Value;
+        
         var instance = Activator.CreateInstance(instanceType);
         var instanceProperties = instanceType.GetProperties();
 

@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Specialized;
+using QL.Engine.Extensions;
 
 namespace QL.Engine.Fields;
 
-public abstract class FieldProcessor
+public static class FieldProcessor
 {
     public static OrderedDictionary ProcessFields(IEnumerable<Field> fields, IDictionary originalDict)
     {
@@ -15,49 +16,61 @@ public abstract class FieldProcessor
         if (originalDict.Contains("exitCode"))
             newDict.Add("exitCode", originalDict["exitCode"]);
 
+        var allKeys = originalDict.Keys.Cast<string>().ToList();
+
         foreach (var field in fields)
         {
-            if (!originalDict.Contains(field.Name)) continue;
-            var value = originalDict[field.Name];
+            // Check if the field name exists in the original dictionary (case insensitive)
+            var key = allKeys.FirstOrDefault(x => x.Equals(field.Name, StringComparison.OrdinalIgnoreCase));
+            if (key == null)
+                continue;
+
+            var value = originalDict[key];
 
             switch (value)
             {
-                // Check if value is a dictionary and process it recursively
-                case IDictionary subDict:
-                {
+                case IDictionary subDict when field.Fields.Any():
                     var processedSubDict = ProcessFields(field.Fields.Cast<Field>(), subDict);
                     newDict.Add(field.Name, processedSubDict);
                     break;
-                }
-                // Check if value is a list and process each item if it's a dictionary
                 case IList list:
-                {
                     var processedList = new List<object>();
                     foreach (var item in list)
                     {
-                        if (item is IDictionary listItemDict)
-                        {
-                            var subFields = field.Fields.Any()
-                                ? field.Fields.Cast<Field>()
-                                : listItemDict.Keys.Cast<string>().Select(x => new Field(x));
-                            var processedListItemDict = ProcessFields(subFields, listItemDict);
-                            processedList.Add(processedListItemDict);
-                        }
-                        else
-                        {
-                            processedList.Add(item);
-                        }
+                        var listItemDict = item.ToDictionary();
+                        var subFields = field.Fields.Any()
+                            ? field.Fields.Cast<Field>()
+                            : listItemDict.Keys.Cast<string>().Select(x => new Field(x));
+                        var processedListItemDict = ProcessFields(subFields, listItemDict);
+                        processedList.Add(processedListItemDict);
                     }
 
                     newDict.Add(field.Name, processedList);
                     break;
-                }
                 default:
-                    var transformedValue = field.Transformers
-                        .Aggregate(value,
+                {
+                    if (value == null)
+                    {
+                        newDict.Add(field.Name, value);
+                        break;
+                    }
+
+                    // Convert to dictionary if the value is not a primitive type
+                    if (!value.GetType().IsPrimitive && value is not string && !value.GetType().IsEnum)
+                    {
+                        var valueDict = value.ToDictionary();
+                        var newSubDict = ProcessFields(field.Fields.Cast<Field>(), valueDict);
+                        newDict.Add(field.Name, newSubDict);
+                    }
+                    else
+                    {
+                        value = field.Transformers.Aggregate(value,
                             (current, transformer) => transformer.fieldTransform.Apply(current!, transformer.args));
-                    newDict.Add(field.Name, transformedValue);
+                        newDict.Add(field.Name, value);
+                    }
+
                     break;
+                }
             }
         }
 

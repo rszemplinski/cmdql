@@ -15,9 +15,9 @@ public class NamespaceContext(
     private IClient Client { get; } = client;
     private IEnumerable<SelectionNode> SelectionSet { get; } = selectionSet;
 
-    public async Task<IReadOnlyDictionary<string, object>> ExecuteAsync(CancellationToken cancellationToken)
+    public async Task<IReadOnlyDictionary<string, object?>> ExecuteAsync(CancellationToken cancellationToken)
     {
-        var result = new ConcurrentDictionary<string, object>();
+        var result = new ConcurrentDictionary<string, object?>();
 
         var fields = SelectionSet
             .Select(x => x.Field)

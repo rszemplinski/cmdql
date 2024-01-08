@@ -12,7 +12,7 @@ public class ActionContext(Platform platform, IClient client, FieldNode fieldNod
     private IClient Client { get; } = client;
     private string Namespace { get; } = @namespace;
 
-    public async Task<object> ExecuteAsync(CancellationToken cancellationToken)
+    public async Task<object?> ExecuteAsync(CancellationToken cancellationToken)
     {
         try
         {

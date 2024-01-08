@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Diagnostics;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -11,7 +10,6 @@ namespace QL.Core.Actions;
 
 public abstract partial class ActionBase<TArgs, TReturnType> : IAction
     where TArgs : class
-    where TReturnType : class
 {
     protected Platform Platform { get; private set; }
 
@@ -27,7 +25,7 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
         return _arguments;
     }
 
-    public async Task<object> ExecuteCommandAsync(IClient client, IReadOnlyDictionary<string, object> arguments,
+    public async Task<object?> ExecuteCommandAsync(IClient client, IReadOnlyDictionary<string, object> arguments,
         IReadOnlyCollection<IField> fields,
         CancellationToken cancellationToken = default)
     {
@@ -50,12 +48,12 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
         await CleanupAsync(client, cancellationToken);
 
         // Parse
-        var parsedResults = _ParseCommandResults(executeTask, fields);
+        var parsedResults = ParseCommandResults(executeTask);
         
         sw.Stop();
         Log.Debug("[{0}] => Executed command: `{1}`. Completed in {2}ms", client.ToString(), cmd, sw.ElapsedMilliseconds);
         
-        return parsedResults;
+        return parsedResults!;
     }
 
     protected virtual Task<ICommandOutput> ExecuteAsync(
@@ -150,32 +148,7 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
         return depsAttribute is null ? Array.Empty<string>() : depsAttribute.Deps;
     }
 
-    private object _ParseCommandResults(ICommandOutput commandResults, IReadOnlyCollection<IField> fields)
-    {
-        var parsedResults = ParseCommandResults(commandResults);
-        
-        var instanceType = typeof(TReturnType);
-        if (!instanceType.IsGenericType || instanceType.GetGenericTypeDefinition() != typeof(List<>))
-        {
-            return ConvertInstanceToDictionary(parsedResults, fields);
-        }
-
-        if (parsedResults is not IEnumerable enumerable)
-        {
-            throw new InvalidOperationException($"Could not convert {typeof(TReturnType).FullName} to IEnumerable.");
-        }
-
-        var results = new List<IReadOnlyDictionary<string, object?>>();
-        foreach (var item in enumerable)
-        {
-            var instanceDictionary = ConvertInstanceToDictionary(item, fields);
-            results.Add(instanceDictionary);
-        }
-
-        return results;
-    }
-
-    protected virtual TReturnType ParseCommandResults(ICommandOutput commandResults)
+    protected virtual TReturnType? ParseCommandResults(ICommandOutput commandResults)
     {
         var parsedResults = Converter.ParseResults<TReturnType>(commandResults.Result, GetRegex());
         if (parsedResults is null)
@@ -184,64 +157,6 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
         }
 
         return parsedResults;
-    }
-
-    private static IReadOnlyDictionary<string, object?> ConvertInstanceToDictionary(object instance,
-        IReadOnlyCollection<IField> fields)
-    {
-        var instanceDictionary = new Dictionary<string, object?>();
-
-        var instanceType = instance.GetType();
-        var selectedFields = fields.Any()
-            ? fields
-            : instanceType.GetProperties().Select(x => new Field(x) as IField).ToArray();
-
-        // TODO: Only iterate over the fields passed in instead of all fields
-        foreach (var property in instanceType.GetProperties())
-        {
-            var field = selectedFields
-                .FirstOrDefault(x => x.Name.Equals(property.Name, StringComparison.OrdinalIgnoreCase));
-            if (field is null)
-                continue;
-
-            if (property.PropertyType.IsGenericType &&
-                property.PropertyType.GetGenericTypeDefinition() == typeof(List<>))
-            {
-                if (property.GetValue(instance) is not IEnumerable list)
-                    continue;
-
-                var listType = property.PropertyType.GetGenericArguments()[0];
-                if (listType.IsPrimitive || listType == typeof(string) || listType.IsValueType)
-                {
-                    instanceDictionary.Add(field.Name, list);
-                    continue;
-                }
-
-                var listDictionary = new List<IReadOnlyDictionary<string, object?>>();
-                foreach (var item in list)
-                {
-                    var itemDictionary = ConvertInstanceToDictionary(item, field.Fields);
-                    listDictionary.Add(itemDictionary);
-                }
-
-                instanceDictionary.Add(field.Name, listDictionary);
-                continue;
-            }
-
-            var propertyValue = property.GetValue(instance);
-            if (property.PropertyType.IsClass && property.PropertyType != typeof(string))
-            {
-                if (propertyValue is not null)
-                {
-                    instanceDictionary.Add(field.Name, ConvertInstanceToDictionary(propertyValue, field.Fields));
-                }
-                continue;
-            }
-
-            instanceDictionary.Add(field.Name, propertyValue);
-        }
-
-        return instanceDictionary;
     }
     
     protected virtual Task SetupAsync(IClient client, CancellationToken cancellationToken = default)

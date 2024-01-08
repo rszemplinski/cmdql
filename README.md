@@ -47,10 +47,10 @@ fetch {
             year
         }
         diskSpace {
+            fileSystem
+            total
             used | toGigabytes
             free | toGigabytes
-            total
-            fileSystem
         }
     }
 }

@@ -414,3 +414,4 @@ out
 qodana.yaml
 
 !src/QL.Actions/Standard/Logs/
+examples/custom.qlsh

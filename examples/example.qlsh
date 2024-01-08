@@ -14,21 +14,5 @@ fetch {
             total
             fileSystem
         }
-        logs(startDate: "2023-12-25", endDate: "2023-12-31", top: 50) {
-            message
-            timestamp
-        }
-        docker {
-            containers {
-                id
-                image
-            }
-            images {
-                repository
-                tag
-                size
-            }
-            contexts
-        }
     }
 }

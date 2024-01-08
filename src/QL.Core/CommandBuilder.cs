@@ -7,6 +7,9 @@ public class CommandBuilder
 {
     private readonly StringBuilder _scriptBuilder = new();
     private readonly List<string> _currentCommand = [];
+    private bool _isConcatenatingCommands = false;
+    private bool _isInForLoop = false;
+    private bool _isInIfElseBlock = false;
 
     public CommandBuilder StartBlock(string blockStart)
     {
@@ -17,7 +20,12 @@ public class CommandBuilder
 
     public CommandBuilder EndBlock(string blockEnd)
     {
-        FlushCurrentCommand();
+        // Ensure there is a newline before ending the block
+        if (_currentCommand.Count > 0)
+        {
+            _scriptBuilder.AppendLine(string.Join(" ", _currentCommand) + ";");
+            _currentCommand.Clear();
+        }
         _scriptBuilder.AppendLine(blockEnd);
         return this;
     }
@@ -26,6 +34,18 @@ public class CommandBuilder
     {
         FlushCurrentCommand();
         _currentCommand.Add(command);
+        return this;
+    }
+    
+    public CommandBuilder AddConcatenatedCommand(string command)
+    {
+        if (_isConcatenatingCommands)
+        {
+            _currentCommand.Add("&&");
+        }
+
+        _currentCommand.Add(command);
+        _isConcatenatingCommands = true;
         return this;
     }
 
@@ -44,6 +64,7 @@ public class CommandBuilder
 
     public CommandBuilder If(string condition)
     {
+        _isInIfElseBlock = true; // Set the flag when starting an if block
         FlushCurrentCommand();
         _scriptBuilder.AppendLine($"if {condition}; then");
         return this;
@@ -55,21 +76,32 @@ public class CommandBuilder
         _scriptBuilder.AppendLine("else");
         return this;
     }
+    
+    public CommandBuilder Elif(string condition)
+    {
+        // Ensure the current command is flushed before starting the elif block
+        FlushCurrentCommand();
+        _scriptBuilder.AppendLine($"elif {condition}; then");
+        return this;
+    }
 
     public CommandBuilder EndIf()
     {
-        FlushCurrentCommand();
+        FlushCurrentCommand(true); // Flush with a forced newline
         _scriptBuilder.AppendLine("fi;");
+        _isInIfElseBlock = false; // Reset the flag when ending an if block
         return this;
     }
 
     public CommandBuilder ForLoop(string variable, string range)
     {
+        _isInForLoop = true;
         return StartBlock($"for {variable} in {range}; do");
     }
 
     public CommandBuilder EndFor()
     {
+        _isInForLoop = false;
         return EndBlock("done");
     }
 
@@ -93,10 +125,29 @@ public class CommandBuilder
         return this;
     }
 
-    private void FlushCurrentCommand()
+    private void FlushCurrentCommand(bool forceNewLine = false)
     {
         if (_currentCommand.Count <= 0) return;
-        _scriptBuilder.AppendLine(string.Join(" ", _currentCommand));
+
+        var command = string.Join(" ", _currentCommand);
+
+        if (_isConcatenatingCommands)
+        {
+            _scriptBuilder.Append(command);
+            _isConcatenatingCommands = false;
+        }
+        else
+        {
+            if (_isInIfElseBlock || _isInForLoop || forceNewLine)
+            {
+                _scriptBuilder.AppendLine(command + ";");
+            }
+            else
+            {
+                _scriptBuilder.Append(command);
+            }
+        }
+
         _currentCommand.Clear();
     }
     

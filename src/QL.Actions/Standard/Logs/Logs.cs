@@ -60,13 +60,7 @@ public class Logs : ActionBase<LogsArguments, List<LogEntry>>
             _ => throw new PlatformNotSupportedException()
         };
     }
-
-    /**
-     * Example line from `journalctl`:
-     * Dec 27 10:17:24 pop-os /usr/libexec/gdm-x-session[6513]: (II) AMDGPU(0): Modeline "800x600"x0.0   40.00  800 840 968 1056  600 601 605 628 +hsync +vsync (37.9 kHz e)
-     * Dec 30 23:48:30 pop-os systemd[1]: Finished Message of the Day.
-     * Dec 30 23:48:30 pop-os systemd[1]: motd-news.service: Succeeded.
-     */
+    
     protected override List<LogEntry> ParseCommandResults(ICommandOutput commandResults)
     {
         return Platform switch
@@ -159,23 +153,25 @@ public class Logs : ActionBase<LogsArguments, List<LogEntry>>
 
     private static string BuildLinuxCommand(LogsArguments arguments)
     {
-        var command = "journalctl --reverse";
+        var builder = new CommandBuilder();
+        builder.AddCommand("journalctl --reverse");
+
         if (arguments.StartDate != default)
         {
-            command += $" --since \"{arguments.StartDate:yyyy-MM-dd}\"";
+            builder.AddArgument($"--since \"{arguments.StartDate:yyyy-MM-dd}\"");
         }
 
         if (arguments.EndDate != default)
         {
-            command += $" --until \"{arguments.EndDate:yyyy-MM-dd}\"";
+            builder.AddArgument($"--until \"{arguments.EndDate:yyyy-MM-dd}\"");
         }
 
         if (arguments.Top > 0)
         {
-            command += $" --lines {arguments.Top}";
+            builder.AddArgument($"--lines {arguments.Top}");
         }
-
-        return command;
+        
+        return builder.Build();
     }
 
     private static string BuildMacCommand()
@@ -187,10 +183,8 @@ public class Logs : ActionBase<LogsArguments, List<LogEntry>>
 
         commandBuilder.If("[[ $file =~ \\.gz$ ]]")
             .AddCommand("gunzip -c").AddArgument("$file").EndStatement()
-            .Else()
-            .If("[[ $file =~ system.log.[0-9]+$ ]]")
+            .Elif("[[ $file =~ system.log.[0-9]+$ ]]")
             .AddCommand("cat").AddArgument("$file").EndStatement()
-            .EndIf()
             .EndIf();
 
         commandBuilder.EndFor();

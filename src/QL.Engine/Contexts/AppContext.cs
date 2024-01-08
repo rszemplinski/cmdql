@@ -102,12 +102,7 @@ public class AppContext
 
         var port = args.TryGetValue("port", out var value) ? ((IntValueNode)value).Value : 22;
         var alias = args.TryGetValue("alias", out value) ? ((StringValueNode)value).Value : host.Value;
-
-        if (args["user"] is not StringValueNode user)
-            user = new StringValueNode
-            {
-                Value = Environment.UserName
-            };
+        var user = (args.TryGetValue("user", out value) ? ((StringValueNode)value).Value : null) ?? Environment.UserName;
 
         if (args.TryGetValue("password", out var passwordValue))
         {
@@ -116,7 +111,7 @@ public class AppContext
 
             return SessionInfo.CreateWithPassword(
                 host.Value,
-                user.Value,
+                user,
                 password.Value,
                 alias,
                 port
@@ -132,7 +127,7 @@ public class AppContext
 
         return SessionInfo.CreateWithKeyFile(
             host.Value,
-            user.Value,
+            user,
             keyFile,
             alias,
             port

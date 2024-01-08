@@ -9,6 +9,14 @@ public record ContainerArgs
     public int Limit { get; set; } = -1;
 }
 
+public enum Protocol { Tcp, Udp }
+
+public class ContainerPort
+{
+    public ushort Port { get; set; }
+    public Protocol Protocol { get; set; }
+}
+
 public class ContainerResult
 {
     public string Id { get; set; }
@@ -16,7 +24,7 @@ public class ContainerResult
     public string Command { get; set; }
     public string Created { get; set; }
     public string Status { get; set; }
-    public string Ports { get; set; }
+    public List<ContainerPort> Ports { get; set; }
     public string Names { get; set; }
 }
 
@@ -43,7 +51,7 @@ public partial class Containers : DockerActionBase<ContainerArgs, List<Container
                     Command = match.Groups[3].Value.Trim('"'),
                     Created = match.Groups[4].Value,
                     Status = match.Groups[5].Value,
-                    Ports = match.Groups[6].Value,
+                    Ports = ParsePorts(match.Groups[6].Value),
                     Names = match.Groups[7].Value
                 });
             }
@@ -51,6 +59,35 @@ public partial class Containers : DockerActionBase<ContainerArgs, List<Container
 
         return results;
     }
+    
+    private static List<ContainerPort> ParsePorts(string ports)
+    {
+        var results = new List<ContainerPort>();
+        var portStrings = ports.Split(", ");
+
+        foreach (var portString in portStrings)
+        {
+            var portMatch = PortRegex().Match(portString);
+            if (portMatch.Success)
+            {
+                results.Add(new ContainerPort
+                {
+                    Port = ushort.Parse(portMatch.Groups[1].Value),
+                    Protocol = portMatch.Groups[2].Value switch
+                    {
+                        "tcp" => Protocol.Tcp,
+                        "udp" => Protocol.Udp,
+                        _ => throw new ArgumentOutOfRangeException()
+                    }
+                });
+            }
+        }
+
+        return results;
+    }
+    
+    [GeneratedRegex(@"^(\d+)/(tcp|udp)$")]
+    private static partial Regex PortRegex();
 
     [GeneratedRegex("""^(\S+)\s+(\S+)\s+(\".+?\"|\S+)\s+(\d+\s+\S+\s+ago)\s+(Up\s+\d+\s+\S+(?:\s+\([^)]+\))?)\s*(.*?)\s+(\S+)$""")]
     private static partial Regex ContainerRegex();

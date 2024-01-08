@@ -11,9 +11,9 @@ public class SessionContext(ISession session, IEnumerable<SelectionNode> selecti
     private ISession Session { get; } = session;
     private IEnumerable<SelectionNode> SelectionSet { get; } = selectionSet;
 
-    public async Task<IReadOnlyDictionary<string, object>> ExecuteAsync(CancellationToken cancellationToken)
+    public async Task<IReadOnlyDictionary<string, object?>> ExecuteAsync(CancellationToken cancellationToken)
     {
-        var result = new ConcurrentDictionary<string, object>();
+        var result = new ConcurrentDictionary<string, object?>();
 
         var fields = SelectionSet
             .Select(x => x.Field)
