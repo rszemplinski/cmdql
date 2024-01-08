@@ -3,9 +3,9 @@ using QL.Core;
 using QL.Core.Actions;
 using QL.Core.Attributes;
 
-namespace QL.Actions.Standard.GetLogs;
+namespace QL.Actions.Standard.Logs;
 
-public record GetLogsArguments
+public record LogsArguments
 {
     /**
      * The start date to get logs from (format: yyyy-MM-dd ie. 2021-01-01)
@@ -49,9 +49,9 @@ public class LogEntry
 [Action(
     Description = "Retrieve logs from the system journal"
 )]
-public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
+public class Logs : ActionBase<LogsArguments, List<LogEntry>>
 {
-    protected override string BuildCommand(GetLogsArguments arguments)
+    protected override string BuildCommand(LogsArguments arguments)
     {
         return Platform switch
         {
@@ -106,7 +106,7 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
         return logEntries;
     }
 
-    private static List<LogEntry> ParseCommandResultForMac(ICommandOutput commandResults, GetLogsArguments arguments)
+    private static List<LogEntry> ParseCommandResultForMac(ICommandOutput commandResults, LogsArguments arguments)
     {
         var logEntries = new List<LogEntry>();
         var lines = commandResults.Result.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
@@ -157,7 +157,7 @@ public class GetLogs : ActionBase<GetLogsArguments, List<LogEntry>>
         return logEntries;
     }
 
-    private static string BuildLinuxCommand(GetLogsArguments arguments)
+    private static string BuildLinuxCommand(LogsArguments arguments)
     {
         var command = "journalctl --reverse";
         if (arguments.StartDate != default)

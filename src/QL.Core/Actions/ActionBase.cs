@@ -153,7 +153,7 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
     private object _ParseCommandResults(ICommandOutput commandResults, IReadOnlyCollection<IField> fields)
     {
         var parsedResults = ParseCommandResults(commandResults);
-
+        
         var instanceType = typeof(TReturnType);
         if (!instanceType.IsGenericType || instanceType.GetGenericTypeDefinition() != typeof(List<>))
         {

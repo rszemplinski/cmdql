@@ -37,7 +37,10 @@ public abstract class FieldProcessor
                     {
                         if (item is IDictionary listItemDict)
                         {
-                            var processedListItemDict = ProcessFields(field.Fields.Cast<Field>(), listItemDict);
+                            var subFields = field.Fields.Any()
+                                ? field.Fields.Cast<Field>()
+                                : listItemDict.Keys.Cast<string>().Select(x => new Field(x));
+                            var processedListItemDict = ProcessFields(subFields, listItemDict);
                             processedList.Add(processedListItemDict);
                         }
                         else

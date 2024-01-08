@@ -28,6 +28,7 @@ fetch {
                 tag
                 size
             }
+            contexts
         }
     }
 }

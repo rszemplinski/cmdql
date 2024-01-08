@@ -412,3 +412,5 @@ out
 .DS_Store
 
 qodana.yaml
+
+!src/QL.Actions/Standard/Logs/

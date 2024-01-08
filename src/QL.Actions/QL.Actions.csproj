@@ -19,8 +19,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Standard\Accounts\" />
+      <Folder Include="Standard\CPUInfo\" />
+      <Folder Include="Standard\Groups\" />
       <Folder Include="Standard\OSInfo\" />
+      <Folder Include="Standard\Users\" />
     </ItemGroup>
 
 </Project>

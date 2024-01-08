@@ -11,7 +11,7 @@ public class Field : IField
     public string Name { get; }
 
     public IEnumerable<(IFieldTransform fieldTransform, IReadOnlyDictionary<string, object> args)>
-        Transformers { get; }
+        Transformers { get; } = [];
 
     public IField[] Fields { get; }
 
@@ -36,5 +36,11 @@ public class Field : IField
         Fields = selections
             .Select(x => new Field(x.Field) as IField)
             .ToArray();
+    }
+
+    public Field(string name)
+    {
+        Name = name;
+        Fields = [];
     }
 }
