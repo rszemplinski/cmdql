@@ -45,6 +45,6 @@ public partial class Contexts : DockerActionBase<ContextsArguments, List<Context
     }
 
     [GeneratedRegex(
-        @"(?<Name>[^\s]+(?:\s+\*)?)\s+(?<Type>[^\s]+)\s+(?<Description>.+?)\s{2,}(?<DockerEndpoint>[^\s]+)(\s{2,}(?<KubernetesEndpoint>[^\s]+(?:\s+\([^)]*\))?)?)\s{2,}(?<Orchestrator>[^\s]+)?")]
+        @"(?<Name>[^\s]+(?:\s+\*)?)\s+(?<Type>[^\s]+)\s+(?<Description>.+?)\s{2,}(?<DockerEndpoint>[^\s]+)(\s{2,}(?<KubernetesEndpoint>[^\s]+(?:\s+\([^)]*\))?)?)?\s{2,}(?<Orchestrator>[^\s]+)?")]
     private static partial Regex ContextRegex();
 }
