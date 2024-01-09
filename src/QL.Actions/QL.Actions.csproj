@@ -19,9 +19,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Standard\Groups\" />
       <Folder Include="Standard\NetworkInterfaces\" />
-      <Folder Include="Standard\Users\" />
     </ItemGroup>
 
 </Project>

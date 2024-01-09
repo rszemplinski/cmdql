@@ -17,11 +17,15 @@ public class CPUInfo : ActionBase<CPUInfoResults>
             _ => throw new PlatformNotSupportedException()
         };
     }
-    
-    // TODO: Implement for macOS
+
     private static string BuildMacCommand()
     {
-        return "sysctl -a | grep machdep.cpu";
+        var builder = new CommandBuilder();
+        builder.AddConcatenatedCommand("sysctl -a | grep machdep.cpu");
+        builder.AddConcatenatedCommand("sysctl -a | grep cpu | grep hw");
+        builder.AddConcatenatedCommand("sysctl -a | grep cache");
+        builder.AddConcatenatedCommand("arch");
+        return builder.Build();
     }
 
     protected override CPUInfoResults? ParseCommandResults(ICommandOutput commandResults)
@@ -33,7 +37,7 @@ public class CPUInfo : ActionBase<CPUInfoResults>
             _ => throw new PlatformNotSupportedException()
         };
     }
-    
+
     private static CPUInfoResults? ParseLinux(ICommandOutput commandResults)
     {
         var input = commandResults.Result;
@@ -58,10 +62,16 @@ public class CPUInfo : ActionBase<CPUInfoResults>
         var reCoresPerSocket = new Regex(@"Core\(s\) per socket:\s+(?<val>\d+)");
         var reSockets = new Regex(@"Socket\(s\):\s+(?<val>\d+)");
         var reStepping = new Regex(@"Stepping:\s+(?<val>\d+)");
-        var reFrequency = new Regex(@"CPU max MHz:\s+(?<max>\d+(\.\d+)?)\s+CPU min MHz:\s+(?<min>\d+(\.\d+)?)\s+BogoMIPS:\s+(?<bogo>\d+(\.\d+)?)");
+        var reFrequency =
+            new Regex(
+                @"CPU max MHz:\s+(?<max>\d+(\.\d+)?)\s+CPU min MHz:\s+(?<min>\d+(\.\d+)?)\s+BogoMIPS:\s+(?<bogo>\d+(\.\d+)?)");
         var reFrequencyBoost = new Regex(@"Frequency boost:\s+(?<val>enabled|disabled)");
-        var reCache = new Regex(@"(?<type>L\d[di]?) cache:\s+(?<size>\d+)\s+(?<unit>KiB|MiB)\s+\((?<instances>\d+) instance[s]?\)");
-        var reVendor = new Regex(@"Vendor ID:\s+(?<vendorID>.+)\n.*Model name:\s+(?<modelName>.+)\n.*CPU family:\s+(?<cpuFamily>.+)\n.*Model:\s+(?<model>.+)");
+        var reCache =
+            new Regex(
+                @"(?<type>L\d[di]?) cache:\s+(?<size>\d+)\s+(?<unit>KiB|MiB)\s+\((?<instances>\d+) instance[s]?\)");
+        var reVendor =
+            new Regex(
+                @"Vendor ID:\s+(?<vendorID>.+)\n.*Model name:\s+(?<modelName>.+)\n.*CPU family:\s+(?<cpuFamily>.+)\n.*Model:\s+(?<model>.+)");
         var reFlags = new Regex(@"Flags:\s+(?<flags>[^\n]+)(?=\n\S+:|$)");
         var reNUMA = new Regex(@"NUMA node\(s\):\s+(?<nodes>\d+)");
         var reVirtualization = new Regex(@"Virtualization:\s+(?<virtualization>\S+)");
@@ -78,16 +88,18 @@ public class CPUInfo : ActionBase<CPUInfoResults>
         {
             cpuInfoResults.CPU.Cpus = cpus;
         }
-        
+
         var threadsPerCoreMatch = reThreadsPerCore.Match(input);
-        if (threadsPerCoreMatch.Success && uint.TryParse(threadsPerCoreMatch.Groups["val"].Value, out var threadsPerCore))
+        if (threadsPerCoreMatch.Success &&
+            uint.TryParse(threadsPerCoreMatch.Groups["val"].Value, out var threadsPerCore))
         {
             cpuInfoResults.CPU.ThreadsPerCore = threadsPerCore;
         }
 
         // Parse Cores per Socket
         var coresPerSocketMatch = reCoresPerSocket.Match(input);
-        if (coresPerSocketMatch.Success && uint.TryParse(coresPerSocketMatch.Groups["val"].Value, out var coresPerSocket))
+        if (coresPerSocketMatch.Success &&
+            uint.TryParse(coresPerSocketMatch.Groups["val"].Value, out var coresPerSocket))
         {
             cpuInfoResults.CPU.CoresPerSocket = coresPerSocket;
         }
@@ -128,7 +140,7 @@ public class CPUInfo : ActionBase<CPUInfoResults>
                 Instances = uint.Parse(match.Groups["instances"].Value)
             });
         }
-        
+
         var vendorMatch = reVendor.Match(input);
         if (vendorMatch.Success)
         {
@@ -145,7 +157,8 @@ public class CPUInfo : ActionBase<CPUInfoResults>
         var flagsMatch = reFlags.Match(input);
         if (flagsMatch.Success)
         {
-            cpuInfoResults.Flags.AddRange(flagsMatch.Groups["flags"].Value.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
+            cpuInfoResults.Flags.AddRange(flagsMatch.Groups["flags"].Value
+                .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
         }
 
         // Parse NUMA information
@@ -161,7 +174,7 @@ public class CPUInfo : ActionBase<CPUInfoResults>
         {
             cpuInfoResults.Virtualization = virtualizationMatch.Groups["virtualization"].Value;
         }
-        
+
         var vulnerabilityMatches = reVulnerabilities.Matches(input);
 
         foreach (Match match in vulnerabilityMatches)
@@ -176,12 +189,93 @@ public class CPUInfo : ActionBase<CPUInfoResults>
         return cpuInfoResults;
     }
 
-    // TODO: Implement for macOS
     private static CPUInfoResults? ParseOSX(ICommandOutput commandResults)
     {
-        return null;
+        var lines = commandResults.Result.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+        var data = new Dictionary<string, string>();
+        string? architecture = null;
+
+        foreach (var line in lines)
+        {
+            var parts = line.Split(new[] { ':' }, 2);
+            switch (parts.Length)
+            {
+                // Check for key-value pair
+                case 2:
+                    data[parts[0].Trim()] = parts[1].Trim();
+                    break;
+                // Handle standalone values like architecture
+                case 1:
+                    architecture = parts[0].Trim();
+                    break;
+            }
+        }
+        
+        var cpuInfoResults = new CPUInfoResults
+        {
+            CPU = new CPU
+            {
+                Architecture = architecture,
+                Cpus = GetUIntValue(data, "hw.ncpu"),
+                CoresPerSocket = GetUIntValue(data, "machdep.cpu.cores_per_package"),
+                ThreadsPerCore = CalculateThreadsPerCore(data),
+                
+            },
+            Vendor = new VendorInfo
+            {
+                ModelName = data.GetValueOrDefault("machdep.cpu.brand_string")
+            },
+            Caches = ParseCacheInfo(data),
+            Vulnerabilities = []
+        };
+
+        return cpuInfoResults;
     }
     
+    private static List<CacheInfo> ParseCacheInfo(Dictionary<string, string> data)
+    {
+        var cacheInfoList = new List<CacheInfo>();
+
+        // Parse general cache sizes
+        AddCacheInfo(cacheInfoList, "L1 Instruction", GetUIntValue(data, "hw.l1icachesize"));
+        AddCacheInfo(cacheInfoList, "L1 Data", GetUIntValue(data, "hw.l1dcachesize"));
+        AddCacheInfo(cacheInfoList, "L2", GetUIntValue(data, "hw.l2cachesize"));
+
+        // Parse cache sizes for performance levels
+        var perfLevels = new[] { "perflevel0", "perflevel1" };
+        foreach (var level in perfLevels)
+        {
+            AddCacheInfo(cacheInfoList, $"{level} L1 Instruction", GetUIntValue(data, $"hw.{level}.l1icachesize"));
+            AddCacheInfo(cacheInfoList, $"{level} L1 Data", GetUIntValue(data, $"hw.{level}.l1dcachesize"));
+            AddCacheInfo(cacheInfoList, $"{level} L2", GetUIntValue(data, $"hw.{level}.l2cachesize"));
+        }
+
+        return cacheInfoList;
+    }
+    
+    private static void AddCacheInfo(List<CacheInfo> cacheInfoList, string type, uint size)
+    {
+        if (size > 0)
+        {
+            cacheInfoList.Add(new CacheInfo { Type = type, Size = size });
+        }
+    }
+    
+    private static uint GetUIntValue(IReadOnlyDictionary<string, string?> data, string key)
+    {
+        if (!data.TryGetValue(key, out var value)) return 0;
+        return uint.TryParse(value, out var result) ? result : 0;
+    }
+
+    private static uint CalculateThreadsPerCore(IReadOnlyDictionary<string, string?> data)
+    {
+        var threadCount = GetUIntValue(data, "machdep.cpu.thread_count");
+        var coreCount = GetUIntValue(data, "machdep.cpu.cores_per_package");
+
+        // Avoid division by zero; if core count is zero, return 0 for threads per core
+        return coreCount > 0 ? threadCount / coreCount : 0;
+    }
+
     private static uint ConvertSizeToBytes(uint size, string unit)
     {
         return unit == "MiB" ? size * 1024 * 1024 : size * 1024;

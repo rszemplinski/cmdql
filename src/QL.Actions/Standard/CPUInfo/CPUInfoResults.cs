@@ -41,7 +41,7 @@ public class VendorInfo
     public string VendorID { get; set; }
     public string CPUFamily { get; set; }
     public string Model { get; set; }
-    public string ModelName { get; set; }
+    public string? ModelName { get; set; }
 }
 
 public class VulnerabilityInfo
