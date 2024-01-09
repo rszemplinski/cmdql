@@ -415,3 +415,7 @@ qodana.yaml
 
 !src/QL.Actions/Standard/Logs/
 examples/custom.qlsh
+
+docfx/api/.manifest
+docfx/api/*.yml
+docs
