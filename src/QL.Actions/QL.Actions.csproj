@@ -18,8 +18,4 @@
       </Reference>
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Standard\NetworkInterfaces\" />
-    </ItemGroup>
-
 </Project>
