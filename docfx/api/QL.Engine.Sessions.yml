@@ -1,0 +1,83 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Engine.Sessions
+  commentId: N:QL.Engine.Sessions
+  id: QL.Engine.Sessions
+  children:
+  - QL.Engine.Sessions.CommandOutput
+  - QL.Engine.Sessions.ISession
+  - QL.Engine.Sessions.LocalSession
+  - QL.Engine.Sessions.RemoteSession
+  - QL.Engine.Sessions.SessionInfo
+  langs:
+  - csharp
+  - vb
+  name: QL.Engine.Sessions
+  nameWithType: QL.Engine.Sessions
+  fullName: QL.Engine.Sessions
+  type: Namespace
+  assemblies:
+  - qlsh
+references:
+- uid: QL.Engine.Sessions.CommandOutput
+  commentId: T:QL.Engine.Sessions.CommandOutput
+  href: QL.Engine.Sessions.CommandOutput.html
+  name: CommandOutput
+  nameWithType: CommandOutput
+  fullName: QL.Engine.Sessions.CommandOutput
+- uid: QL.Engine.Sessions.ISession
+  commentId: T:QL.Engine.Sessions.ISession
+  parent: QL.Engine.Sessions
+  href: QL.Engine.Sessions.ISession.html
+  name: ISession
+  nameWithType: ISession
+  fullName: QL.Engine.Sessions.ISession
+- uid: QL.Engine.Sessions.LocalSession
+  commentId: T:QL.Engine.Sessions.LocalSession
+  href: QL.Engine.Sessions.LocalSession.html
+  name: LocalSession
+  nameWithType: LocalSession
+  fullName: QL.Engine.Sessions.LocalSession
+- uid: QL.Engine.Sessions.RemoteSession
+  commentId: T:QL.Engine.Sessions.RemoteSession
+  href: QL.Engine.Sessions.RemoteSession.html
+  name: RemoteSession
+  nameWithType: RemoteSession
+  fullName: QL.Engine.Sessions.RemoteSession
+- uid: QL.Engine.Sessions.SessionInfo
+  commentId: T:QL.Engine.Sessions.SessionInfo
+  parent: QL.Engine.Sessions
+  href: QL.Engine.Sessions.SessionInfo.html
+  name: SessionInfo
+  nameWithType: SessionInfo
+  fullName: QL.Engine.Sessions.SessionInfo
+- uid: QL.Engine.Sessions
+  commentId: N:QL.Engine.Sessions
+  href: QL.html
+  name: QL.Engine.Sessions
+  nameWithType: QL.Engine.Sessions
+  fullName: QL.Engine.Sessions
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Engine
+    name: Engine
+    href: QL.Engine.html
+  - name: .
+  - uid: QL.Engine.Sessions
+    name: Sessions
+    href: QL.Engine.Sessions.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Engine
+    name: Engine
+    href: QL.Engine.html
+  - name: .
+  - uid: QL.Engine.Sessions
+    name: Sessions
+    href: QL.Engine.Sessions.html

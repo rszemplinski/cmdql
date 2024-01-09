@@ -1,0 +1,3672 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Parser.AST.ASTBuilder
+  commentId: T:QL.Parser.AST.ASTBuilder
+  id: ASTBuilder
+  parent: QL.Parser.AST
+  children:
+  - QL.Parser.AST.ASTBuilder.VisitAction_block(QLParser.Action_blockContext)
+  - QL.Parser.AST.ASTBuilder.VisitAction_type(QLParser.Action_typeContext)
+  - QL.Parser.AST.ASTBuilder.VisitArg(QLParser.ArgContext)
+  - QL.Parser.AST.ASTBuilder.VisitArgs(QLParser.ArgsContext)
+  - QL.Parser.AST.ASTBuilder.VisitContext_block(QLParser.Context_blockContext)
+  - QL.Parser.AST.ASTBuilder.VisitContext_blocks(QLParser.Context_blocksContext)
+  - QL.Parser.AST.ASTBuilder.VisitDocument(QLParser.DocumentContext)
+  - QL.Parser.AST.ASTBuilder.VisitField(QLParser.FieldContext)
+  - QL.Parser.AST.ASTBuilder.VisitList(QLParser.ListContext)
+  - QL.Parser.AST.ASTBuilder.VisitLocal_context_block(QLParser.Local_context_blockContext)
+  - QL.Parser.AST.ASTBuilder.VisitObject(QLParser.ObjectContext)
+  - QL.Parser.AST.ASTBuilder.VisitObject_field(QLParser.Object_fieldContext)
+  - QL.Parser.AST.ASTBuilder.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  - QL.Parser.AST.ASTBuilder.VisitSelection(QLParser.SelectionContext)
+  - QL.Parser.AST.ASTBuilder.VisitSelection_set(QLParser.Selection_setContext)
+  - QL.Parser.AST.ASTBuilder.VisitTransformation(QLParser.TransformationContext)
+  - QL.Parser.AST.ASTBuilder.VisitTransformations(QLParser.TransformationsContext)
+  - QL.Parser.AST.ASTBuilder.VisitValue(QLParser.ValueContext)
+  langs:
+  - csharp
+  - vb
+  name: ASTBuilder
+  nameWithType: ASTBuilder
+  fullName: QL.Parser.AST.ASTBuilder
+  type: Class
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: ASTBuilder
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 4
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  syntax:
+    content: 'public class ASTBuilder : QLBaseVisitor<QLNode>, IQLVisitor<QLNode>, IParseTreeVisitor<QLNode>'
+    content.vb: Public Class ASTBuilder Inherits QLBaseVisitor(Of QLNode) Implements IQLVisitor(Of QLNode), IParseTreeVisitor(Of QLNode)
+  inheritance:
+  - System.Object
+  - Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}
+  - QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  implements:
+  - IQLVisitor{QL.Parser.AST.Nodes.QLNode}
+  - Antlr4.Runtime.Tree.IParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}
+  inheritedMembers:
+  - Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.Visit(Antlr4.Runtime.Tree.IParseTree)
+  - Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)
+  - Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)
+  - Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)
+  - Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.AggregateResult(QL.Parser.AST.Nodes.QLNode,QL.Parser.AST.Nodes.QLNode)
+  - Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.ShouldVisitNextChild(Antlr4.Runtime.Tree.IRuleNode,QL.Parser.AST.Nodes.QLNode)
+  - Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.DefaultResult
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.QL.Engine.Extensions.ObjectExtensions.ToDictionary
+- uid: QL.Parser.AST.ASTBuilder.VisitDocument(QLParser.DocumentContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitDocument(QLParser.DocumentContext)
+  id: VisitDocument(QLParser.DocumentContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitDocument(DocumentContext)
+  nameWithType: ASTBuilder.VisitDocument(QLParser.DocumentContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitDocument(QLParser.DocumentContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitDocument
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 6
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.document" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitDocument(QLParser.DocumentContext context)
+    parameters:
+    - id: context
+      type: QLParser.DocumentContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitDocument(context As QLParser.DocumentContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitDocument(QLParser.DocumentContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitDocument*
+- uid: QL.Parser.AST.ASTBuilder.VisitAction_block(QLParser.Action_blockContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitAction_block(QLParser.Action_blockContext)
+  id: VisitAction_block(QLParser.Action_blockContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitAction_block(Action_blockContext)
+  nameWithType: ASTBuilder.VisitAction_block(QLParser.Action_blockContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitAction_block(QLParser.Action_blockContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitAction_block
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 11
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.action_block" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitAction_block(QLParser.Action_blockContext context)
+    parameters:
+    - id: context
+      type: QLParser.Action_blockContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitAction_block(context As QLParser.Action_blockContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitAction_block(QLParser.Action_blockContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitAction_block*
+- uid: QL.Parser.AST.ASTBuilder.VisitAction_type(QLParser.Action_typeContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitAction_type(QLParser.Action_typeContext)
+  id: VisitAction_type(QLParser.Action_typeContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitAction_type(Action_typeContext)
+  nameWithType: ASTBuilder.VisitAction_type(QLParser.Action_typeContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitAction_type(QLParser.Action_typeContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitAction_type
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 28
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.action_type" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitAction_type(QLParser.Action_typeContext context)
+    parameters:
+    - id: context
+      type: QLParser.Action_typeContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitAction_type(context As QLParser.Action_typeContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitAction_type(QLParser.Action_typeContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitAction_type*
+- uid: QL.Parser.AST.ASTBuilder.VisitContext_blocks(QLParser.Context_blocksContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitContext_blocks(QLParser.Context_blocksContext)
+  id: VisitContext_blocks(QLParser.Context_blocksContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitContext_blocks(Context_blocksContext)
+  nameWithType: ASTBuilder.VisitContext_blocks(QLParser.Context_blocksContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitContext_blocks(QLParser.Context_blocksContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitContext_blocks
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 36
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.context_blocks" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitContext_blocks(QLParser.Context_blocksContext context)
+    parameters:
+    - id: context
+      type: QLParser.Context_blocksContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitContext_blocks(context As QLParser.Context_blocksContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitContext_blocks(QLParser.Context_blocksContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitContext_blocks*
+- uid: QL.Parser.AST.ASTBuilder.VisitContext_block(QLParser.Context_blockContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitContext_block(QLParser.Context_blockContext)
+  id: VisitContext_block(QLParser.Context_blockContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitContext_block(Context_blockContext)
+  nameWithType: ASTBuilder.VisitContext_block(QLParser.Context_blockContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitContext_block(QLParser.Context_blockContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitContext_block
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 55
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.context_block" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitContext_block(QLParser.Context_blockContext context)
+    parameters:
+    - id: context
+      type: QLParser.Context_blockContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitContext_block(context As QLParser.Context_blockContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitContext_block(QLParser.Context_blockContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitContext_block*
+- uid: QL.Parser.AST.ASTBuilder.VisitLocal_context_block(QLParser.Local_context_blockContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitLocal_context_block(QLParser.Local_context_blockContext)
+  id: VisitLocal_context_block(QLParser.Local_context_blockContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitLocal_context_block(Local_context_blockContext)
+  nameWithType: ASTBuilder.VisitLocal_context_block(QLParser.Local_context_blockContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitLocal_context_block(QLParser.Local_context_blockContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitLocal_context_block
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 62
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.local_context_block" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitLocal_context_block(QLParser.Local_context_blockContext context)
+    parameters:
+    - id: context
+      type: QLParser.Local_context_blockContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitLocal_context_block(context As QLParser.Local_context_blockContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitLocal_context_block(QLParser.Local_context_blockContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitLocal_context_block*
+- uid: QL.Parser.AST.ASTBuilder.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  id: VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitRemote_context_block(Remote_context_blockContext)
+  nameWithType: ASTBuilder.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitRemote_context_block
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 74
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.remote_context_block" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitRemote_context_block(QLParser.Remote_context_blockContext context)
+    parameters:
+    - id: context
+      type: QLParser.Remote_context_blockContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitRemote_context_block(context As QLParser.Remote_context_blockContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitRemote_context_block*
+- uid: QL.Parser.AST.ASTBuilder.VisitSelection_set(QLParser.Selection_setContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitSelection_set(QLParser.Selection_setContext)
+  id: VisitSelection_set(QLParser.Selection_setContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitSelection_set(Selection_setContext)
+  nameWithType: ASTBuilder.VisitSelection_set(QLParser.Selection_setContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitSelection_set(QLParser.Selection_setContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitSelection_set
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 91
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.selection_set" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitSelection_set(QLParser.Selection_setContext context)
+    parameters:
+    - id: context
+      type: QLParser.Selection_setContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitSelection_set(context As QLParser.Selection_setContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitSelection_set(QLParser.Selection_setContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitSelection_set*
+- uid: QL.Parser.AST.ASTBuilder.VisitSelection(QLParser.SelectionContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitSelection(QLParser.SelectionContext)
+  id: VisitSelection(QLParser.SelectionContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitSelection(SelectionContext)
+  nameWithType: ASTBuilder.VisitSelection(QLParser.SelectionContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitSelection(QLParser.SelectionContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitSelection
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 110
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.selection" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitSelection(QLParser.SelectionContext context)
+    parameters:
+    - id: context
+      type: QLParser.SelectionContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitSelection(context As QLParser.SelectionContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitSelection(QLParser.SelectionContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitSelection*
+- uid: QL.Parser.AST.ASTBuilder.VisitArgs(QLParser.ArgsContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitArgs(QLParser.ArgsContext)
+  id: VisitArgs(QLParser.ArgsContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitArgs(ArgsContext)
+  nameWithType: ASTBuilder.VisitArgs(QLParser.ArgsContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitArgs(QLParser.ArgsContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitArgs
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 122
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.args" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitArgs(QLParser.ArgsContext context)
+    parameters:
+    - id: context
+      type: QLParser.ArgsContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitArgs(context As QLParser.ArgsContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitArgs(QLParser.ArgsContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitArgs*
+- uid: QL.Parser.AST.ASTBuilder.VisitArg(QLParser.ArgContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitArg(QLParser.ArgContext)
+  id: VisitArg(QLParser.ArgContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitArg(ArgContext)
+  nameWithType: ASTBuilder.VisitArg(QLParser.ArgContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitArg(QLParser.ArgContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitArg
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 141
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.arg" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitArg(QLParser.ArgContext context)
+    parameters:
+    - id: context
+      type: QLParser.ArgContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitArg(context As QLParser.ArgContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitArg(QLParser.ArgContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitArg*
+- uid: QL.Parser.AST.ASTBuilder.VisitField(QLParser.FieldContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitField(QLParser.FieldContext)
+  id: VisitField(QLParser.FieldContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitField(FieldContext)
+  nameWithType: ASTBuilder.VisitField(QLParser.FieldContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitField(QLParser.FieldContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitField
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 155
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.field" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitField(QLParser.FieldContext context)
+    parameters:
+    - id: context
+      type: QLParser.FieldContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitField(context As QLParser.FieldContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitField(QLParser.FieldContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitField*
+- uid: QL.Parser.AST.ASTBuilder.VisitTransformations(QLParser.TransformationsContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitTransformations(QLParser.TransformationsContext)
+  id: VisitTransformations(QLParser.TransformationsContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitTransformations(TransformationsContext)
+  nameWithType: ASTBuilder.VisitTransformations(QLParser.TransformationsContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitTransformations(QLParser.TransformationsContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitTransformations
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 176
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.transformations" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitTransformations(QLParser.TransformationsContext context)
+    parameters:
+    - id: context
+      type: QLParser.TransformationsContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitTransformations(context As QLParser.TransformationsContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitTransformations(QLParser.TransformationsContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitTransformations*
+- uid: QL.Parser.AST.ASTBuilder.VisitTransformation(QLParser.TransformationContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitTransformation(QLParser.TransformationContext)
+  id: VisitTransformation(QLParser.TransformationContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitTransformation(TransformationContext)
+  nameWithType: ASTBuilder.VisitTransformation(QLParser.TransformationContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitTransformation(QLParser.TransformationContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitTransformation
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 184
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.transformation" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitTransformation(QLParser.TransformationContext context)
+    parameters:
+    - id: context
+      type: QLParser.TransformationContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitTransformation(context As QLParser.TransformationContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitTransformation(QLParser.TransformationContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitTransformation*
+- uid: QL.Parser.AST.ASTBuilder.VisitValue(QLParser.ValueContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitValue(QLParser.ValueContext)
+  id: VisitValue(QLParser.ValueContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitValue(ValueContext)
+  nameWithType: ASTBuilder.VisitValue(QLParser.ValueContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitValue(QLParser.ValueContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitValue
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 196
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.value" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitValue(QLParser.ValueContext context)
+    parameters:
+    - id: context
+      type: QLParser.ValueContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitValue(context As QLParser.ValueContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitValue(QLParser.ValueContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitValue*
+- uid: QL.Parser.AST.ASTBuilder.VisitList(QLParser.ListContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitList(QLParser.ListContext)
+  id: VisitList(QLParser.ListContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitList(ListContext)
+  nameWithType: ASTBuilder.VisitList(QLParser.ListContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitList(QLParser.ListContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitList
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 257
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.list" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitList(QLParser.ListContext context)
+    parameters:
+    - id: context
+      type: QLParser.ListContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitList(context As QLParser.ListContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitList(QLParser.ListContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitList*
+- uid: QL.Parser.AST.ASTBuilder.VisitObject(QLParser.ObjectContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitObject(QLParser.ObjectContext)
+  id: VisitObject(QLParser.ObjectContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitObject(ObjectContext)
+  nameWithType: ASTBuilder.VisitObject(QLParser.ObjectContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitObject(QLParser.ObjectContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitObject
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 276
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by QLParser.object.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitObject(QLParser.ObjectContext context)
+    parameters:
+    - id: context
+      type: QLParser.ObjectContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitObject(context As QLParser.ObjectContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitObject(QLParser.ObjectContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitObject*
+- uid: QL.Parser.AST.ASTBuilder.VisitObject_field(QLParser.Object_fieldContext)
+  commentId: M:QL.Parser.AST.ASTBuilder.VisitObject_field(QLParser.Object_fieldContext)
+  id: VisitObject_field(QLParser.Object_fieldContext)
+  parent: QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: VisitObject_field(Object_fieldContext)
+  nameWithType: ASTBuilder.VisitObject_field(QLParser.Object_fieldContext)
+  fullName: QL.Parser.AST.ASTBuilder.VisitObject_field(QLParser.Object_fieldContext)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Parser/AST/ASTBuilder.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: VisitObject_field
+    path: ../src/QL.Parser/AST/ASTBuilder.cs
+    startLine: 295
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST
+  summary: >-
+    Visit a parse tree produced by <xref href="QLParser.object_field" data-throw-if-not-resolved="false"></xref>.
+
+    <p>
+
+    The default implementation returns the result of calling <xref href="Antlr4.Runtime.Tree.AbstractParseTreeVisitor%601.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)" data-throw-if-not-resolved="false"></xref>
+
+    on <code class="paramref">context</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: public override QLNode VisitObject_field(QLParser.Object_fieldContext context)
+    parameters:
+    - id: context
+      type: QLParser.Object_fieldContext
+      description: The parse tree.
+    return:
+      type: QL.Parser.AST.Nodes.QLNode
+    content.vb: Public Overrides Function VisitObject_field(context As QLParser.Object_fieldContext) As QLNode
+  overridden: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitObject_field(QLParser.Object_fieldContext)
+  overload: QL.Parser.AST.ASTBuilder.VisitObject_field*
+references:
+- uid: QL.Parser.AST
+  commentId: N:QL.Parser.AST
+  href: QL.html
+  name: QL.Parser.AST
+  nameWithType: QL.Parser.AST
+  fullName: QL.Parser.AST
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Parser
+    name: Parser
+    href: QL.Parser.html
+  - name: .
+  - uid: QL.Parser.AST
+    name: AST
+    href: QL.Parser.AST.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Parser
+    name: Parser
+    href: QL.Parser.html
+  - name: .
+  - uid: QL.Parser.AST
+    name: AST
+    href: QL.Parser.AST.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}
+  commentId: T:Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}
+  parent: Antlr4.Runtime.Tree
+  definition: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1
+  href: QL.Parser.AST.Nodes.QLNode.html
+  name: AbstractParseTreeVisitor<QLNode>
+  nameWithType: AbstractParseTreeVisitor<QLNode>
+  fullName: Antlr4.Runtime.Tree.AbstractParseTreeVisitor<QL.Parser.AST.Nodes.QLNode>
+  nameWithType.vb: AbstractParseTreeVisitor(Of QLNode)
+  fullName.vb: Antlr4.Runtime.Tree.AbstractParseTreeVisitor(Of QL.Parser.AST.Nodes.QLNode)
+  name.vb: AbstractParseTreeVisitor(Of QLNode)
+  spec.csharp:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1
+    name: AbstractParseTreeVisitor
+    isExternal: true
+  - name: <
+  - uid: QL.Parser.AST.Nodes.QLNode
+    name: QLNode
+    href: QL.Parser.AST.Nodes.QLNode.html
+  - name: '>'
+  spec.vb:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1
+    name: AbstractParseTreeVisitor
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Parser.AST.Nodes.QLNode
+    name: QLNode
+    href: QL.Parser.AST.Nodes.QLNode.html
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  commentId: T:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1
+  href: QLBaseVisitor-1.html
+  name: QLBaseVisitor<QLNode>
+  nameWithType: QLBaseVisitor<QLNode>
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>
+  nameWithType.vb: QLBaseVisitor(Of QLNode)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode)
+  name.vb: QLBaseVisitor(Of QLNode)
+  spec.csharp:
+  - uid: QLBaseVisitor`1
+    name: QLBaseVisitor
+    href: QLBaseVisitor-1.html
+  - name: <
+  - uid: QL.Parser.AST.Nodes.QLNode
+    name: QLNode
+    href: QL.Parser.AST.Nodes.QLNode.html
+  - name: '>'
+  spec.vb:
+  - uid: QLBaseVisitor`1
+    name: QLBaseVisitor
+    href: QLBaseVisitor-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Parser.AST.Nodes.QLNode
+    name: QLNode
+    href: QL.Parser.AST.Nodes.QLNode.html
+  - name: )
+- uid: IQLVisitor{QL.Parser.AST.Nodes.QLNode}
+  commentId: T:IQLVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: IQLVisitor`1
+  href: IQLVisitor-1.html
+  name: IQLVisitor<QLNode>
+  nameWithType: IQLVisitor<QLNode>
+  fullName: IQLVisitor<QL.Parser.AST.Nodes.QLNode>
+  nameWithType.vb: IQLVisitor(Of QLNode)
+  fullName.vb: IQLVisitor(Of QL.Parser.AST.Nodes.QLNode)
+  name.vb: IQLVisitor(Of QLNode)
+  spec.csharp:
+  - uid: IQLVisitor`1
+    name: IQLVisitor
+    href: IQLVisitor-1.html
+  - name: <
+  - uid: QL.Parser.AST.Nodes.QLNode
+    name: QLNode
+    href: QL.Parser.AST.Nodes.QLNode.html
+  - name: '>'
+  spec.vb:
+  - uid: IQLVisitor`1
+    name: IQLVisitor
+    href: IQLVisitor-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Parser.AST.Nodes.QLNode
+    name: QLNode
+    href: QL.Parser.AST.Nodes.QLNode.html
+  - name: )
+- uid: Antlr4.Runtime.Tree.IParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}
+  commentId: T:Antlr4.Runtime.Tree.IParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}
+  parent: Antlr4.Runtime.Tree
+  definition: Antlr4.Runtime.Tree.IParseTreeVisitor`1
+  href: QL.Parser.AST.Nodes.QLNode.html
+  name: IParseTreeVisitor<QLNode>
+  nameWithType: IParseTreeVisitor<QLNode>
+  fullName: Antlr4.Runtime.Tree.IParseTreeVisitor<QL.Parser.AST.Nodes.QLNode>
+  nameWithType.vb: IParseTreeVisitor(Of QLNode)
+  fullName.vb: Antlr4.Runtime.Tree.IParseTreeVisitor(Of QL.Parser.AST.Nodes.QLNode)
+  name.vb: IParseTreeVisitor(Of QLNode)
+  spec.csharp:
+  - uid: Antlr4.Runtime.Tree.IParseTreeVisitor`1
+    name: IParseTreeVisitor
+    isExternal: true
+  - name: <
+  - uid: QL.Parser.AST.Nodes.QLNode
+    name: QLNode
+    href: QL.Parser.AST.Nodes.QLNode.html
+  - name: '>'
+  spec.vb:
+  - uid: Antlr4.Runtime.Tree.IParseTreeVisitor`1
+    name: IParseTreeVisitor
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Parser.AST.Nodes.QLNode
+    name: QLNode
+    href: QL.Parser.AST.Nodes.QLNode.html
+  - name: )
+- uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.Visit(Antlr4.Runtime.Tree.IParseTree)
+  commentId: M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.Visit(Antlr4.Runtime.Tree.IParseTree)
+  parent: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.Visit(Antlr4.Runtime.Tree.IParseTree)
+  name: Visit(IParseTree)
+  nameWithType: AbstractParseTreeVisitor<QLNode>.Visit(IParseTree)
+  fullName: Antlr4.Runtime.Tree.AbstractParseTreeVisitor<QL.Parser.AST.Nodes.QLNode>.Visit(Antlr4.Runtime.Tree.IParseTree)
+  nameWithType.vb: AbstractParseTreeVisitor(Of QLNode).Visit(IParseTree)
+  fullName.vb: Antlr4.Runtime.Tree.AbstractParseTreeVisitor(Of QL.Parser.AST.Nodes.QLNode).Visit(Antlr4.Runtime.Tree.IParseTree)
+  spec.csharp:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.Visit(Antlr4.Runtime.Tree.IParseTree)
+    name: Visit
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.IParseTree
+    name: IParseTree
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.Visit(Antlr4.Runtime.Tree.IParseTree)
+    name: Visit
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.IParseTree
+    name: IParseTree
+    isExternal: true
+  - name: )
+- uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)
+  commentId: M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)
+  parent: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)
+  name: VisitChildren(IRuleNode)
+  nameWithType: AbstractParseTreeVisitor<QLNode>.VisitChildren(IRuleNode)
+  fullName: Antlr4.Runtime.Tree.AbstractParseTreeVisitor<QL.Parser.AST.Nodes.QLNode>.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)
+  nameWithType.vb: AbstractParseTreeVisitor(Of QLNode).VisitChildren(IRuleNode)
+  fullName.vb: Antlr4.Runtime.Tree.AbstractParseTreeVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitChildren(Antlr4.Runtime.Tree.IRuleNode)
+  spec.csharp:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)
+    name: VisitChildren
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.IRuleNode
+    name: IRuleNode
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)
+    name: VisitChildren
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.IRuleNode
+    name: IRuleNode
+    isExternal: true
+  - name: )
+- uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)
+  commentId: M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)
+  parent: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)
+  name: VisitTerminal(ITerminalNode)
+  nameWithType: AbstractParseTreeVisitor<QLNode>.VisitTerminal(ITerminalNode)
+  fullName: Antlr4.Runtime.Tree.AbstractParseTreeVisitor<QL.Parser.AST.Nodes.QLNode>.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)
+  nameWithType.vb: AbstractParseTreeVisitor(Of QLNode).VisitTerminal(ITerminalNode)
+  fullName.vb: Antlr4.Runtime.Tree.AbstractParseTreeVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)
+  spec.csharp:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)
+    name: VisitTerminal
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.ITerminalNode
+    name: ITerminalNode
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)
+    name: VisitTerminal
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.ITerminalNode
+    name: ITerminalNode
+    isExternal: true
+  - name: )
+- uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)
+  commentId: M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)
+  parent: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)
+  name: VisitErrorNode(IErrorNode)
+  nameWithType: AbstractParseTreeVisitor<QLNode>.VisitErrorNode(IErrorNode)
+  fullName: Antlr4.Runtime.Tree.AbstractParseTreeVisitor<QL.Parser.AST.Nodes.QLNode>.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)
+  nameWithType.vb: AbstractParseTreeVisitor(Of QLNode).VisitErrorNode(IErrorNode)
+  fullName.vb: Antlr4.Runtime.Tree.AbstractParseTreeVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)
+  spec.csharp:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)
+    name: VisitErrorNode
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.IErrorNode
+    name: IErrorNode
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)
+    name: VisitErrorNode
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.IErrorNode
+    name: IErrorNode
+    isExternal: true
+  - name: )
+- uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.AggregateResult(QL.Parser.AST.Nodes.QLNode,QL.Parser.AST.Nodes.QLNode)
+  commentId: M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.AggregateResult(QL.Parser.AST.Nodes.QLNode,QL.Parser.AST.Nodes.QLNode)
+  parent: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.AggregateResult(`0,`0)
+  href: QL.Parser.AST.Nodes.QLNode.html
+  name: AggregateResult(QLNode, QLNode)
+  nameWithType: AbstractParseTreeVisitor<QLNode>.AggregateResult(QLNode, QLNode)
+  fullName: Antlr4.Runtime.Tree.AbstractParseTreeVisitor<QL.Parser.AST.Nodes.QLNode>.AggregateResult(QL.Parser.AST.Nodes.QLNode, QL.Parser.AST.Nodes.QLNode)
+  nameWithType.vb: AbstractParseTreeVisitor(Of QLNode).AggregateResult(QLNode, QLNode)
+  fullName.vb: Antlr4.Runtime.Tree.AbstractParseTreeVisitor(Of QL.Parser.AST.Nodes.QLNode).AggregateResult(QL.Parser.AST.Nodes.QLNode, QL.Parser.AST.Nodes.QLNode)
+  spec.csharp:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.AggregateResult(QL.Parser.AST.Nodes.QLNode,QL.Parser.AST.Nodes.QLNode)
+    name: AggregateResult
+    isExternal: true
+  - name: (
+  - uid: QL.Parser.AST.Nodes.QLNode
+    name: QLNode
+    href: QL.Parser.AST.Nodes.QLNode.html
+  - name: ','
+  - name: " "
+  - uid: QL.Parser.AST.Nodes.QLNode
+    name: QLNode
+    href: QL.Parser.AST.Nodes.QLNode.html
+  - name: )
+  spec.vb:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.AggregateResult(QL.Parser.AST.Nodes.QLNode,QL.Parser.AST.Nodes.QLNode)
+    name: AggregateResult
+    isExternal: true
+  - name: (
+  - uid: QL.Parser.AST.Nodes.QLNode
+    name: QLNode
+    href: QL.Parser.AST.Nodes.QLNode.html
+  - name: ','
+  - name: " "
+  - uid: QL.Parser.AST.Nodes.QLNode
+    name: QLNode
+    href: QL.Parser.AST.Nodes.QLNode.html
+  - name: )
+- uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.ShouldVisitNextChild(Antlr4.Runtime.Tree.IRuleNode,QL.Parser.AST.Nodes.QLNode)
+  commentId: M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.ShouldVisitNextChild(Antlr4.Runtime.Tree.IRuleNode,QL.Parser.AST.Nodes.QLNode)
+  parent: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.ShouldVisitNextChild(Antlr4.Runtime.Tree.IRuleNode,`0)
+  href: QL.Parser.AST.Nodes.QLNode.html
+  name: ShouldVisitNextChild(IRuleNode, QLNode)
+  nameWithType: AbstractParseTreeVisitor<QLNode>.ShouldVisitNextChild(IRuleNode, QLNode)
+  fullName: Antlr4.Runtime.Tree.AbstractParseTreeVisitor<QL.Parser.AST.Nodes.QLNode>.ShouldVisitNextChild(Antlr4.Runtime.Tree.IRuleNode, QL.Parser.AST.Nodes.QLNode)
+  nameWithType.vb: AbstractParseTreeVisitor(Of QLNode).ShouldVisitNextChild(IRuleNode, QLNode)
+  fullName.vb: Antlr4.Runtime.Tree.AbstractParseTreeVisitor(Of QL.Parser.AST.Nodes.QLNode).ShouldVisitNextChild(Antlr4.Runtime.Tree.IRuleNode, QL.Parser.AST.Nodes.QLNode)
+  spec.csharp:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.ShouldVisitNextChild(Antlr4.Runtime.Tree.IRuleNode,QL.Parser.AST.Nodes.QLNode)
+    name: ShouldVisitNextChild
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.IRuleNode
+    name: IRuleNode
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: QL.Parser.AST.Nodes.QLNode
+    name: QLNode
+    href: QL.Parser.AST.Nodes.QLNode.html
+  - name: )
+  spec.vb:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.ShouldVisitNextChild(Antlr4.Runtime.Tree.IRuleNode,QL.Parser.AST.Nodes.QLNode)
+    name: ShouldVisitNextChild
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.IRuleNode
+    name: IRuleNode
+    isExternal: true
+  - name: ','
+  - name: " "
+  - uid: QL.Parser.AST.Nodes.QLNode
+    name: QLNode
+    href: QL.Parser.AST.Nodes.QLNode.html
+  - name: )
+- uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.DefaultResult
+  commentId: P:Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}.DefaultResult
+  parent: Antlr4.Runtime.Tree.AbstractParseTreeVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.DefaultResult
+  name: DefaultResult
+  nameWithType: AbstractParseTreeVisitor<QLNode>.DefaultResult
+  fullName: Antlr4.Runtime.Tree.AbstractParseTreeVisitor<QL.Parser.AST.Nodes.QLNode>.DefaultResult
+  nameWithType.vb: AbstractParseTreeVisitor(Of QLNode).DefaultResult
+  fullName.vb: Antlr4.Runtime.Tree.AbstractParseTreeVisitor(Of QL.Parser.AST.Nodes.QLNode).DefaultResult
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.QL.Engine.Extensions.ObjectExtensions.ToDictionary
+  commentId: M:QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  parent: QL.Engine.Extensions.ObjectExtensions
+  definition: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  name: ToDictionary(object)
+  nameWithType: ObjectExtensions.ToDictionary(object)
+  fullName: QL.Engine.Extensions.ObjectExtensions.ToDictionary(object)
+  nameWithType.vb: ObjectExtensions.ToDictionary(Object)
+  fullName.vb: QL.Engine.Extensions.ObjectExtensions.ToDictionary(Object)
+  name.vb: ToDictionary(Object)
+  spec.csharp:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1
+  commentId: T:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1
+  isExternal: true
+  name: AbstractParseTreeVisitor<Result>
+  nameWithType: AbstractParseTreeVisitor<Result>
+  fullName: Antlr4.Runtime.Tree.AbstractParseTreeVisitor<Result>
+  nameWithType.vb: AbstractParseTreeVisitor(Of Result)
+  fullName.vb: Antlr4.Runtime.Tree.AbstractParseTreeVisitor(Of Result)
+  name.vb: AbstractParseTreeVisitor(Of Result)
+  spec.csharp:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1
+    name: AbstractParseTreeVisitor
+    isExternal: true
+  - name: <
+  - name: Result
+  - name: '>'
+  spec.vb:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1
+    name: AbstractParseTreeVisitor
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: Result
+  - name: )
+- uid: Antlr4.Runtime.Tree
+  commentId: N:Antlr4.Runtime.Tree
+  isExternal: true
+  name: Antlr4.Runtime.Tree
+  nameWithType: Antlr4.Runtime.Tree
+  fullName: Antlr4.Runtime.Tree
+  spec.csharp:
+  - uid: Antlr4
+    name: Antlr4
+    isExternal: true
+  - name: .
+  - uid: Antlr4.Runtime
+    name: Runtime
+    isExternal: true
+  - name: .
+  - uid: Antlr4.Runtime.Tree
+    name: Tree
+    isExternal: true
+  spec.vb:
+  - uid: Antlr4
+    name: Antlr4
+    isExternal: true
+  - name: .
+  - uid: Antlr4.Runtime
+    name: Runtime
+    isExternal: true
+  - name: .
+  - uid: Antlr4.Runtime.Tree
+    name: Tree
+    isExternal: true
+- uid: QLBaseVisitor`1
+  commentId: T:QLBaseVisitor`1
+  href: QLBaseVisitor-1.html
+  name: QLBaseVisitor<Result>
+  nameWithType: QLBaseVisitor<Result>
+  fullName: QLBaseVisitor<Result>
+  nameWithType.vb: QLBaseVisitor(Of Result)
+  fullName.vb: QLBaseVisitor(Of Result)
+  name.vb: QLBaseVisitor(Of Result)
+  spec.csharp:
+  - uid: QLBaseVisitor`1
+    name: QLBaseVisitor
+    href: QLBaseVisitor-1.html
+  - name: <
+  - name: Result
+  - name: '>'
+  spec.vb:
+  - uid: QLBaseVisitor`1
+    name: QLBaseVisitor
+    href: QLBaseVisitor-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: Result
+  - name: )
+- uid: IQLVisitor`1
+  commentId: T:IQLVisitor`1
+  href: IQLVisitor-1.html
+  name: IQLVisitor<Result>
+  nameWithType: IQLVisitor<Result>
+  fullName: IQLVisitor<Result>
+  nameWithType.vb: IQLVisitor(Of Result)
+  fullName.vb: IQLVisitor(Of Result)
+  name.vb: IQLVisitor(Of Result)
+  spec.csharp:
+  - uid: IQLVisitor`1
+    name: IQLVisitor
+    href: IQLVisitor-1.html
+  - name: <
+  - name: Result
+  - name: '>'
+  spec.vb:
+  - uid: IQLVisitor`1
+    name: IQLVisitor
+    href: IQLVisitor-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: Result
+  - name: )
+- uid: Antlr4.Runtime.Tree.IParseTreeVisitor`1
+  commentId: T:Antlr4.Runtime.Tree.IParseTreeVisitor`1
+  isExternal: true
+  name: IParseTreeVisitor<Result>
+  nameWithType: IParseTreeVisitor<Result>
+  fullName: Antlr4.Runtime.Tree.IParseTreeVisitor<Result>
+  nameWithType.vb: IParseTreeVisitor(Of Result)
+  fullName.vb: Antlr4.Runtime.Tree.IParseTreeVisitor(Of Result)
+  name.vb: IParseTreeVisitor(Of Result)
+  spec.csharp:
+  - uid: Antlr4.Runtime.Tree.IParseTreeVisitor`1
+    name: IParseTreeVisitor
+    isExternal: true
+  - name: <
+  - name: Result
+  - name: '>'
+  spec.vb:
+  - uid: Antlr4.Runtime.Tree.IParseTreeVisitor`1
+    name: IParseTreeVisitor
+    isExternal: true
+  - name: (
+  - name: Of
+  - name: " "
+  - name: Result
+  - name: )
+- uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.Visit(Antlr4.Runtime.Tree.IParseTree)
+  commentId: M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.Visit(Antlr4.Runtime.Tree.IParseTree)
+  isExternal: true
+  name: Visit(IParseTree)
+  nameWithType: AbstractParseTreeVisitor<Result>.Visit(IParseTree)
+  fullName: Antlr4.Runtime.Tree.AbstractParseTreeVisitor<Result>.Visit(Antlr4.Runtime.Tree.IParseTree)
+  nameWithType.vb: AbstractParseTreeVisitor(Of Result).Visit(IParseTree)
+  fullName.vb: Antlr4.Runtime.Tree.AbstractParseTreeVisitor(Of Result).Visit(Antlr4.Runtime.Tree.IParseTree)
+  spec.csharp:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.Visit(Antlr4.Runtime.Tree.IParseTree)
+    name: Visit
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.IParseTree
+    name: IParseTree
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.Visit(Antlr4.Runtime.Tree.IParseTree)
+    name: Visit
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.IParseTree
+    name: IParseTree
+    isExternal: true
+  - name: )
+- uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)
+  commentId: M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)
+  isExternal: true
+  name: VisitChildren(IRuleNode)
+  nameWithType: AbstractParseTreeVisitor<Result>.VisitChildren(IRuleNode)
+  fullName: Antlr4.Runtime.Tree.AbstractParseTreeVisitor<Result>.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)
+  nameWithType.vb: AbstractParseTreeVisitor(Of Result).VisitChildren(IRuleNode)
+  fullName.vb: Antlr4.Runtime.Tree.AbstractParseTreeVisitor(Of Result).VisitChildren(Antlr4.Runtime.Tree.IRuleNode)
+  spec.csharp:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)
+    name: VisitChildren
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.IRuleNode
+    name: IRuleNode
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)
+    name: VisitChildren
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.IRuleNode
+    name: IRuleNode
+    isExternal: true
+  - name: )
+- uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)
+  commentId: M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)
+  isExternal: true
+  name: VisitTerminal(ITerminalNode)
+  nameWithType: AbstractParseTreeVisitor<Result>.VisitTerminal(ITerminalNode)
+  fullName: Antlr4.Runtime.Tree.AbstractParseTreeVisitor<Result>.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)
+  nameWithType.vb: AbstractParseTreeVisitor(Of Result).VisitTerminal(ITerminalNode)
+  fullName.vb: Antlr4.Runtime.Tree.AbstractParseTreeVisitor(Of Result).VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)
+  spec.csharp:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)
+    name: VisitTerminal
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.ITerminalNode
+    name: ITerminalNode
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)
+    name: VisitTerminal
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.ITerminalNode
+    name: ITerminalNode
+    isExternal: true
+  - name: )
+- uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)
+  commentId: M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)
+  isExternal: true
+  name: VisitErrorNode(IErrorNode)
+  nameWithType: AbstractParseTreeVisitor<Result>.VisitErrorNode(IErrorNode)
+  fullName: Antlr4.Runtime.Tree.AbstractParseTreeVisitor<Result>.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)
+  nameWithType.vb: AbstractParseTreeVisitor(Of Result).VisitErrorNode(IErrorNode)
+  fullName.vb: Antlr4.Runtime.Tree.AbstractParseTreeVisitor(Of Result).VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)
+  spec.csharp:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)
+    name: VisitErrorNode
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.IErrorNode
+    name: IErrorNode
+    isExternal: true
+  - name: )
+  spec.vb:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)
+    name: VisitErrorNode
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.IErrorNode
+    name: IErrorNode
+    isExternal: true
+  - name: )
+- uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.AggregateResult(`0,`0)
+  commentId: M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.AggregateResult(`0,`0)
+  isExternal: true
+  name: AggregateResult(Result, Result)
+  nameWithType: AbstractParseTreeVisitor<Result>.AggregateResult(Result, Result)
+  fullName: Antlr4.Runtime.Tree.AbstractParseTreeVisitor<Result>.AggregateResult(Result, Result)
+  nameWithType.vb: AbstractParseTreeVisitor(Of Result).AggregateResult(Result, Result)
+  fullName.vb: Antlr4.Runtime.Tree.AbstractParseTreeVisitor(Of Result).AggregateResult(Result, Result)
+  spec.csharp:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.AggregateResult(`0,`0)
+    name: AggregateResult
+    isExternal: true
+  - name: (
+  - name: Result
+  - name: ','
+  - name: " "
+  - name: Result
+  - name: )
+  spec.vb:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.AggregateResult(`0,`0)
+    name: AggregateResult
+    isExternal: true
+  - name: (
+  - name: Result
+  - name: ','
+  - name: " "
+  - name: Result
+  - name: )
+- uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.ShouldVisitNextChild(Antlr4.Runtime.Tree.IRuleNode,`0)
+  commentId: M:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.ShouldVisitNextChild(Antlr4.Runtime.Tree.IRuleNode,`0)
+  isExternal: true
+  name: ShouldVisitNextChild(IRuleNode, Result)
+  nameWithType: AbstractParseTreeVisitor<Result>.ShouldVisitNextChild(IRuleNode, Result)
+  fullName: Antlr4.Runtime.Tree.AbstractParseTreeVisitor<Result>.ShouldVisitNextChild(Antlr4.Runtime.Tree.IRuleNode, Result)
+  nameWithType.vb: AbstractParseTreeVisitor(Of Result).ShouldVisitNextChild(IRuleNode, Result)
+  fullName.vb: Antlr4.Runtime.Tree.AbstractParseTreeVisitor(Of Result).ShouldVisitNextChild(Antlr4.Runtime.Tree.IRuleNode, Result)
+  spec.csharp:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.ShouldVisitNextChild(Antlr4.Runtime.Tree.IRuleNode,`0)
+    name: ShouldVisitNextChild
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.IRuleNode
+    name: IRuleNode
+    isExternal: true
+  - name: ','
+  - name: " "
+  - name: Result
+  - name: )
+  spec.vb:
+  - uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.ShouldVisitNextChild(Antlr4.Runtime.Tree.IRuleNode,`0)
+    name: ShouldVisitNextChild
+    isExternal: true
+  - name: (
+  - uid: Antlr4.Runtime.Tree.IRuleNode
+    name: IRuleNode
+    isExternal: true
+  - name: ','
+  - name: " "
+  - name: Result
+  - name: )
+- uid: Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.DefaultResult
+  commentId: P:Antlr4.Runtime.Tree.AbstractParseTreeVisitor`1.DefaultResult
+  isExternal: true
+  name: DefaultResult
+  nameWithType: AbstractParseTreeVisitor<Result>.DefaultResult
+  fullName: Antlr4.Runtime.Tree.AbstractParseTreeVisitor<Result>.DefaultResult
+  nameWithType.vb: AbstractParseTreeVisitor(Of Result).DefaultResult
+  fullName.vb: Antlr4.Runtime.Tree.AbstractParseTreeVisitor(Of Result).DefaultResult
+- uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  commentId: M:QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  isExternal: true
+  href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  name: ToDictionary(object)
+  nameWithType: ObjectExtensions.ToDictionary(object)
+  fullName: QL.Engine.Extensions.ObjectExtensions.ToDictionary(object)
+  nameWithType.vb: ObjectExtensions.ToDictionary(Object)
+  fullName.vb: QL.Engine.Extensions.ObjectExtensions.ToDictionary(Object)
+  name.vb: ToDictionary(Object)
+  spec.csharp:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: QL.Engine.Extensions.ObjectExtensions
+  commentId: T:QL.Engine.Extensions.ObjectExtensions
+  parent: QL.Engine.Extensions
+  href: QL.Engine.Extensions.ObjectExtensions.html
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: QL.Engine.Extensions.ObjectExtensions
+- uid: QL.Engine.Extensions
+  commentId: N:QL.Engine.Extensions
+  href: QL.html
+  name: QL.Engine.Extensions
+  nameWithType: QL.Engine.Extensions
+  fullName: QL.Engine.Extensions
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Engine
+    name: Engine
+    href: QL.Engine.html
+  - name: .
+  - uid: QL.Engine.Extensions
+    name: Extensions
+    href: QL.Engine.Extensions.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Engine
+    name: Engine
+    href: QL.Engine.html
+  - name: .
+  - uid: QL.Engine.Extensions
+    name: Extensions
+    href: QL.Engine.Extensions.html
+- uid: QLParser.document
+  commentId: M:QLParser.document
+  href: QLParser.html#QLParser_document
+  name: document()
+  nameWithType: QLParser.document()
+  fullName: QLParser.document()
+  spec.csharp:
+  - uid: QLParser.document
+    name: document
+    href: QLParser.html#QLParser_document
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.document
+    name: document
+    href: QLParser.html#QLParser_document
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitDocument(QLParser.DocumentContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitDocument(QLParser.DocumentContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitDocument(QLParser.DocumentContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitDocument_QLParser_DocumentContext_
+  name: VisitDocument(DocumentContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitDocument(QLParser.DocumentContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitDocument(QLParser.DocumentContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitDocument(QLParser.DocumentContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitDocument(QLParser.DocumentContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitDocument(QLParser.DocumentContext)
+    name: VisitDocument
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitDocument_QLParser_DocumentContext_
+  - name: (
+  - uid: QLParser.DocumentContext
+    name: DocumentContext
+    href: QLParser.DocumentContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitDocument(QLParser.DocumentContext)
+    name: VisitDocument
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitDocument_QLParser_DocumentContext_
+  - name: (
+  - uid: QLParser.DocumentContext
+    name: DocumentContext
+    href: QLParser.DocumentContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitDocument*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitDocument
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitDocument_QLParser_DocumentContext_
+  name: VisitDocument
+  nameWithType: ASTBuilder.VisitDocument
+  fullName: QL.Parser.AST.ASTBuilder.VisitDocument
+- uid: QLParser.DocumentContext
+  commentId: T:QLParser.DocumentContext
+  href: QLParser.html
+  name: QLParser.DocumentContext
+  nameWithType: QLParser.DocumentContext
+  fullName: QLParser.DocumentContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.DocumentContext
+    name: DocumentContext
+    href: QLParser.DocumentContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.DocumentContext
+    name: DocumentContext
+    href: QLParser.DocumentContext.html
+- uid: QL.Parser.AST.Nodes.QLNode
+  commentId: T:QL.Parser.AST.Nodes.QLNode
+  parent: QL.Parser.AST.Nodes
+  href: QL.Parser.AST.Nodes.QLNode.html
+  name: QLNode
+  nameWithType: QLNode
+  fullName: QL.Parser.AST.Nodes.QLNode
+- uid: QLBaseVisitor`1.VisitDocument(QLParser.DocumentContext)
+  commentId: M:QLBaseVisitor`1.VisitDocument(QLParser.DocumentContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitDocument_QLParser_DocumentContext_
+  name: VisitDocument(DocumentContext)
+  nameWithType: QLBaseVisitor<Result>.VisitDocument(QLParser.DocumentContext)
+  fullName: QLBaseVisitor<Result>.VisitDocument(QLParser.DocumentContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitDocument(QLParser.DocumentContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitDocument(QLParser.DocumentContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitDocument(QLParser.DocumentContext)
+    name: VisitDocument
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitDocument_QLParser_DocumentContext_
+  - name: (
+  - uid: QLParser.DocumentContext
+    name: DocumentContext
+    href: QLParser.DocumentContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitDocument(QLParser.DocumentContext)
+    name: VisitDocument
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitDocument_QLParser_DocumentContext_
+  - name: (
+  - uid: QLParser.DocumentContext
+    name: DocumentContext
+    href: QLParser.DocumentContext.html
+  - name: )
+- uid: QL.Parser.AST.Nodes
+  commentId: N:QL.Parser.AST.Nodes
+  href: QL.html
+  name: QL.Parser.AST.Nodes
+  nameWithType: QL.Parser.AST.Nodes
+  fullName: QL.Parser.AST.Nodes
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Parser
+    name: Parser
+    href: QL.Parser.html
+  - name: .
+  - uid: QL.Parser.AST
+    name: AST
+    href: QL.Parser.AST.html
+  - name: .
+  - uid: QL.Parser.AST.Nodes
+    name: Nodes
+    href: QL.Parser.AST.Nodes.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Parser
+    name: Parser
+    href: QL.Parser.html
+  - name: .
+  - uid: QL.Parser.AST
+    name: AST
+    href: QL.Parser.AST.html
+  - name: .
+  - uid: QL.Parser.AST.Nodes
+    name: Nodes
+    href: QL.Parser.AST.Nodes.html
+- uid: QLParser.action_block
+  commentId: M:QLParser.action_block
+  href: QLParser.html#QLParser_action_block
+  name: action_block()
+  nameWithType: QLParser.action_block()
+  fullName: QLParser.action_block()
+  spec.csharp:
+  - uid: QLParser.action_block
+    name: action_block
+    href: QLParser.html#QLParser_action_block
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.action_block
+    name: action_block
+    href: QLParser.html#QLParser_action_block
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitAction_block(QLParser.Action_blockContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitAction_block(QLParser.Action_blockContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitAction_block(QLParser.Action_blockContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitAction_block_QLParser_Action_blockContext_
+  name: VisitAction_block(Action_blockContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitAction_block(QLParser.Action_blockContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitAction_block(QLParser.Action_blockContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitAction_block(QLParser.Action_blockContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitAction_block(QLParser.Action_blockContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitAction_block(QLParser.Action_blockContext)
+    name: VisitAction_block
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitAction_block_QLParser_Action_blockContext_
+  - name: (
+  - uid: QLParser.Action_blockContext
+    name: Action_blockContext
+    href: QLParser.Action_blockContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitAction_block(QLParser.Action_blockContext)
+    name: VisitAction_block
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitAction_block_QLParser_Action_blockContext_
+  - name: (
+  - uid: QLParser.Action_blockContext
+    name: Action_blockContext
+    href: QLParser.Action_blockContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitAction_block*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitAction_block
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitAction_block_QLParser_Action_blockContext_
+  name: VisitAction_block
+  nameWithType: ASTBuilder.VisitAction_block
+  fullName: QL.Parser.AST.ASTBuilder.VisitAction_block
+- uid: QLParser.Action_blockContext
+  commentId: T:QLParser.Action_blockContext
+  href: QLParser.html
+  name: QLParser.Action_blockContext
+  nameWithType: QLParser.Action_blockContext
+  fullName: QLParser.Action_blockContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.Action_blockContext
+    name: Action_blockContext
+    href: QLParser.Action_blockContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.Action_blockContext
+    name: Action_blockContext
+    href: QLParser.Action_blockContext.html
+- uid: QLBaseVisitor`1.VisitAction_block(QLParser.Action_blockContext)
+  commentId: M:QLBaseVisitor`1.VisitAction_block(QLParser.Action_blockContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitAction_block_QLParser_Action_blockContext_
+  name: VisitAction_block(Action_blockContext)
+  nameWithType: QLBaseVisitor<Result>.VisitAction_block(QLParser.Action_blockContext)
+  fullName: QLBaseVisitor<Result>.VisitAction_block(QLParser.Action_blockContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitAction_block(QLParser.Action_blockContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitAction_block(QLParser.Action_blockContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitAction_block(QLParser.Action_blockContext)
+    name: VisitAction_block
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitAction_block_QLParser_Action_blockContext_
+  - name: (
+  - uid: QLParser.Action_blockContext
+    name: Action_blockContext
+    href: QLParser.Action_blockContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitAction_block(QLParser.Action_blockContext)
+    name: VisitAction_block
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitAction_block_QLParser_Action_blockContext_
+  - name: (
+  - uid: QLParser.Action_blockContext
+    name: Action_blockContext
+    href: QLParser.Action_blockContext.html
+  - name: )
+- uid: QLParser.action_type
+  commentId: M:QLParser.action_type
+  href: QLParser.html#QLParser_action_type
+  name: action_type()
+  nameWithType: QLParser.action_type()
+  fullName: QLParser.action_type()
+  spec.csharp:
+  - uid: QLParser.action_type
+    name: action_type
+    href: QLParser.html#QLParser_action_type
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.action_type
+    name: action_type
+    href: QLParser.html#QLParser_action_type
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitAction_type(QLParser.Action_typeContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitAction_type(QLParser.Action_typeContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitAction_type(QLParser.Action_typeContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitAction_type_QLParser_Action_typeContext_
+  name: VisitAction_type(Action_typeContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitAction_type(QLParser.Action_typeContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitAction_type(QLParser.Action_typeContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitAction_type(QLParser.Action_typeContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitAction_type(QLParser.Action_typeContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitAction_type(QLParser.Action_typeContext)
+    name: VisitAction_type
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitAction_type_QLParser_Action_typeContext_
+  - name: (
+  - uid: QLParser.Action_typeContext
+    name: Action_typeContext
+    href: QLParser.Action_typeContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitAction_type(QLParser.Action_typeContext)
+    name: VisitAction_type
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitAction_type_QLParser_Action_typeContext_
+  - name: (
+  - uid: QLParser.Action_typeContext
+    name: Action_typeContext
+    href: QLParser.Action_typeContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitAction_type*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitAction_type
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitAction_type_QLParser_Action_typeContext_
+  name: VisitAction_type
+  nameWithType: ASTBuilder.VisitAction_type
+  fullName: QL.Parser.AST.ASTBuilder.VisitAction_type
+- uid: QLParser.Action_typeContext
+  commentId: T:QLParser.Action_typeContext
+  href: QLParser.html
+  name: QLParser.Action_typeContext
+  nameWithType: QLParser.Action_typeContext
+  fullName: QLParser.Action_typeContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.Action_typeContext
+    name: Action_typeContext
+    href: QLParser.Action_typeContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.Action_typeContext
+    name: Action_typeContext
+    href: QLParser.Action_typeContext.html
+- uid: QLBaseVisitor`1.VisitAction_type(QLParser.Action_typeContext)
+  commentId: M:QLBaseVisitor`1.VisitAction_type(QLParser.Action_typeContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitAction_type_QLParser_Action_typeContext_
+  name: VisitAction_type(Action_typeContext)
+  nameWithType: QLBaseVisitor<Result>.VisitAction_type(QLParser.Action_typeContext)
+  fullName: QLBaseVisitor<Result>.VisitAction_type(QLParser.Action_typeContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitAction_type(QLParser.Action_typeContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitAction_type(QLParser.Action_typeContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitAction_type(QLParser.Action_typeContext)
+    name: VisitAction_type
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitAction_type_QLParser_Action_typeContext_
+  - name: (
+  - uid: QLParser.Action_typeContext
+    name: Action_typeContext
+    href: QLParser.Action_typeContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitAction_type(QLParser.Action_typeContext)
+    name: VisitAction_type
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitAction_type_QLParser_Action_typeContext_
+  - name: (
+  - uid: QLParser.Action_typeContext
+    name: Action_typeContext
+    href: QLParser.Action_typeContext.html
+  - name: )
+- uid: QLParser.context_blocks
+  commentId: M:QLParser.context_blocks
+  href: QLParser.html#QLParser_context_blocks
+  name: context_blocks()
+  nameWithType: QLParser.context_blocks()
+  fullName: QLParser.context_blocks()
+  spec.csharp:
+  - uid: QLParser.context_blocks
+    name: context_blocks
+    href: QLParser.html#QLParser_context_blocks
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.context_blocks
+    name: context_blocks
+    href: QLParser.html#QLParser_context_blocks
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitContext_blocks(QLParser.Context_blocksContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitContext_blocks(QLParser.Context_blocksContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitContext_blocks(QLParser.Context_blocksContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitContext_blocks_QLParser_Context_blocksContext_
+  name: VisitContext_blocks(Context_blocksContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitContext_blocks(QLParser.Context_blocksContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitContext_blocks(QLParser.Context_blocksContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitContext_blocks(QLParser.Context_blocksContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitContext_blocks(QLParser.Context_blocksContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitContext_blocks(QLParser.Context_blocksContext)
+    name: VisitContext_blocks
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitContext_blocks_QLParser_Context_blocksContext_
+  - name: (
+  - uid: QLParser.Context_blocksContext
+    name: Context_blocksContext
+    href: QLParser.Context_blocksContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitContext_blocks(QLParser.Context_blocksContext)
+    name: VisitContext_blocks
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitContext_blocks_QLParser_Context_blocksContext_
+  - name: (
+  - uid: QLParser.Context_blocksContext
+    name: Context_blocksContext
+    href: QLParser.Context_blocksContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitContext_blocks*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitContext_blocks
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitContext_blocks_QLParser_Context_blocksContext_
+  name: VisitContext_blocks
+  nameWithType: ASTBuilder.VisitContext_blocks
+  fullName: QL.Parser.AST.ASTBuilder.VisitContext_blocks
+- uid: QLParser.Context_blocksContext
+  commentId: T:QLParser.Context_blocksContext
+  href: QLParser.html
+  name: QLParser.Context_blocksContext
+  nameWithType: QLParser.Context_blocksContext
+  fullName: QLParser.Context_blocksContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.Context_blocksContext
+    name: Context_blocksContext
+    href: QLParser.Context_blocksContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.Context_blocksContext
+    name: Context_blocksContext
+    href: QLParser.Context_blocksContext.html
+- uid: QLBaseVisitor`1.VisitContext_blocks(QLParser.Context_blocksContext)
+  commentId: M:QLBaseVisitor`1.VisitContext_blocks(QLParser.Context_blocksContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitContext_blocks_QLParser_Context_blocksContext_
+  name: VisitContext_blocks(Context_blocksContext)
+  nameWithType: QLBaseVisitor<Result>.VisitContext_blocks(QLParser.Context_blocksContext)
+  fullName: QLBaseVisitor<Result>.VisitContext_blocks(QLParser.Context_blocksContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitContext_blocks(QLParser.Context_blocksContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitContext_blocks(QLParser.Context_blocksContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitContext_blocks(QLParser.Context_blocksContext)
+    name: VisitContext_blocks
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitContext_blocks_QLParser_Context_blocksContext_
+  - name: (
+  - uid: QLParser.Context_blocksContext
+    name: Context_blocksContext
+    href: QLParser.Context_blocksContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitContext_blocks(QLParser.Context_blocksContext)
+    name: VisitContext_blocks
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitContext_blocks_QLParser_Context_blocksContext_
+  - name: (
+  - uid: QLParser.Context_blocksContext
+    name: Context_blocksContext
+    href: QLParser.Context_blocksContext.html
+  - name: )
+- uid: QLParser.context_block
+  commentId: M:QLParser.context_block
+  href: QLParser.html#QLParser_context_block
+  name: context_block()
+  nameWithType: QLParser.context_block()
+  fullName: QLParser.context_block()
+  spec.csharp:
+  - uid: QLParser.context_block
+    name: context_block
+    href: QLParser.html#QLParser_context_block
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.context_block
+    name: context_block
+    href: QLParser.html#QLParser_context_block
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitContext_block(QLParser.Context_blockContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitContext_block(QLParser.Context_blockContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitContext_block(QLParser.Context_blockContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitContext_block_QLParser_Context_blockContext_
+  name: VisitContext_block(Context_blockContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitContext_block(QLParser.Context_blockContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitContext_block(QLParser.Context_blockContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitContext_block(QLParser.Context_blockContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitContext_block(QLParser.Context_blockContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitContext_block(QLParser.Context_blockContext)
+    name: VisitContext_block
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitContext_block_QLParser_Context_blockContext_
+  - name: (
+  - uid: QLParser.Context_blockContext
+    name: Context_blockContext
+    href: QLParser.Context_blockContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitContext_block(QLParser.Context_blockContext)
+    name: VisitContext_block
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitContext_block_QLParser_Context_blockContext_
+  - name: (
+  - uid: QLParser.Context_blockContext
+    name: Context_blockContext
+    href: QLParser.Context_blockContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitContext_block*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitContext_block
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitContext_block_QLParser_Context_blockContext_
+  name: VisitContext_block
+  nameWithType: ASTBuilder.VisitContext_block
+  fullName: QL.Parser.AST.ASTBuilder.VisitContext_block
+- uid: QLParser.Context_blockContext
+  commentId: T:QLParser.Context_blockContext
+  href: QLParser.html
+  name: QLParser.Context_blockContext
+  nameWithType: QLParser.Context_blockContext
+  fullName: QLParser.Context_blockContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.Context_blockContext
+    name: Context_blockContext
+    href: QLParser.Context_blockContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.Context_blockContext
+    name: Context_blockContext
+    href: QLParser.Context_blockContext.html
+- uid: QLBaseVisitor`1.VisitContext_block(QLParser.Context_blockContext)
+  commentId: M:QLBaseVisitor`1.VisitContext_block(QLParser.Context_blockContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitContext_block_QLParser_Context_blockContext_
+  name: VisitContext_block(Context_blockContext)
+  nameWithType: QLBaseVisitor<Result>.VisitContext_block(QLParser.Context_blockContext)
+  fullName: QLBaseVisitor<Result>.VisitContext_block(QLParser.Context_blockContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitContext_block(QLParser.Context_blockContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitContext_block(QLParser.Context_blockContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitContext_block(QLParser.Context_blockContext)
+    name: VisitContext_block
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitContext_block_QLParser_Context_blockContext_
+  - name: (
+  - uid: QLParser.Context_blockContext
+    name: Context_blockContext
+    href: QLParser.Context_blockContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitContext_block(QLParser.Context_blockContext)
+    name: VisitContext_block
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitContext_block_QLParser_Context_blockContext_
+  - name: (
+  - uid: QLParser.Context_blockContext
+    name: Context_blockContext
+    href: QLParser.Context_blockContext.html
+  - name: )
+- uid: QLParser.local_context_block
+  commentId: M:QLParser.local_context_block
+  href: QLParser.html#QLParser_local_context_block
+  name: local_context_block()
+  nameWithType: QLParser.local_context_block()
+  fullName: QLParser.local_context_block()
+  spec.csharp:
+  - uid: QLParser.local_context_block
+    name: local_context_block
+    href: QLParser.html#QLParser_local_context_block
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.local_context_block
+    name: local_context_block
+    href: QLParser.html#QLParser_local_context_block
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitLocal_context_block(QLParser.Local_context_blockContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitLocal_context_block(QLParser.Local_context_blockContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitLocal_context_block(QLParser.Local_context_blockContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitLocal_context_block_QLParser_Local_context_blockContext_
+  name: VisitLocal_context_block(Local_context_blockContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitLocal_context_block(QLParser.Local_context_blockContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitLocal_context_block(QLParser.Local_context_blockContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitLocal_context_block(QLParser.Local_context_blockContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitLocal_context_block(QLParser.Local_context_blockContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitLocal_context_block(QLParser.Local_context_blockContext)
+    name: VisitLocal_context_block
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitLocal_context_block_QLParser_Local_context_blockContext_
+  - name: (
+  - uid: QLParser.Local_context_blockContext
+    name: Local_context_blockContext
+    href: QLParser.Local_context_blockContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitLocal_context_block(QLParser.Local_context_blockContext)
+    name: VisitLocal_context_block
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitLocal_context_block_QLParser_Local_context_blockContext_
+  - name: (
+  - uid: QLParser.Local_context_blockContext
+    name: Local_context_blockContext
+    href: QLParser.Local_context_blockContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitLocal_context_block*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitLocal_context_block
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitLocal_context_block_QLParser_Local_context_blockContext_
+  name: VisitLocal_context_block
+  nameWithType: ASTBuilder.VisitLocal_context_block
+  fullName: QL.Parser.AST.ASTBuilder.VisitLocal_context_block
+- uid: QLParser.Local_context_blockContext
+  commentId: T:QLParser.Local_context_blockContext
+  href: QLParser.html
+  name: QLParser.Local_context_blockContext
+  nameWithType: QLParser.Local_context_blockContext
+  fullName: QLParser.Local_context_blockContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.Local_context_blockContext
+    name: Local_context_blockContext
+    href: QLParser.Local_context_blockContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.Local_context_blockContext
+    name: Local_context_blockContext
+    href: QLParser.Local_context_blockContext.html
+- uid: QLBaseVisitor`1.VisitLocal_context_block(QLParser.Local_context_blockContext)
+  commentId: M:QLBaseVisitor`1.VisitLocal_context_block(QLParser.Local_context_blockContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitLocal_context_block_QLParser_Local_context_blockContext_
+  name: VisitLocal_context_block(Local_context_blockContext)
+  nameWithType: QLBaseVisitor<Result>.VisitLocal_context_block(QLParser.Local_context_blockContext)
+  fullName: QLBaseVisitor<Result>.VisitLocal_context_block(QLParser.Local_context_blockContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitLocal_context_block(QLParser.Local_context_blockContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitLocal_context_block(QLParser.Local_context_blockContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitLocal_context_block(QLParser.Local_context_blockContext)
+    name: VisitLocal_context_block
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitLocal_context_block_QLParser_Local_context_blockContext_
+  - name: (
+  - uid: QLParser.Local_context_blockContext
+    name: Local_context_blockContext
+    href: QLParser.Local_context_blockContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitLocal_context_block(QLParser.Local_context_blockContext)
+    name: VisitLocal_context_block
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitLocal_context_block_QLParser_Local_context_blockContext_
+  - name: (
+  - uid: QLParser.Local_context_blockContext
+    name: Local_context_blockContext
+    href: QLParser.Local_context_blockContext.html
+  - name: )
+- uid: QLParser.remote_context_block
+  commentId: M:QLParser.remote_context_block
+  href: QLParser.html#QLParser_remote_context_block
+  name: remote_context_block()
+  nameWithType: QLParser.remote_context_block()
+  fullName: QLParser.remote_context_block()
+  spec.csharp:
+  - uid: QLParser.remote_context_block
+    name: remote_context_block
+    href: QLParser.html#QLParser_remote_context_block
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.remote_context_block
+    name: remote_context_block
+    href: QLParser.html#QLParser_remote_context_block
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitRemote_context_block_QLParser_Remote_context_blockContext_
+  name: VisitRemote_context_block(Remote_context_blockContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+    name: VisitRemote_context_block
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitRemote_context_block_QLParser_Remote_context_blockContext_
+  - name: (
+  - uid: QLParser.Remote_context_blockContext
+    name: Remote_context_blockContext
+    href: QLParser.Remote_context_blockContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+    name: VisitRemote_context_block
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitRemote_context_block_QLParser_Remote_context_blockContext_
+  - name: (
+  - uid: QLParser.Remote_context_blockContext
+    name: Remote_context_blockContext
+    href: QLParser.Remote_context_blockContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitRemote_context_block*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitRemote_context_block
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitRemote_context_block_QLParser_Remote_context_blockContext_
+  name: VisitRemote_context_block
+  nameWithType: ASTBuilder.VisitRemote_context_block
+  fullName: QL.Parser.AST.ASTBuilder.VisitRemote_context_block
+- uid: QLParser.Remote_context_blockContext
+  commentId: T:QLParser.Remote_context_blockContext
+  href: QLParser.html
+  name: QLParser.Remote_context_blockContext
+  nameWithType: QLParser.Remote_context_blockContext
+  fullName: QLParser.Remote_context_blockContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.Remote_context_blockContext
+    name: Remote_context_blockContext
+    href: QLParser.Remote_context_blockContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.Remote_context_blockContext
+    name: Remote_context_blockContext
+    href: QLParser.Remote_context_blockContext.html
+- uid: QLBaseVisitor`1.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  commentId: M:QLBaseVisitor`1.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitRemote_context_block_QLParser_Remote_context_blockContext_
+  name: VisitRemote_context_block(Remote_context_blockContext)
+  nameWithType: QLBaseVisitor<Result>.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  fullName: QLBaseVisitor<Result>.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitRemote_context_block(QLParser.Remote_context_blockContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+    name: VisitRemote_context_block
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitRemote_context_block_QLParser_Remote_context_blockContext_
+  - name: (
+  - uid: QLParser.Remote_context_blockContext
+    name: Remote_context_blockContext
+    href: QLParser.Remote_context_blockContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitRemote_context_block(QLParser.Remote_context_blockContext)
+    name: VisitRemote_context_block
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitRemote_context_block_QLParser_Remote_context_blockContext_
+  - name: (
+  - uid: QLParser.Remote_context_blockContext
+    name: Remote_context_blockContext
+    href: QLParser.Remote_context_blockContext.html
+  - name: )
+- uid: QLParser.selection_set
+  commentId: M:QLParser.selection_set
+  href: QLParser.html#QLParser_selection_set
+  name: selection_set()
+  nameWithType: QLParser.selection_set()
+  fullName: QLParser.selection_set()
+  spec.csharp:
+  - uid: QLParser.selection_set
+    name: selection_set
+    href: QLParser.html#QLParser_selection_set
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.selection_set
+    name: selection_set
+    href: QLParser.html#QLParser_selection_set
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitSelection_set(QLParser.Selection_setContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitSelection_set(QLParser.Selection_setContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitSelection_set(QLParser.Selection_setContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitSelection_set_QLParser_Selection_setContext_
+  name: VisitSelection_set(Selection_setContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitSelection_set(QLParser.Selection_setContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitSelection_set(QLParser.Selection_setContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitSelection_set(QLParser.Selection_setContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitSelection_set(QLParser.Selection_setContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitSelection_set(QLParser.Selection_setContext)
+    name: VisitSelection_set
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitSelection_set_QLParser_Selection_setContext_
+  - name: (
+  - uid: QLParser.Selection_setContext
+    name: Selection_setContext
+    href: QLParser.Selection_setContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitSelection_set(QLParser.Selection_setContext)
+    name: VisitSelection_set
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitSelection_set_QLParser_Selection_setContext_
+  - name: (
+  - uid: QLParser.Selection_setContext
+    name: Selection_setContext
+    href: QLParser.Selection_setContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitSelection_set*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitSelection_set
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitSelection_set_QLParser_Selection_setContext_
+  name: VisitSelection_set
+  nameWithType: ASTBuilder.VisitSelection_set
+  fullName: QL.Parser.AST.ASTBuilder.VisitSelection_set
+- uid: QLParser.Selection_setContext
+  commentId: T:QLParser.Selection_setContext
+  href: QLParser.html
+  name: QLParser.Selection_setContext
+  nameWithType: QLParser.Selection_setContext
+  fullName: QLParser.Selection_setContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.Selection_setContext
+    name: Selection_setContext
+    href: QLParser.Selection_setContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.Selection_setContext
+    name: Selection_setContext
+    href: QLParser.Selection_setContext.html
+- uid: QLBaseVisitor`1.VisitSelection_set(QLParser.Selection_setContext)
+  commentId: M:QLBaseVisitor`1.VisitSelection_set(QLParser.Selection_setContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitSelection_set_QLParser_Selection_setContext_
+  name: VisitSelection_set(Selection_setContext)
+  nameWithType: QLBaseVisitor<Result>.VisitSelection_set(QLParser.Selection_setContext)
+  fullName: QLBaseVisitor<Result>.VisitSelection_set(QLParser.Selection_setContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitSelection_set(QLParser.Selection_setContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitSelection_set(QLParser.Selection_setContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitSelection_set(QLParser.Selection_setContext)
+    name: VisitSelection_set
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitSelection_set_QLParser_Selection_setContext_
+  - name: (
+  - uid: QLParser.Selection_setContext
+    name: Selection_setContext
+    href: QLParser.Selection_setContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitSelection_set(QLParser.Selection_setContext)
+    name: VisitSelection_set
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitSelection_set_QLParser_Selection_setContext_
+  - name: (
+  - uid: QLParser.Selection_setContext
+    name: Selection_setContext
+    href: QLParser.Selection_setContext.html
+  - name: )
+- uid: QLParser.selection
+  commentId: M:QLParser.selection
+  href: QLParser.html#QLParser_selection
+  name: selection()
+  nameWithType: QLParser.selection()
+  fullName: QLParser.selection()
+  spec.csharp:
+  - uid: QLParser.selection
+    name: selection
+    href: QLParser.html#QLParser_selection
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.selection
+    name: selection
+    href: QLParser.html#QLParser_selection
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitSelection(QLParser.SelectionContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitSelection(QLParser.SelectionContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitSelection(QLParser.SelectionContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitSelection_QLParser_SelectionContext_
+  name: VisitSelection(SelectionContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitSelection(QLParser.SelectionContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitSelection(QLParser.SelectionContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitSelection(QLParser.SelectionContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitSelection(QLParser.SelectionContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitSelection(QLParser.SelectionContext)
+    name: VisitSelection
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitSelection_QLParser_SelectionContext_
+  - name: (
+  - uid: QLParser.SelectionContext
+    name: SelectionContext
+    href: QLParser.SelectionContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitSelection(QLParser.SelectionContext)
+    name: VisitSelection
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitSelection_QLParser_SelectionContext_
+  - name: (
+  - uid: QLParser.SelectionContext
+    name: SelectionContext
+    href: QLParser.SelectionContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitSelection*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitSelection
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitSelection_QLParser_SelectionContext_
+  name: VisitSelection
+  nameWithType: ASTBuilder.VisitSelection
+  fullName: QL.Parser.AST.ASTBuilder.VisitSelection
+- uid: QLParser.SelectionContext
+  commentId: T:QLParser.SelectionContext
+  href: QLParser.html
+  name: QLParser.SelectionContext
+  nameWithType: QLParser.SelectionContext
+  fullName: QLParser.SelectionContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.SelectionContext
+    name: SelectionContext
+    href: QLParser.SelectionContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.SelectionContext
+    name: SelectionContext
+    href: QLParser.SelectionContext.html
+- uid: QLBaseVisitor`1.VisitSelection(QLParser.SelectionContext)
+  commentId: M:QLBaseVisitor`1.VisitSelection(QLParser.SelectionContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitSelection_QLParser_SelectionContext_
+  name: VisitSelection(SelectionContext)
+  nameWithType: QLBaseVisitor<Result>.VisitSelection(QLParser.SelectionContext)
+  fullName: QLBaseVisitor<Result>.VisitSelection(QLParser.SelectionContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitSelection(QLParser.SelectionContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitSelection(QLParser.SelectionContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitSelection(QLParser.SelectionContext)
+    name: VisitSelection
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitSelection_QLParser_SelectionContext_
+  - name: (
+  - uid: QLParser.SelectionContext
+    name: SelectionContext
+    href: QLParser.SelectionContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitSelection(QLParser.SelectionContext)
+    name: VisitSelection
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitSelection_QLParser_SelectionContext_
+  - name: (
+  - uid: QLParser.SelectionContext
+    name: SelectionContext
+    href: QLParser.SelectionContext.html
+  - name: )
+- uid: QLParser.args
+  commentId: M:QLParser.args
+  href: QLParser.html#QLParser_args
+  name: args()
+  nameWithType: QLParser.args()
+  fullName: QLParser.args()
+  spec.csharp:
+  - uid: QLParser.args
+    name: args
+    href: QLParser.html#QLParser_args
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.args
+    name: args
+    href: QLParser.html#QLParser_args
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitArgs(QLParser.ArgsContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitArgs(QLParser.ArgsContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitArgs(QLParser.ArgsContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitArgs_QLParser_ArgsContext_
+  name: VisitArgs(ArgsContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitArgs(QLParser.ArgsContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitArgs(QLParser.ArgsContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitArgs(QLParser.ArgsContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitArgs(QLParser.ArgsContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitArgs(QLParser.ArgsContext)
+    name: VisitArgs
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitArgs_QLParser_ArgsContext_
+  - name: (
+  - uid: QLParser.ArgsContext
+    name: ArgsContext
+    href: QLParser.ArgsContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitArgs(QLParser.ArgsContext)
+    name: VisitArgs
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitArgs_QLParser_ArgsContext_
+  - name: (
+  - uid: QLParser.ArgsContext
+    name: ArgsContext
+    href: QLParser.ArgsContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitArgs*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitArgs
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitArgs_QLParser_ArgsContext_
+  name: VisitArgs
+  nameWithType: ASTBuilder.VisitArgs
+  fullName: QL.Parser.AST.ASTBuilder.VisitArgs
+- uid: QLParser.ArgsContext
+  commentId: T:QLParser.ArgsContext
+  href: QLParser.html
+  name: QLParser.ArgsContext
+  nameWithType: QLParser.ArgsContext
+  fullName: QLParser.ArgsContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.ArgsContext
+    name: ArgsContext
+    href: QLParser.ArgsContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.ArgsContext
+    name: ArgsContext
+    href: QLParser.ArgsContext.html
+- uid: QLBaseVisitor`1.VisitArgs(QLParser.ArgsContext)
+  commentId: M:QLBaseVisitor`1.VisitArgs(QLParser.ArgsContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitArgs_QLParser_ArgsContext_
+  name: VisitArgs(ArgsContext)
+  nameWithType: QLBaseVisitor<Result>.VisitArgs(QLParser.ArgsContext)
+  fullName: QLBaseVisitor<Result>.VisitArgs(QLParser.ArgsContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitArgs(QLParser.ArgsContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitArgs(QLParser.ArgsContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitArgs(QLParser.ArgsContext)
+    name: VisitArgs
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitArgs_QLParser_ArgsContext_
+  - name: (
+  - uid: QLParser.ArgsContext
+    name: ArgsContext
+    href: QLParser.ArgsContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitArgs(QLParser.ArgsContext)
+    name: VisitArgs
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitArgs_QLParser_ArgsContext_
+  - name: (
+  - uid: QLParser.ArgsContext
+    name: ArgsContext
+    href: QLParser.ArgsContext.html
+  - name: )
+- uid: QLParser.arg
+  commentId: M:QLParser.arg
+  href: QLParser.html#QLParser_arg
+  name: arg()
+  nameWithType: QLParser.arg()
+  fullName: QLParser.arg()
+  spec.csharp:
+  - uid: QLParser.arg
+    name: arg
+    href: QLParser.html#QLParser_arg
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.arg
+    name: arg
+    href: QLParser.html#QLParser_arg
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitArg(QLParser.ArgContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitArg(QLParser.ArgContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitArg(QLParser.ArgContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitArg_QLParser_ArgContext_
+  name: VisitArg(ArgContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitArg(QLParser.ArgContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitArg(QLParser.ArgContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitArg(QLParser.ArgContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitArg(QLParser.ArgContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitArg(QLParser.ArgContext)
+    name: VisitArg
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitArg_QLParser_ArgContext_
+  - name: (
+  - uid: QLParser.ArgContext
+    name: ArgContext
+    href: QLParser.ArgContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitArg(QLParser.ArgContext)
+    name: VisitArg
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitArg_QLParser_ArgContext_
+  - name: (
+  - uid: QLParser.ArgContext
+    name: ArgContext
+    href: QLParser.ArgContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitArg*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitArg
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitArg_QLParser_ArgContext_
+  name: VisitArg
+  nameWithType: ASTBuilder.VisitArg
+  fullName: QL.Parser.AST.ASTBuilder.VisitArg
+- uid: QLParser.ArgContext
+  commentId: T:QLParser.ArgContext
+  href: QLParser.html
+  name: QLParser.ArgContext
+  nameWithType: QLParser.ArgContext
+  fullName: QLParser.ArgContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.ArgContext
+    name: ArgContext
+    href: QLParser.ArgContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.ArgContext
+    name: ArgContext
+    href: QLParser.ArgContext.html
+- uid: QLBaseVisitor`1.VisitArg(QLParser.ArgContext)
+  commentId: M:QLBaseVisitor`1.VisitArg(QLParser.ArgContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitArg_QLParser_ArgContext_
+  name: VisitArg(ArgContext)
+  nameWithType: QLBaseVisitor<Result>.VisitArg(QLParser.ArgContext)
+  fullName: QLBaseVisitor<Result>.VisitArg(QLParser.ArgContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitArg(QLParser.ArgContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitArg(QLParser.ArgContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitArg(QLParser.ArgContext)
+    name: VisitArg
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitArg_QLParser_ArgContext_
+  - name: (
+  - uid: QLParser.ArgContext
+    name: ArgContext
+    href: QLParser.ArgContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitArg(QLParser.ArgContext)
+    name: VisitArg
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitArg_QLParser_ArgContext_
+  - name: (
+  - uid: QLParser.ArgContext
+    name: ArgContext
+    href: QLParser.ArgContext.html
+  - name: )
+- uid: QLParser.field
+  commentId: M:QLParser.field
+  href: QLParser.html#QLParser_field
+  name: field()
+  nameWithType: QLParser.field()
+  fullName: QLParser.field()
+  spec.csharp:
+  - uid: QLParser.field
+    name: field
+    href: QLParser.html#QLParser_field
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.field
+    name: field
+    href: QLParser.html#QLParser_field
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitField(QLParser.FieldContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitField(QLParser.FieldContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitField(QLParser.FieldContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitField_QLParser_FieldContext_
+  name: VisitField(FieldContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitField(QLParser.FieldContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitField(QLParser.FieldContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitField(QLParser.FieldContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitField(QLParser.FieldContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitField(QLParser.FieldContext)
+    name: VisitField
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitField_QLParser_FieldContext_
+  - name: (
+  - uid: QLParser.FieldContext
+    name: FieldContext
+    href: QLParser.FieldContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitField(QLParser.FieldContext)
+    name: VisitField
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitField_QLParser_FieldContext_
+  - name: (
+  - uid: QLParser.FieldContext
+    name: FieldContext
+    href: QLParser.FieldContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitField*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitField
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitField_QLParser_FieldContext_
+  name: VisitField
+  nameWithType: ASTBuilder.VisitField
+  fullName: QL.Parser.AST.ASTBuilder.VisitField
+- uid: QLParser.FieldContext
+  commentId: T:QLParser.FieldContext
+  href: QLParser.html
+  name: QLParser.FieldContext
+  nameWithType: QLParser.FieldContext
+  fullName: QLParser.FieldContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.FieldContext
+    name: FieldContext
+    href: QLParser.FieldContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.FieldContext
+    name: FieldContext
+    href: QLParser.FieldContext.html
+- uid: QLBaseVisitor`1.VisitField(QLParser.FieldContext)
+  commentId: M:QLBaseVisitor`1.VisitField(QLParser.FieldContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitField_QLParser_FieldContext_
+  name: VisitField(FieldContext)
+  nameWithType: QLBaseVisitor<Result>.VisitField(QLParser.FieldContext)
+  fullName: QLBaseVisitor<Result>.VisitField(QLParser.FieldContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitField(QLParser.FieldContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitField(QLParser.FieldContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitField(QLParser.FieldContext)
+    name: VisitField
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitField_QLParser_FieldContext_
+  - name: (
+  - uid: QLParser.FieldContext
+    name: FieldContext
+    href: QLParser.FieldContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitField(QLParser.FieldContext)
+    name: VisitField
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitField_QLParser_FieldContext_
+  - name: (
+  - uid: QLParser.FieldContext
+    name: FieldContext
+    href: QLParser.FieldContext.html
+  - name: )
+- uid: QLParser.transformations
+  commentId: M:QLParser.transformations
+  href: QLParser.html#QLParser_transformations
+  name: transformations()
+  nameWithType: QLParser.transformations()
+  fullName: QLParser.transformations()
+  spec.csharp:
+  - uid: QLParser.transformations
+    name: transformations
+    href: QLParser.html#QLParser_transformations
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.transformations
+    name: transformations
+    href: QLParser.html#QLParser_transformations
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitTransformations(QLParser.TransformationsContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitTransformations(QLParser.TransformationsContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitTransformations(QLParser.TransformationsContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitTransformations_QLParser_TransformationsContext_
+  name: VisitTransformations(TransformationsContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitTransformations(QLParser.TransformationsContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitTransformations(QLParser.TransformationsContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitTransformations(QLParser.TransformationsContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitTransformations(QLParser.TransformationsContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitTransformations(QLParser.TransformationsContext)
+    name: VisitTransformations
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitTransformations_QLParser_TransformationsContext_
+  - name: (
+  - uid: QLParser.TransformationsContext
+    name: TransformationsContext
+    href: QLParser.TransformationsContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitTransformations(QLParser.TransformationsContext)
+    name: VisitTransformations
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitTransformations_QLParser_TransformationsContext_
+  - name: (
+  - uid: QLParser.TransformationsContext
+    name: TransformationsContext
+    href: QLParser.TransformationsContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitTransformations*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitTransformations
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitTransformations_QLParser_TransformationsContext_
+  name: VisitTransformations
+  nameWithType: ASTBuilder.VisitTransformations
+  fullName: QL.Parser.AST.ASTBuilder.VisitTransformations
+- uid: QLParser.TransformationsContext
+  commentId: T:QLParser.TransformationsContext
+  href: QLParser.html
+  name: QLParser.TransformationsContext
+  nameWithType: QLParser.TransformationsContext
+  fullName: QLParser.TransformationsContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.TransformationsContext
+    name: TransformationsContext
+    href: QLParser.TransformationsContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.TransformationsContext
+    name: TransformationsContext
+    href: QLParser.TransformationsContext.html
+- uid: QLBaseVisitor`1.VisitTransformations(QLParser.TransformationsContext)
+  commentId: M:QLBaseVisitor`1.VisitTransformations(QLParser.TransformationsContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitTransformations_QLParser_TransformationsContext_
+  name: VisitTransformations(TransformationsContext)
+  nameWithType: QLBaseVisitor<Result>.VisitTransformations(QLParser.TransformationsContext)
+  fullName: QLBaseVisitor<Result>.VisitTransformations(QLParser.TransformationsContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitTransformations(QLParser.TransformationsContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitTransformations(QLParser.TransformationsContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitTransformations(QLParser.TransformationsContext)
+    name: VisitTransformations
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitTransformations_QLParser_TransformationsContext_
+  - name: (
+  - uid: QLParser.TransformationsContext
+    name: TransformationsContext
+    href: QLParser.TransformationsContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitTransformations(QLParser.TransformationsContext)
+    name: VisitTransformations
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitTransformations_QLParser_TransformationsContext_
+  - name: (
+  - uid: QLParser.TransformationsContext
+    name: TransformationsContext
+    href: QLParser.TransformationsContext.html
+  - name: )
+- uid: QLParser.transformation
+  commentId: M:QLParser.transformation
+  href: QLParser.html#QLParser_transformation
+  name: transformation()
+  nameWithType: QLParser.transformation()
+  fullName: QLParser.transformation()
+  spec.csharp:
+  - uid: QLParser.transformation
+    name: transformation
+    href: QLParser.html#QLParser_transformation
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.transformation
+    name: transformation
+    href: QLParser.html#QLParser_transformation
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitTransformation(QLParser.TransformationContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitTransformation(QLParser.TransformationContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitTransformation(QLParser.TransformationContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitTransformation_QLParser_TransformationContext_
+  name: VisitTransformation(TransformationContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitTransformation(QLParser.TransformationContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitTransformation(QLParser.TransformationContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitTransformation(QLParser.TransformationContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitTransformation(QLParser.TransformationContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitTransformation(QLParser.TransformationContext)
+    name: VisitTransformation
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitTransformation_QLParser_TransformationContext_
+  - name: (
+  - uid: QLParser.TransformationContext
+    name: TransformationContext
+    href: QLParser.TransformationContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitTransformation(QLParser.TransformationContext)
+    name: VisitTransformation
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitTransformation_QLParser_TransformationContext_
+  - name: (
+  - uid: QLParser.TransformationContext
+    name: TransformationContext
+    href: QLParser.TransformationContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitTransformation*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitTransformation
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitTransformation_QLParser_TransformationContext_
+  name: VisitTransformation
+  nameWithType: ASTBuilder.VisitTransformation
+  fullName: QL.Parser.AST.ASTBuilder.VisitTransformation
+- uid: QLParser.TransformationContext
+  commentId: T:QLParser.TransformationContext
+  href: QLParser.html
+  name: QLParser.TransformationContext
+  nameWithType: QLParser.TransformationContext
+  fullName: QLParser.TransformationContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.TransformationContext
+    name: TransformationContext
+    href: QLParser.TransformationContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.TransformationContext
+    name: TransformationContext
+    href: QLParser.TransformationContext.html
+- uid: QLBaseVisitor`1.VisitTransformation(QLParser.TransformationContext)
+  commentId: M:QLBaseVisitor`1.VisitTransformation(QLParser.TransformationContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitTransformation_QLParser_TransformationContext_
+  name: VisitTransformation(TransformationContext)
+  nameWithType: QLBaseVisitor<Result>.VisitTransformation(QLParser.TransformationContext)
+  fullName: QLBaseVisitor<Result>.VisitTransformation(QLParser.TransformationContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitTransformation(QLParser.TransformationContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitTransformation(QLParser.TransformationContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitTransformation(QLParser.TransformationContext)
+    name: VisitTransformation
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitTransformation_QLParser_TransformationContext_
+  - name: (
+  - uid: QLParser.TransformationContext
+    name: TransformationContext
+    href: QLParser.TransformationContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitTransformation(QLParser.TransformationContext)
+    name: VisitTransformation
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitTransformation_QLParser_TransformationContext_
+  - name: (
+  - uid: QLParser.TransformationContext
+    name: TransformationContext
+    href: QLParser.TransformationContext.html
+  - name: )
+- uid: QLParser.value
+  commentId: M:QLParser.value
+  href: QLParser.html#QLParser_value
+  name: value()
+  nameWithType: QLParser.value()
+  fullName: QLParser.value()
+  spec.csharp:
+  - uid: QLParser.value
+    name: value
+    href: QLParser.html#QLParser_value
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.value
+    name: value
+    href: QLParser.html#QLParser_value
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitValue(QLParser.ValueContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitValue(QLParser.ValueContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitValue(QLParser.ValueContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitValue_QLParser_ValueContext_
+  name: VisitValue(ValueContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitValue(QLParser.ValueContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitValue(QLParser.ValueContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitValue(QLParser.ValueContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitValue(QLParser.ValueContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitValue(QLParser.ValueContext)
+    name: VisitValue
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitValue_QLParser_ValueContext_
+  - name: (
+  - uid: QLParser.ValueContext
+    name: ValueContext
+    href: QLParser.ValueContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitValue(QLParser.ValueContext)
+    name: VisitValue
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitValue_QLParser_ValueContext_
+  - name: (
+  - uid: QLParser.ValueContext
+    name: ValueContext
+    href: QLParser.ValueContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitValue*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitValue
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitValue_QLParser_ValueContext_
+  name: VisitValue
+  nameWithType: ASTBuilder.VisitValue
+  fullName: QL.Parser.AST.ASTBuilder.VisitValue
+- uid: QLParser.ValueContext
+  commentId: T:QLParser.ValueContext
+  href: QLParser.html
+  name: QLParser.ValueContext
+  nameWithType: QLParser.ValueContext
+  fullName: QLParser.ValueContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.ValueContext
+    name: ValueContext
+    href: QLParser.ValueContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.ValueContext
+    name: ValueContext
+    href: QLParser.ValueContext.html
+- uid: QLBaseVisitor`1.VisitValue(QLParser.ValueContext)
+  commentId: M:QLBaseVisitor`1.VisitValue(QLParser.ValueContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitValue_QLParser_ValueContext_
+  name: VisitValue(ValueContext)
+  nameWithType: QLBaseVisitor<Result>.VisitValue(QLParser.ValueContext)
+  fullName: QLBaseVisitor<Result>.VisitValue(QLParser.ValueContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitValue(QLParser.ValueContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitValue(QLParser.ValueContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitValue(QLParser.ValueContext)
+    name: VisitValue
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitValue_QLParser_ValueContext_
+  - name: (
+  - uid: QLParser.ValueContext
+    name: ValueContext
+    href: QLParser.ValueContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitValue(QLParser.ValueContext)
+    name: VisitValue
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitValue_QLParser_ValueContext_
+  - name: (
+  - uid: QLParser.ValueContext
+    name: ValueContext
+    href: QLParser.ValueContext.html
+  - name: )
+- uid: QLParser.list
+  commentId: M:QLParser.list
+  href: QLParser.html#QLParser_list
+  name: list()
+  nameWithType: QLParser.list()
+  fullName: QLParser.list()
+  spec.csharp:
+  - uid: QLParser.list
+    name: list
+    href: QLParser.html#QLParser_list
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.list
+    name: list
+    href: QLParser.html#QLParser_list
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitList(QLParser.ListContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitList(QLParser.ListContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitList(QLParser.ListContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitList_QLParser_ListContext_
+  name: VisitList(ListContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitList(QLParser.ListContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitList(QLParser.ListContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitList(QLParser.ListContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitList(QLParser.ListContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitList(QLParser.ListContext)
+    name: VisitList
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitList_QLParser_ListContext_
+  - name: (
+  - uid: QLParser.ListContext
+    name: ListContext
+    href: QLParser.ListContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitList(QLParser.ListContext)
+    name: VisitList
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitList_QLParser_ListContext_
+  - name: (
+  - uid: QLParser.ListContext
+    name: ListContext
+    href: QLParser.ListContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitList*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitList
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitList_QLParser_ListContext_
+  name: VisitList
+  nameWithType: ASTBuilder.VisitList
+  fullName: QL.Parser.AST.ASTBuilder.VisitList
+- uid: QLParser.ListContext
+  commentId: T:QLParser.ListContext
+  href: QLParser.html
+  name: QLParser.ListContext
+  nameWithType: QLParser.ListContext
+  fullName: QLParser.ListContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.ListContext
+    name: ListContext
+    href: QLParser.ListContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.ListContext
+    name: ListContext
+    href: QLParser.ListContext.html
+- uid: QLBaseVisitor`1.VisitList(QLParser.ListContext)
+  commentId: M:QLBaseVisitor`1.VisitList(QLParser.ListContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitList_QLParser_ListContext_
+  name: VisitList(ListContext)
+  nameWithType: QLBaseVisitor<Result>.VisitList(QLParser.ListContext)
+  fullName: QLBaseVisitor<Result>.VisitList(QLParser.ListContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitList(QLParser.ListContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitList(QLParser.ListContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitList(QLParser.ListContext)
+    name: VisitList
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitList_QLParser_ListContext_
+  - name: (
+  - uid: QLParser.ListContext
+    name: ListContext
+    href: QLParser.ListContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitList(QLParser.ListContext)
+    name: VisitList
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitList_QLParser_ListContext_
+  - name: (
+  - uid: QLParser.ListContext
+    name: ListContext
+    href: QLParser.ListContext.html
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitObject(QLParser.ObjectContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitObject(QLParser.ObjectContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitObject(QLParser.ObjectContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitObject_QLParser_ObjectContext_
+  name: VisitObject(ObjectContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitObject(QLParser.ObjectContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitObject(QLParser.ObjectContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitObject(QLParser.ObjectContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitObject(QLParser.ObjectContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitObject(QLParser.ObjectContext)
+    name: VisitObject
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitObject_QLParser_ObjectContext_
+  - name: (
+  - uid: QLParser.ObjectContext
+    name: ObjectContext
+    href: QLParser.ObjectContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitObject(QLParser.ObjectContext)
+    name: VisitObject
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitObject_QLParser_ObjectContext_
+  - name: (
+  - uid: QLParser.ObjectContext
+    name: ObjectContext
+    href: QLParser.ObjectContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitObject*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitObject
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitObject_QLParser_ObjectContext_
+  name: VisitObject
+  nameWithType: ASTBuilder.VisitObject
+  fullName: QL.Parser.AST.ASTBuilder.VisitObject
+- uid: QLParser.ObjectContext
+  commentId: T:QLParser.ObjectContext
+  href: QLParser.html
+  name: QLParser.ObjectContext
+  nameWithType: QLParser.ObjectContext
+  fullName: QLParser.ObjectContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.ObjectContext
+    name: ObjectContext
+    href: QLParser.ObjectContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.ObjectContext
+    name: ObjectContext
+    href: QLParser.ObjectContext.html
+- uid: QLBaseVisitor`1.VisitObject(QLParser.ObjectContext)
+  commentId: M:QLBaseVisitor`1.VisitObject(QLParser.ObjectContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitObject_QLParser_ObjectContext_
+  name: VisitObject(ObjectContext)
+  nameWithType: QLBaseVisitor<Result>.VisitObject(QLParser.ObjectContext)
+  fullName: QLBaseVisitor<Result>.VisitObject(QLParser.ObjectContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitObject(QLParser.ObjectContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitObject(QLParser.ObjectContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitObject(QLParser.ObjectContext)
+    name: VisitObject
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitObject_QLParser_ObjectContext_
+  - name: (
+  - uid: QLParser.ObjectContext
+    name: ObjectContext
+    href: QLParser.ObjectContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitObject(QLParser.ObjectContext)
+    name: VisitObject
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitObject_QLParser_ObjectContext_
+  - name: (
+  - uid: QLParser.ObjectContext
+    name: ObjectContext
+    href: QLParser.ObjectContext.html
+  - name: )
+- uid: QLParser.object_field
+  commentId: M:QLParser.object_field
+  href: QLParser.html#QLParser_object_field
+  name: object_field()
+  nameWithType: QLParser.object_field()
+  fullName: QLParser.object_field()
+  spec.csharp:
+  - uid: QLParser.object_field
+    name: object_field
+    href: QLParser.html#QLParser_object_field
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QLParser.object_field
+    name: object_field
+    href: QLParser.html#QLParser_object_field
+  - name: (
+  - name: )
+- uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitObject_field(QLParser.Object_fieldContext)
+  commentId: M:QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitObject_field(QLParser.Object_fieldContext)
+  parent: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}
+  definition: QLBaseVisitor`1.VisitObject_field(QLParser.Object_fieldContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitObject_field_QLParser_Object_fieldContext_
+  name: VisitObject_field(Object_fieldContext)
+  nameWithType: QLBaseVisitor<QLNode>.VisitObject_field(QLParser.Object_fieldContext)
+  fullName: QLBaseVisitor<QL.Parser.AST.Nodes.QLNode>.VisitObject_field(QLParser.Object_fieldContext)
+  nameWithType.vb: QLBaseVisitor(Of QLNode).VisitObject_field(QLParser.Object_fieldContext)
+  fullName.vb: QLBaseVisitor(Of QL.Parser.AST.Nodes.QLNode).VisitObject_field(QLParser.Object_fieldContext)
+  spec.csharp:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitObject_field(QLParser.Object_fieldContext)
+    name: VisitObject_field
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitObject_field_QLParser_Object_fieldContext_
+  - name: (
+  - uid: QLParser.Object_fieldContext
+    name: Object_fieldContext
+    href: QLParser.Object_fieldContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor{QL.Parser.AST.Nodes.QLNode}.VisitObject_field(QLParser.Object_fieldContext)
+    name: VisitObject_field
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitObject_field_QLParser_Object_fieldContext_
+  - name: (
+  - uid: QLParser.Object_fieldContext
+    name: Object_fieldContext
+    href: QLParser.Object_fieldContext.html
+  - name: )
+- uid: QL.Parser.AST.ASTBuilder.VisitObject_field*
+  commentId: Overload:QL.Parser.AST.ASTBuilder.VisitObject_field
+  href: QL.Parser.AST.ASTBuilder.html#QL_Parser_AST_ASTBuilder_VisitObject_field_QLParser_Object_fieldContext_
+  name: VisitObject_field
+  nameWithType: ASTBuilder.VisitObject_field
+  fullName: QL.Parser.AST.ASTBuilder.VisitObject_field
+- uid: QLParser.Object_fieldContext
+  commentId: T:QLParser.Object_fieldContext
+  href: QLParser.html
+  name: QLParser.Object_fieldContext
+  nameWithType: QLParser.Object_fieldContext
+  fullName: QLParser.Object_fieldContext
+  spec.csharp:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.Object_fieldContext
+    name: Object_fieldContext
+    href: QLParser.Object_fieldContext.html
+  spec.vb:
+  - uid: QLParser
+    name: QLParser
+    href: QLParser.html
+  - name: .
+  - uid: QLParser.Object_fieldContext
+    name: Object_fieldContext
+    href: QLParser.Object_fieldContext.html
+- uid: QLBaseVisitor`1.VisitObject_field(QLParser.Object_fieldContext)
+  commentId: M:QLBaseVisitor`1.VisitObject_field(QLParser.Object_fieldContext)
+  href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitObject_field_QLParser_Object_fieldContext_
+  name: VisitObject_field(Object_fieldContext)
+  nameWithType: QLBaseVisitor<Result>.VisitObject_field(QLParser.Object_fieldContext)
+  fullName: QLBaseVisitor<Result>.VisitObject_field(QLParser.Object_fieldContext)
+  nameWithType.vb: QLBaseVisitor(Of Result).VisitObject_field(QLParser.Object_fieldContext)
+  fullName.vb: QLBaseVisitor(Of Result).VisitObject_field(QLParser.Object_fieldContext)
+  spec.csharp:
+  - uid: QLBaseVisitor`1.VisitObject_field(QLParser.Object_fieldContext)
+    name: VisitObject_field
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitObject_field_QLParser_Object_fieldContext_
+  - name: (
+  - uid: QLParser.Object_fieldContext
+    name: Object_fieldContext
+    href: QLParser.Object_fieldContext.html
+  - name: )
+  spec.vb:
+  - uid: QLBaseVisitor`1.VisitObject_field(QLParser.Object_fieldContext)
+    name: VisitObject_field
+    href: QLBaseVisitor-1.html#QLBaseVisitor_1_VisitObject_field_QLParser_Object_fieldContext_
+  - name: (
+  - uid: QLParser.Object_fieldContext
+    name: Object_fieldContext
+    href: QLParser.Object_fieldContext.html
+  - name: )

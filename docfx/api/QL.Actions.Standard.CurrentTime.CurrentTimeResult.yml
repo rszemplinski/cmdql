@@ -1,0 +1,617 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Actions.Standard.CurrentTime.CurrentTimeResult
+  commentId: T:QL.Actions.Standard.CurrentTime.CurrentTimeResult
+  id: CurrentTimeResult
+  parent: QL.Actions.Standard.CurrentTime
+  children:
+  - QL.Actions.Standard.CurrentTime.CurrentTimeResult.AMPM
+  - QL.Actions.Standard.CurrentTime.CurrentTimeResult.Day
+  - QL.Actions.Standard.CurrentTime.CurrentTimeResult.DayOfWeek
+  - QL.Actions.Standard.CurrentTime.CurrentTimeResult.Month
+  - QL.Actions.Standard.CurrentTime.CurrentTimeResult.Time
+  - QL.Actions.Standard.CurrentTime.CurrentTimeResult.TimeZone
+  - QL.Actions.Standard.CurrentTime.CurrentTimeResult.Year
+  langs:
+  - csharp
+  - vb
+  name: CurrentTimeResult
+  nameWithType: CurrentTimeResult
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTimeResult
+  type: Class
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: CurrentTimeResult
+    path: ../src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+    startLine: 15
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CurrentTime
+  summary: Result of the <xref href="QL.Actions.Standard.CurrentTime.CurrentTime" data-throw-if-not-resolved="false"></xref> action
+  example: []
+  syntax:
+    content: public class CurrentTimeResult
+    content.vb: Public Class CurrentTimeResult
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: QL.Actions.Standard.CurrentTime.CurrentTimeResult.DayOfWeek
+  commentId: P:QL.Actions.Standard.CurrentTime.CurrentTimeResult.DayOfWeek
+  id: DayOfWeek
+  parent: QL.Actions.Standard.CurrentTime.CurrentTimeResult
+  langs:
+  - csharp
+  - vb
+  name: DayOfWeek
+  nameWithType: CurrentTimeResult.DayOfWeek
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTimeResult.DayOfWeek
+  type: Property
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: DayOfWeek
+    path: ../src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+    startLine: 20
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CurrentTime
+  summary: Day of the week as a string (e.g. "Mon", "Tue", "Wed", etc.)
+  example: []
+  syntax:
+    content: public string DayOfWeek { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property DayOfWeek As String
+  overload: QL.Actions.Standard.CurrentTime.CurrentTimeResult.DayOfWeek*
+- uid: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Month
+  commentId: P:QL.Actions.Standard.CurrentTime.CurrentTimeResult.Month
+  id: Month
+  parent: QL.Actions.Standard.CurrentTime.CurrentTimeResult
+  langs:
+  - csharp
+  - vb
+  name: Month
+  nameWithType: CurrentTimeResult.Month
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Month
+  type: Property
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Month
+    path: ../src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+    startLine: 25
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CurrentTime
+  summary: Month as a string (e.g. "Jan", "Feb", "Mar", etc.)
+  example: []
+  syntax:
+    content: public string Month { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Month As String
+  overload: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Month*
+- uid: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Day
+  commentId: P:QL.Actions.Standard.CurrentTime.CurrentTimeResult.Day
+  id: Day
+  parent: QL.Actions.Standard.CurrentTime.CurrentTimeResult
+  langs:
+  - csharp
+  - vb
+  name: Day
+  nameWithType: CurrentTimeResult.Day
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Day
+  type: Property
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Day
+    path: ../src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+    startLine: 30
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CurrentTime
+  summary: Day of the month as an integer
+  example: []
+  syntax:
+    content: public int Day { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Day As Integer
+  overload: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Day*
+- uid: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Time
+  commentId: P:QL.Actions.Standard.CurrentTime.CurrentTimeResult.Time
+  id: Time
+  parent: QL.Actions.Standard.CurrentTime.CurrentTimeResult
+  langs:
+  - csharp
+  - vb
+  name: Time
+  nameWithType: CurrentTimeResult.Time
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Time
+  type: Property
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Time
+    path: ../src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+    startLine: 35
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CurrentTime
+  summary: Time as a string (e.g. "12:00:00")
+  example: []
+  syntax:
+    content: public string Time { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Time As String
+  overload: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Time*
+- uid: QL.Actions.Standard.CurrentTime.CurrentTimeResult.TimeZone
+  commentId: P:QL.Actions.Standard.CurrentTime.CurrentTimeResult.TimeZone
+  id: TimeZone
+  parent: QL.Actions.Standard.CurrentTime.CurrentTimeResult
+  langs:
+  - csharp
+  - vb
+  name: TimeZone
+  nameWithType: CurrentTimeResult.TimeZone
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTimeResult.TimeZone
+  type: Property
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: TimeZone
+    path: ../src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+    startLine: 40
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CurrentTime
+  summary: Time zone as a string (e.g. "EST", "EDT", "CST", "CDT", etc.)
+  example: []
+  syntax:
+    content: public string TimeZone { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property TimeZone As String
+  overload: QL.Actions.Standard.CurrentTime.CurrentTimeResult.TimeZone*
+- uid: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Year
+  commentId: P:QL.Actions.Standard.CurrentTime.CurrentTimeResult.Year
+  id: Year
+  parent: QL.Actions.Standard.CurrentTime.CurrentTimeResult
+  langs:
+  - csharp
+  - vb
+  name: Year
+  nameWithType: CurrentTimeResult.Year
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Year
+  type: Property
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Year
+    path: ../src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+    startLine: 45
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CurrentTime
+  summary: Year as an integer
+  example: []
+  syntax:
+    content: public int Year { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property Year As Integer
+  overload: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Year*
+- uid: QL.Actions.Standard.CurrentTime.CurrentTimeResult.AMPM
+  commentId: P:QL.Actions.Standard.CurrentTime.CurrentTimeResult.AMPM
+  id: AMPM
+  parent: QL.Actions.Standard.CurrentTime.CurrentTimeResult
+  langs:
+  - csharp
+  - vb
+  name: AMPM
+  nameWithType: CurrentTimeResult.AMPM
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTimeResult.AMPM
+  type: Property
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: AMPM
+    path: ../src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+    startLine: 50
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CurrentTime
+  summary: AM/PM value
+  example: []
+  syntax:
+    content: public AMPM AMPM { get; set; }
+    parameters: []
+    return:
+      type: QL.Actions.Standard.CurrentTime.AMPM
+    content.vb: Public Property AMPM As AMPM
+  overload: QL.Actions.Standard.CurrentTime.CurrentTimeResult.AMPM*
+references:
+- uid: QL.Actions.Standard.CurrentTime.CurrentTime
+  commentId: T:QL.Actions.Standard.CurrentTime.CurrentTime
+  href: QL.Actions.Standard.CurrentTime.CurrentTime.html
+  name: CurrentTime
+  nameWithType: CurrentTime
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTime
+- uid: QL.Actions.Standard.CurrentTime
+  commentId: N:QL.Actions.Standard.CurrentTime
+  href: QL.html
+  name: QL.Actions.Standard.CurrentTime
+  nameWithType: QL.Actions.Standard.CurrentTime
+  fullName: QL.Actions.Standard.CurrentTime
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.CurrentTime
+    name: CurrentTime
+    href: QL.Actions.Standard.CurrentTime.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.CurrentTime
+    name: CurrentTime
+    href: QL.Actions.Standard.CurrentTime.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: QL.Actions.Standard.CurrentTime.CurrentTimeResult.DayOfWeek*
+  commentId: Overload:QL.Actions.Standard.CurrentTime.CurrentTimeResult.DayOfWeek
+  href: QL.Actions.Standard.CurrentTime.CurrentTimeResult.html#QL_Actions_Standard_CurrentTime_CurrentTimeResult_DayOfWeek
+  name: DayOfWeek
+  nameWithType: CurrentTimeResult.DayOfWeek
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTimeResult.DayOfWeek
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Month*
+  commentId: Overload:QL.Actions.Standard.CurrentTime.CurrentTimeResult.Month
+  href: QL.Actions.Standard.CurrentTime.CurrentTimeResult.html#QL_Actions_Standard_CurrentTime_CurrentTimeResult_Month
+  name: Month
+  nameWithType: CurrentTimeResult.Month
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Month
+- uid: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Day*
+  commentId: Overload:QL.Actions.Standard.CurrentTime.CurrentTimeResult.Day
+  href: QL.Actions.Standard.CurrentTime.CurrentTimeResult.html#QL_Actions_Standard_CurrentTime_CurrentTimeResult_Day
+  name: Day
+  nameWithType: CurrentTimeResult.Day
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Day
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Time*
+  commentId: Overload:QL.Actions.Standard.CurrentTime.CurrentTimeResult.Time
+  href: QL.Actions.Standard.CurrentTime.CurrentTimeResult.html#QL_Actions_Standard_CurrentTime_CurrentTimeResult_Time
+  name: Time
+  nameWithType: CurrentTimeResult.Time
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Time
+- uid: QL.Actions.Standard.CurrentTime.CurrentTimeResult.TimeZone*
+  commentId: Overload:QL.Actions.Standard.CurrentTime.CurrentTimeResult.TimeZone
+  href: QL.Actions.Standard.CurrentTime.CurrentTimeResult.html#QL_Actions_Standard_CurrentTime_CurrentTimeResult_TimeZone
+  name: TimeZone
+  nameWithType: CurrentTimeResult.TimeZone
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTimeResult.TimeZone
+- uid: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Year*
+  commentId: Overload:QL.Actions.Standard.CurrentTime.CurrentTimeResult.Year
+  href: QL.Actions.Standard.CurrentTime.CurrentTimeResult.html#QL_Actions_Standard_CurrentTime_CurrentTimeResult_Year
+  name: Year
+  nameWithType: CurrentTimeResult.Year
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTimeResult.Year
+- uid: QL.Actions.Standard.CurrentTime.CurrentTimeResult.AMPM*
+  commentId: Overload:QL.Actions.Standard.CurrentTime.CurrentTimeResult.AMPM
+  href: QL.Actions.Standard.CurrentTime.CurrentTimeResult.html#QL_Actions_Standard_CurrentTime_CurrentTimeResult_AMPM
+  name: AMPM
+  nameWithType: CurrentTimeResult.AMPM
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTimeResult.AMPM
+- uid: QL.Actions.Standard.CurrentTime.AMPM
+  commentId: T:QL.Actions.Standard.CurrentTime.AMPM
+  parent: QL.Actions.Standard.CurrentTime
+  href: QL.Actions.Standard.CurrentTime.AMPM.html
+  name: AMPM
+  nameWithType: AMPM
+  fullName: QL.Actions.Standard.CurrentTime.AMPM

@@ -1,0 +1,94 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Core.FieldTransforms
+  commentId: N:QL.Core.FieldTransforms
+  id: QL.Core.FieldTransforms
+  children:
+  - QL.Core.FieldTransforms.FieldTransformBase`2
+  - QL.Core.FieldTransforms.FieldTransformMetadata
+  - QL.Core.FieldTransforms.IFieldTransform
+  langs:
+  - csharp
+  - vb
+  name: QL.Core.FieldTransforms
+  nameWithType: QL.Core.FieldTransforms
+  fullName: QL.Core.FieldTransforms
+  type: Namespace
+  assemblies:
+  - QL.Core
+references:
+- uid: QL.Core.FieldTransforms.FieldTransformBase`2
+  commentId: T:QL.Core.FieldTransforms.FieldTransformBase`2
+  href: QL.Core.FieldTransforms.FieldTransformBase-2.html
+  name: FieldTransformBase<TArgs, TReturnType>
+  nameWithType: FieldTransformBase<TArgs, TReturnType>
+  fullName: QL.Core.FieldTransforms.FieldTransformBase<TArgs, TReturnType>
+  nameWithType.vb: FieldTransformBase(Of TArgs, TReturnType)
+  fullName.vb: QL.Core.FieldTransforms.FieldTransformBase(Of TArgs, TReturnType)
+  name.vb: FieldTransformBase(Of TArgs, TReturnType)
+  spec.csharp:
+  - uid: QL.Core.FieldTransforms.FieldTransformBase`2
+    name: FieldTransformBase
+    href: QL.Core.FieldTransforms.FieldTransformBase-2.html
+  - name: <
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TReturnType
+  - name: '>'
+  spec.vb:
+  - uid: QL.Core.FieldTransforms.FieldTransformBase`2
+    name: FieldTransformBase
+    href: QL.Core.FieldTransforms.FieldTransformBase-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TReturnType
+  - name: )
+- uid: QL.Core.FieldTransforms.FieldTransformMetadata
+  commentId: T:QL.Core.FieldTransforms.FieldTransformMetadata
+  parent: QL.Core.FieldTransforms
+  href: QL.Core.FieldTransforms.FieldTransformMetadata.html
+  name: FieldTransformMetadata
+  nameWithType: FieldTransformMetadata
+  fullName: QL.Core.FieldTransforms.FieldTransformMetadata
+- uid: QL.Core.FieldTransforms.IFieldTransform
+  commentId: T:QL.Core.FieldTransforms.IFieldTransform
+  parent: QL.Core.FieldTransforms
+  href: QL.Core.FieldTransforms.IFieldTransform.html
+  name: IFieldTransform
+  nameWithType: IFieldTransform
+  fullName: QL.Core.FieldTransforms.IFieldTransform
+- uid: QL.Core.FieldTransforms
+  commentId: N:QL.Core.FieldTransforms
+  href: QL.html
+  name: QL.Core.FieldTransforms
+  nameWithType: QL.Core.FieldTransforms
+  fullName: QL.Core.FieldTransforms
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Core
+    name: Core
+    href: QL.Core.html
+  - name: .
+  - uid: QL.Core.FieldTransforms
+    name: FieldTransforms
+    href: QL.Core.FieldTransforms.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Core
+    name: Core
+    href: QL.Core.html
+  - name: .
+  - uid: QL.Core.FieldTransforms
+    name: FieldTransforms
+    href: QL.Core.FieldTransforms.html

@@ -1,7 +1,7 @@
 using QL.Core.Actions;
 using QL.Core.Attributes;
 
-namespace QL.Actions.Standard.FileSystem;
+namespace QL.Actions.Standard.ListFiles;
 
 public class ListFileArguments
 {

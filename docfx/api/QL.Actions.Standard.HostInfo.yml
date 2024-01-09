@@ -1,0 +1,83 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Actions.Standard.HostInfo
+  commentId: N:QL.Actions.Standard.HostInfo
+  id: QL.Actions.Standard.HostInfo
+  children:
+  - QL.Actions.Standard.HostInfo.Architecture
+  - QL.Actions.Standard.HostInfo.HostName
+  - QL.Actions.Standard.HostInfo.SystemInfo
+  - QL.Actions.Standard.HostInfo.SystemInfoResults
+  langs:
+  - csharp
+  - vb
+  name: QL.Actions.Standard.HostInfo
+  nameWithType: QL.Actions.Standard.HostInfo
+  fullName: QL.Actions.Standard.HostInfo
+  type: Namespace
+  assemblies:
+  - QL.Actions
+references:
+- uid: QL.Actions.Standard.HostInfo.Architecture
+  commentId: T:QL.Actions.Standard.HostInfo.Architecture
+  href: QL.Actions.Standard.HostInfo.Architecture.html
+  name: Architecture
+  nameWithType: Architecture
+  fullName: QL.Actions.Standard.HostInfo.Architecture
+- uid: QL.Actions.Standard.HostInfo.HostName
+  commentId: T:QL.Actions.Standard.HostInfo.HostName
+  href: QL.Actions.Standard.HostInfo.HostName.html
+  name: HostName
+  nameWithType: HostName
+  fullName: QL.Actions.Standard.HostInfo.HostName
+- uid: QL.Actions.Standard.HostInfo.SystemInfoResults
+  commentId: T:QL.Actions.Standard.HostInfo.SystemInfoResults
+  parent: QL.Actions.Standard.HostInfo
+  href: QL.Actions.Standard.HostInfo.SystemInfoResults.html
+  name: SystemInfoResults
+  nameWithType: SystemInfoResults
+  fullName: QL.Actions.Standard.HostInfo.SystemInfoResults
+- uid: QL.Actions.Standard.HostInfo.SystemInfo
+  commentId: T:QL.Actions.Standard.HostInfo.SystemInfo
+  href: QL.Actions.Standard.HostInfo.SystemInfo.html
+  name: SystemInfo
+  nameWithType: SystemInfo
+  fullName: QL.Actions.Standard.HostInfo.SystemInfo
+- uid: QL.Actions.Standard.HostInfo
+  commentId: N:QL.Actions.Standard.HostInfo
+  href: QL.html
+  name: QL.Actions.Standard.HostInfo
+  nameWithType: QL.Actions.Standard.HostInfo
+  fullName: QL.Actions.Standard.HostInfo
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.HostInfo
+    name: HostInfo
+    href: QL.Actions.Standard.HostInfo.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.HostInfo
+    name: HostInfo
+    href: QL.Actions.Standard.HostInfo.html

@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Actions
+  commentId: N:QL.Actions
+  id: QL.Actions
+  children:
+  - QL.Actions.ActionsLookup
+  langs:
+  - csharp
+  - vb
+  name: QL.Actions
+  nameWithType: QL.Actions
+  fullName: QL.Actions
+  type: Namespace
+  assemblies:
+  - QL.Actions
+references:
+- uid: QL.Actions.ActionsLookup
+  commentId: T:QL.Actions.ActionsLookup
+  href: QL.Actions.ActionsLookup.html
+  name: ActionsLookup
+  nameWithType: ActionsLookup
+  fullName: QL.Actions.ActionsLookup

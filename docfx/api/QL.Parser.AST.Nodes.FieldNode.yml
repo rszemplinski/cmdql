@@ -1,0 +1,850 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Parser.AST.Nodes.FieldNode
+  commentId: T:QL.Parser.AST.Nodes.FieldNode
+  id: FieldNode
+  parent: QL.Parser.AST.Nodes
+  children:
+  - QL.Parser.AST.Nodes.FieldNode.Arguments
+  - QL.Parser.AST.Nodes.FieldNode.Name
+  - QL.Parser.AST.Nodes.FieldNode.SelectionSet
+  - QL.Parser.AST.Nodes.FieldNode.Transformations
+  langs:
+  - csharp
+  - vb
+  name: FieldNode
+  nameWithType: FieldNode
+  fullName: QL.Parser.AST.Nodes.FieldNode
+  type: Class
+  source:
+    remote:
+      path: src/QL.Parser/AST/Nodes/FieldNode.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: FieldNode
+    path: ../src/QL.Parser/AST/Nodes/FieldNode.cs
+    startLine: 4
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST.Nodes
+  syntax:
+    content: 'public class FieldNode : QLNode'
+    content.vb: Public Class FieldNode Inherits QLNode
+  inheritance:
+  - System.Object
+  - QL.Parser.AST.Nodes.QLNode
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - QL.Parser.AST.Nodes.FieldNode.QL.Engine.Extensions.NodeExtensions.BuildArgumentsDictionary
+  - QL.Parser.AST.Nodes.FieldNode.QL.Engine.Extensions.NodeExtensions.GetFields
+  - System.Object.QL.Engine.Extensions.ObjectExtensions.ToDictionary
+- uid: QL.Parser.AST.Nodes.FieldNode.Name
+  commentId: P:QL.Parser.AST.Nodes.FieldNode.Name
+  id: Name
+  parent: QL.Parser.AST.Nodes.FieldNode
+  langs:
+  - csharp
+  - vb
+  name: Name
+  nameWithType: FieldNode.Name
+  fullName: QL.Parser.AST.Nodes.FieldNode.Name
+  type: Property
+  source:
+    remote:
+      path: src/QL.Parser/AST/Nodes/FieldNode.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Name
+    path: ../src/QL.Parser/AST/Nodes/FieldNode.cs
+    startLine: 7
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST.Nodes
+  syntax:
+    content: public string Name { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Name As String
+  overload: QL.Parser.AST.Nodes.FieldNode.Name*
+- uid: QL.Parser.AST.Nodes.FieldNode.Arguments
+  commentId: P:QL.Parser.AST.Nodes.FieldNode.Arguments
+  id: Arguments
+  parent: QL.Parser.AST.Nodes.FieldNode
+  langs:
+  - csharp
+  - vb
+  name: Arguments
+  nameWithType: FieldNode.Arguments
+  fullName: QL.Parser.AST.Nodes.FieldNode.Arguments
+  type: Property
+  source:
+    remote:
+      path: src/QL.Parser/AST/Nodes/FieldNode.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Arguments
+    path: ../src/QL.Parser/AST/Nodes/FieldNode.cs
+    startLine: 8
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST.Nodes
+  syntax:
+    content: public List<ArgumentNode> Arguments { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{QL.Parser.AST.Nodes.ArgumentNode}
+    content.vb: Public Property Arguments As List(Of ArgumentNode)
+  overload: QL.Parser.AST.Nodes.FieldNode.Arguments*
+- uid: QL.Parser.AST.Nodes.FieldNode.Transformations
+  commentId: P:QL.Parser.AST.Nodes.FieldNode.Transformations
+  id: Transformations
+  parent: QL.Parser.AST.Nodes.FieldNode
+  langs:
+  - csharp
+  - vb
+  name: Transformations
+  nameWithType: FieldNode.Transformations
+  fullName: QL.Parser.AST.Nodes.FieldNode.Transformations
+  type: Property
+  source:
+    remote:
+      path: src/QL.Parser/AST/Nodes/FieldNode.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Transformations
+    path: ../src/QL.Parser/AST/Nodes/FieldNode.cs
+    startLine: 9
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST.Nodes
+  syntax:
+    content: public List<TransformationNode> Transformations { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{QL.Parser.AST.Nodes.TransformationNode}
+    content.vb: Public Property Transformations As List(Of TransformationNode)
+  overload: QL.Parser.AST.Nodes.FieldNode.Transformations*
+- uid: QL.Parser.AST.Nodes.FieldNode.SelectionSet
+  commentId: P:QL.Parser.AST.Nodes.FieldNode.SelectionSet
+  id: SelectionSet
+  parent: QL.Parser.AST.Nodes.FieldNode
+  langs:
+  - csharp
+  - vb
+  name: SelectionSet
+  nameWithType: FieldNode.SelectionSet
+  fullName: QL.Parser.AST.Nodes.FieldNode.SelectionSet
+  type: Property
+  source:
+    remote:
+      path: src/QL.Parser/AST/Nodes/FieldNode.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: SelectionSet
+    path: ../src/QL.Parser/AST/Nodes/FieldNode.cs
+    startLine: 10
+  assemblies:
+  - QL.Parser
+  namespace: QL.Parser.AST.Nodes
+  syntax:
+    content: public List<SelectionNode>? SelectionSet { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{QL.Parser.AST.Nodes.SelectionNode}
+    content.vb: Public Property SelectionSet As List(Of SelectionNode)
+  overload: QL.Parser.AST.Nodes.FieldNode.SelectionSet*
+references:
+- uid: QL.Parser.AST.Nodes
+  commentId: N:QL.Parser.AST.Nodes
+  href: QL.html
+  name: QL.Parser.AST.Nodes
+  nameWithType: QL.Parser.AST.Nodes
+  fullName: QL.Parser.AST.Nodes
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Parser
+    name: Parser
+    href: QL.Parser.html
+  - name: .
+  - uid: QL.Parser.AST
+    name: AST
+    href: QL.Parser.AST.html
+  - name: .
+  - uid: QL.Parser.AST.Nodes
+    name: Nodes
+    href: QL.Parser.AST.Nodes.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Parser
+    name: Parser
+    href: QL.Parser.html
+  - name: .
+  - uid: QL.Parser.AST
+    name: AST
+    href: QL.Parser.AST.html
+  - name: .
+  - uid: QL.Parser.AST.Nodes
+    name: Nodes
+    href: QL.Parser.AST.Nodes.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: QL.Parser.AST.Nodes.QLNode
+  commentId: T:QL.Parser.AST.Nodes.QLNode
+  parent: QL.Parser.AST.Nodes
+  href: QL.Parser.AST.Nodes.QLNode.html
+  name: QLNode
+  nameWithType: QLNode
+  fullName: QL.Parser.AST.Nodes.QLNode
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: QL.Parser.AST.Nodes.FieldNode.QL.Engine.Extensions.NodeExtensions.BuildArgumentsDictionary
+  commentId: M:QL.Engine.Extensions.NodeExtensions.BuildArgumentsDictionary(QL.Parser.AST.Nodes.FieldNode)
+  parent: QL.Engine.Extensions.NodeExtensions
+  definition: QL.Engine.Extensions.NodeExtensions.BuildArgumentsDictionary(QL.Parser.AST.Nodes.FieldNode)
+  href: QL.Engine.Extensions.NodeExtensions.html#QL_Engine_Extensions_NodeExtensions_BuildArgumentsDictionary_QL_Parser_AST_Nodes_FieldNode_
+  name: BuildArgumentsDictionary(FieldNode)
+  nameWithType: NodeExtensions.BuildArgumentsDictionary(FieldNode)
+  fullName: QL.Engine.Extensions.NodeExtensions.BuildArgumentsDictionary(QL.Parser.AST.Nodes.FieldNode)
+  spec.csharp:
+  - uid: QL.Engine.Extensions.NodeExtensions.BuildArgumentsDictionary(QL.Parser.AST.Nodes.FieldNode)
+    name: BuildArgumentsDictionary
+    href: QL.Engine.Extensions.NodeExtensions.html#QL_Engine_Extensions_NodeExtensions_BuildArgumentsDictionary_QL_Parser_AST_Nodes_FieldNode_
+  - name: (
+  - uid: QL.Parser.AST.Nodes.FieldNode
+    name: FieldNode
+    href: QL.Parser.AST.Nodes.FieldNode.html
+  - name: )
+  spec.vb:
+  - uid: QL.Engine.Extensions.NodeExtensions.BuildArgumentsDictionary(QL.Parser.AST.Nodes.FieldNode)
+    name: BuildArgumentsDictionary
+    href: QL.Engine.Extensions.NodeExtensions.html#QL_Engine_Extensions_NodeExtensions_BuildArgumentsDictionary_QL_Parser_AST_Nodes_FieldNode_
+  - name: (
+  - uid: QL.Parser.AST.Nodes.FieldNode
+    name: FieldNode
+    href: QL.Parser.AST.Nodes.FieldNode.html
+  - name: )
+- uid: QL.Parser.AST.Nodes.FieldNode.QL.Engine.Extensions.NodeExtensions.GetFields
+  commentId: M:QL.Engine.Extensions.NodeExtensions.GetFields(QL.Parser.AST.Nodes.FieldNode)
+  parent: QL.Engine.Extensions.NodeExtensions
+  definition: QL.Engine.Extensions.NodeExtensions.GetFields(QL.Parser.AST.Nodes.FieldNode)
+  href: QL.Engine.Extensions.NodeExtensions.html#QL_Engine_Extensions_NodeExtensions_GetFields_QL_Parser_AST_Nodes_FieldNode_
+  name: GetFields(FieldNode)
+  nameWithType: NodeExtensions.GetFields(FieldNode)
+  fullName: QL.Engine.Extensions.NodeExtensions.GetFields(QL.Parser.AST.Nodes.FieldNode)
+  spec.csharp:
+  - uid: QL.Engine.Extensions.NodeExtensions.GetFields(QL.Parser.AST.Nodes.FieldNode)
+    name: GetFields
+    href: QL.Engine.Extensions.NodeExtensions.html#QL_Engine_Extensions_NodeExtensions_GetFields_QL_Parser_AST_Nodes_FieldNode_
+  - name: (
+  - uid: QL.Parser.AST.Nodes.FieldNode
+    name: FieldNode
+    href: QL.Parser.AST.Nodes.FieldNode.html
+  - name: )
+  spec.vb:
+  - uid: QL.Engine.Extensions.NodeExtensions.GetFields(QL.Parser.AST.Nodes.FieldNode)
+    name: GetFields
+    href: QL.Engine.Extensions.NodeExtensions.html#QL_Engine_Extensions_NodeExtensions_GetFields_QL_Parser_AST_Nodes_FieldNode_
+  - name: (
+  - uid: QL.Parser.AST.Nodes.FieldNode
+    name: FieldNode
+    href: QL.Parser.AST.Nodes.FieldNode.html
+  - name: )
+- uid: System.Object.QL.Engine.Extensions.ObjectExtensions.ToDictionary
+  commentId: M:QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  parent: QL.Engine.Extensions.ObjectExtensions
+  definition: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  name: ToDictionary(object)
+  nameWithType: ObjectExtensions.ToDictionary(object)
+  fullName: QL.Engine.Extensions.ObjectExtensions.ToDictionary(object)
+  nameWithType.vb: ObjectExtensions.ToDictionary(Object)
+  fullName.vb: QL.Engine.Extensions.ObjectExtensions.ToDictionary(Object)
+  name.vb: ToDictionary(Object)
+  spec.csharp:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: QL.Engine.Extensions.NodeExtensions.BuildArgumentsDictionary(QL.Parser.AST.Nodes.FieldNode)
+  commentId: M:QL.Engine.Extensions.NodeExtensions.BuildArgumentsDictionary(QL.Parser.AST.Nodes.FieldNode)
+  href: QL.Engine.Extensions.NodeExtensions.html#QL_Engine_Extensions_NodeExtensions_BuildArgumentsDictionary_QL_Parser_AST_Nodes_FieldNode_
+  name: BuildArgumentsDictionary(FieldNode)
+  nameWithType: NodeExtensions.BuildArgumentsDictionary(FieldNode)
+  fullName: QL.Engine.Extensions.NodeExtensions.BuildArgumentsDictionary(QL.Parser.AST.Nodes.FieldNode)
+  spec.csharp:
+  - uid: QL.Engine.Extensions.NodeExtensions.BuildArgumentsDictionary(QL.Parser.AST.Nodes.FieldNode)
+    name: BuildArgumentsDictionary
+    href: QL.Engine.Extensions.NodeExtensions.html#QL_Engine_Extensions_NodeExtensions_BuildArgumentsDictionary_QL_Parser_AST_Nodes_FieldNode_
+  - name: (
+  - uid: QL.Parser.AST.Nodes.FieldNode
+    name: FieldNode
+    href: QL.Parser.AST.Nodes.FieldNode.html
+  - name: )
+  spec.vb:
+  - uid: QL.Engine.Extensions.NodeExtensions.BuildArgumentsDictionary(QL.Parser.AST.Nodes.FieldNode)
+    name: BuildArgumentsDictionary
+    href: QL.Engine.Extensions.NodeExtensions.html#QL_Engine_Extensions_NodeExtensions_BuildArgumentsDictionary_QL_Parser_AST_Nodes_FieldNode_
+  - name: (
+  - uid: QL.Parser.AST.Nodes.FieldNode
+    name: FieldNode
+    href: QL.Parser.AST.Nodes.FieldNode.html
+  - name: )
+- uid: QL.Engine.Extensions.NodeExtensions
+  commentId: T:QL.Engine.Extensions.NodeExtensions
+  parent: QL.Engine.Extensions
+  href: QL.Engine.Extensions.NodeExtensions.html
+  name: NodeExtensions
+  nameWithType: NodeExtensions
+  fullName: QL.Engine.Extensions.NodeExtensions
+- uid: QL.Engine.Extensions.NodeExtensions.GetFields(QL.Parser.AST.Nodes.FieldNode)
+  commentId: M:QL.Engine.Extensions.NodeExtensions.GetFields(QL.Parser.AST.Nodes.FieldNode)
+  href: QL.Engine.Extensions.NodeExtensions.html#QL_Engine_Extensions_NodeExtensions_GetFields_QL_Parser_AST_Nodes_FieldNode_
+  name: GetFields(FieldNode)
+  nameWithType: NodeExtensions.GetFields(FieldNode)
+  fullName: QL.Engine.Extensions.NodeExtensions.GetFields(QL.Parser.AST.Nodes.FieldNode)
+  spec.csharp:
+  - uid: QL.Engine.Extensions.NodeExtensions.GetFields(QL.Parser.AST.Nodes.FieldNode)
+    name: GetFields
+    href: QL.Engine.Extensions.NodeExtensions.html#QL_Engine_Extensions_NodeExtensions_GetFields_QL_Parser_AST_Nodes_FieldNode_
+  - name: (
+  - uid: QL.Parser.AST.Nodes.FieldNode
+    name: FieldNode
+    href: QL.Parser.AST.Nodes.FieldNode.html
+  - name: )
+  spec.vb:
+  - uid: QL.Engine.Extensions.NodeExtensions.GetFields(QL.Parser.AST.Nodes.FieldNode)
+    name: GetFields
+    href: QL.Engine.Extensions.NodeExtensions.html#QL_Engine_Extensions_NodeExtensions_GetFields_QL_Parser_AST_Nodes_FieldNode_
+  - name: (
+  - uid: QL.Parser.AST.Nodes.FieldNode
+    name: FieldNode
+    href: QL.Parser.AST.Nodes.FieldNode.html
+  - name: )
+- uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  commentId: M:QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  isExternal: true
+  href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  name: ToDictionary(object)
+  nameWithType: ObjectExtensions.ToDictionary(object)
+  fullName: QL.Engine.Extensions.ObjectExtensions.ToDictionary(object)
+  nameWithType.vb: ObjectExtensions.ToDictionary(Object)
+  fullName.vb: QL.Engine.Extensions.ObjectExtensions.ToDictionary(Object)
+  name.vb: ToDictionary(Object)
+  spec.csharp:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: QL.Engine.Extensions.ObjectExtensions
+  commentId: T:QL.Engine.Extensions.ObjectExtensions
+  parent: QL.Engine.Extensions
+  href: QL.Engine.Extensions.ObjectExtensions.html
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: QL.Engine.Extensions.ObjectExtensions
+- uid: QL.Engine.Extensions
+  commentId: N:QL.Engine.Extensions
+  href: QL.html
+  name: QL.Engine.Extensions
+  nameWithType: QL.Engine.Extensions
+  fullName: QL.Engine.Extensions
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Engine
+    name: Engine
+    href: QL.Engine.html
+  - name: .
+  - uid: QL.Engine.Extensions
+    name: Extensions
+    href: QL.Engine.Extensions.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Engine
+    name: Engine
+    href: QL.Engine.html
+  - name: .
+  - uid: QL.Engine.Extensions
+    name: Extensions
+    href: QL.Engine.Extensions.html
+- uid: QL.Parser.AST.Nodes.FieldNode.Name*
+  commentId: Overload:QL.Parser.AST.Nodes.FieldNode.Name
+  href: QL.Parser.AST.Nodes.FieldNode.html#QL_Parser_AST_Nodes_FieldNode_Name
+  name: Name
+  nameWithType: FieldNode.Name
+  fullName: QL.Parser.AST.Nodes.FieldNode.Name
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: QL.Parser.AST.Nodes.FieldNode.Arguments*
+  commentId: Overload:QL.Parser.AST.Nodes.FieldNode.Arguments
+  href: QL.Parser.AST.Nodes.FieldNode.html#QL_Parser_AST_Nodes_FieldNode_Arguments
+  name: Arguments
+  nameWithType: FieldNode.Arguments
+  fullName: QL.Parser.AST.Nodes.FieldNode.Arguments
+- uid: System.Collections.Generic.List{QL.Parser.AST.Nodes.ArgumentNode}
+  commentId: T:System.Collections.Generic.List{QL.Parser.AST.Nodes.ArgumentNode}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<ArgumentNode>
+  nameWithType: List<ArgumentNode>
+  fullName: System.Collections.Generic.List<QL.Parser.AST.Nodes.ArgumentNode>
+  nameWithType.vb: List(Of ArgumentNode)
+  fullName.vb: System.Collections.Generic.List(Of QL.Parser.AST.Nodes.ArgumentNode)
+  name.vb: List(Of ArgumentNode)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: QL.Parser.AST.Nodes.ArgumentNode
+    name: ArgumentNode
+    href: QL.Parser.AST.Nodes.ArgumentNode.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Parser.AST.Nodes.ArgumentNode
+    name: ArgumentNode
+    href: QL.Parser.AST.Nodes.ArgumentNode.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: QL.Parser.AST.Nodes.FieldNode.Transformations*
+  commentId: Overload:QL.Parser.AST.Nodes.FieldNode.Transformations
+  href: QL.Parser.AST.Nodes.FieldNode.html#QL_Parser_AST_Nodes_FieldNode_Transformations
+  name: Transformations
+  nameWithType: FieldNode.Transformations
+  fullName: QL.Parser.AST.Nodes.FieldNode.Transformations
+- uid: System.Collections.Generic.List{QL.Parser.AST.Nodes.TransformationNode}
+  commentId: T:System.Collections.Generic.List{QL.Parser.AST.Nodes.TransformationNode}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<TransformationNode>
+  nameWithType: List<TransformationNode>
+  fullName: System.Collections.Generic.List<QL.Parser.AST.Nodes.TransformationNode>
+  nameWithType.vb: List(Of TransformationNode)
+  fullName.vb: System.Collections.Generic.List(Of QL.Parser.AST.Nodes.TransformationNode)
+  name.vb: List(Of TransformationNode)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: QL.Parser.AST.Nodes.TransformationNode
+    name: TransformationNode
+    href: QL.Parser.AST.Nodes.TransformationNode.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Parser.AST.Nodes.TransformationNode
+    name: TransformationNode
+    href: QL.Parser.AST.Nodes.TransformationNode.html
+  - name: )
+- uid: QL.Parser.AST.Nodes.FieldNode.SelectionSet*
+  commentId: Overload:QL.Parser.AST.Nodes.FieldNode.SelectionSet
+  href: QL.Parser.AST.Nodes.FieldNode.html#QL_Parser_AST_Nodes_FieldNode_SelectionSet
+  name: SelectionSet
+  nameWithType: FieldNode.SelectionSet
+  fullName: QL.Parser.AST.Nodes.FieldNode.SelectionSet
+- uid: System.Collections.Generic.List{QL.Parser.AST.Nodes.SelectionNode}
+  commentId: T:System.Collections.Generic.List{QL.Parser.AST.Nodes.SelectionNode}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<SelectionNode>
+  nameWithType: List<SelectionNode>
+  fullName: System.Collections.Generic.List<QL.Parser.AST.Nodes.SelectionNode>
+  nameWithType.vb: List(Of SelectionNode)
+  fullName.vb: System.Collections.Generic.List(Of QL.Parser.AST.Nodes.SelectionNode)
+  name.vb: List(Of SelectionNode)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: QL.Parser.AST.Nodes.SelectionNode
+    name: SelectionNode
+    href: QL.Parser.AST.Nodes.SelectionNode.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Parser.AST.Nodes.SelectionNode
+    name: SelectionNode
+    href: QL.Parser.AST.Nodes.SelectionNode.html
+  - name: )

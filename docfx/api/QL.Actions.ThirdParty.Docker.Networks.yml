@@ -1,0 +1,1335 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Actions.ThirdParty.Docker.Networks
+  commentId: T:QL.Actions.ThirdParty.Docker.Networks
+  id: Networks
+  parent: QL.Actions.ThirdParty.Docker
+  children: []
+  langs:
+  - csharp
+  - vb
+  name: Networks
+  nameWithType: Networks
+  fullName: QL.Actions.ThirdParty.Docker.Networks
+  type: Class
+  source:
+    remote:
+      path: src/QL.Actions/ThirdParty/Docker/Networks.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Networks
+    path: ../src/QL.Actions/ThirdParty/Docker/Networks.cs
+    startLine: 14
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.ThirdParty.Docker
+  syntax:
+    content: >-
+      [Cmd("docker network ls")]
+
+      [Regex("(?<Id>[a-f0-9]{12})\\s+(?<Name>\\S+)\\s+(?<Driver>\\S+)\\s+(?<Scope>\\w+)", RegexOptions.Multiline)]
+
+      public class Networks : DockerActionBase<NetworksArguments, List<NetworkResult>>, IAction
+    content.vb: >-
+      <Cmd("docker network ls")>
+
+      <Regex("(?<Id>[a-f0-9]{12})\s+(?<Name>\S+)\s+(?<Driver>\S+)\s+(?<Scope>\w+)", RegexOptions.Multiline)>
+
+      Public Class Networks Inherits DockerActionBase(Of NetworksArguments, List(Of NetworkResult)) Implements IAction
+  inheritance:
+  - System.Object
+  - QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  - QL.Actions.ThirdParty.Docker.DockerActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  implements:
+  - QL.Core.Actions.IAction
+  inheritedMembers:
+  - QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.Platform
+  - QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.Initialize(QL.Core.Platform)
+  - QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetArguments
+  - QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+  - QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ExecuteAsync(QL.Actions.ThirdParty.Docker.NetworksArguments,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+  - QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ValidateResults(QL.Core.ICommandOutput)
+  - QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.BuildCommand(QL.Actions.ThirdParty.Docker.NetworksArguments)
+  - QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetCommandTemplate
+  - QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetRegex
+  - QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetDeps
+  - QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ParseCommandResults(QL.Core.ICommandOutput)
+  - QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  - QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: QL.Core.Attributes.CmdAttribute
+    ctor: QL.Core.Attributes.CmdAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: docker network ls
+  - type: QL.Core.Attributes.RegexAttribute
+    ctor: QL.Core.Attributes.RegexAttribute.#ctor(System.String,System.Text.RegularExpressions.RegexOptions)
+    arguments:
+    - type: System.String
+      value: (?<Id>[a-f0-9]{12})\s+(?<Name>\S+)\s+(?<Driver>\S+)\s+(?<Scope>\w+)
+    - type: System.Text.RegularExpressions.RegexOptions
+      value: 2
+references:
+- uid: QL.Actions.ThirdParty.Docker
+  commentId: N:QL.Actions.ThirdParty.Docker
+  href: QL.html
+  name: QL.Actions.ThirdParty.Docker
+  nameWithType: QL.Actions.ThirdParty.Docker
+  fullName: QL.Actions.ThirdParty.Docker
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.ThirdParty
+    name: ThirdParty
+    href: QL.Actions.ThirdParty.html
+  - name: .
+  - uid: QL.Actions.ThirdParty.Docker
+    name: Docker
+    href: QL.Actions.ThirdParty.Docker.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.ThirdParty
+    name: ThirdParty
+    href: QL.Actions.ThirdParty.html
+  - name: .
+  - uid: QL.Actions.ThirdParty.Docker
+    name: Docker
+    href: QL.Actions.ThirdParty.Docker.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  commentId: T:QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  parent: QL.Core.Actions
+  definition: QL.Core.Actions.ActionBase`2
+  href: QL.Actions.ThirdParty.Docker.NetworksArguments.html
+  name: ActionBase<NetworksArguments, List<NetworkResult>>
+  nameWithType: ActionBase<NetworksArguments, List<NetworkResult>>
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List<QL.Actions.ThirdParty.Docker.NetworkResult>>
+  nameWithType.vb: ActionBase(Of NetworksArguments, List(Of NetworkResult))
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List(Of QL.Actions.ThirdParty.Docker.NetworkResult))
+  name.vb: ActionBase(Of NetworksArguments, List(Of NetworkResult))
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2
+    name: ActionBase
+  - name: <
+  - uid: QL.Actions.ThirdParty.Docker.NetworksArguments
+    name: NetworksArguments
+    href: QL.Actions.ThirdParty.Docker.NetworksArguments.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: QL.Actions.ThirdParty.Docker.NetworkResult
+    name: NetworkResult
+    href: QL.Actions.ThirdParty.Docker.NetworkResult.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2
+    name: ActionBase
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Actions.ThirdParty.Docker.NetworksArguments
+    name: NetworksArguments
+    href: QL.Actions.ThirdParty.Docker.NetworksArguments.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Actions.ThirdParty.Docker.NetworkResult
+    name: NetworkResult
+    href: QL.Actions.ThirdParty.Docker.NetworkResult.html
+  - name: )
+  - name: )
+- uid: QL.Actions.ThirdParty.Docker.DockerActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  commentId: T:QL.Actions.ThirdParty.Docker.DockerActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  parent: QL.Actions.ThirdParty.Docker
+  definition: QL.Actions.ThirdParty.Docker.DockerActionBase`2
+  href: QL.Actions.ThirdParty.Docker.DockerActionBase-2.html
+  name: DockerActionBase<NetworksArguments, List<NetworkResult>>
+  nameWithType: DockerActionBase<NetworksArguments, List<NetworkResult>>
+  fullName: QL.Actions.ThirdParty.Docker.DockerActionBase<QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List<QL.Actions.ThirdParty.Docker.NetworkResult>>
+  nameWithType.vb: DockerActionBase(Of NetworksArguments, List(Of NetworkResult))
+  fullName.vb: QL.Actions.ThirdParty.Docker.DockerActionBase(Of QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List(Of QL.Actions.ThirdParty.Docker.NetworkResult))
+  name.vb: DockerActionBase(Of NetworksArguments, List(Of NetworkResult))
+  spec.csharp:
+  - uid: QL.Actions.ThirdParty.Docker.DockerActionBase`2
+    name: DockerActionBase
+    href: QL.Actions.ThirdParty.Docker.DockerActionBase-2.html
+  - name: <
+  - uid: QL.Actions.ThirdParty.Docker.NetworksArguments
+    name: NetworksArguments
+    href: QL.Actions.ThirdParty.Docker.NetworksArguments.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: QL.Actions.ThirdParty.Docker.NetworkResult
+    name: NetworkResult
+    href: QL.Actions.ThirdParty.Docker.NetworkResult.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: QL.Actions.ThirdParty.Docker.DockerActionBase`2
+    name: DockerActionBase
+    href: QL.Actions.ThirdParty.Docker.DockerActionBase-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Actions.ThirdParty.Docker.NetworksArguments
+    name: NetworksArguments
+    href: QL.Actions.ThirdParty.Docker.NetworksArguments.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Actions.ThirdParty.Docker.NetworkResult
+    name: NetworkResult
+    href: QL.Actions.ThirdParty.Docker.NetworkResult.html
+  - name: )
+  - name: )
+- uid: QL.Core.Actions.IAction
+  commentId: T:QL.Core.Actions.IAction
+  parent: QL.Core.Actions
+  name: IAction
+  nameWithType: IAction
+  fullName: QL.Core.Actions.IAction
+- uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.Platform
+  commentId: P:QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.Platform
+  parent: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  definition: QL.Core.Actions.ActionBase`2.Platform
+  name: Platform
+  nameWithType: ActionBase<NetworksArguments, List<NetworkResult>>.Platform
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List<QL.Actions.ThirdParty.Docker.NetworkResult>>.Platform
+  nameWithType.vb: ActionBase(Of NetworksArguments, List(Of NetworkResult)).Platform
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List(Of QL.Actions.ThirdParty.Docker.NetworkResult)).Platform
+- uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.Initialize(QL.Core.Platform)
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.Initialize(QL.Core.Platform)
+  parent: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  definition: QL.Core.Actions.ActionBase`2.Initialize(QL.Core.Platform)
+  name: Initialize(Platform)
+  nameWithType: ActionBase<NetworksArguments, List<NetworkResult>>.Initialize(Platform)
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List<QL.Actions.ThirdParty.Docker.NetworkResult>>.Initialize(QL.Core.Platform)
+  nameWithType.vb: ActionBase(Of NetworksArguments, List(Of NetworkResult)).Initialize(Platform)
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List(Of QL.Actions.ThirdParty.Docker.NetworkResult)).Initialize(QL.Core.Platform)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.Initialize(QL.Core.Platform)
+    name: Initialize
+  - name: (
+  - uid: QL.Core.Platform
+    name: Platform
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.Initialize(QL.Core.Platform)
+    name: Initialize
+  - name: (
+  - uid: QL.Core.Platform
+    name: Platform
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetArguments
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetArguments
+  parent: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  definition: QL.Core.Actions.ActionBase`2.GetArguments
+  name: GetArguments()
+  nameWithType: ActionBase<NetworksArguments, List<NetworkResult>>.GetArguments()
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List<QL.Actions.ThirdParty.Docker.NetworkResult>>.GetArguments()
+  nameWithType.vb: ActionBase(Of NetworksArguments, List(Of NetworkResult)).GetArguments()
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List(Of QL.Actions.ThirdParty.Docker.NetworkResult)).GetArguments()
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetArguments
+    name: GetArguments
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetArguments
+    name: GetArguments
+  - name: (
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+  parent: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  definition: QL.Core.Actions.ActionBase`2.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: ExecuteCommandAsync(IClient, IReadOnlyDictionary<string, object>, IReadOnlyCollection<IField>, CancellationToken)
+  nameWithType: ActionBase<NetworksArguments, List<NetworkResult>>.ExecuteCommandAsync(IClient, IReadOnlyDictionary<string, object>, IReadOnlyCollection<IField>, CancellationToken)
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List<QL.Actions.ThirdParty.Docker.NetworkResult>>.ExecuteCommandAsync(QL.Core.IClient, System.Collections.Generic.IReadOnlyDictionary<string, object>, System.Collections.Generic.IReadOnlyCollection<QL.Core.Actions.IField>, System.Threading.CancellationToken)
+  nameWithType.vb: ActionBase(Of NetworksArguments, List(Of NetworkResult)).ExecuteCommandAsync(IClient, IReadOnlyDictionary(Of String, Object), IReadOnlyCollection(Of IField), CancellationToken)
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List(Of QL.Actions.ThirdParty.Docker.NetworkResult)).ExecuteCommandAsync(QL.Core.IClient, System.Collections.Generic.IReadOnlyDictionary(Of String, Object), System.Collections.Generic.IReadOnlyCollection(Of QL.Core.Actions.IField), System.Threading.CancellationToken)
+  name.vb: ExecuteCommandAsync(IClient, IReadOnlyDictionary(Of String, Object), IReadOnlyCollection(Of IField), CancellationToken)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+    name: ExecuteCommandAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - uid: QL.Core.Actions.IField
+    name: IField
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+    name: ExecuteCommandAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Core.Actions.IField
+    name: IField
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ExecuteAsync(QL.Actions.ThirdParty.Docker.NetworksArguments,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ExecuteAsync(QL.Actions.ThirdParty.Docker.NetworksArguments,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+  parent: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  definition: QL.Core.Actions.ActionBase`2.ExecuteAsync(`0,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+  href: QL.Actions.ThirdParty.Docker.NetworksArguments.html
+  name: ExecuteAsync(NetworksArguments, IClient, string, CancellationToken)
+  nameWithType: ActionBase<NetworksArguments, List<NetworkResult>>.ExecuteAsync(NetworksArguments, IClient, string, CancellationToken)
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List<QL.Actions.ThirdParty.Docker.NetworkResult>>.ExecuteAsync(QL.Actions.ThirdParty.Docker.NetworksArguments, QL.Core.IClient, string, System.Threading.CancellationToken)
+  nameWithType.vb: ActionBase(Of NetworksArguments, List(Of NetworkResult)).ExecuteAsync(NetworksArguments, IClient, String, CancellationToken)
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List(Of QL.Actions.ThirdParty.Docker.NetworkResult)).ExecuteAsync(QL.Actions.ThirdParty.Docker.NetworksArguments, QL.Core.IClient, String, System.Threading.CancellationToken)
+  name.vb: ExecuteAsync(NetworksArguments, IClient, String, CancellationToken)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ExecuteAsync(QL.Actions.ThirdParty.Docker.NetworksArguments,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+    name: ExecuteAsync
+  - name: (
+  - uid: QL.Actions.ThirdParty.Docker.NetworksArguments
+    name: NetworksArguments
+    href: QL.Actions.ThirdParty.Docker.NetworksArguments.html
+  - name: ','
+  - name: " "
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ExecuteAsync(QL.Actions.ThirdParty.Docker.NetworksArguments,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+    name: ExecuteAsync
+  - name: (
+  - uid: QL.Actions.ThirdParty.Docker.NetworksArguments
+    name: NetworksArguments
+    href: QL.Actions.ThirdParty.Docker.NetworksArguments.html
+  - name: ','
+  - name: " "
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ValidateResults(QL.Core.ICommandOutput)
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ValidateResults(QL.Core.ICommandOutput)
+  parent: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  definition: QL.Core.Actions.ActionBase`2.ValidateResults(QL.Core.ICommandOutput)
+  name: ValidateResults(ICommandOutput)
+  nameWithType: ActionBase<NetworksArguments, List<NetworkResult>>.ValidateResults(ICommandOutput)
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List<QL.Actions.ThirdParty.Docker.NetworkResult>>.ValidateResults(QL.Core.ICommandOutput)
+  nameWithType.vb: ActionBase(Of NetworksArguments, List(Of NetworkResult)).ValidateResults(ICommandOutput)
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List(Of QL.Actions.ThirdParty.Docker.NetworkResult)).ValidateResults(QL.Core.ICommandOutput)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ValidateResults(QL.Core.ICommandOutput)
+    name: ValidateResults
+  - name: (
+  - uid: QL.Core.ICommandOutput
+    name: ICommandOutput
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ValidateResults(QL.Core.ICommandOutput)
+    name: ValidateResults
+  - name: (
+  - uid: QL.Core.ICommandOutput
+    name: ICommandOutput
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.BuildCommand(QL.Actions.ThirdParty.Docker.NetworksArguments)
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.BuildCommand(QL.Actions.ThirdParty.Docker.NetworksArguments)
+  parent: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  definition: QL.Core.Actions.ActionBase`2.BuildCommand(`0)
+  href: QL.Actions.ThirdParty.Docker.NetworksArguments.html
+  name: BuildCommand(NetworksArguments)
+  nameWithType: ActionBase<NetworksArguments, List<NetworkResult>>.BuildCommand(NetworksArguments)
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List<QL.Actions.ThirdParty.Docker.NetworkResult>>.BuildCommand(QL.Actions.ThirdParty.Docker.NetworksArguments)
+  nameWithType.vb: ActionBase(Of NetworksArguments, List(Of NetworkResult)).BuildCommand(NetworksArguments)
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List(Of QL.Actions.ThirdParty.Docker.NetworkResult)).BuildCommand(QL.Actions.ThirdParty.Docker.NetworksArguments)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.BuildCommand(QL.Actions.ThirdParty.Docker.NetworksArguments)
+    name: BuildCommand
+  - name: (
+  - uid: QL.Actions.ThirdParty.Docker.NetworksArguments
+    name: NetworksArguments
+    href: QL.Actions.ThirdParty.Docker.NetworksArguments.html
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.BuildCommand(QL.Actions.ThirdParty.Docker.NetworksArguments)
+    name: BuildCommand
+  - name: (
+  - uid: QL.Actions.ThirdParty.Docker.NetworksArguments
+    name: NetworksArguments
+    href: QL.Actions.ThirdParty.Docker.NetworksArguments.html
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetCommandTemplate
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetCommandTemplate
+  parent: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  definition: QL.Core.Actions.ActionBase`2.GetCommandTemplate
+  name: GetCommandTemplate()
+  nameWithType: ActionBase<NetworksArguments, List<NetworkResult>>.GetCommandTemplate()
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List<QL.Actions.ThirdParty.Docker.NetworkResult>>.GetCommandTemplate()
+  nameWithType.vb: ActionBase(Of NetworksArguments, List(Of NetworkResult)).GetCommandTemplate()
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List(Of QL.Actions.ThirdParty.Docker.NetworkResult)).GetCommandTemplate()
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetCommandTemplate
+    name: GetCommandTemplate
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetCommandTemplate
+    name: GetCommandTemplate
+  - name: (
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetRegex
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetRegex
+  parent: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  definition: QL.Core.Actions.ActionBase`2.GetRegex
+  name: GetRegex()
+  nameWithType: ActionBase<NetworksArguments, List<NetworkResult>>.GetRegex()
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List<QL.Actions.ThirdParty.Docker.NetworkResult>>.GetRegex()
+  nameWithType.vb: ActionBase(Of NetworksArguments, List(Of NetworkResult)).GetRegex()
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List(Of QL.Actions.ThirdParty.Docker.NetworkResult)).GetRegex()
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetRegex
+    name: GetRegex
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetRegex
+    name: GetRegex
+  - name: (
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetDeps
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetDeps
+  parent: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  definition: QL.Core.Actions.ActionBase`2.GetDeps
+  name: GetDeps()
+  nameWithType: ActionBase<NetworksArguments, List<NetworkResult>>.GetDeps()
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List<QL.Actions.ThirdParty.Docker.NetworkResult>>.GetDeps()
+  nameWithType.vb: ActionBase(Of NetworksArguments, List(Of NetworkResult)).GetDeps()
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List(Of QL.Actions.ThirdParty.Docker.NetworkResult)).GetDeps()
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetDeps
+    name: GetDeps
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.GetDeps
+    name: GetDeps
+  - name: (
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ParseCommandResults(QL.Core.ICommandOutput)
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ParseCommandResults(QL.Core.ICommandOutput)
+  parent: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  definition: QL.Core.Actions.ActionBase`2.ParseCommandResults(QL.Core.ICommandOutput)
+  name: ParseCommandResults(ICommandOutput)
+  nameWithType: ActionBase<NetworksArguments, List<NetworkResult>>.ParseCommandResults(ICommandOutput)
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List<QL.Actions.ThirdParty.Docker.NetworkResult>>.ParseCommandResults(QL.Core.ICommandOutput)
+  nameWithType.vb: ActionBase(Of NetworksArguments, List(Of NetworkResult)).ParseCommandResults(ICommandOutput)
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List(Of QL.Actions.ThirdParty.Docker.NetworkResult)).ParseCommandResults(QL.Core.ICommandOutput)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ParseCommandResults(QL.Core.ICommandOutput)
+    name: ParseCommandResults
+  - name: (
+  - uid: QL.Core.ICommandOutput
+    name: ICommandOutput
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.ParseCommandResults(QL.Core.ICommandOutput)
+    name: ParseCommandResults
+  - name: (
+  - uid: QL.Core.ICommandOutput
+    name: ICommandOutput
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  parent: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  definition: QL.Core.Actions.ActionBase`2.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: SetupAsync(IClient, CancellationToken)
+  nameWithType: ActionBase<NetworksArguments, List<NetworkResult>>.SetupAsync(IClient, CancellationToken)
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List<QL.Actions.ThirdParty.Docker.NetworkResult>>.SetupAsync(QL.Core.IClient, System.Threading.CancellationToken)
+  nameWithType.vb: ActionBase(Of NetworksArguments, List(Of NetworkResult)).SetupAsync(IClient, CancellationToken)
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List(Of QL.Actions.ThirdParty.Docker.NetworkResult)).SetupAsync(QL.Core.IClient, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+    name: SetupAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+    name: SetupAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  parent: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}
+  definition: QL.Core.Actions.ActionBase`2.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CleanupAsync(IClient, CancellationToken)
+  nameWithType: ActionBase<NetworksArguments, List<NetworkResult>>.CleanupAsync(IClient, CancellationToken)
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List<QL.Actions.ThirdParty.Docker.NetworkResult>>.CleanupAsync(QL.Core.IClient, System.Threading.CancellationToken)
+  nameWithType.vb: ActionBase(Of NetworksArguments, List(Of NetworkResult)).CleanupAsync(IClient, CancellationToken)
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.ThirdParty.Docker.NetworksArguments, System.Collections.Generic.List(Of QL.Actions.ThirdParty.Docker.NetworkResult)).CleanupAsync(QL.Core.IClient, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+    name: CleanupAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.ThirdParty.Docker.NetworksArguments,System.Collections.Generic.List{QL.Actions.ThirdParty.Docker.NetworkResult}}.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+    name: CleanupAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: QL.Core.Actions.ActionBase`2
+  commentId: T:QL.Core.Actions.ActionBase`2
+  name: ActionBase<TArgs, TReturnType>
+  nameWithType: ActionBase<TArgs, TReturnType>
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType)
+  name.vb: ActionBase(Of TArgs, TReturnType)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2
+    name: ActionBase
+  - name: <
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TReturnType
+  - name: '>'
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2
+    name: ActionBase
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TReturnType
+  - name: )
+- uid: QL.Core.Actions
+  commentId: N:QL.Core.Actions
+  name: QL.Core.Actions
+  nameWithType: QL.Core.Actions
+  fullName: QL.Core.Actions
+  spec.csharp:
+  - uid: QL
+    name: QL
+  - name: .
+  - uid: QL.Core
+    name: Core
+  - name: .
+  - uid: QL.Core.Actions
+    name: Actions
+  spec.vb:
+  - uid: QL
+    name: QL
+  - name: .
+  - uid: QL.Core
+    name: Core
+  - name: .
+  - uid: QL.Core.Actions
+    name: Actions
+- uid: QL.Actions.ThirdParty.Docker.DockerActionBase`2
+  commentId: T:QL.Actions.ThirdParty.Docker.DockerActionBase`2
+  href: QL.Actions.ThirdParty.Docker.DockerActionBase-2.html
+  name: DockerActionBase<TArgs, TReturnType>
+  nameWithType: DockerActionBase<TArgs, TReturnType>
+  fullName: QL.Actions.ThirdParty.Docker.DockerActionBase<TArgs, TReturnType>
+  nameWithType.vb: DockerActionBase(Of TArgs, TReturnType)
+  fullName.vb: QL.Actions.ThirdParty.Docker.DockerActionBase(Of TArgs, TReturnType)
+  name.vb: DockerActionBase(Of TArgs, TReturnType)
+  spec.csharp:
+  - uid: QL.Actions.ThirdParty.Docker.DockerActionBase`2
+    name: DockerActionBase
+    href: QL.Actions.ThirdParty.Docker.DockerActionBase-2.html
+  - name: <
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TReturnType
+  - name: '>'
+  spec.vb:
+  - uid: QL.Actions.ThirdParty.Docker.DockerActionBase`2
+    name: DockerActionBase
+    href: QL.Actions.ThirdParty.Docker.DockerActionBase-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TReturnType
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.Platform
+  commentId: P:QL.Core.Actions.ActionBase`2.Platform
+  name: Platform
+  nameWithType: ActionBase<TArgs, TReturnType>.Platform
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.Platform
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).Platform
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).Platform
+- uid: QL.Core.Actions.ActionBase`2.Initialize(QL.Core.Platform)
+  commentId: M:QL.Core.Actions.ActionBase`2.Initialize(QL.Core.Platform)
+  name: Initialize(Platform)
+  nameWithType: ActionBase<TArgs, TReturnType>.Initialize(Platform)
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.Initialize(QL.Core.Platform)
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).Initialize(Platform)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).Initialize(QL.Core.Platform)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.Initialize(QL.Core.Platform)
+    name: Initialize
+  - name: (
+  - uid: QL.Core.Platform
+    name: Platform
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.Initialize(QL.Core.Platform)
+    name: Initialize
+  - name: (
+  - uid: QL.Core.Platform
+    name: Platform
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.GetArguments
+  commentId: M:QL.Core.Actions.ActionBase`2.GetArguments
+  name: GetArguments()
+  nameWithType: ActionBase<TArgs, TReturnType>.GetArguments()
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.GetArguments()
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).GetArguments()
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).GetArguments()
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.GetArguments
+    name: GetArguments
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.GetArguments
+    name: GetArguments
+  - name: (
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.ActionBase`2.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: ExecuteCommandAsync(IClient, IReadOnlyDictionary<string, object>, IReadOnlyCollection<IField>, CancellationToken)
+  nameWithType: ActionBase<TArgs, TReturnType>.ExecuteCommandAsync(IClient, IReadOnlyDictionary<string, object>, IReadOnlyCollection<IField>, CancellationToken)
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.ExecuteCommandAsync(QL.Core.IClient, System.Collections.Generic.IReadOnlyDictionary<string, object>, System.Collections.Generic.IReadOnlyCollection<QL.Core.Actions.IField>, System.Threading.CancellationToken)
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).ExecuteCommandAsync(IClient, IReadOnlyDictionary(Of String, Object), IReadOnlyCollection(Of IField), CancellationToken)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).ExecuteCommandAsync(QL.Core.IClient, System.Collections.Generic.IReadOnlyDictionary(Of String, Object), System.Collections.Generic.IReadOnlyCollection(Of QL.Core.Actions.IField), System.Threading.CancellationToken)
+  name.vb: ExecuteCommandAsync(IClient, IReadOnlyDictionary(Of String, Object), IReadOnlyCollection(Of IField), CancellationToken)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+    name: ExecuteCommandAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - uid: QL.Core.Actions.IField
+    name: IField
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+    name: ExecuteCommandAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Core.Actions.IField
+    name: IField
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.ExecuteAsync(`0,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.ActionBase`2.ExecuteAsync(`0,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: ExecuteAsync(TArgs, IClient, string, CancellationToken)
+  nameWithType: ActionBase<TArgs, TReturnType>.ExecuteAsync(TArgs, IClient, string, CancellationToken)
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.ExecuteAsync(TArgs, QL.Core.IClient, string, System.Threading.CancellationToken)
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).ExecuteAsync(TArgs, IClient, String, CancellationToken)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).ExecuteAsync(TArgs, QL.Core.IClient, String, System.Threading.CancellationToken)
+  name.vb: ExecuteAsync(TArgs, IClient, String, CancellationToken)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.ExecuteAsync(`0,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+    name: ExecuteAsync
+  - name: (
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.ExecuteAsync(`0,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+    name: ExecuteAsync
+  - name: (
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.ValidateResults(QL.Core.ICommandOutput)
+  commentId: M:QL.Core.Actions.ActionBase`2.ValidateResults(QL.Core.ICommandOutput)
+  name: ValidateResults(ICommandOutput)
+  nameWithType: ActionBase<TArgs, TReturnType>.ValidateResults(ICommandOutput)
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.ValidateResults(QL.Core.ICommandOutput)
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).ValidateResults(ICommandOutput)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).ValidateResults(QL.Core.ICommandOutput)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.ValidateResults(QL.Core.ICommandOutput)
+    name: ValidateResults
+  - name: (
+  - uid: QL.Core.ICommandOutput
+    name: ICommandOutput
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.ValidateResults(QL.Core.ICommandOutput)
+    name: ValidateResults
+  - name: (
+  - uid: QL.Core.ICommandOutput
+    name: ICommandOutput
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.BuildCommand(`0)
+  commentId: M:QL.Core.Actions.ActionBase`2.BuildCommand(`0)
+  name: BuildCommand(TArgs)
+  nameWithType: ActionBase<TArgs, TReturnType>.BuildCommand(TArgs)
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.BuildCommand(TArgs)
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).BuildCommand(TArgs)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).BuildCommand(TArgs)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.BuildCommand(`0)
+    name: BuildCommand
+  - name: (
+  - name: TArgs
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.BuildCommand(`0)
+    name: BuildCommand
+  - name: (
+  - name: TArgs
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.GetCommandTemplate
+  commentId: M:QL.Core.Actions.ActionBase`2.GetCommandTemplate
+  name: GetCommandTemplate()
+  nameWithType: ActionBase<TArgs, TReturnType>.GetCommandTemplate()
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.GetCommandTemplate()
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).GetCommandTemplate()
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).GetCommandTemplate()
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.GetCommandTemplate
+    name: GetCommandTemplate
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.GetCommandTemplate
+    name: GetCommandTemplate
+  - name: (
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.GetRegex
+  commentId: M:QL.Core.Actions.ActionBase`2.GetRegex
+  name: GetRegex()
+  nameWithType: ActionBase<TArgs, TReturnType>.GetRegex()
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.GetRegex()
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).GetRegex()
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).GetRegex()
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.GetRegex
+    name: GetRegex
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.GetRegex
+    name: GetRegex
+  - name: (
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.GetDeps
+  commentId: M:QL.Core.Actions.ActionBase`2.GetDeps
+  name: GetDeps()
+  nameWithType: ActionBase<TArgs, TReturnType>.GetDeps()
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.GetDeps()
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).GetDeps()
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).GetDeps()
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.GetDeps
+    name: GetDeps
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.GetDeps
+    name: GetDeps
+  - name: (
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.ParseCommandResults(QL.Core.ICommandOutput)
+  commentId: M:QL.Core.Actions.ActionBase`2.ParseCommandResults(QL.Core.ICommandOutput)
+  name: ParseCommandResults(ICommandOutput)
+  nameWithType: ActionBase<TArgs, TReturnType>.ParseCommandResults(ICommandOutput)
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.ParseCommandResults(QL.Core.ICommandOutput)
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).ParseCommandResults(ICommandOutput)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).ParseCommandResults(QL.Core.ICommandOutput)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.ParseCommandResults(QL.Core.ICommandOutput)
+    name: ParseCommandResults
+  - name: (
+  - uid: QL.Core.ICommandOutput
+    name: ICommandOutput
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.ParseCommandResults(QL.Core.ICommandOutput)
+    name: ParseCommandResults
+  - name: (
+  - uid: QL.Core.ICommandOutput
+    name: ICommandOutput
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.ActionBase`2.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: SetupAsync(IClient, CancellationToken)
+  nameWithType: ActionBase<TArgs, TReturnType>.SetupAsync(IClient, CancellationToken)
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.SetupAsync(QL.Core.IClient, System.Threading.CancellationToken)
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).SetupAsync(IClient, CancellationToken)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).SetupAsync(QL.Core.IClient, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+    name: SetupAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+    name: SetupAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.ActionBase`2.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CleanupAsync(IClient, CancellationToken)
+  nameWithType: ActionBase<TArgs, TReturnType>.CleanupAsync(IClient, CancellationToken)
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.CleanupAsync(QL.Core.IClient, System.Threading.CancellationToken)
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).CleanupAsync(IClient, CancellationToken)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).CleanupAsync(QL.Core.IClient, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+    name: CleanupAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+    name: CleanupAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )

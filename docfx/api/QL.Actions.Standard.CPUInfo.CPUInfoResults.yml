@@ -1,0 +1,764 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Actions.Standard.CPUInfo.CPUInfoResults
+  commentId: T:QL.Actions.Standard.CPUInfo.CPUInfoResults
+  id: CPUInfoResults
+  parent: QL.Actions.Standard.CPUInfo
+  children:
+  - QL.Actions.Standard.CPUInfo.CPUInfoResults.CPU
+  - QL.Actions.Standard.CPUInfo.CPUInfoResults.Caches
+  - QL.Actions.Standard.CPUInfo.CPUInfoResults.Flags
+  - QL.Actions.Standard.CPUInfo.CPUInfoResults.NUMA
+  - QL.Actions.Standard.CPUInfo.CPUInfoResults.Vendor
+  - QL.Actions.Standard.CPUInfo.CPUInfoResults.Virtualization
+  - QL.Actions.Standard.CPUInfo.CPUInfoResults.Vulnerabilities
+  langs:
+  - csharp
+  - vb
+  name: CPUInfoResults
+  nameWithType: CPUInfoResults
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfoResults
+  type: Class
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CPUInfo/CPUInfoResults.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: CPUInfoResults
+    path: ../src/QL.Actions/Standard/CPUInfo/CPUInfoResults.cs
+    startLine: 52
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CPUInfo
+  syntax:
+    content: public class CPUInfoResults
+    content.vb: Public Class CPUInfoResults
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: QL.Actions.Standard.CPUInfo.CPUInfoResults.CPU
+  commentId: P:QL.Actions.Standard.CPUInfo.CPUInfoResults.CPU
+  id: CPU
+  parent: QL.Actions.Standard.CPUInfo.CPUInfoResults
+  langs:
+  - csharp
+  - vb
+  name: CPU
+  nameWithType: CPUInfoResults.CPU
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfoResults.CPU
+  type: Property
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CPUInfo/CPUInfoResults.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: CPU
+    path: ../src/QL.Actions/Standard/CPUInfo/CPUInfoResults.cs
+    startLine: 54
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CPUInfo
+  syntax:
+    content: public CPU CPU { get; set; }
+    parameters: []
+    return:
+      type: QL.Actions.Standard.CPUInfo.CPU
+    content.vb: Public Property CPU As CPU
+  overload: QL.Actions.Standard.CPUInfo.CPUInfoResults.CPU*
+- uid: QL.Actions.Standard.CPUInfo.CPUInfoResults.Virtualization
+  commentId: P:QL.Actions.Standard.CPUInfo.CPUInfoResults.Virtualization
+  id: Virtualization
+  parent: QL.Actions.Standard.CPUInfo.CPUInfoResults
+  langs:
+  - csharp
+  - vb
+  name: Virtualization
+  nameWithType: CPUInfoResults.Virtualization
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfoResults.Virtualization
+  type: Property
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CPUInfo/CPUInfoResults.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Virtualization
+    path: ../src/QL.Actions/Standard/CPUInfo/CPUInfoResults.cs
+    startLine: 55
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CPUInfo
+  syntax:
+    content: public string Virtualization { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Virtualization As String
+  overload: QL.Actions.Standard.CPUInfo.CPUInfoResults.Virtualization*
+- uid: QL.Actions.Standard.CPUInfo.CPUInfoResults.Flags
+  commentId: P:QL.Actions.Standard.CPUInfo.CPUInfoResults.Flags
+  id: Flags
+  parent: QL.Actions.Standard.CPUInfo.CPUInfoResults
+  langs:
+  - csharp
+  - vb
+  name: Flags
+  nameWithType: CPUInfoResults.Flags
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfoResults.Flags
+  type: Property
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CPUInfo/CPUInfoResults.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Flags
+    path: ../src/QL.Actions/Standard/CPUInfo/CPUInfoResults.cs
+    startLine: 56
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CPUInfo
+  syntax:
+    content: public List<string> Flags { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Property Flags As List(Of String)
+  overload: QL.Actions.Standard.CPUInfo.CPUInfoResults.Flags*
+- uid: QL.Actions.Standard.CPUInfo.CPUInfoResults.Caches
+  commentId: P:QL.Actions.Standard.CPUInfo.CPUInfoResults.Caches
+  id: Caches
+  parent: QL.Actions.Standard.CPUInfo.CPUInfoResults
+  langs:
+  - csharp
+  - vb
+  name: Caches
+  nameWithType: CPUInfoResults.Caches
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfoResults.Caches
+  type: Property
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CPUInfo/CPUInfoResults.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Caches
+    path: ../src/QL.Actions/Standard/CPUInfo/CPUInfoResults.cs
+    startLine: 57
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CPUInfo
+  syntax:
+    content: public List<CacheInfo> Caches { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{QL.Actions.Standard.CPUInfo.CacheInfo}
+    content.vb: Public Property Caches As List(Of CacheInfo)
+  overload: QL.Actions.Standard.CPUInfo.CPUInfoResults.Caches*
+- uid: QL.Actions.Standard.CPUInfo.CPUInfoResults.NUMA
+  commentId: P:QL.Actions.Standard.CPUInfo.CPUInfoResults.NUMA
+  id: NUMA
+  parent: QL.Actions.Standard.CPUInfo.CPUInfoResults
+  langs:
+  - csharp
+  - vb
+  name: NUMA
+  nameWithType: CPUInfoResults.NUMA
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfoResults.NUMA
+  type: Property
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CPUInfo/CPUInfoResults.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: NUMA
+    path: ../src/QL.Actions/Standard/CPUInfo/CPUInfoResults.cs
+    startLine: 58
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CPUInfo
+  syntax:
+    content: public NUMAInfo NUMA { get; set; }
+    parameters: []
+    return:
+      type: QL.Actions.Standard.CPUInfo.NUMAInfo
+    content.vb: Public Property NUMA As NUMAInfo
+  overload: QL.Actions.Standard.CPUInfo.CPUInfoResults.NUMA*
+- uid: QL.Actions.Standard.CPUInfo.CPUInfoResults.Vendor
+  commentId: P:QL.Actions.Standard.CPUInfo.CPUInfoResults.Vendor
+  id: Vendor
+  parent: QL.Actions.Standard.CPUInfo.CPUInfoResults
+  langs:
+  - csharp
+  - vb
+  name: Vendor
+  nameWithType: CPUInfoResults.Vendor
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfoResults.Vendor
+  type: Property
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CPUInfo/CPUInfoResults.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Vendor
+    path: ../src/QL.Actions/Standard/CPUInfo/CPUInfoResults.cs
+    startLine: 59
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CPUInfo
+  syntax:
+    content: public VendorInfo Vendor { get; set; }
+    parameters: []
+    return:
+      type: QL.Actions.Standard.CPUInfo.VendorInfo
+    content.vb: Public Property Vendor As VendorInfo
+  overload: QL.Actions.Standard.CPUInfo.CPUInfoResults.Vendor*
+- uid: QL.Actions.Standard.CPUInfo.CPUInfoResults.Vulnerabilities
+  commentId: P:QL.Actions.Standard.CPUInfo.CPUInfoResults.Vulnerabilities
+  id: Vulnerabilities
+  parent: QL.Actions.Standard.CPUInfo.CPUInfoResults
+  langs:
+  - csharp
+  - vb
+  name: Vulnerabilities
+  nameWithType: CPUInfoResults.Vulnerabilities
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfoResults.Vulnerabilities
+  type: Property
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CPUInfo/CPUInfoResults.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Vulnerabilities
+    path: ../src/QL.Actions/Standard/CPUInfo/CPUInfoResults.cs
+    startLine: 60
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CPUInfo
+  syntax:
+    content: public List<VulnerabilityInfo> Vulnerabilities { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{QL.Actions.Standard.CPUInfo.VulnerabilityInfo}
+    content.vb: Public Property Vulnerabilities As List(Of VulnerabilityInfo)
+  overload: QL.Actions.Standard.CPUInfo.CPUInfoResults.Vulnerabilities*
+references:
+- uid: QL.Actions.Standard.CPUInfo
+  commentId: N:QL.Actions.Standard.CPUInfo
+  href: QL.html
+  name: QL.Actions.Standard.CPUInfo
+  nameWithType: QL.Actions.Standard.CPUInfo
+  fullName: QL.Actions.Standard.CPUInfo
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.CPUInfo
+    name: CPUInfo
+    href: QL.Actions.Standard.CPUInfo.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.CPUInfo
+    name: CPUInfo
+    href: QL.Actions.Standard.CPUInfo.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: QL.Actions.Standard.CPUInfo.CPUInfoResults.CPU*
+  commentId: Overload:QL.Actions.Standard.CPUInfo.CPUInfoResults.CPU
+  href: QL.Actions.Standard.CPUInfo.CPUInfoResults.html#QL_Actions_Standard_CPUInfo_CPUInfoResults_CPU
+  name: CPU
+  nameWithType: CPUInfoResults.CPU
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfoResults.CPU
+- uid: QL.Actions.Standard.CPUInfo.CPU
+  commentId: T:QL.Actions.Standard.CPUInfo.CPU
+  parent: QL.Actions.Standard.CPUInfo
+  href: QL.Actions.Standard.CPUInfo.CPU.html
+  name: CPU
+  nameWithType: CPU
+  fullName: QL.Actions.Standard.CPUInfo.CPU
+- uid: QL.Actions.Standard.CPUInfo.CPUInfoResults.Virtualization*
+  commentId: Overload:QL.Actions.Standard.CPUInfo.CPUInfoResults.Virtualization
+  href: QL.Actions.Standard.CPUInfo.CPUInfoResults.html#QL_Actions_Standard_CPUInfo_CPUInfoResults_Virtualization
+  name: Virtualization
+  nameWithType: CPUInfoResults.Virtualization
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfoResults.Virtualization
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: QL.Actions.Standard.CPUInfo.CPUInfoResults.Flags*
+  commentId: Overload:QL.Actions.Standard.CPUInfo.CPUInfoResults.Flags
+  href: QL.Actions.Standard.CPUInfo.CPUInfoResults.html#QL_Actions_Standard_CPUInfo_CPUInfoResults_Flags
+  name: Flags
+  nameWithType: CPUInfoResults.Flags
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfoResults.Flags
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<string>
+  nameWithType: List<string>
+  fullName: System.Collections.Generic.List<string>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: QL.Actions.Standard.CPUInfo.CPUInfoResults.Caches*
+  commentId: Overload:QL.Actions.Standard.CPUInfo.CPUInfoResults.Caches
+  href: QL.Actions.Standard.CPUInfo.CPUInfoResults.html#QL_Actions_Standard_CPUInfo_CPUInfoResults_Caches
+  name: Caches
+  nameWithType: CPUInfoResults.Caches
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfoResults.Caches
+- uid: System.Collections.Generic.List{QL.Actions.Standard.CPUInfo.CacheInfo}
+  commentId: T:System.Collections.Generic.List{QL.Actions.Standard.CPUInfo.CacheInfo}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<CacheInfo>
+  nameWithType: List<CacheInfo>
+  fullName: System.Collections.Generic.List<QL.Actions.Standard.CPUInfo.CacheInfo>
+  nameWithType.vb: List(Of CacheInfo)
+  fullName.vb: System.Collections.Generic.List(Of QL.Actions.Standard.CPUInfo.CacheInfo)
+  name.vb: List(Of CacheInfo)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: QL.Actions.Standard.CPUInfo.CacheInfo
+    name: CacheInfo
+    href: QL.Actions.Standard.CPUInfo.CacheInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Actions.Standard.CPUInfo.CacheInfo
+    name: CacheInfo
+    href: QL.Actions.Standard.CPUInfo.CacheInfo.html
+  - name: )
+- uid: QL.Actions.Standard.CPUInfo.CPUInfoResults.NUMA*
+  commentId: Overload:QL.Actions.Standard.CPUInfo.CPUInfoResults.NUMA
+  href: QL.Actions.Standard.CPUInfo.CPUInfoResults.html#QL_Actions_Standard_CPUInfo_CPUInfoResults_NUMA
+  name: NUMA
+  nameWithType: CPUInfoResults.NUMA
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfoResults.NUMA
+- uid: QL.Actions.Standard.CPUInfo.NUMAInfo
+  commentId: T:QL.Actions.Standard.CPUInfo.NUMAInfo
+  parent: QL.Actions.Standard.CPUInfo
+  href: QL.Actions.Standard.CPUInfo.NUMAInfo.html
+  name: NUMAInfo
+  nameWithType: NUMAInfo
+  fullName: QL.Actions.Standard.CPUInfo.NUMAInfo
+- uid: QL.Actions.Standard.CPUInfo.CPUInfoResults.Vendor*
+  commentId: Overload:QL.Actions.Standard.CPUInfo.CPUInfoResults.Vendor
+  href: QL.Actions.Standard.CPUInfo.CPUInfoResults.html#QL_Actions_Standard_CPUInfo_CPUInfoResults_Vendor
+  name: Vendor
+  nameWithType: CPUInfoResults.Vendor
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfoResults.Vendor
+- uid: QL.Actions.Standard.CPUInfo.VendorInfo
+  commentId: T:QL.Actions.Standard.CPUInfo.VendorInfo
+  parent: QL.Actions.Standard.CPUInfo
+  href: QL.Actions.Standard.CPUInfo.VendorInfo.html
+  name: VendorInfo
+  nameWithType: VendorInfo
+  fullName: QL.Actions.Standard.CPUInfo.VendorInfo
+- uid: QL.Actions.Standard.CPUInfo.CPUInfoResults.Vulnerabilities*
+  commentId: Overload:QL.Actions.Standard.CPUInfo.CPUInfoResults.Vulnerabilities
+  href: QL.Actions.Standard.CPUInfo.CPUInfoResults.html#QL_Actions_Standard_CPUInfo_CPUInfoResults_Vulnerabilities
+  name: Vulnerabilities
+  nameWithType: CPUInfoResults.Vulnerabilities
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfoResults.Vulnerabilities
+- uid: System.Collections.Generic.List{QL.Actions.Standard.CPUInfo.VulnerabilityInfo}
+  commentId: T:System.Collections.Generic.List{QL.Actions.Standard.CPUInfo.VulnerabilityInfo}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<VulnerabilityInfo>
+  nameWithType: List<VulnerabilityInfo>
+  fullName: System.Collections.Generic.List<QL.Actions.Standard.CPUInfo.VulnerabilityInfo>
+  nameWithType.vb: List(Of VulnerabilityInfo)
+  fullName.vb: System.Collections.Generic.List(Of QL.Actions.Standard.CPUInfo.VulnerabilityInfo)
+  name.vb: List(Of VulnerabilityInfo)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: QL.Actions.Standard.CPUInfo.VulnerabilityInfo
+    name: VulnerabilityInfo
+    href: QL.Actions.Standard.CPUInfo.VulnerabilityInfo.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Actions.Standard.CPUInfo.VulnerabilityInfo
+    name: VulnerabilityInfo
+    href: QL.Actions.Standard.CPUInfo.VulnerabilityInfo.html
+  - name: )

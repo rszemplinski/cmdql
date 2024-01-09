@@ -1,0 +1,128 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Actions.Standard.CurrentTime.AMPM
+  commentId: T:QL.Actions.Standard.CurrentTime.AMPM
+  id: AMPM
+  parent: QL.Actions.Standard.CurrentTime
+  children:
+  - QL.Actions.Standard.CurrentTime.AMPM.AM
+  - QL.Actions.Standard.CurrentTime.AMPM.PM
+  langs:
+  - csharp
+  - vb
+  name: AMPM
+  nameWithType: AMPM
+  fullName: QL.Actions.Standard.CurrentTime.AMPM
+  type: Enum
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: AMPM
+    path: ../src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+    startLine: 6
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CurrentTime
+  syntax:
+    content: public enum AMPM
+    content.vb: Public Enum AMPM
+- uid: QL.Actions.Standard.CurrentTime.AMPM.AM
+  commentId: F:QL.Actions.Standard.CurrentTime.AMPM.AM
+  id: AM
+  parent: QL.Actions.Standard.CurrentTime.AMPM
+  langs:
+  - csharp
+  - vb
+  name: AM
+  nameWithType: AMPM.AM
+  fullName: QL.Actions.Standard.CurrentTime.AMPM.AM
+  type: Field
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: AM
+    path: ../src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+    startLine: 8
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CurrentTime
+  syntax:
+    content: AM = 0
+    return:
+      type: QL.Actions.Standard.CurrentTime.AMPM
+- uid: QL.Actions.Standard.CurrentTime.AMPM.PM
+  commentId: F:QL.Actions.Standard.CurrentTime.AMPM.PM
+  id: PM
+  parent: QL.Actions.Standard.CurrentTime.AMPM
+  langs:
+  - csharp
+  - vb
+  name: PM
+  nameWithType: AMPM.PM
+  fullName: QL.Actions.Standard.CurrentTime.AMPM.PM
+  type: Field
+  source:
+    remote:
+      path: src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: PM
+    path: ../src/QL.Actions/Standard/CurrentTime/CurrentTime.cs
+    startLine: 9
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.CurrentTime
+  syntax:
+    content: PM = 1
+    return:
+      type: QL.Actions.Standard.CurrentTime.AMPM
+references:
+- uid: QL.Actions.Standard.CurrentTime
+  commentId: N:QL.Actions.Standard.CurrentTime
+  href: QL.html
+  name: QL.Actions.Standard.CurrentTime
+  nameWithType: QL.Actions.Standard.CurrentTime
+  fullName: QL.Actions.Standard.CurrentTime
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.CurrentTime
+    name: CurrentTime
+    href: QL.Actions.Standard.CurrentTime.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.CurrentTime
+    name: CurrentTime
+    href: QL.Actions.Standard.CurrentTime.html
+- uid: QL.Actions.Standard.CurrentTime.AMPM
+  commentId: T:QL.Actions.Standard.CurrentTime.AMPM
+  parent: QL.Actions.Standard.CurrentTime
+  href: QL.Actions.Standard.CurrentTime.AMPM.html
+  name: AMPM
+  nameWithType: AMPM
+  fullName: QL.Actions.Standard.CurrentTime.AMPM

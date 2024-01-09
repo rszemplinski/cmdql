@@ -10,53 +10,54 @@ public enum AMPM
     PM
 }
 
+/// <summary>
+/// Result of the <see cref="CurrentTime"/> action
+/// </summary>
 public class CurrentTimeResult
 {
-    /**
-     * Day of the week as a string (e.g. "Mon", "Tue", "Wed", etc.)
-     */
+    /// <summary>
+    /// Day of the week as a string (e.g. "Mon", "Tue", "Wed", etc.)
+    /// </summary>
     public string DayOfWeek { get; set; }
 
-    /**
-     * Month as a string (e.g. "Jan", "Feb", "Mar", etc.)
-     */
+    /// <summary>
+    /// Month as a string (e.g. "Jan", "Feb", "Mar", etc.)
+    /// </summary>
     public string Month { get; set; }
 
-    /**
-     * Day of the month as an integer
-     */
+    /// <summary>
+    /// Day of the month as an integer
+    /// </summary>
     public int Day { get; set; }
 
-    /**
-     * Time as a string (e.g. "12:00:00")
-     */
+    /// <summary>
+    /// Time as a string (e.g. "12:00:00")
+    /// </summary>
     public string Time { get; set; }
 
-    /**
-     * Time zone as a string (e.g. "PST", "MST", "EST", etc.)
-     */
+    /// <summary>
+    /// Time zone as a string (e.g. "EST", "EDT", "CST", "CDT", etc.)
+    /// </summary>
     public string TimeZone { get; set; }
 
-    /**
-     * Year as an integer
-     */
+    /// <summary>
+    /// Year as an integer
+    /// </summary>
     public int Year { get; set; }
 
-    /**
-     * AM or PM
-     */
+    /// <summary>
+    /// AM/PM value
+    /// </summary>
     public AMPM AMPM { get; set; }
 }
 
+/// <summary>
+/// Runs the <c>date</c> command and returns the current date and time
+/// </summary>
 [Action]
 [Cmd("date")]
 public class CurrentTime : ActionBase<CurrentTimeResult>
 {
-    /**
-     * Example:
-     *  Wed Jan  3 21:20:55 MST 2024
-     *  Wed Jan  3 09:21:43 PM MST 2024
-     */
     protected override CurrentTimeResult ParseCommandResults(ICommandOutput commandResults)
     {
         var result = new CurrentTimeResult();

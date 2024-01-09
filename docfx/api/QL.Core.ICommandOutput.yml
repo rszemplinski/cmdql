@@ -1,0 +1,291 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Core.ICommandOutput
+  commentId: T:QL.Core.ICommandOutput
+  id: ICommandOutput
+  parent: QL.Core
+  children:
+  - QL.Core.ICommandOutput.Error
+  - QL.Core.ICommandOutput.ExitCode
+  - QL.Core.ICommandOutput.Result
+  langs:
+  - csharp
+  - vb
+  name: ICommandOutput
+  nameWithType: ICommandOutput
+  fullName: QL.Core.ICommandOutput
+  type: Interface
+  source:
+    remote:
+      path: src/QL.Core/IClient.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: ICommandOutput
+    path: ../src/QL.Core/IClient.cs
+    startLine: 2
+  assemblies:
+  - QL.Core
+  namespace: QL.Core
+  syntax:
+    content: public interface ICommandOutput
+    content.vb: Public Interface ICommandOutput
+  extensionMethods:
+  - System.Object.QL.Engine.Extensions.ObjectExtensions.ToDictionary
+- uid: QL.Core.ICommandOutput.Result
+  commentId: P:QL.Core.ICommandOutput.Result
+  id: Result
+  parent: QL.Core.ICommandOutput
+  langs:
+  - csharp
+  - vb
+  name: Result
+  nameWithType: ICommandOutput.Result
+  fullName: QL.Core.ICommandOutput.Result
+  type: Property
+  source:
+    remote:
+      path: src/QL.Core/IClient.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Result
+    path: ../src/QL.Core/IClient.cs
+    startLine: 7
+  assemblies:
+  - QL.Core
+  namespace: QL.Core
+  example: []
+  syntax:
+    content: string Result { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property Result As String
+  overload: QL.Core.ICommandOutput.Result*
+- uid: QL.Core.ICommandOutput.Error
+  commentId: P:QL.Core.ICommandOutput.Error
+  id: Error
+  parent: QL.Core.ICommandOutput
+  langs:
+  - csharp
+  - vb
+  name: Error
+  nameWithType: ICommandOutput.Error
+  fullName: QL.Core.ICommandOutput.Error
+  type: Property
+  source:
+    remote:
+      path: src/QL.Core/IClient.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Error
+    path: ../src/QL.Core/IClient.cs
+    startLine: 12
+  assemblies:
+  - QL.Core
+  namespace: QL.Core
+  example: []
+  syntax:
+    content: string Error { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: ReadOnly Property [Error] As String
+  overload: QL.Core.ICommandOutput.Error*
+- uid: QL.Core.ICommandOutput.ExitCode
+  commentId: P:QL.Core.ICommandOutput.ExitCode
+  id: ExitCode
+  parent: QL.Core.ICommandOutput
+  langs:
+  - csharp
+  - vb
+  name: ExitCode
+  nameWithType: ICommandOutput.ExitCode
+  fullName: QL.Core.ICommandOutput.ExitCode
+  type: Property
+  source:
+    remote:
+      path: src/QL.Core/IClient.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: ExitCode
+    path: ../src/QL.Core/IClient.cs
+    startLine: 17
+  assemblies:
+  - QL.Core
+  namespace: QL.Core
+  example: []
+  syntax:
+    content: int ExitCode { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: ReadOnly Property ExitCode As Integer
+  overload: QL.Core.ICommandOutput.ExitCode*
+references:
+- uid: QL.Core
+  commentId: N:QL.Core
+  href: QL.html
+  name: QL.Core
+  nameWithType: QL.Core
+  fullName: QL.Core
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Core
+    name: Core
+    href: QL.Core.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Core
+    name: Core
+    href: QL.Core.html
+- uid: System.Object.QL.Engine.Extensions.ObjectExtensions.ToDictionary
+  commentId: M:QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  parent: QL.Engine.Extensions.ObjectExtensions
+  definition: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  name: ToDictionary(object)
+  nameWithType: ObjectExtensions.ToDictionary(object)
+  fullName: QL.Engine.Extensions.ObjectExtensions.ToDictionary(object)
+  nameWithType.vb: ObjectExtensions.ToDictionary(Object)
+  fullName.vb: QL.Engine.Extensions.ObjectExtensions.ToDictionary(Object)
+  name.vb: ToDictionary(Object)
+  spec.csharp:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  commentId: M:QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  isExternal: true
+  href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  name: ToDictionary(object)
+  nameWithType: ObjectExtensions.ToDictionary(object)
+  fullName: QL.Engine.Extensions.ObjectExtensions.ToDictionary(object)
+  nameWithType.vb: ObjectExtensions.ToDictionary(Object)
+  fullName.vb: QL.Engine.Extensions.ObjectExtensions.ToDictionary(Object)
+  name.vb: ToDictionary(Object)
+  spec.csharp:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: QL.Engine.Extensions.ObjectExtensions
+  commentId: T:QL.Engine.Extensions.ObjectExtensions
+  parent: QL.Engine.Extensions
+  href: QL.Engine.Extensions.ObjectExtensions.html
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: QL.Engine.Extensions.ObjectExtensions
+- uid: QL.Engine.Extensions
+  commentId: N:QL.Engine.Extensions
+  href: QL.html
+  name: QL.Engine.Extensions
+  nameWithType: QL.Engine.Extensions
+  fullName: QL.Engine.Extensions
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Engine
+    name: Engine
+    href: QL.Engine.html
+  - name: .
+  - uid: QL.Engine.Extensions
+    name: Extensions
+    href: QL.Engine.Extensions.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Engine
+    name: Engine
+    href: QL.Engine.html
+  - name: .
+  - uid: QL.Engine.Extensions
+    name: Extensions
+    href: QL.Engine.Extensions.html
+- uid: QL.Core.ICommandOutput.Result*
+  commentId: Overload:QL.Core.ICommandOutput.Result
+  href: QL.Core.ICommandOutput.html#QL_Core_ICommandOutput_Result
+  name: Result
+  nameWithType: ICommandOutput.Result
+  fullName: QL.Core.ICommandOutput.Result
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: QL.Core.ICommandOutput.Error*
+  commentId: Overload:QL.Core.ICommandOutput.Error
+  href: QL.Core.ICommandOutput.html#QL_Core_ICommandOutput_Error
+  name: Error
+  nameWithType: ICommandOutput.Error
+  fullName: QL.Core.ICommandOutput.Error
+- uid: QL.Core.ICommandOutput.ExitCode*
+  commentId: Overload:QL.Core.ICommandOutput.ExitCode
+  href: QL.Core.ICommandOutput.html#QL_Core_ICommandOutput_ExitCode
+  name: ExitCode
+  nameWithType: ICommandOutput.ExitCode
+  fullName: QL.Core.ICommandOutput.ExitCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer

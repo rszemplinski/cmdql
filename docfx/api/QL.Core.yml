@@ -1,0 +1,78 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Core
+  commentId: N:QL.Core
+  id: QL.Core
+  children:
+  - QL.Core.CommandBuilder
+  - QL.Core.IClient
+  - QL.Core.ICommandOutput
+  - QL.Core.Platform
+  - QL.Core.SessionType
+  langs:
+  - csharp
+  - vb
+  name: QL.Core
+  nameWithType: QL.Core
+  fullName: QL.Core
+  type: Namespace
+  assemblies:
+  - QL.Core
+references:
+- uid: QL.Core.CommandBuilder
+  commentId: T:QL.Core.CommandBuilder
+  parent: QL.Core
+  href: QL.Core.CommandBuilder.html
+  name: CommandBuilder
+  nameWithType: CommandBuilder
+  fullName: QL.Core.CommandBuilder
+- uid: QL.Core.ICommandOutput
+  commentId: T:QL.Core.ICommandOutput
+  parent: QL.Core
+  href: QL.Core.ICommandOutput.html
+  name: ICommandOutput
+  nameWithType: ICommandOutput
+  fullName: QL.Core.ICommandOutput
+- uid: QL.Core.IClient
+  commentId: T:QL.Core.IClient
+  parent: QL.Core
+  href: QL.Core.IClient.html
+  name: IClient
+  nameWithType: IClient
+  fullName: QL.Core.IClient
+- uid: QL.Core.Platform
+  commentId: T:QL.Core.Platform
+  parent: QL.Core
+  href: QL.Core.Platform.html
+  name: Platform
+  nameWithType: Platform
+  fullName: QL.Core.Platform
+- uid: QL.Core.SessionType
+  commentId: T:QL.Core.SessionType
+  parent: QL.Core
+  href: QL.Core.SessionType.html
+  name: SessionType
+  nameWithType: SessionType
+  fullName: QL.Core.SessionType
+- uid: QL.Core
+  commentId: N:QL.Core
+  href: QL.html
+  name: QL.Core
+  nameWithType: QL.Core
+  fullName: QL.Core
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Core
+    name: Core
+    href: QL.Core.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Core
+    name: Core
+    href: QL.Core.html

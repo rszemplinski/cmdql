@@ -1,6 +1,4 @@
-using System.Text.Json.Serialization;
-
-namespace QL.Actions.Standard.FileSystem;
+namespace QL.Actions.Standard.ListFiles;
 
 /**
  * Represents a file or directory in the file system

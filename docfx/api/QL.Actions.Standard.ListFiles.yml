@@ -1,0 +1,37 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Actions.Standard.ListFiles
+  commentId: N:QL.Actions.Standard.ListFiles
+  id: QL.Actions.Standard.ListFiles
+  children:
+  - QL.Actions.Standard.ListFiles.FileSystemItem
+  - QL.Actions.Standard.ListFiles.ListFileArguments
+  - QL.Actions.Standard.ListFiles.ListFiles
+  langs:
+  - csharp
+  - vb
+  name: QL.Actions.Standard.ListFiles
+  nameWithType: QL.Actions.Standard.ListFiles
+  fullName: QL.Actions.Standard.ListFiles
+  type: Namespace
+  assemblies:
+  - QL.Actions
+references:
+- uid: QL.Actions.Standard.ListFiles.FileSystemItem
+  commentId: T:QL.Actions.Standard.ListFiles.FileSystemItem
+  href: QL.Actions.Standard.ListFiles.FileSystemItem.html
+  name: FileSystemItem
+  nameWithType: FileSystemItem
+  fullName: QL.Actions.Standard.ListFiles.FileSystemItem
+- uid: QL.Actions.Standard.ListFiles.ListFileArguments
+  commentId: T:QL.Actions.Standard.ListFiles.ListFileArguments
+  href: QL.Actions.Standard.ListFiles.ListFileArguments.html
+  name: ListFileArguments
+  nameWithType: ListFileArguments
+  fullName: QL.Actions.Standard.ListFiles.ListFileArguments
+- uid: QL.Actions.Standard.ListFiles.ListFiles
+  commentId: T:QL.Actions.Standard.ListFiles.ListFiles
+  href: QL.Actions.Standard.ListFiles.ListFiles.html
+  name: ListFiles
+  nameWithType: ListFiles
+  fullName: QL.Actions.Standard.ListFiles.ListFiles

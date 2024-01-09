@@ -1,0 +1,85 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Actions.Standard.Memory
+  commentId: N:QL.Actions.Standard.Memory
+  id: QL.Actions.Standard.Memory
+  children:
+  - QL.Actions.Standard.Memory.Memory
+  - QL.Actions.Standard.Memory.MemoryInfo
+  - QL.Actions.Standard.Memory.MemoryInfoResult
+  - QL.Actions.Standard.Memory.Swap
+  langs:
+  - csharp
+  - vb
+  name: QL.Actions.Standard.Memory
+  nameWithType: QL.Actions.Standard.Memory
+  fullName: QL.Actions.Standard.Memory
+  type: Namespace
+  assemblies:
+  - QL.Actions
+references:
+- uid: QL.Actions.Standard.Memory.MemoryInfo
+  commentId: T:QL.Actions.Standard.Memory.MemoryInfo
+  href: QL.Actions.Standard.Memory.MemoryInfo.html
+  name: MemoryInfo
+  nameWithType: MemoryInfo
+  fullName: QL.Actions.Standard.Memory.MemoryInfo
+- uid: QL.Actions.Standard.Memory.Memory
+  commentId: T:QL.Actions.Standard.Memory.Memory
+  parent: QL.Actions.Standard.Memory
+  href: QL.Actions.Standard.Memory.Memory.html
+  name: Memory
+  nameWithType: Memory
+  fullName: QL.Actions.Standard.Memory.Memory
+- uid: QL.Actions.Standard.Memory.Swap
+  commentId: T:QL.Actions.Standard.Memory.Swap
+  parent: QL.Actions.Standard.Memory
+  href: QL.Actions.Standard.Memory.Swap.html
+  name: Swap
+  nameWithType: Swap
+  fullName: QL.Actions.Standard.Memory.Swap
+- uid: QL.Actions.Standard.Memory.MemoryInfoResult
+  commentId: T:QL.Actions.Standard.Memory.MemoryInfoResult
+  parent: QL.Actions.Standard.Memory
+  href: QL.Actions.Standard.Memory.MemoryInfoResult.html
+  name: MemoryInfoResult
+  nameWithType: MemoryInfoResult
+  fullName: QL.Actions.Standard.Memory.MemoryInfoResult
+- uid: QL.Actions.Standard.Memory
+  commentId: N:QL.Actions.Standard.Memory
+  href: QL.html
+  name: QL.Actions.Standard.Memory
+  nameWithType: QL.Actions.Standard.Memory
+  fullName: QL.Actions.Standard.Memory
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.Memory
+    name: Memory
+    href: QL.Actions.Standard.Memory.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.Memory
+    name: Memory
+    href: QL.Actions.Standard.Memory.html

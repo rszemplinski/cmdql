@@ -1,0 +1,74 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Actions.ThirdParty.Azure
+  commentId: N:QL.Actions.ThirdParty.Azure
+  id: QL.Actions.ThirdParty.Azure
+  children:
+  - QL.Actions.ThirdParty.Azure.AzureActionBase`1
+  - QL.Actions.ThirdParty.Azure.AzureActionBase`2
+  langs:
+  - csharp
+  - vb
+  name: QL.Actions.ThirdParty.Azure
+  nameWithType: QL.Actions.ThirdParty.Azure
+  fullName: QL.Actions.ThirdParty.Azure
+  type: Namespace
+  assemblies:
+  - QL.Actions
+references:
+- uid: QL.Actions.ThirdParty.Azure.AzureActionBase`2
+  commentId: T:QL.Actions.ThirdParty.Azure.AzureActionBase`2
+  href: QL.Actions.ThirdParty.Azure.AzureActionBase-2.html
+  name: AzureActionBase<TArgs, TReturnType>
+  nameWithType: AzureActionBase<TArgs, TReturnType>
+  fullName: QL.Actions.ThirdParty.Azure.AzureActionBase<TArgs, TReturnType>
+  nameWithType.vb: AzureActionBase(Of TArgs, TReturnType)
+  fullName.vb: QL.Actions.ThirdParty.Azure.AzureActionBase(Of TArgs, TReturnType)
+  name.vb: AzureActionBase(Of TArgs, TReturnType)
+  spec.csharp:
+  - uid: QL.Actions.ThirdParty.Azure.AzureActionBase`2
+    name: AzureActionBase
+    href: QL.Actions.ThirdParty.Azure.AzureActionBase-2.html
+  - name: <
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TReturnType
+  - name: '>'
+  spec.vb:
+  - uid: QL.Actions.ThirdParty.Azure.AzureActionBase`2
+    name: AzureActionBase
+    href: QL.Actions.ThirdParty.Azure.AzureActionBase-2.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TReturnType
+  - name: )
+- uid: QL.Actions.ThirdParty.Azure.AzureActionBase`1
+  commentId: T:QL.Actions.ThirdParty.Azure.AzureActionBase`1
+  href: QL.Actions.ThirdParty.Azure.AzureActionBase-1.html
+  name: AzureActionBase<TReturnType>
+  nameWithType: AzureActionBase<TReturnType>
+  fullName: QL.Actions.ThirdParty.Azure.AzureActionBase<TReturnType>
+  nameWithType.vb: AzureActionBase(Of TReturnType)
+  fullName.vb: QL.Actions.ThirdParty.Azure.AzureActionBase(Of TReturnType)
+  name.vb: AzureActionBase(Of TReturnType)
+  spec.csharp:
+  - uid: QL.Actions.ThirdParty.Azure.AzureActionBase`1
+    name: AzureActionBase
+    href: QL.Actions.ThirdParty.Azure.AzureActionBase-1.html
+  - name: <
+  - name: TReturnType
+  - name: '>'
+  spec.vb:
+  - uid: QL.Actions.ThirdParty.Azure.AzureActionBase`1
+    name: AzureActionBase
+    href: QL.Actions.ThirdParty.Azure.AzureActionBase-1.html
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TReturnType
+  - name: )

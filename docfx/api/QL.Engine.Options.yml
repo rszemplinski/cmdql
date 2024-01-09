@@ -1,0 +1,829 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Engine.Options
+  commentId: T:QL.Engine.Options
+  id: Options
+  parent: QL.Engine
+  children:
+  - QL.Engine.Options.Concurrency
+  - QL.Engine.Options.Debug
+  - QL.Engine.Options.Format
+  - QL.Engine.Options.InputFile
+  - QL.Engine.Options.OutputFile
+  - QL.Engine.Options.Sync
+  - QL.Engine.Options.Verbose
+  langs:
+  - csharp
+  - vb
+  name: Options
+  nameWithType: Options
+  fullName: QL.Engine.Options
+  type: Class
+  source:
+    remote:
+      path: src/QL.Engine/Options.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Options
+    path: ../src/QL.Engine/Options.cs
+    startLine: 11
+  assemblies:
+  - qlsh
+  namespace: QL.Engine
+  syntax:
+    content: public class Options
+    content.vb: Public Class Options
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - System.Object.QL.Engine.Extensions.ObjectExtensions.ToDictionary
+- uid: QL.Engine.Options.InputFile
+  commentId: P:QL.Engine.Options.InputFile
+  id: InputFile
+  parent: QL.Engine.Options
+  langs:
+  - csharp
+  - vb
+  name: InputFile
+  nameWithType: Options.InputFile
+  fullName: QL.Engine.Options.InputFile
+  type: Property
+  source:
+    remote:
+      path: src/QL.Engine/Options.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: InputFile
+    path: ../src/QL.Engine/Options.cs
+    startLine: 13
+  assemblies:
+  - qlsh
+  namespace: QL.Engine
+  syntax:
+    content: >-
+      [Option('i', "input", Required = true, HelpText = "Input files to be processed.")]
+
+      public required string InputFile { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Option("i"c, "input", Required:=True, HelpText:="Input files to be processed.")>
+
+      Public Property InputFile As String
+  overload: QL.Engine.Options.InputFile*
+  attributes:
+  - type: CommandLine.OptionAttribute
+    ctor: CommandLine.OptionAttribute.#ctor(System.Char,System.String)
+    arguments:
+    - type: System.Char
+      value: i
+    - type: System.String
+      value: input
+    namedArguments:
+    - name: Required
+      type: System.Boolean
+      value: true
+    - name: HelpText
+      type: System.String
+      value: Input files to be processed.
+- uid: QL.Engine.Options.Verbose
+  commentId: P:QL.Engine.Options.Verbose
+  id: Verbose
+  parent: QL.Engine.Options
+  langs:
+  - csharp
+  - vb
+  name: Verbose
+  nameWithType: Options.Verbose
+  fullName: QL.Engine.Options.Verbose
+  type: Property
+  source:
+    remote:
+      path: src/QL.Engine/Options.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Verbose
+    path: ../src/QL.Engine/Options.cs
+    startLine: 21
+  assemblies:
+  - qlsh
+  namespace: QL.Engine
+  syntax:
+    content: >-
+      [Option('v', "verbose", HelpText = "Show verbose output?", FlagCounter = true)]
+
+      public int Verbose { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <Option("v"c, "verbose", HelpText:="Show verbose output?", FlagCounter:=True)>
+
+      Public Property Verbose As Integer
+  overload: QL.Engine.Options.Verbose*
+  attributes:
+  - type: CommandLine.OptionAttribute
+    ctor: CommandLine.OptionAttribute.#ctor(System.Char,System.String)
+    arguments:
+    - type: System.Char
+      value: v
+    - type: System.String
+      value: verbose
+    namedArguments:
+    - name: HelpText
+      type: System.String
+      value: Show verbose output?
+    - name: FlagCounter
+      type: System.Boolean
+      value: true
+- uid: QL.Engine.Options.Debug
+  commentId: P:QL.Engine.Options.Debug
+  id: Debug
+  parent: QL.Engine.Options
+  langs:
+  - csharp
+  - vb
+  name: Debug
+  nameWithType: Options.Debug
+  fullName: QL.Engine.Options.Debug
+  type: Property
+  source:
+    remote:
+      path: src/QL.Engine/Options.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Debug
+    path: ../src/QL.Engine/Options.cs
+    startLine: 29
+  assemblies:
+  - qlsh
+  namespace: QL.Engine
+  syntax:
+    content: >-
+      [Option('d', "debug", Default = false, HelpText = "Debug mode")]
+
+      public bool Debug { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <Option("d"c, "debug", Default:=False, HelpText:="Debug mode")>
+
+      Public Property Debug As Boolean
+  overload: QL.Engine.Options.Debug*
+  attributes:
+  - type: CommandLine.OptionAttribute
+    ctor: CommandLine.OptionAttribute.#ctor(System.Char,System.String)
+    arguments:
+    - type: System.Char
+      value: d
+    - type: System.String
+      value: debug
+    namedArguments:
+    - name: Default
+      type: System.Boolean
+      value: false
+    - name: HelpText
+      type: System.String
+      value: Debug mode
+- uid: QL.Engine.Options.Format
+  commentId: P:QL.Engine.Options.Format
+  id: Format
+  parent: QL.Engine.Options
+  langs:
+  - csharp
+  - vb
+  name: Format
+  nameWithType: Options.Format
+  fullName: QL.Engine.Options.Format
+  type: Property
+  source:
+    remote:
+      path: src/QL.Engine/Options.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Format
+    path: ../src/QL.Engine/Options.cs
+    startLine: 37
+  assemblies:
+  - qlsh
+  namespace: QL.Engine
+  syntax:
+    content: >-
+      [Option('f', "format", Default = OutputFormat.Json, HelpText = "Which format to use? (json, yml, table)")]
+
+      public OutputFormat Format { get; set; }
+    parameters: []
+    return:
+      type: QL.Engine.OutputFormat
+    content.vb: >-
+      <Option("f"c, "format", Default:=OutputFormat.Json, HelpText:="Which format to use? (json, yml, table)")>
+
+      Public Property Format As OutputFormat
+  overload: QL.Engine.Options.Format*
+  attributes:
+  - type: CommandLine.OptionAttribute
+    ctor: CommandLine.OptionAttribute.#ctor(System.Char,System.String)
+    arguments:
+    - type: System.Char
+      value: f
+    - type: System.String
+      value: format
+    namedArguments:
+    - name: Default
+      type: QL.Engine.OutputFormat
+      value: 0
+    - name: HelpText
+      type: System.String
+      value: Which format to use? (json, yml, table)
+- uid: QL.Engine.Options.OutputFile
+  commentId: P:QL.Engine.Options.OutputFile
+  id: OutputFile
+  parent: QL.Engine.Options
+  langs:
+  - csharp
+  - vb
+  name: OutputFile
+  nameWithType: Options.OutputFile
+  fullName: QL.Engine.Options.OutputFile
+  type: Property
+  source:
+    remote:
+      path: src/QL.Engine/Options.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: OutputFile
+    path: ../src/QL.Engine/Options.cs
+    startLine: 45
+  assemblies:
+  - qlsh
+  namespace: QL.Engine
+  syntax:
+    content: >-
+      [Option('o', "output", HelpText = "Output file")]
+
+      public string OutputFile { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <Option("o"c, "output", HelpText:="Output file")>
+
+      Public Property OutputFile As String
+  overload: QL.Engine.Options.OutputFile*
+  attributes:
+  - type: CommandLine.OptionAttribute
+    ctor: CommandLine.OptionAttribute.#ctor(System.Char,System.String)
+    arguments:
+    - type: System.Char
+      value: o
+    - type: System.String
+      value: output
+    namedArguments:
+    - name: HelpText
+      type: System.String
+      value: Output file
+- uid: QL.Engine.Options.Concurrency
+  commentId: P:QL.Engine.Options.Concurrency
+  id: Concurrency
+  parent: QL.Engine.Options
+  langs:
+  - csharp
+  - vb
+  name: Concurrency
+  nameWithType: Options.Concurrency
+  fullName: QL.Engine.Options.Concurrency
+  type: Property
+  source:
+    remote:
+      path: src/QL.Engine/Options.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Concurrency
+    path: ../src/QL.Engine/Options.cs
+    startLine: 52
+  assemblies:
+  - qlsh
+  namespace: QL.Engine
+  syntax:
+    content: >-
+      [Option('c', "concurrency", HelpText = "Concurrency limit")]
+
+      public int Concurrency { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <Option("c"c, "concurrency", HelpText:="Concurrency limit")>
+
+      Public Property Concurrency As Integer
+  overload: QL.Engine.Options.Concurrency*
+  attributes:
+  - type: CommandLine.OptionAttribute
+    ctor: CommandLine.OptionAttribute.#ctor(System.Char,System.String)
+    arguments:
+    - type: System.Char
+      value: c
+    - type: System.String
+      value: concurrency
+    namedArguments:
+    - name: HelpText
+      type: System.String
+      value: Concurrency limit
+- uid: QL.Engine.Options.Sync
+  commentId: P:QL.Engine.Options.Sync
+  id: Sync
+  parent: QL.Engine.Options
+  langs:
+  - csharp
+  - vb
+  name: Sync
+  nameWithType: Options.Sync
+  fullName: QL.Engine.Options.Sync
+  type: Property
+  source:
+    remote:
+      path: src/QL.Engine/Options.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Sync
+    path: ../src/QL.Engine/Options.cs
+    startLine: 59
+  assemblies:
+  - qlsh
+  namespace: QL.Engine
+  syntax:
+    content: >-
+      [Option("sync", Default = false, HelpText = "Run synchronously?")]
+
+      public bool Sync { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: >-
+      <Option("sync", Default:=False, HelpText:="Run synchronously?")>
+
+      Public Property Sync As Boolean
+  overload: QL.Engine.Options.Sync*
+  attributes:
+  - type: CommandLine.OptionAttribute
+    ctor: CommandLine.OptionAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: sync
+    namedArguments:
+    - name: Default
+      type: System.Boolean
+      value: false
+    - name: HelpText
+      type: System.String
+      value: Run synchronously?
+references:
+- uid: QL.Engine
+  commentId: N:QL.Engine
+  href: QL.html
+  name: QL.Engine
+  nameWithType: QL.Engine
+  fullName: QL.Engine
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Engine
+    name: Engine
+    href: QL.Engine.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Engine
+    name: Engine
+    href: QL.Engine.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Object.QL.Engine.Extensions.ObjectExtensions.ToDictionary
+  commentId: M:QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  parent: QL.Engine.Extensions.ObjectExtensions
+  definition: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  name: ToDictionary(object)
+  nameWithType: ObjectExtensions.ToDictionary(object)
+  fullName: QL.Engine.Extensions.ObjectExtensions.ToDictionary(object)
+  nameWithType.vb: ObjectExtensions.ToDictionary(Object)
+  fullName.vb: QL.Engine.Extensions.ObjectExtensions.ToDictionary(Object)
+  name.vb: ToDictionary(Object)
+  spec.csharp:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  commentId: M:QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  isExternal: true
+  href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  name: ToDictionary(object)
+  nameWithType: ObjectExtensions.ToDictionary(object)
+  fullName: QL.Engine.Extensions.ObjectExtensions.ToDictionary(object)
+  nameWithType.vb: ObjectExtensions.ToDictionary(Object)
+  fullName.vb: QL.Engine.Extensions.ObjectExtensions.ToDictionary(Object)
+  name.vb: ToDictionary(Object)
+  spec.csharp:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: QL.Engine.Extensions.ObjectExtensions
+  commentId: T:QL.Engine.Extensions.ObjectExtensions
+  parent: QL.Engine.Extensions
+  href: QL.Engine.Extensions.ObjectExtensions.html
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: QL.Engine.Extensions.ObjectExtensions
+- uid: QL.Engine.Extensions
+  commentId: N:QL.Engine.Extensions
+  href: QL.html
+  name: QL.Engine.Extensions
+  nameWithType: QL.Engine.Extensions
+  fullName: QL.Engine.Extensions
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Engine
+    name: Engine
+    href: QL.Engine.html
+  - name: .
+  - uid: QL.Engine.Extensions
+    name: Extensions
+    href: QL.Engine.Extensions.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Engine
+    name: Engine
+    href: QL.Engine.html
+  - name: .
+  - uid: QL.Engine.Extensions
+    name: Extensions
+    href: QL.Engine.Extensions.html
+- uid: QL.Engine.Options.InputFile*
+  commentId: Overload:QL.Engine.Options.InputFile
+  href: QL.Engine.Options.html#QL_Engine_Options_InputFile
+  name: InputFile
+  nameWithType: Options.InputFile
+  fullName: QL.Engine.Options.InputFile
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: QL.Engine.Options.Verbose*
+  commentId: Overload:QL.Engine.Options.Verbose
+  href: QL.Engine.Options.html#QL_Engine_Options_Verbose
+  name: Verbose
+  nameWithType: Options.Verbose
+  fullName: QL.Engine.Options.Verbose
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: QL.Engine.Options.Debug*
+  commentId: Overload:QL.Engine.Options.Debug
+  href: QL.Engine.Options.html#QL_Engine_Options_Debug
+  name: Debug
+  nameWithType: Options.Debug
+  fullName: QL.Engine.Options.Debug
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: QL.Engine.Options.Format*
+  commentId: Overload:QL.Engine.Options.Format
+  href: QL.Engine.Options.html#QL_Engine_Options_Format
+  name: Format
+  nameWithType: Options.Format
+  fullName: QL.Engine.Options.Format
+- uid: QL.Engine.OutputFormat
+  commentId: T:QL.Engine.OutputFormat
+  parent: QL.Engine
+  href: QL.Engine.OutputFormat.html
+  name: OutputFormat
+  nameWithType: OutputFormat
+  fullName: QL.Engine.OutputFormat
+- uid: QL.Engine.Options.OutputFile*
+  commentId: Overload:QL.Engine.Options.OutputFile
+  href: QL.Engine.Options.html#QL_Engine_Options_OutputFile
+  name: OutputFile
+  nameWithType: Options.OutputFile
+  fullName: QL.Engine.Options.OutputFile
+- uid: QL.Engine.Options.Concurrency*
+  commentId: Overload:QL.Engine.Options.Concurrency
+  href: QL.Engine.Options.html#QL_Engine_Options_Concurrency
+  name: Concurrency
+  nameWithType: Options.Concurrency
+  fullName: QL.Engine.Options.Concurrency
+- uid: QL.Engine.Options.Sync*
+  commentId: Overload:QL.Engine.Options.Sync
+  href: QL.Engine.Options.html#QL_Engine_Options_Sync
+  name: Sync
+  nameWithType: Options.Sync
+  fullName: QL.Engine.Options.Sync

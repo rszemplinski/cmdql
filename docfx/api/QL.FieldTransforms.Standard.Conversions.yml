@@ -1,0 +1,114 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.FieldTransforms.Standard.Conversions
+  commentId: N:QL.FieldTransforms.Standard.Conversions
+  id: QL.FieldTransforms.Standard.Conversions
+  children:
+  - QL.FieldTransforms.Standard.Conversions.ToGigabytes
+  - QL.FieldTransforms.Standard.Conversions.ToGigabytesArguments
+  - QL.FieldTransforms.Standard.Conversions.ToKilobytes
+  - QL.FieldTransforms.Standard.Conversions.ToKilobytesArguments
+  - QL.FieldTransforms.Standard.Conversions.ToMegabytes
+  - QL.FieldTransforms.Standard.Conversions.ToMegabytesArguments
+  - QL.FieldTransforms.Standard.Conversions.ToTerabytes
+  - QL.FieldTransforms.Standard.Conversions.ToTerabytesArguments
+  langs:
+  - csharp
+  - vb
+  name: QL.FieldTransforms.Standard.Conversions
+  nameWithType: QL.FieldTransforms.Standard.Conversions
+  fullName: QL.FieldTransforms.Standard.Conversions
+  type: Namespace
+  assemblies:
+  - QL.FieldTransforms
+references:
+- uid: QL.FieldTransforms.Standard.Conversions.ToGigabytesArguments
+  commentId: T:QL.FieldTransforms.Standard.Conversions.ToGigabytesArguments
+  parent: QL.FieldTransforms.Standard.Conversions
+  href: QL.FieldTransforms.Standard.Conversions.ToGigabytesArguments.html
+  name: ToGigabytesArguments
+  nameWithType: ToGigabytesArguments
+  fullName: QL.FieldTransforms.Standard.Conversions.ToGigabytesArguments
+- uid: QL.FieldTransforms.Standard.Conversions.ToGigabytes
+  commentId: T:QL.FieldTransforms.Standard.Conversions.ToGigabytes
+  href: QL.FieldTransforms.Standard.Conversions.ToGigabytes.html
+  name: ToGigabytes
+  nameWithType: ToGigabytes
+  fullName: QL.FieldTransforms.Standard.Conversions.ToGigabytes
+- uid: QL.FieldTransforms.Standard.Conversions.ToKilobytesArguments
+  commentId: T:QL.FieldTransforms.Standard.Conversions.ToKilobytesArguments
+  parent: QL.FieldTransforms.Standard.Conversions
+  href: QL.FieldTransforms.Standard.Conversions.ToKilobytesArguments.html
+  name: ToKilobytesArguments
+  nameWithType: ToKilobytesArguments
+  fullName: QL.FieldTransforms.Standard.Conversions.ToKilobytesArguments
+- uid: QL.FieldTransforms.Standard.Conversions.ToKilobytes
+  commentId: T:QL.FieldTransforms.Standard.Conversions.ToKilobytes
+  href: QL.FieldTransforms.Standard.Conversions.ToKilobytes.html
+  name: ToKilobytes
+  nameWithType: ToKilobytes
+  fullName: QL.FieldTransforms.Standard.Conversions.ToKilobytes
+- uid: QL.FieldTransforms.Standard.Conversions.ToMegabytesArguments
+  commentId: T:QL.FieldTransforms.Standard.Conversions.ToMegabytesArguments
+  parent: QL.FieldTransforms.Standard.Conversions
+  href: QL.FieldTransforms.Standard.Conversions.ToMegabytesArguments.html
+  name: ToMegabytesArguments
+  nameWithType: ToMegabytesArguments
+  fullName: QL.FieldTransforms.Standard.Conversions.ToMegabytesArguments
+- uid: QL.FieldTransforms.Standard.Conversions.ToMegabytes
+  commentId: T:QL.FieldTransforms.Standard.Conversions.ToMegabytes
+  href: QL.FieldTransforms.Standard.Conversions.ToMegabytes.html
+  name: ToMegabytes
+  nameWithType: ToMegabytes
+  fullName: QL.FieldTransforms.Standard.Conversions.ToMegabytes
+- uid: QL.FieldTransforms.Standard.Conversions.ToTerabytesArguments
+  commentId: T:QL.FieldTransforms.Standard.Conversions.ToTerabytesArguments
+  parent: QL.FieldTransforms.Standard.Conversions
+  href: QL.FieldTransforms.Standard.Conversions.ToTerabytesArguments.html
+  name: ToTerabytesArguments
+  nameWithType: ToTerabytesArguments
+  fullName: QL.FieldTransforms.Standard.Conversions.ToTerabytesArguments
+- uid: QL.FieldTransforms.Standard.Conversions.ToTerabytes
+  commentId: T:QL.FieldTransforms.Standard.Conversions.ToTerabytes
+  href: QL.FieldTransforms.Standard.Conversions.ToTerabytes.html
+  name: ToTerabytes
+  nameWithType: ToTerabytes
+  fullName: QL.FieldTransforms.Standard.Conversions.ToTerabytes
+- uid: QL.FieldTransforms.Standard.Conversions
+  commentId: N:QL.FieldTransforms.Standard.Conversions
+  href: QL.html
+  name: QL.FieldTransforms.Standard.Conversions
+  nameWithType: QL.FieldTransforms.Standard.Conversions
+  fullName: QL.FieldTransforms.Standard.Conversions
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.FieldTransforms
+    name: FieldTransforms
+    href: QL.FieldTransforms.html
+  - name: .
+  - uid: QL.FieldTransforms.Standard
+    name: Standard
+    href: QL.FieldTransforms.Standard.html
+  - name: .
+  - uid: QL.FieldTransforms.Standard.Conversions
+    name: Conversions
+    href: QL.FieldTransforms.Standard.Conversions.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.FieldTransforms
+    name: FieldTransforms
+    href: QL.FieldTransforms.html
+  - name: .
+  - uid: QL.FieldTransforms.Standard
+    name: Standard
+    href: QL.FieldTransforms.Standard.html
+  - name: .
+  - uid: QL.FieldTransforms.Standard.Conversions
+    name: Conversions
+    href: QL.FieldTransforms.Standard.Conversions.html

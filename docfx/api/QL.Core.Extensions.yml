@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Core.Extensions
+  commentId: N:QL.Core.Extensions
+  id: QL.Core.Extensions
+  children:
+  - QL.Core.Extensions.StringExtensions
+  langs:
+  - csharp
+  - vb
+  name: QL.Core.Extensions
+  nameWithType: QL.Core.Extensions
+  fullName: QL.Core.Extensions
+  type: Namespace
+  assemblies:
+  - QL.Core
+references:
+- uid: QL.Core.Extensions.StringExtensions
+  commentId: T:QL.Core.Extensions.StringExtensions
+  href: QL.Core.Extensions.StringExtensions.html
+  name: StringExtensions
+  nameWithType: StringExtensions
+  fullName: QL.Core.Extensions.StringExtensions

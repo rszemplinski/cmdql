@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Core.Exceptions
+  commentId: N:QL.Core.Exceptions
+  id: QL.Core.Exceptions
+  children:
+  - QL.Core.Exceptions.ActionException
+  langs:
+  - csharp
+  - vb
+  name: QL.Core.Exceptions
+  nameWithType: QL.Core.Exceptions
+  fullName: QL.Core.Exceptions
+  type: Namespace
+  assemblies:
+  - QL.Core
+references:
+- uid: QL.Core.Exceptions.ActionException
+  commentId: T:QL.Core.Exceptions.ActionException
+  href: QL.Core.Exceptions.ActionException.html
+  name: ActionException
+  nameWithType: ActionException
+  fullName: QL.Core.Exceptions.ActionException

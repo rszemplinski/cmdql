@@ -1,0 +1,23 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Parser.AST
+  commentId: N:QL.Parser.AST
+  id: QL.Parser.AST
+  children:
+  - QL.Parser.AST.ASTBuilder
+  langs:
+  - csharp
+  - vb
+  name: QL.Parser.AST
+  nameWithType: QL.Parser.AST
+  fullName: QL.Parser.AST
+  type: Namespace
+  assemblies:
+  - QL.Parser
+references:
+- uid: QL.Parser.AST.ASTBuilder
+  commentId: T:QL.Parser.AST.ASTBuilder
+  href: QL.Parser.AST.ASTBuilder.html
+  name: ASTBuilder
+  nameWithType: ASTBuilder
+  fullName: QL.Parser.AST.ASTBuilder

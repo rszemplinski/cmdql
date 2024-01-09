@@ -1,0 +1,115 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Actions.Standard.CPUInfo
+  commentId: N:QL.Actions.Standard.CPUInfo
+  id: QL.Actions.Standard.CPUInfo
+  children:
+  - QL.Actions.Standard.CPUInfo.CPU
+  - QL.Actions.Standard.CPUInfo.CPUInfo
+  - QL.Actions.Standard.CPUInfo.CPUInfoResults
+  - QL.Actions.Standard.CPUInfo.CacheInfo
+  - QL.Actions.Standard.CPUInfo.FrequencyRangeInfo
+  - QL.Actions.Standard.CPUInfo.NUMAInfo
+  - QL.Actions.Standard.CPUInfo.VendorInfo
+  - QL.Actions.Standard.CPUInfo.VulnerabilityInfo
+  langs:
+  - csharp
+  - vb
+  name: QL.Actions.Standard.CPUInfo
+  nameWithType: QL.Actions.Standard.CPUInfo
+  fullName: QL.Actions.Standard.CPUInfo
+  type: Namespace
+  assemblies:
+  - QL.Actions
+references:
+- uid: QL.Actions.Standard.CPUInfo.CPUInfo
+  commentId: T:QL.Actions.Standard.CPUInfo.CPUInfo
+  href: QL.Actions.Standard.CPUInfo.CPUInfo.html
+  name: CPUInfo
+  nameWithType: CPUInfo
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfo
+- uid: QL.Actions.Standard.CPUInfo.FrequencyRangeInfo
+  commentId: T:QL.Actions.Standard.CPUInfo.FrequencyRangeInfo
+  parent: QL.Actions.Standard.CPUInfo
+  href: QL.Actions.Standard.CPUInfo.FrequencyRangeInfo.html
+  name: FrequencyRangeInfo
+  nameWithType: FrequencyRangeInfo
+  fullName: QL.Actions.Standard.CPUInfo.FrequencyRangeInfo
+- uid: QL.Actions.Standard.CPUInfo.CacheInfo
+  commentId: T:QL.Actions.Standard.CPUInfo.CacheInfo
+  href: QL.Actions.Standard.CPUInfo.CacheInfo.html
+  name: CacheInfo
+  nameWithType: CacheInfo
+  fullName: QL.Actions.Standard.CPUInfo.CacheInfo
+- uid: QL.Actions.Standard.CPUInfo.NUMAInfo
+  commentId: T:QL.Actions.Standard.CPUInfo.NUMAInfo
+  parent: QL.Actions.Standard.CPUInfo
+  href: QL.Actions.Standard.CPUInfo.NUMAInfo.html
+  name: NUMAInfo
+  nameWithType: NUMAInfo
+  fullName: QL.Actions.Standard.CPUInfo.NUMAInfo
+- uid: QL.Actions.Standard.CPUInfo.CPU
+  commentId: T:QL.Actions.Standard.CPUInfo.CPU
+  parent: QL.Actions.Standard.CPUInfo
+  href: QL.Actions.Standard.CPUInfo.CPU.html
+  name: CPU
+  nameWithType: CPU
+  fullName: QL.Actions.Standard.CPUInfo.CPU
+- uid: QL.Actions.Standard.CPUInfo.VendorInfo
+  commentId: T:QL.Actions.Standard.CPUInfo.VendorInfo
+  parent: QL.Actions.Standard.CPUInfo
+  href: QL.Actions.Standard.CPUInfo.VendorInfo.html
+  name: VendorInfo
+  nameWithType: VendorInfo
+  fullName: QL.Actions.Standard.CPUInfo.VendorInfo
+- uid: QL.Actions.Standard.CPUInfo.VulnerabilityInfo
+  commentId: T:QL.Actions.Standard.CPUInfo.VulnerabilityInfo
+  href: QL.Actions.Standard.CPUInfo.VulnerabilityInfo.html
+  name: VulnerabilityInfo
+  nameWithType: VulnerabilityInfo
+  fullName: QL.Actions.Standard.CPUInfo.VulnerabilityInfo
+- uid: QL.Actions.Standard.CPUInfo.CPUInfoResults
+  commentId: T:QL.Actions.Standard.CPUInfo.CPUInfoResults
+  parent: QL.Actions.Standard.CPUInfo
+  href: QL.Actions.Standard.CPUInfo.CPUInfoResults.html
+  name: CPUInfoResults
+  nameWithType: CPUInfoResults
+  fullName: QL.Actions.Standard.CPUInfo.CPUInfoResults
+- uid: QL.Actions.Standard.CPUInfo
+  commentId: N:QL.Actions.Standard.CPUInfo
+  href: QL.html
+  name: QL.Actions.Standard.CPUInfo
+  nameWithType: QL.Actions.Standard.CPUInfo
+  fullName: QL.Actions.Standard.CPUInfo
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.CPUInfo
+    name: CPUInfo
+    href: QL.Actions.Standard.CPUInfo.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.CPUInfo
+    name: CPUInfo
+    href: QL.Actions.Standard.CPUInfo.html

@@ -1,0 +1,76 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Actions.Standard.FileSpace
+  commentId: N:QL.Actions.Standard.FileSpace
+  id: QL.Actions.Standard.FileSpace
+  children:
+  - QL.Actions.Standard.FileSpace.FileSpace
+  - QL.Actions.Standard.FileSpace.FileSpaceArguments
+  - QL.Actions.Standard.FileSpace.FileSpaceResult
+  langs:
+  - csharp
+  - vb
+  name: QL.Actions.Standard.FileSpace
+  nameWithType: QL.Actions.Standard.FileSpace
+  fullName: QL.Actions.Standard.FileSpace
+  type: Namespace
+  assemblies:
+  - QL.Actions
+references:
+- uid: QL.Actions.Standard.FileSpace.FileSpaceArguments
+  commentId: T:QL.Actions.Standard.FileSpace.FileSpaceArguments
+  parent: QL.Actions.Standard.FileSpace
+  href: QL.Actions.Standard.FileSpace.FileSpaceArguments.html
+  name: FileSpaceArguments
+  nameWithType: FileSpaceArguments
+  fullName: QL.Actions.Standard.FileSpace.FileSpaceArguments
+- uid: QL.Actions.Standard.FileSpace.FileSpaceResult
+  commentId: T:QL.Actions.Standard.FileSpace.FileSpaceResult
+  href: QL.Actions.Standard.FileSpace.FileSpaceResult.html
+  name: FileSpaceResult
+  nameWithType: FileSpaceResult
+  fullName: QL.Actions.Standard.FileSpace.FileSpaceResult
+- uid: QL.Actions.Standard.FileSpace.FileSpace
+  commentId: T:QL.Actions.Standard.FileSpace.FileSpace
+  href: QL.Actions.Standard.FileSpace.FileSpace.html
+  name: FileSpace
+  nameWithType: FileSpace
+  fullName: QL.Actions.Standard.FileSpace.FileSpace
+- uid: QL.Actions.Standard.FileSpace
+  commentId: N:QL.Actions.Standard.FileSpace
+  href: QL.html
+  name: QL.Actions.Standard.FileSpace
+  nameWithType: QL.Actions.Standard.FileSpace
+  fullName: QL.Actions.Standard.FileSpace
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.FileSpace
+    name: FileSpace
+    href: QL.Actions.Standard.FileSpace.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.FileSpace
+    name: FileSpace
+    href: QL.Actions.Standard.FileSpace.html

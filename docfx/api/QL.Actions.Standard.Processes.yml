@@ -1,0 +1,84 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Actions.Standard.Processes
+  commentId: N:QL.Actions.Standard.Processes
+  id: QL.Actions.Standard.Processes
+  children:
+  - QL.Actions.Standard.Processes.Process
+  - QL.Actions.Standard.Processes.ProcessArguments
+  - QL.Actions.Standard.Processes.ProcessFlag
+  - QL.Actions.Standard.Processes.Processes
+  langs:
+  - csharp
+  - vb
+  name: QL.Actions.Standard.Processes
+  nameWithType: QL.Actions.Standard.Processes
+  fullName: QL.Actions.Standard.Processes
+  type: Namespace
+  assemblies:
+  - QL.Actions
+references:
+- uid: QL.Actions.Standard.Processes.ProcessFlag
+  commentId: T:QL.Actions.Standard.Processes.ProcessFlag
+  parent: QL.Actions.Standard.Processes
+  href: QL.Actions.Standard.Processes.ProcessFlag.html
+  name: ProcessFlag
+  nameWithType: ProcessFlag
+  fullName: QL.Actions.Standard.Processes.ProcessFlag
+- uid: QL.Actions.Standard.Processes.Process
+  commentId: T:QL.Actions.Standard.Processes.Process
+  href: QL.Actions.Standard.Processes.Process.html
+  name: Process
+  nameWithType: Process
+  fullName: QL.Actions.Standard.Processes.Process
+- uid: QL.Actions.Standard.Processes.ProcessArguments
+  commentId: T:QL.Actions.Standard.Processes.ProcessArguments
+  parent: QL.Actions.Standard.Processes
+  href: QL.Actions.Standard.Processes.ProcessArguments.html
+  name: ProcessArguments
+  nameWithType: ProcessArguments
+  fullName: QL.Actions.Standard.Processes.ProcessArguments
+- uid: QL.Actions.Standard.Processes.Processes
+  commentId: T:QL.Actions.Standard.Processes.Processes
+  href: QL.Actions.Standard.Processes.Processes.html
+  name: Processes
+  nameWithType: Processes
+  fullName: QL.Actions.Standard.Processes.Processes
+- uid: QL.Actions.Standard.Processes
+  commentId: N:QL.Actions.Standard.Processes
+  href: QL.html
+  name: QL.Actions.Standard.Processes
+  nameWithType: QL.Actions.Standard.Processes
+  fullName: QL.Actions.Standard.Processes
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.Processes
+    name: Processes
+    href: QL.Actions.Standard.Processes.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.Processes
+    name: Processes
+    href: QL.Actions.Standard.Processes.html

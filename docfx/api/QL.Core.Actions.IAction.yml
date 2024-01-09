@@ -1,0 +1,592 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Core.Actions.IAction
+  commentId: T:QL.Core.Actions.IAction
+  id: IAction
+  parent: QL.Core.Actions
+  children:
+  - QL.Core.Actions.IAction.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+  - QL.Core.Actions.IAction.Initialize(QL.Core.Platform)
+  langs:
+  - csharp
+  - vb
+  name: IAction
+  nameWithType: IAction
+  fullName: QL.Core.Actions.IAction
+  type: Interface
+  source:
+    remote:
+      path: src/QL.Core/Actions/IAction.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: IAction
+    path: ../src/QL.Core/Actions/IAction.cs
+    startLine: 2
+  assemblies:
+  - QL.Core
+  namespace: QL.Core.Actions
+  syntax:
+    content: public interface IAction
+    content.vb: Public Interface IAction
+  extensionMethods:
+  - System.Object.QL.Engine.Extensions.ObjectExtensions.ToDictionary
+- uid: QL.Core.Actions.IAction.Initialize(QL.Core.Platform)
+  commentId: M:QL.Core.Actions.IAction.Initialize(QL.Core.Platform)
+  id: Initialize(QL.Core.Platform)
+  parent: QL.Core.Actions.IAction
+  langs:
+  - csharp
+  - vb
+  name: Initialize(Platform)
+  nameWithType: IAction.Initialize(Platform)
+  fullName: QL.Core.Actions.IAction.Initialize(QL.Core.Platform)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Core/Actions/IAction.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: Initialize
+    path: ../src/QL.Core/Actions/IAction.cs
+    startLine: 4
+  assemblies:
+  - QL.Core
+  namespace: QL.Core.Actions
+  syntax:
+    content: void Initialize(Platform platform)
+    parameters:
+    - id: platform
+      type: QL.Core.Platform
+    content.vb: Sub Initialize(platform As Platform)
+  overload: QL.Core.Actions.IAction.Initialize*
+- uid: QL.Core.Actions.IAction.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.IAction.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+  id: ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+  parent: QL.Core.Actions.IAction
+  langs:
+  - csharp
+  - vb
+  name: ExecuteCommandAsync(IClient, IReadOnlyDictionary<string, object>, IReadOnlyCollection<IField>, CancellationToken)
+  nameWithType: IAction.ExecuteCommandAsync(IClient, IReadOnlyDictionary<string, object>, IReadOnlyCollection<IField>, CancellationToken)
+  fullName: QL.Core.Actions.IAction.ExecuteCommandAsync(QL.Core.IClient, System.Collections.Generic.IReadOnlyDictionary<string, object>, System.Collections.Generic.IReadOnlyCollection<QL.Core.Actions.IField>, System.Threading.CancellationToken)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Core/Actions/IAction.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: ExecuteCommandAsync
+    path: ../src/QL.Core/Actions/IAction.cs
+    startLine: 6
+  assemblies:
+  - QL.Core
+  namespace: QL.Core.Actions
+  syntax:
+    content: Task<object?> ExecuteCommandAsync(IClient client, IReadOnlyDictionary<string, object> arguments, IReadOnlyCollection<IField> fields, CancellationToken cancellationToken = default)
+    parameters:
+    - id: client
+      type: QL.Core.IClient
+    - id: arguments
+      type: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+    - id: fields
+      type: System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField}
+    - id: cancellationToken
+      type: System.Threading.CancellationToken
+    return:
+      type: System.Threading.Tasks.Task{System.Object}
+    content.vb: Function ExecuteCommandAsync(client As IClient, arguments As IReadOnlyDictionary(Of String, Object), fields As IReadOnlyCollection(Of IField), cancellationToken As CancellationToken = Nothing) As Task(Of Object)
+  overload: QL.Core.Actions.IAction.ExecuteCommandAsync*
+  nameWithType.vb: IAction.ExecuteCommandAsync(IClient, IReadOnlyDictionary(Of String, Object), IReadOnlyCollection(Of IField), CancellationToken)
+  fullName.vb: QL.Core.Actions.IAction.ExecuteCommandAsync(QL.Core.IClient, System.Collections.Generic.IReadOnlyDictionary(Of String, Object), System.Collections.Generic.IReadOnlyCollection(Of QL.Core.Actions.IField), System.Threading.CancellationToken)
+  name.vb: ExecuteCommandAsync(IClient, IReadOnlyDictionary(Of String, Object), IReadOnlyCollection(Of IField), CancellationToken)
+references:
+- uid: QL.Core.Actions
+  commentId: N:QL.Core.Actions
+  href: QL.html
+  name: QL.Core.Actions
+  nameWithType: QL.Core.Actions
+  fullName: QL.Core.Actions
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Core
+    name: Core
+    href: QL.Core.html
+  - name: .
+  - uid: QL.Core.Actions
+    name: Actions
+    href: QL.Core.Actions.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Core
+    name: Core
+    href: QL.Core.html
+  - name: .
+  - uid: QL.Core.Actions
+    name: Actions
+    href: QL.Core.Actions.html
+- uid: System.Object.QL.Engine.Extensions.ObjectExtensions.ToDictionary
+  commentId: M:QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  parent: QL.Engine.Extensions.ObjectExtensions
+  definition: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  name: ToDictionary(object)
+  nameWithType: ObjectExtensions.ToDictionary(object)
+  fullName: QL.Engine.Extensions.ObjectExtensions.ToDictionary(object)
+  nameWithType.vb: ObjectExtensions.ToDictionary(Object)
+  fullName.vb: QL.Engine.Extensions.ObjectExtensions.ToDictionary(Object)
+  name.vb: ToDictionary(Object)
+  spec.csharp:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  commentId: M:QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+  isExternal: true
+  href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  name: ToDictionary(object)
+  nameWithType: ObjectExtensions.ToDictionary(object)
+  fullName: QL.Engine.Extensions.ObjectExtensions.ToDictionary(object)
+  nameWithType.vb: ObjectExtensions.ToDictionary(Object)
+  fullName.vb: QL.Engine.Extensions.ObjectExtensions.ToDictionary(Object)
+  name.vb: ToDictionary(Object)
+  spec.csharp:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: QL.Engine.Extensions.ObjectExtensions.ToDictionary(System.Object)
+    name: ToDictionary
+    href: QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: QL.Engine.Extensions.ObjectExtensions
+  commentId: T:QL.Engine.Extensions.ObjectExtensions
+  parent: QL.Engine.Extensions
+  href: QL.Engine.Extensions.ObjectExtensions.html
+  name: ObjectExtensions
+  nameWithType: ObjectExtensions
+  fullName: QL.Engine.Extensions.ObjectExtensions
+- uid: QL.Engine.Extensions
+  commentId: N:QL.Engine.Extensions
+  href: QL.html
+  name: QL.Engine.Extensions
+  nameWithType: QL.Engine.Extensions
+  fullName: QL.Engine.Extensions
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Engine
+    name: Engine
+    href: QL.Engine.html
+  - name: .
+  - uid: QL.Engine.Extensions
+    name: Extensions
+    href: QL.Engine.Extensions.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Engine
+    name: Engine
+    href: QL.Engine.html
+  - name: .
+  - uid: QL.Engine.Extensions
+    name: Extensions
+    href: QL.Engine.Extensions.html
+- uid: QL.Core.Actions.IAction.Initialize*
+  commentId: Overload:QL.Core.Actions.IAction.Initialize
+  href: QL.Core.Actions.IAction.html#QL_Core_Actions_IAction_Initialize_QL_Core_Platform_
+  name: Initialize
+  nameWithType: IAction.Initialize
+  fullName: QL.Core.Actions.IAction.Initialize
+- uid: QL.Core.Platform
+  commentId: T:QL.Core.Platform
+  parent: QL.Core
+  href: QL.Core.Platform.html
+  name: Platform
+  nameWithType: Platform
+  fullName: QL.Core.Platform
+- uid: QL.Core
+  commentId: N:QL.Core
+  href: QL.html
+  name: QL.Core
+  nameWithType: QL.Core
+  fullName: QL.Core
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Core
+    name: Core
+    href: QL.Core.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Core
+    name: Core
+    href: QL.Core.html
+- uid: QL.Core.Actions.IAction.ExecuteCommandAsync*
+  commentId: Overload:QL.Core.Actions.IAction.ExecuteCommandAsync
+  href: QL.Core.Actions.IAction.html#QL_Core_Actions_IAction_ExecuteCommandAsync_QL_Core_IClient_System_Collections_Generic_IReadOnlyDictionary_System_String_System_Object__System_Collections_Generic_IReadOnlyCollection_QL_Core_Actions_IField__System_Threading_CancellationToken_
+  name: ExecuteCommandAsync
+  nameWithType: IAction.ExecuteCommandAsync
+  fullName: QL.Core.Actions.IAction.ExecuteCommandAsync
+- uid: QL.Core.IClient
+  commentId: T:QL.Core.IClient
+  parent: QL.Core
+  href: QL.Core.IClient.html
+  name: IClient
+  nameWithType: IClient
+  fullName: QL.Core.IClient
+- uid: System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyDictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<string, object>
+  nameWithType: IReadOnlyDictionary<string, object>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<string, object>
+  nameWithType.vb: IReadOnlyDictionary(Of String, Object)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of String, Object)
+  name.vb: IReadOnlyDictionary(Of String, Object)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField}
+  commentId: T:System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IReadOnlyCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<IField>
+  nameWithType: IReadOnlyCollection<IField>
+  fullName: System.Collections.Generic.IReadOnlyCollection<QL.Core.Actions.IField>
+  nameWithType.vb: IReadOnlyCollection(Of IField)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of QL.Core.Actions.IField)
+  name.vb: IReadOnlyCollection(Of IField)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - uid: QL.Core.Actions.IField
+    name: IField
+    href: QL.Core.Actions.IField.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Core.Actions.IField
+    name: IField
+    href: QL.Core.Actions.IField.html
+  - name: )
+- uid: System.Threading.CancellationToken
+  commentId: T:System.Threading.CancellationToken
+  parent: System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CancellationToken
+  nameWithType: CancellationToken
+  fullName: System.Threading.CancellationToken
+- uid: System.Threading.Tasks.Task{System.Object}
+  commentId: T:System.Threading.Tasks.Task{System.Object}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<object>
+  nameWithType: Task<object>
+  fullName: System.Threading.Tasks.Task<object>
+  nameWithType.vb: Task(Of Object)
+  fullName.vb: System.Threading.Tasks.Task(Of Object)
+  name.vb: Task(Of Object)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Collections.Generic.IReadOnlyDictionary`2
+  commentId: T:System.Collections.Generic.IReadOnlyDictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: IReadOnlyDictionary<TKey, TValue>
+  nameWithType: IReadOnlyDictionary<TKey, TValue>
+  fullName: System.Collections.Generic.IReadOnlyDictionary<TKey, TValue>
+  nameWithType.vb: IReadOnlyDictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.IReadOnlyDictionary(Of TKey, TValue)
+  name.vb: IReadOnlyDictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.IReadOnlyCollection`1
+  commentId: T:System.Collections.Generic.IReadOnlyCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  name: IReadOnlyCollection<T>
+  nameWithType: IReadOnlyCollection<T>
+  fullName: System.Collections.Generic.IReadOnlyCollection<T>
+  nameWithType.vb: IReadOnlyCollection(Of T)
+  fullName.vb: System.Collections.Generic.IReadOnlyCollection(Of T)
+  name.vb: IReadOnlyCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Threading
+  commentId: N:System.Threading
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading
+  nameWithType: System.Threading
+  fullName: System.Threading
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

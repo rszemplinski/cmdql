@@ -1,0 +1,30 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Engine.Fields
+  commentId: N:QL.Engine.Fields
+  id: QL.Engine.Fields
+  children:
+  - QL.Engine.Fields.Field
+  - QL.Engine.Fields.FieldProcessor
+  langs:
+  - csharp
+  - vb
+  name: QL.Engine.Fields
+  nameWithType: QL.Engine.Fields
+  fullName: QL.Engine.Fields
+  type: Namespace
+  assemblies:
+  - qlsh
+references:
+- uid: QL.Engine.Fields.Field
+  commentId: T:QL.Engine.Fields.Field
+  href: QL.Engine.Fields.Field.html
+  name: Field
+  nameWithType: Field
+  fullName: QL.Engine.Fields.Field
+- uid: QL.Engine.Fields.FieldProcessor
+  commentId: T:QL.Engine.Fields.FieldProcessor
+  href: QL.Engine.Fields.FieldProcessor.html
+  name: FieldProcessor
+  nameWithType: FieldProcessor
+  fullName: QL.Engine.Fields.FieldProcessor

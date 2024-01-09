@@ -1,0 +1,975 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ASTBuilder
+ | qlsh </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ASTBuilder
+ | qlsh ">
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/rszemplinski/qlsh/new/main/apiSpec/new?filename=QL_Parser_AST_ASTBuilder.md&amp;value=---%0Auid%3A%20QL.Parser.AST.ASTBuilder%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+  </head>
+
+  <script type="module" src="./../public/docfx.min.js"></script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="qlsh">
+            qlsh
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled="" placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="QL.Parser.AST.ASTBuilder">
+
+
+
+  <h1 id="QL_Parser_AST_ASTBuilder" data-uid="QL.Parser.AST.ASTBuilder" class="text-break">
+    Class ASTBuilder
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L5"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="QL.html">QL</a>.<a class="xref" href="QL.Parser.html">Parser</a>.<a class="xref" href="QL.Parser.AST.html">AST</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>QL.Parser.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ASTBuilder : QLBaseVisitor&lt;QLNode&gt;, IQLVisitor&lt;QLNode&gt;, IParseTreeVisitor&lt;QLNode&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">AbstractParseTreeVisitor</span>&lt;<a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a>&gt;</div>
+      <div><a class="xref" href="QLBaseVisitor-1.html">QLBaseVisitor</a>&lt;<a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a>&gt;</div>
+      <div><span class="xref">ASTBuilder</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="IQLVisitor-1.html">IQLVisitor</a>&lt;<a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a>&gt;</div>
+      <div><span class="xref">IParseTreeVisitor</span>&lt;<a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a>&gt;</div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <span class="xref">AbstractParseTreeVisitor&lt;QLNode&gt;.Visit(IParseTree)</span>
+    </div>
+    <div>
+      <span class="xref">AbstractParseTreeVisitor&lt;QLNode&gt;.VisitChildren(IRuleNode)</span>
+    </div>
+    <div>
+      <span class="xref">AbstractParseTreeVisitor&lt;QLNode&gt;.VisitTerminal(ITerminalNode)</span>
+    </div>
+    <div>
+      <span class="xref">AbstractParseTreeVisitor&lt;QLNode&gt;.VisitErrorNode(IErrorNode)</span>
+    </div>
+    <div>
+      <span class="xref">AbstractParseTreeVisitor&lt;QLNode&gt;.AggregateResult(QLNode, QLNode)</span>
+    </div>
+    <div>
+      <span class="xref">AbstractParseTreeVisitor&lt;QLNode&gt;.ShouldVisitNextChild(IRuleNode, QLNode)</span>
+    </div>
+    <div>
+      <span class="xref">AbstractParseTreeVisitor&lt;QLNode&gt;.DefaultResult</span>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="QL.Engine.Extensions.ObjectExtensions.html#QL_Engine_Extensions_ObjectExtensions_ToDictionary_System_Object_">ObjectExtensions.ToDictionary(object)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitAction_block_" data-uid="QL.Parser.AST.ASTBuilder.VisitAction_block*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitAction_block_QLParser_Action_blockContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitAction_block(QLParser.Action_blockContext)">
+  VisitAction_block(Action_blockContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L12"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_action_block">action_block()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitAction_block(QLParser.Action_blockContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.Action_blockContext.html">Action_blockContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitAction_type_" data-uid="QL.Parser.AST.ASTBuilder.VisitAction_type*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitAction_type_QLParser_Action_typeContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitAction_type(QLParser.Action_typeContext)">
+  VisitAction_type(Action_typeContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_action_type">action_type()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitAction_type(QLParser.Action_typeContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.Action_typeContext.html">Action_typeContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitArg_" data-uid="QL.Parser.AST.ASTBuilder.VisitArg*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitArg_QLParser_ArgContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitArg(QLParser.ArgContext)">
+  VisitArg(ArgContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L142"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_arg">arg()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitArg(QLParser.ArgContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.ArgContext.html">ArgContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitArgs_" data-uid="QL.Parser.AST.ASTBuilder.VisitArgs*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitArgs_QLParser_ArgsContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitArgs(QLParser.ArgsContext)">
+  VisitArgs(ArgsContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L123"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_args">args()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitArgs(QLParser.ArgsContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.ArgsContext.html">ArgsContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitContext_block_" data-uid="QL.Parser.AST.ASTBuilder.VisitContext_block*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitContext_block_QLParser_Context_blockContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitContext_block(QLParser.Context_blockContext)">
+  VisitContext_block(Context_blockContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_context_block">context_block()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitContext_block(QLParser.Context_blockContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.Context_blockContext.html">Context_blockContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitContext_blocks_" data-uid="QL.Parser.AST.ASTBuilder.VisitContext_blocks*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitContext_blocks_QLParser_Context_blocksContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitContext_blocks(QLParser.Context_blocksContext)">
+  VisitContext_blocks(Context_blocksContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L37"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_context_blocks">context_blocks()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitContext_blocks(QLParser.Context_blocksContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.Context_blocksContext.html">Context_blocksContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitDocument_" data-uid="QL.Parser.AST.ASTBuilder.VisitDocument*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitDocument_QLParser_DocumentContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitDocument(QLParser.DocumentContext)">
+  VisitDocument(DocumentContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L7"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_document">document()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitDocument(QLParser.DocumentContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.DocumentContext.html">DocumentContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitField_" data-uid="QL.Parser.AST.ASTBuilder.VisitField*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitField_QLParser_FieldContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitField(QLParser.FieldContext)">
+  VisitField(FieldContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L156"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_field">field()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitField(QLParser.FieldContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.FieldContext.html">FieldContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitList_" data-uid="QL.Parser.AST.ASTBuilder.VisitList*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitList_QLParser_ListContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitList(QLParser.ListContext)">
+  VisitList(ListContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L258"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_list">list()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitList(QLParser.ListContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.ListContext.html">ListContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitLocal_context_block_" data-uid="QL.Parser.AST.ASTBuilder.VisitLocal_context_block*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitLocal_context_block_QLParser_Local_context_blockContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitLocal_context_block(QLParser.Local_context_blockContext)">
+  VisitLocal_context_block(Local_context_blockContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_local_context_block">local_context_block()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitLocal_context_block(QLParser.Local_context_blockContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.Local_context_blockContext.html">Local_context_blockContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitObject_" data-uid="QL.Parser.AST.ASTBuilder.VisitObject*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitObject_QLParser_ObjectContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitObject(QLParser.ObjectContext)">
+  VisitObject(ObjectContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L277"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by QLParser.object.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitObject(QLParser.ObjectContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.ObjectContext.html">ObjectContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitObject_field_" data-uid="QL.Parser.AST.ASTBuilder.VisitObject_field*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitObject_field_QLParser_Object_fieldContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitObject_field(QLParser.Object_fieldContext)">
+  VisitObject_field(Object_fieldContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L296"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_object_field">object_field()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitObject_field(QLParser.Object_fieldContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.Object_fieldContext.html">Object_fieldContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitRemote_context_block_" data-uid="QL.Parser.AST.ASTBuilder.VisitRemote_context_block*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitRemote_context_block_QLParser_Remote_context_blockContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitRemote_context_block(QLParser.Remote_context_blockContext)">
+  VisitRemote_context_block(Remote_context_blockContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_remote_context_block">remote_context_block()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitRemote_context_block(QLParser.Remote_context_blockContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.Remote_context_blockContext.html">Remote_context_blockContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitSelection_" data-uid="QL.Parser.AST.ASTBuilder.VisitSelection*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitSelection_QLParser_SelectionContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitSelection(QLParser.SelectionContext)">
+  VisitSelection(SelectionContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_selection">selection()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitSelection(QLParser.SelectionContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.SelectionContext.html">SelectionContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitSelection_set_" data-uid="QL.Parser.AST.ASTBuilder.VisitSelection_set*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitSelection_set_QLParser_Selection_setContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitSelection_set(QLParser.Selection_setContext)">
+  VisitSelection_set(Selection_setContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_selection_set">selection_set()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitSelection_set(QLParser.Selection_setContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.Selection_setContext.html">Selection_setContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitTransformation_" data-uid="QL.Parser.AST.ASTBuilder.VisitTransformation*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitTransformation_QLParser_TransformationContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitTransformation(QLParser.TransformationContext)">
+  VisitTransformation(TransformationContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L185"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_transformation">transformation()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitTransformation(QLParser.TransformationContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.TransformationContext.html">TransformationContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitTransformations_" data-uid="QL.Parser.AST.ASTBuilder.VisitTransformations*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitTransformations_QLParser_TransformationsContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitTransformations(QLParser.TransformationsContext)">
+  VisitTransformations(TransformationsContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L177"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_transformations">transformations()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitTransformations(QLParser.TransformationsContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.TransformationsContext.html">TransformationsContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="QL_Parser_AST_ASTBuilder_VisitValue_" data-uid="QL.Parser.AST.ASTBuilder.VisitValue*"></a>
+
+  <h3 id="QL_Parser_AST_ASTBuilder_VisitValue_QLParser_ValueContext_" data-uid="QL.Parser.AST.ASTBuilder.VisitValue(QLParser.ValueContext)">
+  VisitValue(ValueContext)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L197"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Visit a parse tree produced by <a class="xref" href="QLParser.html#QLParser_value">value()</a>.</p>
+<p>
+The default implementation returns the result of calling <span class="xref">Antlr4.Runtime.Tree.AbstractParseTreeVisitor&lt;Result&gt;.VisitChildren(Antlr4.Runtime.Tree.IRuleNode)</span>
+on <code class="paramref">context</code>.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override QLNode VisitValue(QLParser.ValueContext context)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>context</code> <a class="xref" href="QLParser.html">QLParser</a>.<a class="xref" href="QLParser.ValueContext.html">ValueContext</a></dt>
+    <dd><p>The parse tree.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="QL.Parser.AST.Nodes.QLNode.html">QLNode</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/rszemplinski/qlsh/blob/main/src/QL.Parser/AST/ASTBuilder.cs/#L5" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

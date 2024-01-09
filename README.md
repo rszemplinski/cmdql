@@ -1,5 +1,5 @@
 <p align="center">
-  <img src='https://github.com/rszemplinski/qlsh/blob/main/assets/QLSH.png' height="200">
+  <img alt="logo" src="./docfx/images/logo.png" height=200 />
 </p>
 
 ## 📖 Overview

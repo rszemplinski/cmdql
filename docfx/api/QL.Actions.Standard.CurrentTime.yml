@@ -1,0 +1,77 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Actions.Standard.CurrentTime
+  commentId: N:QL.Actions.Standard.CurrentTime
+  id: QL.Actions.Standard.CurrentTime
+  children:
+  - QL.Actions.Standard.CurrentTime.AMPM
+  - QL.Actions.Standard.CurrentTime.CurrentTime
+  - QL.Actions.Standard.CurrentTime.CurrentTimeResult
+  langs:
+  - csharp
+  - vb
+  name: QL.Actions.Standard.CurrentTime
+  nameWithType: QL.Actions.Standard.CurrentTime
+  fullName: QL.Actions.Standard.CurrentTime
+  type: Namespace
+  assemblies:
+  - QL.Actions
+references:
+- uid: QL.Actions.Standard.CurrentTime.AMPM
+  commentId: T:QL.Actions.Standard.CurrentTime.AMPM
+  parent: QL.Actions.Standard.CurrentTime
+  href: QL.Actions.Standard.CurrentTime.AMPM.html
+  name: AMPM
+  nameWithType: AMPM
+  fullName: QL.Actions.Standard.CurrentTime.AMPM
+- uid: QL.Actions.Standard.CurrentTime.CurrentTimeResult
+  commentId: T:QL.Actions.Standard.CurrentTime.CurrentTimeResult
+  parent: QL.Actions.Standard.CurrentTime
+  href: QL.Actions.Standard.CurrentTime.CurrentTimeResult.html
+  name: CurrentTimeResult
+  nameWithType: CurrentTimeResult
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTimeResult
+- uid: QL.Actions.Standard.CurrentTime.CurrentTime
+  commentId: T:QL.Actions.Standard.CurrentTime.CurrentTime
+  href: QL.Actions.Standard.CurrentTime.CurrentTime.html
+  name: CurrentTime
+  nameWithType: CurrentTime
+  fullName: QL.Actions.Standard.CurrentTime.CurrentTime
+- uid: QL.Actions.Standard.CurrentTime
+  commentId: N:QL.Actions.Standard.CurrentTime
+  href: QL.html
+  name: QL.Actions.Standard.CurrentTime
+  nameWithType: QL.Actions.Standard.CurrentTime
+  fullName: QL.Actions.Standard.CurrentTime
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.CurrentTime
+    name: CurrentTime
+    href: QL.Actions.Standard.CurrentTime.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.CurrentTime
+    name: CurrentTime
+    href: QL.Actions.Standard.CurrentTime.html

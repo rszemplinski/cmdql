@@ -1,0 +1,1444 @@
+### YamlMime:ManagedReference
+items:
+- uid: QL.Actions.Standard.FileSpace.FileSpace
+  commentId: T:QL.Actions.Standard.FileSpace.FileSpace
+  id: FileSpace
+  parent: QL.Actions.Standard.FileSpace
+  children:
+  - QL.Actions.Standard.FileSpace.FileSpace.BuildCommand(QL.Actions.Standard.FileSpace.FileSpaceArguments)
+  - QL.Actions.Standard.FileSpace.FileSpace.ParseCommandResults(QL.Core.ICommandOutput)
+  langs:
+  - csharp
+  - vb
+  name: FileSpace
+  nameWithType: FileSpace
+  fullName: QL.Actions.Standard.FileSpace.FileSpace
+  type: Class
+  source:
+    remote:
+      path: src/QL.Actions/Standard/FileSpace/FileSpace.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: FileSpace
+    path: ../src/QL.Actions/Standard/FileSpace/FileSpace.cs
+    startLine: 18
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.FileSpace
+  syntax:
+    content: 'public class FileSpace : ActionBase<FileSpaceArguments, List<FileSpaceResult>>, IAction'
+    content.vb: Public Class FileSpace Inherits ActionBase(Of FileSpaceArguments, List(Of FileSpaceResult)) Implements IAction
+  inheritance:
+  - System.Object
+  - QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}
+  implements:
+  - QL.Core.Actions.IAction
+  inheritedMembers:
+  - QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.Platform
+  - QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.Initialize(QL.Core.Platform)
+  - QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetArguments
+  - QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+  - QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ExecuteAsync(QL.Actions.Standard.FileSpace.FileSpaceArguments,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+  - QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ValidateResults(QL.Core.ICommandOutput)
+  - QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.BuildCommand(QL.Actions.Standard.FileSpace.FileSpaceArguments)
+  - QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetCommandTemplate
+  - QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetRegex
+  - QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetDeps
+  - QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ParseCommandResults(QL.Core.ICommandOutput)
+  - QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  - QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: QL.Actions.Standard.FileSpace.FileSpace.BuildCommand(QL.Actions.Standard.FileSpace.FileSpaceArguments)
+  commentId: M:QL.Actions.Standard.FileSpace.FileSpace.BuildCommand(QL.Actions.Standard.FileSpace.FileSpaceArguments)
+  id: BuildCommand(QL.Actions.Standard.FileSpace.FileSpaceArguments)
+  parent: QL.Actions.Standard.FileSpace.FileSpace
+  langs:
+  - csharp
+  - vb
+  name: BuildCommand(FileSpaceArguments)
+  nameWithType: FileSpace.BuildCommand(FileSpaceArguments)
+  fullName: QL.Actions.Standard.FileSpace.FileSpace.BuildCommand(QL.Actions.Standard.FileSpace.FileSpaceArguments)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Actions/Standard/FileSpace/FileSpace.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: BuildCommand
+    path: ../src/QL.Actions/Standard/FileSpace/FileSpace.cs
+    startLine: 21
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.FileSpace
+  example: []
+  syntax:
+    content: protected override string BuildCommand(FileSpaceArguments arguments)
+    parameters:
+    - id: arguments
+      type: QL.Actions.Standard.FileSpace.FileSpaceArguments
+    return:
+      type: System.String
+    content.vb: Protected Overrides Function BuildCommand(arguments As FileSpaceArguments) As String
+  overridden: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.BuildCommand(QL.Actions.Standard.FileSpace.FileSpaceArguments)
+  overload: QL.Actions.Standard.FileSpace.FileSpace.BuildCommand*
+- uid: QL.Actions.Standard.FileSpace.FileSpace.ParseCommandResults(QL.Core.ICommandOutput)
+  commentId: M:QL.Actions.Standard.FileSpace.FileSpace.ParseCommandResults(QL.Core.ICommandOutput)
+  id: ParseCommandResults(QL.Core.ICommandOutput)
+  parent: QL.Actions.Standard.FileSpace.FileSpace
+  langs:
+  - csharp
+  - vb
+  name: ParseCommandResults(ICommandOutput)
+  nameWithType: FileSpace.ParseCommandResults(ICommandOutput)
+  fullName: QL.Actions.Standard.FileSpace.FileSpace.ParseCommandResults(QL.Core.ICommandOutput)
+  type: Method
+  source:
+    remote:
+      path: src/QL.Actions/Standard/FileSpace/FileSpace.cs
+      branch: main
+      repo: git@github.com:rszemplinski/qlsh.git
+    id: ParseCommandResults
+    path: ../src/QL.Actions/Standard/FileSpace/FileSpace.cs
+    startLine: 28
+  assemblies:
+  - QL.Actions
+  namespace: QL.Actions.Standard.FileSpace
+  example: []
+  syntax:
+    content: protected override List<FileSpaceResult> ParseCommandResults(ICommandOutput commandResults)
+    parameters:
+    - id: commandResults
+      type: QL.Core.ICommandOutput
+    return:
+      type: System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}
+    content.vb: Protected Overrides Function ParseCommandResults(commandResults As ICommandOutput) As List(Of FileSpaceResult)
+  overridden: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ParseCommandResults(QL.Core.ICommandOutput)
+  overload: QL.Actions.Standard.FileSpace.FileSpace.ParseCommandResults*
+references:
+- uid: QL.Actions.Standard.FileSpace
+  commentId: N:QL.Actions.Standard.FileSpace
+  href: QL.html
+  name: QL.Actions.Standard.FileSpace
+  nameWithType: QL.Actions.Standard.FileSpace
+  fullName: QL.Actions.Standard.FileSpace
+  spec.csharp:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.FileSpace
+    name: FileSpace
+    href: QL.Actions.Standard.FileSpace.html
+  spec.vb:
+  - uid: QL
+    name: QL
+    href: QL.html
+  - name: .
+  - uid: QL.Actions
+    name: Actions
+    href: QL.Actions.html
+  - name: .
+  - uid: QL.Actions.Standard
+    name: Standard
+    href: QL.Actions.Standard.html
+  - name: .
+  - uid: QL.Actions.Standard.FileSpace
+    name: FileSpace
+    href: QL.Actions.Standard.FileSpace.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}
+  commentId: T:QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}
+  parent: QL.Core.Actions
+  definition: QL.Core.Actions.ActionBase`2
+  href: QL.Actions.Standard.FileSpace.FileSpaceArguments.html
+  name: ActionBase<FileSpaceArguments, List<FileSpaceResult>>
+  nameWithType: ActionBase<FileSpaceArguments, List<FileSpaceResult>>
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List<QL.Actions.Standard.FileSpace.FileSpaceResult>>
+  nameWithType.vb: ActionBase(Of FileSpaceArguments, List(Of FileSpaceResult))
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List(Of QL.Actions.Standard.FileSpace.FileSpaceResult))
+  name.vb: ActionBase(Of FileSpaceArguments, List(Of FileSpaceResult))
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2
+    name: ActionBase
+  - name: <
+  - uid: QL.Actions.Standard.FileSpace.FileSpaceArguments
+    name: FileSpaceArguments
+    href: QL.Actions.Standard.FileSpace.FileSpaceArguments.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: QL.Actions.Standard.FileSpace.FileSpaceResult
+    name: FileSpaceResult
+    href: QL.Actions.Standard.FileSpace.FileSpaceResult.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2
+    name: ActionBase
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Actions.Standard.FileSpace.FileSpaceArguments
+    name: FileSpaceArguments
+    href: QL.Actions.Standard.FileSpace.FileSpaceArguments.html
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Actions.Standard.FileSpace.FileSpaceResult
+    name: FileSpaceResult
+    href: QL.Actions.Standard.FileSpace.FileSpaceResult.html
+  - name: )
+  - name: )
+- uid: QL.Core.Actions.IAction
+  commentId: T:QL.Core.Actions.IAction
+  parent: QL.Core.Actions
+  name: IAction
+  nameWithType: IAction
+  fullName: QL.Core.Actions.IAction
+- uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.Platform
+  commentId: P:QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.Platform
+  parent: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}
+  definition: QL.Core.Actions.ActionBase`2.Platform
+  name: Platform
+  nameWithType: ActionBase<FileSpaceArguments, List<FileSpaceResult>>.Platform
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List<QL.Actions.Standard.FileSpace.FileSpaceResult>>.Platform
+  nameWithType.vb: ActionBase(Of FileSpaceArguments, List(Of FileSpaceResult)).Platform
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List(Of QL.Actions.Standard.FileSpace.FileSpaceResult)).Platform
+- uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.Initialize(QL.Core.Platform)
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.Initialize(QL.Core.Platform)
+  parent: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}
+  definition: QL.Core.Actions.ActionBase`2.Initialize(QL.Core.Platform)
+  name: Initialize(Platform)
+  nameWithType: ActionBase<FileSpaceArguments, List<FileSpaceResult>>.Initialize(Platform)
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List<QL.Actions.Standard.FileSpace.FileSpaceResult>>.Initialize(QL.Core.Platform)
+  nameWithType.vb: ActionBase(Of FileSpaceArguments, List(Of FileSpaceResult)).Initialize(Platform)
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List(Of QL.Actions.Standard.FileSpace.FileSpaceResult)).Initialize(QL.Core.Platform)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.Initialize(QL.Core.Platform)
+    name: Initialize
+  - name: (
+  - uid: QL.Core.Platform
+    name: Platform
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.Initialize(QL.Core.Platform)
+    name: Initialize
+  - name: (
+  - uid: QL.Core.Platform
+    name: Platform
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetArguments
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetArguments
+  parent: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}
+  definition: QL.Core.Actions.ActionBase`2.GetArguments
+  name: GetArguments()
+  nameWithType: ActionBase<FileSpaceArguments, List<FileSpaceResult>>.GetArguments()
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List<QL.Actions.Standard.FileSpace.FileSpaceResult>>.GetArguments()
+  nameWithType.vb: ActionBase(Of FileSpaceArguments, List(Of FileSpaceResult)).GetArguments()
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List(Of QL.Actions.Standard.FileSpace.FileSpaceResult)).GetArguments()
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetArguments
+    name: GetArguments
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetArguments
+    name: GetArguments
+  - name: (
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+  parent: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}
+  definition: QL.Core.Actions.ActionBase`2.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: ExecuteCommandAsync(IClient, IReadOnlyDictionary<string, object>, IReadOnlyCollection<IField>, CancellationToken)
+  nameWithType: ActionBase<FileSpaceArguments, List<FileSpaceResult>>.ExecuteCommandAsync(IClient, IReadOnlyDictionary<string, object>, IReadOnlyCollection<IField>, CancellationToken)
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List<QL.Actions.Standard.FileSpace.FileSpaceResult>>.ExecuteCommandAsync(QL.Core.IClient, System.Collections.Generic.IReadOnlyDictionary<string, object>, System.Collections.Generic.IReadOnlyCollection<QL.Core.Actions.IField>, System.Threading.CancellationToken)
+  nameWithType.vb: ActionBase(Of FileSpaceArguments, List(Of FileSpaceResult)).ExecuteCommandAsync(IClient, IReadOnlyDictionary(Of String, Object), IReadOnlyCollection(Of IField), CancellationToken)
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List(Of QL.Actions.Standard.FileSpace.FileSpaceResult)).ExecuteCommandAsync(QL.Core.IClient, System.Collections.Generic.IReadOnlyDictionary(Of String, Object), System.Collections.Generic.IReadOnlyCollection(Of QL.Core.Actions.IField), System.Threading.CancellationToken)
+  name.vb: ExecuteCommandAsync(IClient, IReadOnlyDictionary(Of String, Object), IReadOnlyCollection(Of IField), CancellationToken)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+    name: ExecuteCommandAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - uid: QL.Core.Actions.IField
+    name: IField
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+    name: ExecuteCommandAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Core.Actions.IField
+    name: IField
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ExecuteAsync(QL.Actions.Standard.FileSpace.FileSpaceArguments,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ExecuteAsync(QL.Actions.Standard.FileSpace.FileSpaceArguments,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+  parent: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}
+  definition: QL.Core.Actions.ActionBase`2.ExecuteAsync(`0,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+  href: QL.Actions.Standard.FileSpace.FileSpaceArguments.html
+  name: ExecuteAsync(FileSpaceArguments, IClient, string, CancellationToken)
+  nameWithType: ActionBase<FileSpaceArguments, List<FileSpaceResult>>.ExecuteAsync(FileSpaceArguments, IClient, string, CancellationToken)
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List<QL.Actions.Standard.FileSpace.FileSpaceResult>>.ExecuteAsync(QL.Actions.Standard.FileSpace.FileSpaceArguments, QL.Core.IClient, string, System.Threading.CancellationToken)
+  nameWithType.vb: ActionBase(Of FileSpaceArguments, List(Of FileSpaceResult)).ExecuteAsync(FileSpaceArguments, IClient, String, CancellationToken)
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List(Of QL.Actions.Standard.FileSpace.FileSpaceResult)).ExecuteAsync(QL.Actions.Standard.FileSpace.FileSpaceArguments, QL.Core.IClient, String, System.Threading.CancellationToken)
+  name.vb: ExecuteAsync(FileSpaceArguments, IClient, String, CancellationToken)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ExecuteAsync(QL.Actions.Standard.FileSpace.FileSpaceArguments,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+    name: ExecuteAsync
+  - name: (
+  - uid: QL.Actions.Standard.FileSpace.FileSpaceArguments
+    name: FileSpaceArguments
+    href: QL.Actions.Standard.FileSpace.FileSpaceArguments.html
+  - name: ','
+  - name: " "
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ExecuteAsync(QL.Actions.Standard.FileSpace.FileSpaceArguments,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+    name: ExecuteAsync
+  - name: (
+  - uid: QL.Actions.Standard.FileSpace.FileSpaceArguments
+    name: FileSpaceArguments
+    href: QL.Actions.Standard.FileSpace.FileSpaceArguments.html
+  - name: ','
+  - name: " "
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ValidateResults(QL.Core.ICommandOutput)
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ValidateResults(QL.Core.ICommandOutput)
+  parent: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}
+  definition: QL.Core.Actions.ActionBase`2.ValidateResults(QL.Core.ICommandOutput)
+  name: ValidateResults(ICommandOutput)
+  nameWithType: ActionBase<FileSpaceArguments, List<FileSpaceResult>>.ValidateResults(ICommandOutput)
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List<QL.Actions.Standard.FileSpace.FileSpaceResult>>.ValidateResults(QL.Core.ICommandOutput)
+  nameWithType.vb: ActionBase(Of FileSpaceArguments, List(Of FileSpaceResult)).ValidateResults(ICommandOutput)
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List(Of QL.Actions.Standard.FileSpace.FileSpaceResult)).ValidateResults(QL.Core.ICommandOutput)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ValidateResults(QL.Core.ICommandOutput)
+    name: ValidateResults
+  - name: (
+  - uid: QL.Core.ICommandOutput
+    name: ICommandOutput
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ValidateResults(QL.Core.ICommandOutput)
+    name: ValidateResults
+  - name: (
+  - uid: QL.Core.ICommandOutput
+    name: ICommandOutput
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.BuildCommand(QL.Actions.Standard.FileSpace.FileSpaceArguments)
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.BuildCommand(QL.Actions.Standard.FileSpace.FileSpaceArguments)
+  parent: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}
+  definition: QL.Core.Actions.ActionBase`2.BuildCommand(`0)
+  href: QL.Actions.Standard.FileSpace.FileSpaceArguments.html
+  name: BuildCommand(FileSpaceArguments)
+  nameWithType: ActionBase<FileSpaceArguments, List<FileSpaceResult>>.BuildCommand(FileSpaceArguments)
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List<QL.Actions.Standard.FileSpace.FileSpaceResult>>.BuildCommand(QL.Actions.Standard.FileSpace.FileSpaceArguments)
+  nameWithType.vb: ActionBase(Of FileSpaceArguments, List(Of FileSpaceResult)).BuildCommand(FileSpaceArguments)
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List(Of QL.Actions.Standard.FileSpace.FileSpaceResult)).BuildCommand(QL.Actions.Standard.FileSpace.FileSpaceArguments)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.BuildCommand(QL.Actions.Standard.FileSpace.FileSpaceArguments)
+    name: BuildCommand
+  - name: (
+  - uid: QL.Actions.Standard.FileSpace.FileSpaceArguments
+    name: FileSpaceArguments
+    href: QL.Actions.Standard.FileSpace.FileSpaceArguments.html
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.BuildCommand(QL.Actions.Standard.FileSpace.FileSpaceArguments)
+    name: BuildCommand
+  - name: (
+  - uid: QL.Actions.Standard.FileSpace.FileSpaceArguments
+    name: FileSpaceArguments
+    href: QL.Actions.Standard.FileSpace.FileSpaceArguments.html
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetCommandTemplate
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetCommandTemplate
+  parent: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}
+  definition: QL.Core.Actions.ActionBase`2.GetCommandTemplate
+  name: GetCommandTemplate()
+  nameWithType: ActionBase<FileSpaceArguments, List<FileSpaceResult>>.GetCommandTemplate()
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List<QL.Actions.Standard.FileSpace.FileSpaceResult>>.GetCommandTemplate()
+  nameWithType.vb: ActionBase(Of FileSpaceArguments, List(Of FileSpaceResult)).GetCommandTemplate()
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List(Of QL.Actions.Standard.FileSpace.FileSpaceResult)).GetCommandTemplate()
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetCommandTemplate
+    name: GetCommandTemplate
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetCommandTemplate
+    name: GetCommandTemplate
+  - name: (
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetRegex
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetRegex
+  parent: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}
+  definition: QL.Core.Actions.ActionBase`2.GetRegex
+  name: GetRegex()
+  nameWithType: ActionBase<FileSpaceArguments, List<FileSpaceResult>>.GetRegex()
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List<QL.Actions.Standard.FileSpace.FileSpaceResult>>.GetRegex()
+  nameWithType.vb: ActionBase(Of FileSpaceArguments, List(Of FileSpaceResult)).GetRegex()
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List(Of QL.Actions.Standard.FileSpace.FileSpaceResult)).GetRegex()
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetRegex
+    name: GetRegex
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetRegex
+    name: GetRegex
+  - name: (
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetDeps
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetDeps
+  parent: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}
+  definition: QL.Core.Actions.ActionBase`2.GetDeps
+  name: GetDeps()
+  nameWithType: ActionBase<FileSpaceArguments, List<FileSpaceResult>>.GetDeps()
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List<QL.Actions.Standard.FileSpace.FileSpaceResult>>.GetDeps()
+  nameWithType.vb: ActionBase(Of FileSpaceArguments, List(Of FileSpaceResult)).GetDeps()
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List(Of QL.Actions.Standard.FileSpace.FileSpaceResult)).GetDeps()
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetDeps
+    name: GetDeps
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.GetDeps
+    name: GetDeps
+  - name: (
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ParseCommandResults(QL.Core.ICommandOutput)
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ParseCommandResults(QL.Core.ICommandOutput)
+  parent: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}
+  definition: QL.Core.Actions.ActionBase`2.ParseCommandResults(QL.Core.ICommandOutput)
+  name: ParseCommandResults(ICommandOutput)
+  nameWithType: ActionBase<FileSpaceArguments, List<FileSpaceResult>>.ParseCommandResults(ICommandOutput)
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List<QL.Actions.Standard.FileSpace.FileSpaceResult>>.ParseCommandResults(QL.Core.ICommandOutput)
+  nameWithType.vb: ActionBase(Of FileSpaceArguments, List(Of FileSpaceResult)).ParseCommandResults(ICommandOutput)
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List(Of QL.Actions.Standard.FileSpace.FileSpaceResult)).ParseCommandResults(QL.Core.ICommandOutput)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ParseCommandResults(QL.Core.ICommandOutput)
+    name: ParseCommandResults
+  - name: (
+  - uid: QL.Core.ICommandOutput
+    name: ICommandOutput
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.ParseCommandResults(QL.Core.ICommandOutput)
+    name: ParseCommandResults
+  - name: (
+  - uid: QL.Core.ICommandOutput
+    name: ICommandOutput
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  parent: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}
+  definition: QL.Core.Actions.ActionBase`2.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: SetupAsync(IClient, CancellationToken)
+  nameWithType: ActionBase<FileSpaceArguments, List<FileSpaceResult>>.SetupAsync(IClient, CancellationToken)
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List<QL.Actions.Standard.FileSpace.FileSpaceResult>>.SetupAsync(QL.Core.IClient, System.Threading.CancellationToken)
+  nameWithType.vb: ActionBase(Of FileSpaceArguments, List(Of FileSpaceResult)).SetupAsync(IClient, CancellationToken)
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List(Of QL.Actions.Standard.FileSpace.FileSpaceResult)).SetupAsync(QL.Core.IClient, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+    name: SetupAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+    name: SetupAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  parent: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}
+  definition: QL.Core.Actions.ActionBase`2.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CleanupAsync(IClient, CancellationToken)
+  nameWithType: ActionBase<FileSpaceArguments, List<FileSpaceResult>>.CleanupAsync(IClient, CancellationToken)
+  fullName: QL.Core.Actions.ActionBase<QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List<QL.Actions.Standard.FileSpace.FileSpaceResult>>.CleanupAsync(QL.Core.IClient, System.Threading.CancellationToken)
+  nameWithType.vb: ActionBase(Of FileSpaceArguments, List(Of FileSpaceResult)).CleanupAsync(IClient, CancellationToken)
+  fullName.vb: QL.Core.Actions.ActionBase(Of QL.Actions.Standard.FileSpace.FileSpaceArguments, System.Collections.Generic.List(Of QL.Actions.Standard.FileSpace.FileSpaceResult)).CleanupAsync(QL.Core.IClient, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+    name: CleanupAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase{QL.Actions.Standard.FileSpace.FileSpaceArguments,System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}}.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+    name: CleanupAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: QL.Core.Actions.ActionBase`2
+  commentId: T:QL.Core.Actions.ActionBase`2
+  name: ActionBase<TArgs, TReturnType>
+  nameWithType: ActionBase<TArgs, TReturnType>
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType)
+  name.vb: ActionBase(Of TArgs, TReturnType)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2
+    name: ActionBase
+  - name: <
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TReturnType
+  - name: '>'
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2
+    name: ActionBase
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - name: TReturnType
+  - name: )
+- uid: QL.Core.Actions
+  commentId: N:QL.Core.Actions
+  name: QL.Core.Actions
+  nameWithType: QL.Core.Actions
+  fullName: QL.Core.Actions
+  spec.csharp:
+  - uid: QL
+    name: QL
+  - name: .
+  - uid: QL.Core
+    name: Core
+  - name: .
+  - uid: QL.Core.Actions
+    name: Actions
+  spec.vb:
+  - uid: QL
+    name: QL
+  - name: .
+  - uid: QL.Core
+    name: Core
+  - name: .
+  - uid: QL.Core.Actions
+    name: Actions
+- uid: QL.Core.Actions.ActionBase`2.Platform
+  commentId: P:QL.Core.Actions.ActionBase`2.Platform
+  name: Platform
+  nameWithType: ActionBase<TArgs, TReturnType>.Platform
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.Platform
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).Platform
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).Platform
+- uid: QL.Core.Actions.ActionBase`2.Initialize(QL.Core.Platform)
+  commentId: M:QL.Core.Actions.ActionBase`2.Initialize(QL.Core.Platform)
+  name: Initialize(Platform)
+  nameWithType: ActionBase<TArgs, TReturnType>.Initialize(Platform)
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.Initialize(QL.Core.Platform)
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).Initialize(Platform)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).Initialize(QL.Core.Platform)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.Initialize(QL.Core.Platform)
+    name: Initialize
+  - name: (
+  - uid: QL.Core.Platform
+    name: Platform
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.Initialize(QL.Core.Platform)
+    name: Initialize
+  - name: (
+  - uid: QL.Core.Platform
+    name: Platform
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.GetArguments
+  commentId: M:QL.Core.Actions.ActionBase`2.GetArguments
+  name: GetArguments()
+  nameWithType: ActionBase<TArgs, TReturnType>.GetArguments()
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.GetArguments()
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).GetArguments()
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).GetArguments()
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.GetArguments
+    name: GetArguments
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.GetArguments
+    name: GetArguments
+  - name: (
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.ActionBase`2.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  name: ExecuteCommandAsync(IClient, IReadOnlyDictionary<string, object>, IReadOnlyCollection<IField>, CancellationToken)
+  nameWithType: ActionBase<TArgs, TReturnType>.ExecuteCommandAsync(IClient, IReadOnlyDictionary<string, object>, IReadOnlyCollection<IField>, CancellationToken)
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.ExecuteCommandAsync(QL.Core.IClient, System.Collections.Generic.IReadOnlyDictionary<string, object>, System.Collections.Generic.IReadOnlyCollection<QL.Core.Actions.IField>, System.Threading.CancellationToken)
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).ExecuteCommandAsync(IClient, IReadOnlyDictionary(Of String, Object), IReadOnlyCollection(Of IField), CancellationToken)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).ExecuteCommandAsync(QL.Core.IClient, System.Collections.Generic.IReadOnlyDictionary(Of String, Object), System.Collections.Generic.IReadOnlyCollection(Of QL.Core.Actions.IField), System.Threading.CancellationToken)
+  name.vb: ExecuteCommandAsync(IClient, IReadOnlyDictionary(Of String, Object), IReadOnlyCollection(Of IField), CancellationToken)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+    name: ExecuteCommandAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: <
+  - uid: QL.Core.Actions.IField
+    name: IField
+  - name: '>'
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.ExecuteCommandAsync(QL.Core.IClient,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object},System.Collections.Generic.IReadOnlyCollection{QL.Core.Actions.IField},System.Threading.CancellationToken)
+    name: ExecuteCommandAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyDictionary`2
+    name: IReadOnlyDictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlydictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.IReadOnlyCollection`1
+    name: IReadOnlyCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Core.Actions.IField
+    name: IField
+  - name: )
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.ExecuteAsync(`0,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.ActionBase`2.ExecuteAsync(`0,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: ExecuteAsync(TArgs, IClient, string, CancellationToken)
+  nameWithType: ActionBase<TArgs, TReturnType>.ExecuteAsync(TArgs, IClient, string, CancellationToken)
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.ExecuteAsync(TArgs, QL.Core.IClient, string, System.Threading.CancellationToken)
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).ExecuteAsync(TArgs, IClient, String, CancellationToken)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).ExecuteAsync(TArgs, QL.Core.IClient, String, System.Threading.CancellationToken)
+  name.vb: ExecuteAsync(TArgs, IClient, String, CancellationToken)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.ExecuteAsync(`0,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+    name: ExecuteAsync
+  - name: (
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.ExecuteAsync(`0,QL.Core.IClient,System.String,System.Threading.CancellationToken)
+    name: ExecuteAsync
+  - name: (
+  - name: TArgs
+  - name: ','
+  - name: " "
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.ValidateResults(QL.Core.ICommandOutput)
+  commentId: M:QL.Core.Actions.ActionBase`2.ValidateResults(QL.Core.ICommandOutput)
+  name: ValidateResults(ICommandOutput)
+  nameWithType: ActionBase<TArgs, TReturnType>.ValidateResults(ICommandOutput)
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.ValidateResults(QL.Core.ICommandOutput)
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).ValidateResults(ICommandOutput)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).ValidateResults(QL.Core.ICommandOutput)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.ValidateResults(QL.Core.ICommandOutput)
+    name: ValidateResults
+  - name: (
+  - uid: QL.Core.ICommandOutput
+    name: ICommandOutput
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.ValidateResults(QL.Core.ICommandOutput)
+    name: ValidateResults
+  - name: (
+  - uid: QL.Core.ICommandOutput
+    name: ICommandOutput
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.BuildCommand(`0)
+  commentId: M:QL.Core.Actions.ActionBase`2.BuildCommand(`0)
+  name: BuildCommand(TArgs)
+  nameWithType: ActionBase<TArgs, TReturnType>.BuildCommand(TArgs)
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.BuildCommand(TArgs)
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).BuildCommand(TArgs)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).BuildCommand(TArgs)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.BuildCommand(`0)
+    name: BuildCommand
+  - name: (
+  - name: TArgs
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.BuildCommand(`0)
+    name: BuildCommand
+  - name: (
+  - name: TArgs
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.GetCommandTemplate
+  commentId: M:QL.Core.Actions.ActionBase`2.GetCommandTemplate
+  name: GetCommandTemplate()
+  nameWithType: ActionBase<TArgs, TReturnType>.GetCommandTemplate()
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.GetCommandTemplate()
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).GetCommandTemplate()
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).GetCommandTemplate()
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.GetCommandTemplate
+    name: GetCommandTemplate
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.GetCommandTemplate
+    name: GetCommandTemplate
+  - name: (
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.GetRegex
+  commentId: M:QL.Core.Actions.ActionBase`2.GetRegex
+  name: GetRegex()
+  nameWithType: ActionBase<TArgs, TReturnType>.GetRegex()
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.GetRegex()
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).GetRegex()
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).GetRegex()
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.GetRegex
+    name: GetRegex
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.GetRegex
+    name: GetRegex
+  - name: (
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.GetDeps
+  commentId: M:QL.Core.Actions.ActionBase`2.GetDeps
+  name: GetDeps()
+  nameWithType: ActionBase<TArgs, TReturnType>.GetDeps()
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.GetDeps()
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).GetDeps()
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).GetDeps()
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.GetDeps
+    name: GetDeps
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.GetDeps
+    name: GetDeps
+  - name: (
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.ParseCommandResults(QL.Core.ICommandOutput)
+  commentId: M:QL.Core.Actions.ActionBase`2.ParseCommandResults(QL.Core.ICommandOutput)
+  name: ParseCommandResults(ICommandOutput)
+  nameWithType: ActionBase<TArgs, TReturnType>.ParseCommandResults(ICommandOutput)
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.ParseCommandResults(QL.Core.ICommandOutput)
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).ParseCommandResults(ICommandOutput)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).ParseCommandResults(QL.Core.ICommandOutput)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.ParseCommandResults(QL.Core.ICommandOutput)
+    name: ParseCommandResults
+  - name: (
+  - uid: QL.Core.ICommandOutput
+    name: ICommandOutput
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.ParseCommandResults(QL.Core.ICommandOutput)
+    name: ParseCommandResults
+  - name: (
+  - uid: QL.Core.ICommandOutput
+    name: ICommandOutput
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.ActionBase`2.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: SetupAsync(IClient, CancellationToken)
+  nameWithType: ActionBase<TArgs, TReturnType>.SetupAsync(IClient, CancellationToken)
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.SetupAsync(QL.Core.IClient, System.Threading.CancellationToken)
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).SetupAsync(IClient, CancellationToken)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).SetupAsync(QL.Core.IClient, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+    name: SetupAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.SetupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+    name: SetupAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: QL.Core.Actions.ActionBase`2.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  commentId: M:QL.Core.Actions.ActionBase`2.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  name: CleanupAsync(IClient, CancellationToken)
+  nameWithType: ActionBase<TArgs, TReturnType>.CleanupAsync(IClient, CancellationToken)
+  fullName: QL.Core.Actions.ActionBase<TArgs, TReturnType>.CleanupAsync(QL.Core.IClient, System.Threading.CancellationToken)
+  nameWithType.vb: ActionBase(Of TArgs, TReturnType).CleanupAsync(IClient, CancellationToken)
+  fullName.vb: QL.Core.Actions.ActionBase(Of TArgs, TReturnType).CleanupAsync(QL.Core.IClient, System.Threading.CancellationToken)
+  spec.csharp:
+  - uid: QL.Core.Actions.ActionBase`2.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+    name: CleanupAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+  spec.vb:
+  - uid: QL.Core.Actions.ActionBase`2.CleanupAsync(QL.Core.IClient,System.Threading.CancellationToken)
+    name: CleanupAsync
+  - name: (
+  - uid: QL.Core.IClient
+    name: IClient
+  - name: ','
+  - name: " "
+  - uid: System.Threading.CancellationToken
+    name: CancellationToken
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken
+  - name: )
+- uid: QL.Actions.Standard.FileSpace.FileSpace.BuildCommand*
+  commentId: Overload:QL.Actions.Standard.FileSpace.FileSpace.BuildCommand
+  href: QL.Actions.Standard.FileSpace.FileSpace.html#QL_Actions_Standard_FileSpace_FileSpace_BuildCommand_QL_Actions_Standard_FileSpace_FileSpaceArguments_
+  name: BuildCommand
+  nameWithType: FileSpace.BuildCommand
+  fullName: QL.Actions.Standard.FileSpace.FileSpace.BuildCommand
+- uid: QL.Actions.Standard.FileSpace.FileSpaceArguments
+  commentId: T:QL.Actions.Standard.FileSpace.FileSpaceArguments
+  parent: QL.Actions.Standard.FileSpace
+  href: QL.Actions.Standard.FileSpace.FileSpaceArguments.html
+  name: FileSpaceArguments
+  nameWithType: FileSpaceArguments
+  fullName: QL.Actions.Standard.FileSpace.FileSpaceArguments
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: QL.Actions.Standard.FileSpace.FileSpace.ParseCommandResults*
+  commentId: Overload:QL.Actions.Standard.FileSpace.FileSpace.ParseCommandResults
+  href: QL.Actions.Standard.FileSpace.FileSpace.html#QL_Actions_Standard_FileSpace_FileSpace_ParseCommandResults_QL_Core_ICommandOutput_
+  name: ParseCommandResults
+  nameWithType: FileSpace.ParseCommandResults
+  fullName: QL.Actions.Standard.FileSpace.FileSpace.ParseCommandResults
+- uid: QL.Core.ICommandOutput
+  commentId: T:QL.Core.ICommandOutput
+  parent: QL.Core
+  name: ICommandOutput
+  nameWithType: ICommandOutput
+  fullName: QL.Core.ICommandOutput
+- uid: System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}
+  commentId: T:System.Collections.Generic.List{QL.Actions.Standard.FileSpace.FileSpaceResult}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<FileSpaceResult>
+  nameWithType: List<FileSpaceResult>
+  fullName: System.Collections.Generic.List<QL.Actions.Standard.FileSpace.FileSpaceResult>
+  nameWithType.vb: List(Of FileSpaceResult)
+  fullName.vb: System.Collections.Generic.List(Of QL.Actions.Standard.FileSpace.FileSpaceResult)
+  name.vb: List(Of FileSpaceResult)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: QL.Actions.Standard.FileSpace.FileSpaceResult
+    name: FileSpaceResult
+    href: QL.Actions.Standard.FileSpace.FileSpaceResult.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: QL.Actions.Standard.FileSpace.FileSpaceResult
+    name: FileSpaceResult
+    href: QL.Actions.Standard.FileSpace.FileSpaceResult.html
+  - name: )
+- uid: QL.Core
+  commentId: N:QL.Core
+  name: QL.Core
+  nameWithType: QL.Core
+  fullName: QL.Core
+  spec.csharp:
+  - uid: QL
+    name: QL
+  - name: .
+  - uid: QL.Core
+    name: Core
+  spec.vb:
+  - uid: QL
+    name: QL
+  - name: .
+  - uid: QL.Core
+    name: Core
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
