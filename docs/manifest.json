@@ -1885,6 +1885,42 @@
     },
     {
       "type": "Conceptual",
+      "source_relative_path": "docs/actions/standard/currentTime.md",
+      "output": {
+        ".html": {
+          "relative_path": "docs/actions/standard/currentTime.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/actions/standard/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/actions/standard/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/actions/standard/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "docs/actions/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "docs/actions/toc.html"
+        },
+        ".json": {
+          "relative_path": "docs/actions/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
       "source_relative_path": "docs/getting-started.md",
       "output": {
         ".html": {

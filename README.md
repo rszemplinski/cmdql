@@ -2,6 +2,11 @@
   <img alt="logo" src="./docfx/images/logo.png" height=200 />
 </p>
 
+
+## 🚨 Disclaimer! 🚨
+
+This is very much a work in progress. Nothing is properly tested, documentation is very limited, and the API is subject to change at any time. Use at your own risk.
+
 ## 📖 Overview
 
 `qlsh` is a CLI tool designed for developers, DevOps engineers, and system administrators. This tool blends the power of query language with the flexibility and familiarity of a shell environment, providing an intuitive, efficient, and powerful way to manage and query data across various systems and services.
@@ -96,9 +101,4 @@ fetch {
     ]
   }
 }
-
 ```
-
-## 🚨 Disclaimer! 🚨
-
-This is very much a work in progress. Nothing is properly tested, documentation is very limited, and the API is subject to change at any time. Use at your own risk.

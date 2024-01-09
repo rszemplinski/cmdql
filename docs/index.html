@@ -2,9 +2,9 @@
 <html>
   <head>
     <meta charset="utf-8">
-      <title>This is the HOMEPAGE. | qlsh </title>
+      <title> | qlsh </title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <meta name="title" content="This is the HOMEPAGE. | qlsh ">
+      <meta name="title" content=" | qlsh ">
       
       <link rel="icon" href="favicon.ico">
       <link rel="stylesheet" href="public/docfx.min.css">
@@ -43,7 +43,7 @@
       <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
         <div class="container-xxl flex-nowrap">
           <a class="navbar-brand" href="index.html">
-            <img id="logo" class="svg" src="images/logo.png" alt="qlsh">
+            <img id="logo" class="svg" src="logo.svg" alt="qlsh">
             qlsh
           </a>
           <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,13 +84,96 @@
         </div>
 
         <article data-uid="">
-<h1 id="this-is-the-homepage">This is the <strong>HOMEPAGE</strong>.</h1>
 
-<p>Refer to <a href="http://daringfireball.net/projects/markdown/">Markdown</a> for how to write markdown files.</p>
-<h2 id="quick-start-notes">Quick Start Notes:</h2>
-<ol>
-<li>Add images to the <em>images</em> folder if the file is referencing an image.</li>
-</ol>
+<p align="center">
+  <img alt="logo" src="images/logo.png" style="height: 200px">
+</p>
+<h2 id="-disclaimer-">🚨 Disclaimer! 🚨</h2>
+<p>This is very much a work in progress. Nothing is properly tested, documentation is very limited, and the API is subject to change at any time. Use at your own risk.</p>
+<h2 id="-overview">📖 Overview</h2>
+<p><code>qlsh</code> is a CLI tool designed for developers, DevOps engineers, and system administrators. This tool blends the power of query language with the flexibility and familiarity of a shell environment, providing an intuitive, efficient, and powerful way to manage and query data across various systems and services.</p>
+<p><code>qlsh</code> is built to streamline the process of monitoring, managing, and analyzing data from servers, databases, applications, and other sources, all from the comfort of your command line.</p>
+<h2 id="-features">⚡️ Features</h2>
+<ul>
+<li><p><strong>GQL-like Querying</strong>: Leverage a syntax reminiscent of GraphQL to fetch, mutate, and subscribe to data points across your infrastructure and services. This intuitive querying mechanism makes data retrieval and manipulation as simple as writing a query.</p>
+</li>
+<li><p><strong>Multi-Source Data Aggregation:</strong> Aggregate data from multiple sources such as server metrics, application logs, network statistics, and more, all within a single query framework.</p>
+</li>
+<li><p><strong>Real-Time Monitoring and Alerts</strong>: Monitor your systems in real-time and set up alerts based on custom thresholds and conditions, ensuring you're always informed about the health and performance of your infrastructure.</p>
+</li>
+<li><p><strong>Integrated Scripting Capabilities</strong>: Embed and execute shell scripts or external programs directly within qlsh, providing a seamless experience for complex operations.</p>
+</li>
+<li><p><strong>Advanced Data Manipulation</strong>: Utilize advanced data operations like map, reduce, and filter within queries, enabling sophisticated data analysis and transformation right in the CLI.</p>
+</li>
+<li><p><strong>Customizable and Extensible</strong>: Extend <code>qlsh</code> with custom plugins, scripts, and integrations, tailoring the tool to fit your specific needs and workflows.</p>
+</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<p>Currently, the only way to use <code>qlsh</code> is to clone the repository and run the tool from source.</p>
+<pre><code class="lang-bash">git clone git@github.com:rszemplinski/qlsh.git
+</code></pre>
+<h2 id="examples">Examples</h2>
+<p>To try one of the examples, run <code>dotnet run --project src/QL.Engine -i examples/example.qlsh</code>.</p>
+<h3 id="input">Input:</h3>
+<pre><code>fetch {
+    local {
+        listFiles(path: &quot;~/Pictures&quot;) {
+            name
+            size | toMegabytes
+        }
+        currentTime {
+            timezone
+            year
+        }
+        diskSpace {
+            fileSystem
+            total
+            used | toGigabytes
+            free | toGigabytes
+        }
+    }
+}
+</code></pre>
+<h3 id="output">Output:</h3>
+<pre><code class="lang-json">{
+  &quot;localhost&quot;: {
+    &quot;listFiles&quot;: [
+      {
+        &quot;size&quot;: 0.00390625,
+        &quot;name&quot;: &quot;screenshots&quot;
+      },
+      {
+        &quot;size&quot;: 0.00390625,
+        &quot;name&quot;: &quot;Screenshots&quot;
+      }
+    ],
+    &quot;currentTime&quot;: {
+      &quot;timezone&quot;: &quot;MST&quot;,
+      &quot;year&quot;: 2024
+    },
+    &quot;diskSpace&quot;: [
+      {
+        &quot;fileSystem&quot;: &quot;tmpfs&quot;,
+        &quot;total&quot;: 3355750400,
+        &quot;used&quot;: 0.002349853515625,
+        &quot;free&quot;: 3.122936248779297
+      },
+      {
+        &quot;fileSystem&quot;: &quot;efivarfs&quot;,
+        &quot;total&quot;: 126976,
+        &quot;used&quot;: 5.14984130859375E-05,
+        &quot;free&quot;: 6.67572021484375E-05
+      },
+      {
+        &quot;fileSystem&quot;: &quot;/dev/nvme1n1p3&quot;,
+        &quot;total&quot;: 924293296128,
+        &quot;used&quot;: 389.6685791015625,
+        &quot;free&quot;: 471.14663314819336
+      }
+    ]
+  }
+}
+</code></pre>
 
 </article>
 
