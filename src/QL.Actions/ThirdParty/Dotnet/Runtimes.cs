@@ -2,8 +2,6 @@ using QL.Core.Attributes;
 
 namespace QL.Actions.ThirdParty.Dotnet;
 
-public record RuntimeArgs;
-
 public class RuntimeResult
 {
     public int Major => int.Parse(Version.Split('.')[0]);
@@ -18,4 +16,4 @@ public class RuntimeResult
 [Action]
 [Cmd("dotnet --list-runtimes")]
 [Regex(@"(?<package>[^\s]+)\s+(?<version>\d+\.\d+\.\d+)\s+\[(?<path>.+?)\]")]
-public class Runtimes : DotnetActionBase<RuntimeArgs, List<RuntimeResult>>;
+public class Runtimes : DotnetActionBase<List<RuntimeResult>>;

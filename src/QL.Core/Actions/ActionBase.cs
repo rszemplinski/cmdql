@@ -202,3 +202,5 @@ public abstract partial class ActionBase<TArgs, TReturnType> : IAction
         }
     }
 }
+
+public abstract class ActionBase<TReturnType> : ActionBase<object, TReturnType>; 

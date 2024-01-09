@@ -4,6 +4,8 @@ using QL.Core.Attributes;
 namespace QL.Actions.ThirdParty.GCP;
 
 [Deps(["gcloud"])]
-public class GCPActionBase<TArgs, TReturnType> : ActionBase<TArgs, TReturnType>
-    where TArgs: class, new()
-    where TReturnType: class, new();
+[Namespace("gcp")]
+public abstract class GCPActionBase<TArgs, TReturnType> : ActionBase<TArgs, TReturnType>
+    where TArgs : class, new();
+
+public abstract class GCPActionBase<TReturnType> : GCPActionBase<object, TReturnType>;

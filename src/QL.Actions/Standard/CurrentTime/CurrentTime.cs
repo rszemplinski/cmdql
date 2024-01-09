@@ -4,8 +4,6 @@ using QL.Core.Attributes;
 
 namespace QL.Actions.Standard.CurrentTime;
 
-public record CurrentTimeArguments;
-
 public enum AMPM
 {
     AM,
@@ -52,7 +50,7 @@ public class CurrentTimeResult
 
 [Action]
 [Cmd("date")]
-public class CurrentTime : ActionBase<CurrentTimeArguments, CurrentTimeResult>
+public class CurrentTime : ActionBase<CurrentTimeResult>
 {
     /**
      * Example:

@@ -4,18 +4,10 @@ using QL.Core.Attributes;
 
 namespace QL.Actions.Standard.DiskSpace;
 
-public class DiskSpaceArguments;
-
 [Action]
 [Cmd("df")]
-public class DiskSpace : ActionBase<DiskSpaceArguments, List<Disk>>
+public class DiskSpace : ActionBase<List<Disk>>
 {
-    /**
-     * Example output:
-     * Filesystem     1K-blocks     Used Available Use% Mounted on
-     * udev             16353532        0  16353532   0% /dev
-     * tmpfs             3273896     1576   3272320   1% /run
-     */
     protected override List<Disk> ParseCommandResults(ICommandOutput commandResults)
     {
         var disks = new List<Disk>();

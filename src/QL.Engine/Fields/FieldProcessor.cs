@@ -9,13 +9,7 @@ public static class FieldProcessor
     public static OrderedDictionary ProcessFields(IEnumerable<Field> fields, IDictionary originalDict)
     {
         var newDict = new OrderedDictionary();
-
-        // Add 'error' and 'exitCode' fields if they exist in the original dictionary
-        if (originalDict.Contains("error"))
-            newDict.Add("error", originalDict["error"]);
-        if (originalDict.Contains("exitCode"))
-            newDict.Add("exitCode", originalDict["exitCode"]);
-
+        
         var allKeys = originalDict.Keys.Cast<string>().ToList();
 
         foreach (var field in fields)
@@ -37,6 +31,18 @@ public static class FieldProcessor
                     var processedList = new List<object>();
                     foreach (var item in list)
                     {
+                        if (item == null)
+                        {
+                            processedList.Add(item!);
+                            continue;
+                        }
+                        
+                        if (item.GetType().IsPrimitive || item is string || item.GetType().IsEnum || item is decimal)
+                        {
+                            processedList.Add(item);
+                            continue;
+                        }
+                        
                         var listItemDict = item.ToDictionary();
                         var subFields = field.Fields.Any()
                             ? field.Fields.Cast<Field>()
@@ -56,16 +62,19 @@ public static class FieldProcessor
                     }
 
                     // Convert to dictionary if the value is not a primitive type
-                    if (!value.GetType().IsPrimitive && value is not string && !value.GetType().IsEnum)
+                    if (!value.GetType().IsPrimitive && value is not string && !value.GetType().IsEnum && value is not decimal)
                     {
                         var valueDict = value.ToDictionary();
-                        var newSubDict = ProcessFields(field.Fields.Cast<Field>(), valueDict);
+                        var subFields = field.Fields.Any()
+                            ? field.Fields.Cast<Field>()
+                            : valueDict.Keys.Cast<string>().Select(x => new Field(x));
+                        var newSubDict = ProcessFields(subFields, valueDict);
                         newDict.Add(field.Name, newSubDict);
                     }
                     else
                     {
                         value = field.Transformers.Aggregate(value,
-                            (current, transformer) => transformer.fieldTransform.Apply(current!, transformer.args));
+                            (current, transformer) => transformer.fieldTransform.Apply(current, transformer.args));
                         newDict.Add(field.Name, value);
                     }
 

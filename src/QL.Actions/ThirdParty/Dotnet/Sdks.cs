@@ -2,8 +2,6 @@ using QL.Core.Attributes;
 
 namespace QL.Actions.ThirdParty.Dotnet;
 
-public record SdkArgs;
-
 public class SdkResult
 {
     public int Major => int.Parse(Version.Split('.')[0]);
@@ -16,4 +14,4 @@ public class SdkResult
 [Action]
 [Cmd("dotnet --list-sdks")]
 [Regex(@"(?<version>\d+\.\d+\.\d+)\s+\[(?<path>.+?)\]")]
-public class Sdks : DotnetActionBase<SdkArgs, List<SdkResult>>;
+public class Sdks : DotnetActionBase<List<SdkResult>>;

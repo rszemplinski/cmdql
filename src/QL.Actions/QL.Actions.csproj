@@ -19,10 +19,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Standard\CPUInfo\" />
       <Folder Include="Standard\Groups\" />
       <Folder Include="Standard\NetworkInterfaces\" />
-      <Folder Include="Standard\OSInfo\" />
       <Folder Include="Standard\Users\" />
     </ItemGroup>
 
