@@ -19,13 +19,35 @@ public class RemoteSession(SessionInfo info) : ISession
 
         try
         {
-            _client = Info.IsUsingKeyFile
-                ? new SshClient(Info.Host, Info.Port, Info.Username, new PrivateKeyFile(Info.KeyFile))
-                : new SshClient(Info.Host, Info.Port, Info.Username, Info.Password);
+            var authMethods = new List<AuthenticationMethod>();
+            if (Info is { IsUsingPassword: true, IsUsingKeyFile: true })
+            {
+                IPrivateKeySource[] privateKeyFiles =
+                [
+                    new PrivateKeyFile(Info.KeyFile, Info.Password)
+                ];
+                authMethods.Add(new PrivateKeyAuthenticationMethod(Info.Username, privateKeyFiles));
+            }
+
+            if (Info.IsUsingKeyFile)
+            {
+                IPrivateKeySource[] privateKeyFiles =
+                [
+                    new PrivateKeyFile(Info.KeyFile),
+                ];
+                authMethods.Add(new PrivateKeyAuthenticationMethod(Info.Username, privateKeyFiles));
+            }
+
+            if (Info.IsUsingPassword)
+            {
+                authMethods.Add(new PasswordAuthenticationMethod(Info.Username, Info.Password));
+            }
+            
+            var connectionInfo = new ConnectionInfo(Info.Host, Info.Port, Info.Username, authMethods.ToArray());
+            _client = new SshClient(connectionInfo);
 
             await _client.ConnectAsync(cancellationToken);
-            
-            // Get platform
+
             var result = _client.RunCommand("uname");
             Platform = result.Result.StartsWith("Linux")
                 ? Platform.Linux

@@ -28,10 +28,10 @@ public class TransmissionStats
 
 public class DeviceResult
 {
+    public string Name { get; set; }
     public string? IPv4 { get; set; }
     public string? IPv6 { get; set; }
     public string? MAC { get; set; }
-    public string Interface { get; set; }
     public string? Netmask { get; set; }
     public string? Broadcast { get; set; }
     public ushort PrefixLength { get; set; }
@@ -88,7 +88,7 @@ public partial class ListNetworkDevices : ActionBase<List<DeviceResult>>
 
             var deviceResult = new DeviceResult
             {
-                Interface = match.Groups[1].Value,
+                Name = match.Groups[1].Value,
                 Flags = [..match.Groups[3].Value.Split(',')],
                 MTU = uint.Parse(match.Groups[4].Value),
                 IPv4 = match.Groups[5].Success ? match.Groups[5].Value : null,
@@ -120,7 +120,7 @@ public partial class ListNetworkDevices : ActionBase<List<DeviceResult>>
         {
             var networkInterface = new DeviceResult
             {
-                Interface = match.Groups[1].Value,
+                Name = match.Groups[1].Value,
                 Flags = [..match.Groups[3].Value.Split(',')],
                 MTU = uint.Parse(match.Groups[4].Value),
                 IPv4 = match.Groups[5].Success ? match.Groups[5].Value : null,

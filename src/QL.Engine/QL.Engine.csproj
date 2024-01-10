@@ -12,6 +12,10 @@
         <RepositoryUrl>https://github.com/rszemplinski/qlsh</RepositoryUrl>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <DefineConstants>TRACE;</DefineConstants>
+    </PropertyGroup>
+
     <ItemGroup>
       <ProjectReference Include="..\QL.Actions\QL.Actions.csproj" />
       <ProjectReference Include="..\QL.Parser\QL.Parser.csproj" />

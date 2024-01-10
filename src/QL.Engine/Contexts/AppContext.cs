@@ -38,6 +38,12 @@ public class AppContext
                 var (session, contextBlock) = data;
                 Log.Debug("Connecting to {0}...", session);
                 await session.ConnectAsync(token);
+
+                if (!session.IsConnected)
+                {
+                    Log.Error("Failed to connect to {0}", session);
+                    return;
+                }
                 
                 var context = new SessionContext(session, contextBlock.SelectionSet);
                 var contextResult = await context.ExecuteAsync(token);
@@ -118,8 +124,9 @@ public class AppContext
             );
         }
 
-        var keyFile = args.TryGetValue("keyfile", out value)
-            ? ((StringValueNode)value).Value
+        var keyFileStringValueNode = args.TryGetValue("keyfile", out value) ? value as StringValueNode : null;
+        var keyFile = keyFileStringValueNode is not null
+            ? PathResolver.GetFullPath(keyFileStringValueNode.Value)
             : SshKeyFinder.FindDefaultSshPrivateKey();
 
         if (keyFile is null)

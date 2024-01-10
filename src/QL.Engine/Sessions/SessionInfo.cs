@@ -3,6 +3,7 @@ namespace QL.Engine.Sessions;
 public readonly struct SessionInfo
 {
     public bool IsUsingKeyFile => !string.IsNullOrEmpty(KeyFile);
+    public bool IsUsingPassword => !string.IsNullOrEmpty(Password);
     
     public string Alias { get; private init; }
     public string Host { get; private init; }
