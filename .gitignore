@@ -419,3 +419,5 @@ examples/custom.qlsh
 docfx/api/.manifest
 docfx/api/*.yml
 docs
+
+.direnv
