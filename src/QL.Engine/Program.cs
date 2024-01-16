@@ -35,10 +35,10 @@ internal static class Program
 
         var programSw = Stopwatch.StartNew();
         ConfigureLogging(options.Verbose);
-
+        
         var input = options.Query;
         var sw = Stopwatch.StartNew();
-         if (string.IsNullOrEmpty(input))
+         if (string.IsNullOrEmpty(input) && !string.IsNullOrEmpty(options.InputFile))
         {
             var inputFile = Path.GetFullPath(options.InputFile);
             input = await File.ReadAllTextAsync(inputFile, cts.Token);

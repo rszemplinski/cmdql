@@ -9,9 +9,9 @@ This is very much a work in progress. Nothing is properly tested, documentation 
 
 ## 📖 Overview
 
-`qlsh` is a CLI tool designed for developers, DevOps engineers, and system administrators. This tool blends the power of query language with the flexibility and familiarity of a shell environment, providing an intuitive, efficient, and powerful way to manage and query data across various systems and services.
+`cmdql` is a CLI tool designed for developers, DevOps engineers, and system administrators. This tool blends the power of query language with the flexibility and familiarity of a shell environment, providing an intuitive, efficient, and powerful way to manage and query data across various systems and services.
 
-`qlsh` is built to streamline the process of monitoring, managing, and analyzing data from servers, databases, applications, and other sources, all from the comfort of your command line.
+`cmdql` is built to streamline the process of monitoring, managing, and analyzing data from servers, databases, applications, and other sources, all from the comfort of your command line.
 
 ## ⚡️ Features
 
@@ -21,23 +21,23 @@ This is very much a work in progress. Nothing is properly tested, documentation 
 
 * **Real-Time Monitoring and Alerts**: Monitor your systems in real-time and set up alerts based on custom thresholds and conditions, ensuring you're always informed about the health and performance of your infrastructure.
 
-* **Integrated Scripting Capabilities**: Embed and execute shell scripts or external programs directly within qlsh, providing a seamless experience for complex operations.
+* **Integrated Scripting Capabilities**: Embed and execute shell scripts or external programs directly within `cmdql`, providing a seamless experience for complex operations.
 
 * **Advanced Data Manipulation**: Utilize advanced data operations like map, reduce, and filter within queries, enabling sophisticated data analysis and transformation right in the CLI.
 
-* **Customizable and Extensible**: Extend `qlsh` with custom plugins, scripts, and integrations, tailoring the tool to fit your specific needs and workflows.
+* **Customizable and Extensible**: Extend `cmdql` with custom plugins, scripts, and integrations, tailoring the tool to fit your specific needs and workflows.
 
 ## Installation
 
-Currently, the only way to use `qlsh` is to clone the repository and run the tool from source.
+Currently, the only way to use `cmdql` is to clone the repository and run the tool from source.
 
 ```bash
-git clone git@github.com:rszemplinski/qlsh.git
+git clone git@github.com:rszemplinski/cmdql.git
 ```
 
 ## Examples
 
-To try one of the examples, run `dotnet run --project src/QL.Engine -i examples/example.qlsh`.
+To try one of the examples, run `dotnet run --project src/QL.Engine -i examples/example.cmdql`.
 
 ### Input:
 ```

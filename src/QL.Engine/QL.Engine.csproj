@@ -7,9 +7,9 @@
         <Nullable>enable</Nullable>
         <RootNamespace>QL.Engine</RootNamespace>
         <LangVersion>12</LangVersion>
-        <AssemblyName>qlsh</AssemblyName>
-        <Title>qlsh</Title>
-        <RepositoryUrl>https://github.com/rszemplinski/qlsh</RepositoryUrl>
+        <AssemblyName>cmdql</AssemblyName>
+        <Title>cmdql</Title>
+        <RepositoryUrl>https://github.com/rszemplinski/cmdql</RepositoryUrl>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
