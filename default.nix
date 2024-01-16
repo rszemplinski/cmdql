@@ -1,13 +1,21 @@
-{ pkgs ? import <nixpkgs> {} }:
+{ pkgs ? import <nixpkgs> {}, lib ? pkgs.lib, buildDotnetGlobalTool ? pkgs.buildDotnetGlobalTool }:
 
-let
-  dotnetEnv = pkgs.mkShell {
-    name = "qlsh";
-    buildInputs = with pkgs; [
-       (with dotnetCorePackages; combinePackages [
-         sdk_8_0
-       ])
-    ];
+let 
+    docfx = buildDotnetGlobalTool {
+        pname = "docfx";
+        version = "2.75.1";
+        nugetSha256 = "sha256-bbD4+yNxM4vmZXPczeFH+Hy5IohKVA2cIrb+88tLD8Y=";
+        meta = with lib; {
+            description = "Documentation Generation Tool";
+            homepage = "https://dotnet.github.io/docfx/";
+            license = licenses.mit;
+            platforms = platforms.all;
+        };
   };
 in
-dotnetEnv
+pkgs.mkShell {
+  buildInputs = with pkgs; [
+    dotnet-sdk_8
+    docfx
+  ];
+}

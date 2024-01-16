@@ -11,10 +11,13 @@ public enum OutputFormat
 
 public class Options
 {
+    
+    [Value(0, Required = false)]
+    public string Query { get; set; }
+    
     [Option(
         'i',
         "input",
-        Required = true,
         HelpText = "Input files to be processed."
     )]
     public required string InputFile { get; set; }

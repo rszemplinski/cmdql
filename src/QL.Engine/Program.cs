@@ -34,14 +34,17 @@ internal static class Program
         };
 
         var programSw = Stopwatch.StartNew();
-
-        var inputFile = Path.GetFullPath(options.InputFile);
         ConfigureLogging(options.Verbose);
 
+        var input = options.Query;
         var sw = Stopwatch.StartNew();
-        var input = await File.ReadAllTextAsync(inputFile, cts.Token);
-        sw.Stop();
-        Log.Debug("Read input file {0} in {1}ms", inputFile, sw.ElapsedMilliseconds);
+         if (string.IsNullOrEmpty(input))
+        {
+            var inputFile = Path.GetFullPath(options.InputFile);
+            input = await File.ReadAllTextAsync(inputFile, cts.Token);
+            sw.Stop();
+            Log.Debug("Read input file {0} in {1}ms", inputFile, sw.ElapsedMilliseconds);
+        }
 
         sw.Restart();
         var ast = Parser.Parser.ParseQuery(input);
