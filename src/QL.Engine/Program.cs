@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using CommandLine;
+using CommandLine.Text;
 using Serilog;
 using Serilog.Events;
 using AppContext = QL.Engine.Contexts.AppContext;
@@ -18,9 +19,12 @@ internal static class Program
             config.AutoHelp = true;
             config.HelpWriter = Console.Out;
         });
-        
-        await parser.ParseArguments<Options>(args)
+
+        var result = await parser.ParseArguments<Options>(args)
             .WithParsedAsync(Run);
+
+        if (CheckQueryAndInputFile(result.Value))
+            DisplayHelp(result);
     }
 
     private static async Task Run(Options options)
@@ -35,10 +39,14 @@ internal static class Program
 
         var programSw = Stopwatch.StartNew();
         ConfigureLogging(options.Verbose);
-        
+
         var input = options.Query;
         var sw = Stopwatch.StartNew();
-         if (string.IsNullOrEmpty(input) && !string.IsNullOrEmpty(options.InputFile))
+
+        if (CheckQueryAndInputFile(options))
+            return;
+
+        if (string.IsNullOrEmpty(input) && !string.IsNullOrEmpty(options.InputFile))
         {
             var inputFile = Path.GetFullPath(options.InputFile);
             input = await File.ReadAllTextAsync(inputFile, cts.Token);
@@ -61,7 +69,7 @@ internal static class Program
             MaxConcurrency = concurrencyCount,
             Sync = options.Sync,
         };
-        
+
         var output = await
             new AppContext(ast, appConfig).ExecuteAsync(cts.Token);
 
@@ -84,5 +92,15 @@ internal static class Program
             .MinimumLevel.Is(logLevel)
             .WriteTo.Console()
             .CreateLogger();
+    }
+
+    private static bool CheckQueryAndInputFile(Options options)
+        => string.IsNullOrEmpty(options.Query) && string.IsNullOrEmpty(options.InputFile);
+
+    private static void DisplayHelp<T>(ParserResult<T> result)
+    {
+        var helpText = HelpText.AutoBuild(result, h => HelpText.DefaultParsingErrorsHandler(result, h), e => e);
+
+        Console.WriteLine(helpText);
     }
 }

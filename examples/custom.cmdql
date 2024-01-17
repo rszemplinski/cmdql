@@ -1,0 +1,11 @@
+fetch {
+    local {
+        macAddr
+        systemInfo {
+            os
+        }
+    }
+    remote(host: "ai-machine") {
+        macAddr
+    }    
+}
