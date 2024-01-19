@@ -2,7 +2,7 @@ using System.Reflection;
 using QL.Core.Actions;
 using QL.Core.Attributes;
 
-namespace QL.Actions;
+namespace QL.Engine.Lookups;
 
 public static class ActionsLookup
 {
@@ -23,9 +23,9 @@ public static class ActionsLookup
         return Actions.Any(x => x.Namespace == ns);
     }
 
-    private static IEnumerable<ActionMetadata> Generate()
+    private static List<ActionMetadata> Generate()
     {
-        var actions = Assembly.GetExecutingAssembly()
+        var actions = Assembly.Load("QL.Actions")
             .GetTypes()
             .Where(x => x.IsAssignableTo(typeof(IAction)) && !x.IsAbstract)
             .ToList();

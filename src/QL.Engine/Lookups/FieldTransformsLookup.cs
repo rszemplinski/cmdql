@@ -2,7 +2,7 @@ using System.Reflection;
 using QL.Core.Attributes;
 using QL.Core.FieldTransforms;
 
-namespace QL.FieldTransforms;
+namespace QL.Engine.Lookups;
 
 public static class FieldTransformsLookup
 {
@@ -17,9 +17,9 @@ public static class FieldTransformsLookup
         return transformer;
     }
 
-    private static IEnumerable<FieldTransformMetadata> Generate()
+    private static List<FieldTransformMetadata> Generate()
     {
-        var transformers = Assembly.GetExecutingAssembly()
+        var transformers = Assembly.Load("QL.FieldTransforms")
             .GetTypes()
             .Where(x => x.IsAssignableTo(typeof(IFieldTransform)) && !x.IsAbstract)
             .ToList();

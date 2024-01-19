@@ -1,7 +1,7 @@
 using QL.Core.Actions;
 using QL.Core.FieldTransforms;
 using QL.Engine.Extensions;
-using QL.FieldTransforms;
+using QL.Engine.Lookups;
 using QL.Parser.AST.Nodes;
 
 namespace QL.Engine.Fields;

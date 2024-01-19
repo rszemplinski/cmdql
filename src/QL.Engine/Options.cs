@@ -54,7 +54,7 @@ public class Options
     [Option(
         'v',
         "verbose",
-        HelpText = "Show verbose output?",
+        HelpText = "Show verbose output? (-v, -vv, -vvv)",
         FlagCounter = true
     )]
     public int Verbose { get; set; }

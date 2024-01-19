@@ -1,6 +1,5 @@
 using System.Collections.Concurrent;
-using QL.Actions;
-using QL.Core;
+using QL.Engine.Lookups;
 using QL.Engine.Sessions;
 using QL.Parser.AST.Nodes;
 
